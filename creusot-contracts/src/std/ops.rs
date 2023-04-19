@@ -1,4 +1,4 @@
-use crate::{invariant::Invariant, *};
+use crate::{invariant::Invariant, logic::ContainsLogic, *};
 use ::std::marker::Tuple;
 pub use ::std::ops::*;
 
@@ -203,6 +203,48 @@ impl<Idx> RangeInclusiveExt<Idx> for RangeInclusive<Idx> {
     }
 }
 
+impl<T: OrdLogic> ContainsLogic<T> for Range<T> {
+    #[predicate]
+    fn contains_log(self, e: T) -> bool {
+        pearlite! { self.start <= e && e < self.end }
+    }
+}
+
+impl<T: OrdLogic> ContainsLogic<T> for RangeInclusive<T> {
+    #[predicate]
+    fn contains_log(self, e: T) -> bool {
+        pearlite! { self.start_log() <= e && e <= self.end_log() }
+    }
+}
+
+impl<T: OrdLogic> ContainsLogic<T> for RangeFrom<T> {
+    #[predicate]
+    fn contains_log(self, e: T) -> bool {
+        pearlite! { self.start <= e }
+    }
+}
+
+impl<T: OrdLogic> ContainsLogic<T> for RangeTo<T> {
+    #[predicate]
+    fn contains_log(self, e: T) -> bool {
+        pearlite! { e < self.end }
+    }
+}
+
+impl<T: OrdLogic> ContainsLogic<T> for RangeToInclusive<T> {
+    #[predicate]
+    fn contains_log(self, e: T) -> bool {
+        pearlite! { e <= self.end }
+    }
+}
+
+impl<T: OrdLogic> ContainsLogic<T> for RangeFull {
+    #[predicate]
+    fn contains_log(self, _e: T) -> bool {
+        pearlite! { true }
+    }
+}
+
 extern_spec! {
     mod std {
         mod ops {
@@ -225,6 +267,13 @@ extern_spec! {
             {
                 #[ensures(result == self.is_empty_log())]
                 fn is_empty(&self) -> bool;
+
+                // #[ensures(result == self.contains_log(item))]
+                // fn contains<U>(&self, item: &U) -> bool
+                // where
+                //     Idx: PartialOrd<U>,
+                //     U: ?Sized + PartialOrd<Idx> + DeepModel,
+                //     U::DeepModelTy: OrdLogic;
             }
         }
     }

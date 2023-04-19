@@ -107,6 +107,7 @@ fn test_forall() {
                         },
                     },
                 ),
+                in_term: None,
             },
         ],
         gt_token: Gt,
@@ -146,6 +147,72 @@ fn test_exists() {
                                     arguments: None,
                                 },
                             ],
+                        },
+                    },
+                ),
+                in_term: None,
+            },
+        ],
+        gt_token: Gt,
+        term: TermLit {
+            lit: Bool(
+                LitBool {
+                    value: true,
+                },
+            ),
+        },
+    }
+    "###);
+}
+
+#[test]
+fn test_forall_in() {
+    snapshot!(quote!(forall<x : u32 in {range}> true) as Term, @r###"
+    TermForall {
+        forall_token: Keyword [forall],
+        lt_token: Lt,
+        args: [
+            QuantArg {
+                ident: Ident(
+                    x,
+                ),
+                colon_token: Colon,
+                ty: Path(
+                    TypePath {
+                        qself: None,
+                        path: Path {
+                            leading_colon: None,
+                            segments: [
+                                PathSegment {
+                                    ident: Ident(
+                                        u32,
+                                    ),
+                                    arguments: None,
+                                },
+                            ],
+                        },
+                    },
+                ),
+                in_term: Some(
+                    QuantArgIn {
+                        in_token: In,
+                        brace_token: Brace,
+                        in_expr: TermPath {
+                            inner: ExprPath {
+                                attrs: [],
+                                qself: None,
+                                path: Path {
+                                    leading_colon: None,
+                                    segments: [
+                                        PathSegment {
+                                            ident: Ident(
+                                                range,
+                                            ),
+                                            arguments: None,
+                                        },
+                                    ],
+                                },
+                            },
                         },
                     },
                 ),

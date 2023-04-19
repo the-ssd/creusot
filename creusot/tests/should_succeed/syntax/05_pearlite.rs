@@ -9,6 +9,13 @@ pub fn has_len_3(v: &[u32]) -> bool {
     pearlite! { v@.len() == 3 }
 }
 
+// Test forall in
+
+#[predicate]
+pub fn all_zero(s: &[u32]) -> bool {
+    pearlite! { forall<e: u32 in {s@}> e@ == 0 }
+}
+
 // Tests that we can use field access syntax in pearlite.
 
 pub struct A {

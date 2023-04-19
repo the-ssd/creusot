@@ -165,6 +165,82 @@ module C05Pearlite_HasLen3_Impl
    = [@vc:do_not_keep_trace] [@vc:sp]
     [#"../05_pearlite.rs" 9 16 9 29] let a = let a' = ShallowModel0.shallow_model v in Seq.length a' in pure {a = 3}
 end
+module CreusotContracts_Logic_Seq_Impl0_Contains_Stub
+  type t
+  use seq.Seq
+  predicate contains (self : Seq.seq t) (e : t)
+end
+module CreusotContracts_Logic_Seq_Impl0_Contains_Interface
+  type t
+  use seq.Seq
+  predicate contains (self : Seq.seq t) (e : t)
+end
+module CreusotContracts_Logic_Seq_Impl0_Contains
+  type t
+  use seq.Seq
+  use prelude.Int
+  predicate contains (self : Seq.seq t) (e : t) =
+    exists i : int . 0 <= i /\ i < Seq.length self /\ Seq.get self i = e
+  val contains (self : Seq.seq t) (e : t) : bool
+    ensures { result = contains self e }
+    
+end
+module CreusotContracts_Logic_Ops_Impl4_ContainsLog_Stub
+  type t
+  use seq.Seq
+  predicate contains_log (self : Seq.seq t) (e : t)
+end
+module CreusotContracts_Logic_Ops_Impl4_ContainsLog_Interface
+  type t
+  use seq.Seq
+  predicate contains_log (self : Seq.seq t) (e : t)
+end
+module CreusotContracts_Logic_Ops_Impl4_ContainsLog
+  type t
+  use seq.Seq
+  clone CreusotContracts_Logic_Seq_Impl0_Contains_Stub as Contains0 with
+    type t = t
+  predicate contains_log (self : Seq.seq t) (e : t) =
+    Contains0.contains self e
+  val contains_log (self : Seq.seq t) (e : t) : bool
+    ensures { result = contains_log self e }
+    
+end
+module C05Pearlite_AllZero_Stub
+  use prelude.Borrow
+  use prelude.Slice
+  use prelude.Seq
+  use prelude.Int
+  use prelude.UInt32
+  predicate all_zero [#"../05_pearlite.rs" 15 0 15 34] (s : seq uint32)
+end
+module C05Pearlite_AllZero_Interface
+  use prelude.Borrow
+  use prelude.Slice
+  use prelude.Seq
+  use prelude.Int
+  use prelude.UInt32
+  predicate all_zero [#"../05_pearlite.rs" 15 0 15 34] (s : seq uint32)
+end
+module C05Pearlite_AllZero
+  use prelude.Borrow
+  use prelude.Slice
+  use prelude.Seq
+  use prelude.Int
+  use prelude.UInt32
+  use seq.Seq
+  use seq.Seq
+  clone CreusotContracts_Logic_Ops_Impl4_ContainsLog_Stub as ContainsLog0 with
+    type t = uint32
+  clone CreusotContracts_Model_Impl1_ShallowModel_Stub as ShallowModel0 with
+    type t = seq uint32,
+    type ShallowModelTy0.shallowModelTy = Seq.seq uint32
+  predicate all_zero [#"../05_pearlite.rs" 15 0 15 34] (s : seq uint32) =
+    [#"../05_pearlite.rs" 16 4 16 48] forall e : uint32 . ContainsLog0.contains_log (ShallowModel0.shallow_model s) e -> UInt32.to_int e = 0
+  val all_zero [#"../05_pearlite.rs" 15 0 15 34] (s : seq uint32) : bool
+    ensures { result = all_zero s }
+    
+end
 module C05Pearlite_A_Type
   type t_a  =
     | C_A bool
@@ -176,20 +252,20 @@ module C05Pearlite_A_Type
 end
 module C05Pearlite_Solver_Interface
   use C05Pearlite_A_Type as C05Pearlite_A_Type
-  val solver [#"../05_pearlite.rs" 20 0 20 19] (x : C05Pearlite_A_Type.t_a) : ()
-    ensures { [#"../05_pearlite.rs" 19 10 19 20] C05Pearlite_A_Type.a_a x = C05Pearlite_A_Type.a_a x }
+  val solver [#"../05_pearlite.rs" 27 0 27 19] (x : C05Pearlite_A_Type.t_a) : ()
+    ensures { [#"../05_pearlite.rs" 26 10 26 20] C05Pearlite_A_Type.a_a x = C05Pearlite_A_Type.a_a x }
     
 end
 module C05Pearlite_StructInPearlite_Interface
   use C05Pearlite_A_Type as C05Pearlite_A_Type
-  val struct_in_pearlite [#"../05_pearlite.rs" 23 0 23 31] (x : C05Pearlite_A_Type.t_a) : ()
-    ensures { [#"../05_pearlite.rs" 22 10 22 30] x = C05Pearlite_A_Type.C_A false }
+  val struct_in_pearlite [#"../05_pearlite.rs" 30 0 30 31] (x : C05Pearlite_A_Type.t_a) : ()
+    ensures { [#"../05_pearlite.rs" 29 10 29 30] x = C05Pearlite_A_Type.C_A false }
     
 end
 module C05Pearlite_StructInPearlite
   use C05Pearlite_A_Type as C05Pearlite_A_Type
-  let rec cfg struct_in_pearlite [#"../05_pearlite.rs" 23 0 23 31] [@cfg:stackify] [@cfg:subregion_analysis] (x : C05Pearlite_A_Type.t_a) : ()
-    ensures { [#"../05_pearlite.rs" 22 10 22 30] x = C05Pearlite_A_Type.C_A false }
+  let rec cfg struct_in_pearlite [#"../05_pearlite.rs" 30 0 30 31] [@cfg:stackify] [@cfg:subregion_analysis] (x : C05Pearlite_A_Type.t_a) : ()
+    ensures { [#"../05_pearlite.rs" 29 10 29 30] x = C05Pearlite_A_Type.C_A false }
     
    = [@vc:do_not_keep_trace] [@vc:sp]
   var _0 : ();
@@ -215,16 +291,16 @@ module C05Pearlite_StructOrder_Interface
   use prelude.Int
   use prelude.UInt32
   use C05Pearlite_B_Type as C05Pearlite_B_Type
-  val struct_order [#"../05_pearlite.rs" 31 0 31 25] (x : C05Pearlite_B_Type.t_b) : ()
-    ensures { [#"../05_pearlite.rs" 30 10 30 48] x = C05Pearlite_B_Type.C_B false (0 : uint32) }
+  val struct_order [#"../05_pearlite.rs" 38 0 38 25] (x : C05Pearlite_B_Type.t_b) : ()
+    ensures { [#"../05_pearlite.rs" 37 10 37 48] x = C05Pearlite_B_Type.C_B false (0 : uint32) }
     
 end
 module C05Pearlite_StructOrder
   use prelude.Int
   use prelude.UInt32
   use C05Pearlite_B_Type as C05Pearlite_B_Type
-  let rec cfg struct_order [#"../05_pearlite.rs" 31 0 31 25] [@cfg:stackify] [@cfg:subregion_analysis] (x : C05Pearlite_B_Type.t_b) : ()
-    ensures { [#"../05_pearlite.rs" 30 10 30 48] x = C05Pearlite_B_Type.C_B false (0 : uint32) }
+  let rec cfg struct_order [#"../05_pearlite.rs" 38 0 38 25] [@cfg:stackify] [@cfg:subregion_analysis] (x : C05Pearlite_B_Type.t_b) : ()
+    ensures { [#"../05_pearlite.rs" 37 10 37 48] x = C05Pearlite_B_Type.C_B false (0 : uint32) }
     
    = [@vc:do_not_keep_trace] [@vc:sp]
   var _0 : ();
@@ -241,27 +317,27 @@ module C05Pearlite_StructOrder
 end
 module C05Pearlite_Field1IsTrue_Stub
   use C05Pearlite_B_Type as C05Pearlite_B_Type
-  predicate field1_is_true [#"../05_pearlite.rs" 35 0 35 35] (x : C05Pearlite_B_Type.t_b)
+  predicate field1_is_true [#"../05_pearlite.rs" 42 0 42 35] (x : C05Pearlite_B_Type.t_b)
 end
 module C05Pearlite_Field1IsTrue_Interface
   use C05Pearlite_B_Type as C05Pearlite_B_Type
-  predicate field1_is_true [#"../05_pearlite.rs" 35 0 35 35] (x : C05Pearlite_B_Type.t_b)
+  predicate field1_is_true [#"../05_pearlite.rs" 42 0 42 35] (x : C05Pearlite_B_Type.t_b)
 end
 module C05Pearlite_Field1IsTrue
   use prelude.UInt32
   use C05Pearlite_B_Type as C05Pearlite_B_Type
-  predicate field1_is_true [#"../05_pearlite.rs" 35 0 35 35] (x : C05Pearlite_B_Type.t_b) =
-    [#"../05_pearlite.rs" 38 8 42 9] match (x) with
+  predicate field1_is_true [#"../05_pearlite.rs" 42 0 42 35] (x : C05Pearlite_B_Type.t_b) =
+    [#"../05_pearlite.rs" 45 8 49 9] match (x) with
       | C05Pearlite_B_Type.C_B (True) _ -> true
       | C05Pearlite_B_Type.C_B _f field2 -> UInt32.to_int field2 = 0
       | _ -> false
       end
-  val field1_is_true [#"../05_pearlite.rs" 35 0 35 35] (x : C05Pearlite_B_Type.t_b) : bool
+  val field1_is_true [#"../05_pearlite.rs" 42 0 42 35] (x : C05Pearlite_B_Type.t_b) : bool
     ensures { result = field1_is_true x }
     
 end
 module C05Pearlite_GhostClosure_Interface
-  val ghost_closure [#"../05_pearlite.rs" 46 0 46 22] (_1' : ()) : ()
+  val ghost_closure [#"../05_pearlite.rs" 53 0 53 22] (_1' : ()) : ()
 end
 module C05Pearlite_GhostClosure
   use prelude.Ghost
@@ -269,7 +345,7 @@ module C05Pearlite_GhostClosure
   use prelude.Int
   use prelude.UInt32
   use prelude.Mapping
-  let rec cfg ghost_closure [#"../05_pearlite.rs" 46 0 46 22] [@cfg:stackify] [@cfg:subregion_analysis] (_1' : ()) : ()
+  let rec cfg ghost_closure [#"../05_pearlite.rs" 53 0 53 22] [@cfg:stackify] [@cfg:subregion_analysis] (_1' : ()) : ()
    = [@vc:do_not_keep_trace] [@vc:sp]
   var _0 : ();
   var _x_1 : Ghost.ghost_ty (Map.map uint32 uint32);
@@ -279,7 +355,7 @@ module C05Pearlite_GhostClosure
   }
   BB0 {
     _4 <- ();
-    _x_1 <- ([#"../05_pearlite.rs" 47 13 47 50] Ghost.new (Mapping.from_fn (fun (a : uint32) -> a)));
+    _x_1 <- ([#"../05_pearlite.rs" 54 13 54 50] Ghost.new (Mapping.from_fn (fun (a : uint32) -> a)));
     goto BB1
   }
   BB1 {
@@ -293,14 +369,14 @@ module C05Pearlite_PearliteClosure_Interface
   use map.Map
   use prelude.Int
   use prelude.UInt32
-  val pearlite_closure [#"../05_pearlite.rs" 50 0 50 54] (_x : Ghost.ghost_ty (Map.map uint32 bool)) : ()
+  val pearlite_closure [#"../05_pearlite.rs" 57 0 57 54] (_x : Ghost.ghost_ty (Map.map uint32 bool)) : ()
 end
 module C05Pearlite_PearliteClosure
   use prelude.Ghost
   use map.Map
   use prelude.Int
   use prelude.UInt32
-  let rec cfg pearlite_closure [#"../05_pearlite.rs" 50 0 50 54] [@cfg:stackify] [@cfg:subregion_analysis] (_x : Ghost.ghost_ty (Map.map uint32 bool)) : ()
+  let rec cfg pearlite_closure [#"../05_pearlite.rs" 57 0 57 54] [@cfg:stackify] [@cfg:subregion_analysis] (_x : Ghost.ghost_ty (Map.map uint32 bool)) : ()
     
    = [@vc:do_not_keep_trace] [@vc:sp]
   var _0 : ();
@@ -316,7 +392,7 @@ module C05Pearlite_PearliteClosure
   
 end
 module C05Pearlite_Caller_Interface
-  val caller [#"../05_pearlite.rs" 52 0 52 15] (_1' : ()) : ()
+  val caller [#"../05_pearlite.rs" 59 0 59 15] (_1' : ()) : ()
 end
 module C05Pearlite_Caller
   use prelude.Ghost
@@ -325,7 +401,7 @@ module C05Pearlite_Caller
   use prelude.UInt32
   use prelude.Mapping
   clone C05Pearlite_PearliteClosure_Interface as PearliteClosure0
-  let rec cfg caller [#"../05_pearlite.rs" 52 0 52 15] [@cfg:stackify] [@cfg:subregion_analysis] (_1' : ()) : ()
+  let rec cfg caller [#"../05_pearlite.rs" 59 0 59 15] [@cfg:stackify] [@cfg:subregion_analysis] (_1' : ()) : ()
    = [@vc:do_not_keep_trace] [@vc:sp]
   var _0 : ();
   var _1 : ();
@@ -336,11 +412,11 @@ module C05Pearlite_Caller
   }
   BB0 {
     _5 <- ();
-    _2 <- ([#"../05_pearlite.rs" 53 21 53 54] Ghost.new (Mapping.from_fn (fun (_a : uint32) -> true)));
+    _2 <- ([#"../05_pearlite.rs" 60 21 60 54] Ghost.new (Mapping.from_fn (fun (_a : uint32) -> true)));
     goto BB1
   }
   BB1 {
-    _1 <- ([#"../05_pearlite.rs" 53 4 53 55] PearliteClosure0.pearlite_closure _2);
+    _1 <- ([#"../05_pearlite.rs" 60 4 60 55] PearliteClosure0.pearlite_closure _2);
     goto BB2
   }
   BB2 {
@@ -357,64 +433,64 @@ end
 module C05Pearlite_Impl0_X_Stub
   use prelude.Borrow
   use C05Pearlite_S_Type as C05Pearlite_S_Type
-  function x [#"../05_pearlite.rs" 62 4 62 31] (self : borrowed (C05Pearlite_S_Type.t_s)) : bool
+  function x [#"../05_pearlite.rs" 69 4 69 31] (self : borrowed (C05Pearlite_S_Type.t_s)) : bool
 end
 module C05Pearlite_Impl0_X_Interface
   use prelude.Borrow
   use C05Pearlite_S_Type as C05Pearlite_S_Type
-  function x [#"../05_pearlite.rs" 62 4 62 31] (self : borrowed (C05Pearlite_S_Type.t_s)) : bool
+  function x [#"../05_pearlite.rs" 69 4 69 31] (self : borrowed (C05Pearlite_S_Type.t_s)) : bool
 end
 module C05Pearlite_Impl0_X
   use prelude.Borrow
   use C05Pearlite_S_Type as C05Pearlite_S_Type
-  function x [#"../05_pearlite.rs" 62 4 62 31] (self : borrowed (C05Pearlite_S_Type.t_s)) : bool =
-    [#"../05_pearlite.rs" 63 8 63 12] true
-  val x [#"../05_pearlite.rs" 62 4 62 31] (self : borrowed (C05Pearlite_S_Type.t_s)) : bool
+  function x [#"../05_pearlite.rs" 69 4 69 31] (self : borrowed (C05Pearlite_S_Type.t_s)) : bool =
+    [#"../05_pearlite.rs" 70 8 70 12] true
+  val x [#"../05_pearlite.rs" 69 4 69 31] (self : borrowed (C05Pearlite_S_Type.t_s)) : bool
     ensures { result = x self }
     
 end
 module C05Pearlite_Proj_Stub
   use prelude.Borrow
   use C05Pearlite_S_Type as C05Pearlite_S_Type
-  function proj [#"../05_pearlite.rs" 68 0 68 35] (x : borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s)) : bool
+  function proj [#"../05_pearlite.rs" 75 0 75 35] (x : borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s)) : bool
 end
 module C05Pearlite_Proj_Interface
   use prelude.Borrow
   use C05Pearlite_S_Type as C05Pearlite_S_Type
-  function proj [#"../05_pearlite.rs" 68 0 68 35] (x : borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s)) : bool
+  function proj [#"../05_pearlite.rs" 75 0 75 35] (x : borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s)) : bool
 end
 module C05Pearlite_Proj
   use prelude.Borrow
   use C05Pearlite_S_Type as C05Pearlite_S_Type
   clone C05Pearlite_Impl0_X_Stub as X0
-  function proj [#"../05_pearlite.rs" 68 0 68 35] (x : borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s)) : bool
+  function proj [#"../05_pearlite.rs" 75 0 75 35] (x : borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s)) : bool
    =
-    [#"../05_pearlite.rs" 67 0 67 8] X0.x {current = let (a, _) =  * x in a; final = let (a, _) =  ^ x in a}
-  val proj [#"../05_pearlite.rs" 68 0 68 35] (x : borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s)) : bool
+    [#"../05_pearlite.rs" 74 0 74 8] X0.x {current = let (a, _) =  * x in a; final = let (a, _) =  ^ x in a}
+  val proj [#"../05_pearlite.rs" 75 0 75 35] (x : borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s)) : bool
     ensures { result = proj x }
     
 end
 module C05Pearlite_Proj2_Stub
   use prelude.Borrow
   use C05Pearlite_S_Type as C05Pearlite_S_Type
-  function proj2 [#"../05_pearlite.rs" 73 0 73 41] (x : borrowed (borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s))) : bool
+  function proj2 [#"../05_pearlite.rs" 80 0 80 41] (x : borrowed (borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s))) : bool
     
 end
 module C05Pearlite_Proj2_Interface
   use prelude.Borrow
   use C05Pearlite_S_Type as C05Pearlite_S_Type
-  function proj2 [#"../05_pearlite.rs" 73 0 73 41] (x : borrowed (borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s))) : bool
+  function proj2 [#"../05_pearlite.rs" 80 0 80 41] (x : borrowed (borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s))) : bool
     
 end
 module C05Pearlite_Proj2
   use prelude.Borrow
   use C05Pearlite_S_Type as C05Pearlite_S_Type
   clone C05Pearlite_Impl0_X_Stub as X0
-  function proj2 [#"../05_pearlite.rs" 73 0 73 41] (x : borrowed (borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s))) : bool
+  function proj2 [#"../05_pearlite.rs" 80 0 80 41] (x : borrowed (borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s))) : bool
     
    =
-    [#"../05_pearlite.rs" 72 0 72 8] X0.x {current = let (a, _) =  *  * x in a; final = let (a, _) =  ^  * x in a}
-  val proj2 [#"../05_pearlite.rs" 73 0 73 41] (x : borrowed (borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s))) : bool
+    [#"../05_pearlite.rs" 79 0 79 8] X0.x {current = let (a, _) =  *  * x in a; final = let (a, _) =  ^  * x in a}
+  val proj2 [#"../05_pearlite.rs" 80 0 80 41] (x : borrowed (borrowed (C05Pearlite_S_Type.t_s, C05Pearlite_S_Type.t_s))) : bool
     ensures { result = proj2 x }
     
 end

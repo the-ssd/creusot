@@ -229,11 +229,9 @@ pub fn encode_term(term: &RT) -> Result<TokenStream, EncodeError> {
         RT::Forall(TermForall { args, term, .. }) => {
             let mut ts = encode_term(term)?;
             for arg in args {
+                let arg_ts = encode_quant_arg(arg, ts)?;
                 ts = quote! {
-                    ::creusot_contracts::__stubs::forall(
-                        #[creusot::no_translate]
-                        |#arg|{ #ts }
-                    )
+                    ::creusot_contracts::__stubs::forall(#arg_ts)
                 }
             }
             Ok(ts)
@@ -241,11 +239,9 @@ pub fn encode_term(term: &RT) -> Result<TokenStream, EncodeError> {
         RT::Exists(TermExists { args, term, .. }) => {
             let mut ts = encode_term(term)?;
             for arg in args {
+                let arg_ts = encode_quant_arg(arg, ts)?;
                 ts = quote! {
-                    ::creusot_contracts::__stubs::exists(
-                        #[creusot::no_translate]
-                        |#arg|{ #ts }
-                    )
+                    ::creusot_contracts::__stubs::exists(#arg_ts)
                 }
             }
             Ok(ts)
@@ -300,6 +296,30 @@ fn encode_arm(arm: &TermArm) -> Result<TokenStream, EncodeError> {
     // let (if_tok, guard) = arm.guard;
     let comma = arm.comma;
     Ok(quote! { #pat  => #body #comma })
+}
+
+fn encode_quant_arg(arg: &QuantArg, ts: TokenStream) -> Result<TokenStream, EncodeError> {
+    let arg_ident = &arg.ident;
+    let arg_ty = &*arg.ty;
+
+    if let Some(in_term) = &arg.in_term {
+        let in_ts = encode_term(&in_term.in_expr)?;
+        let contains_ts = quote! {
+            ::creusot_contracts::logic::ContainsLogic::contains_log(#in_ts, #arg_ident)
+        };
+        let impl_ts = quote! {
+            ::creusot_contracts::__stubs::implication(#contains_ts, #ts)
+        };
+        Ok(quote! {
+            #[creusot::no_translate]
+            |#arg_ident: #arg_ty|{ #impl_ts }
+        })
+    } else {
+        Ok(quote! {
+            #[creusot::no_translate]
+            |#arg_ident: #arg_ty|{ #ts }
+        })
+    }
 }
 
 #[cfg(test)]

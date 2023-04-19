@@ -48,3 +48,22 @@ impl<T> IndexLogic<Int> for Ghost<Seq<T>> {
         absurd
     }
 }
+
+pub trait ContainsLogic<T> {
+    #[predicate]
+    fn contains_log(self, element: T) -> bool;
+}
+
+impl<T> ContainsLogic<T> for Seq<T> {
+    #[predicate]
+    fn contains_log(self, e: T) -> bool {
+        self.contains(e)
+    }
+}
+
+impl<T, S: ShallowModel<ShallowModelTy = Seq<T>> + ?Sized> ContainsLogic<T> for S {
+    #[predicate]
+    fn contains_log(self, e: T) -> bool {
+        pearlite! { self@.contains(e) }
+    }
+}

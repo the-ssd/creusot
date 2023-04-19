@@ -454,6 +454,16 @@ ast_struct! {
         pub ident: Ident,
         pub colon_token: Token![:],
         pub ty: Box<Type>,
+        pub in_term: Option<QuantArgIn>,
+    }
+}
+
+ast_struct! {
+    pub struct QuantArgIn {
+        pub in_token: Token![in],
+        pub brace_token: token::Brace,
+        pub in_expr: Box<Term>,
+
     }
 }
 
@@ -1392,7 +1402,21 @@ pub(crate) mod parsing {
             let ident = input.parse()?;
             let colon_token = input.parse()?;
             let ty = input.parse()?;
-            Ok(QuantArg { ident, colon_token, ty })
+
+            let in_term = if input.peek(Token![in]) { Some(input.parse()?) } else { None };
+
+            Ok(QuantArg { ident, colon_token, ty, in_term })
+        }
+    }
+
+    impl Parse for QuantArgIn {
+        fn parse(input: ParseStream) -> Result<Self> {
+            let in_token = input.parse()?;
+            let content;
+            let brace_token = braced!(content in input);
+            let in_expr = Box::new(content.parse()?);
+
+            Ok(QuantArgIn { in_token, brace_token, in_expr })
         }
     }
 
@@ -1913,6 +1937,16 @@ pub(crate) mod printing {
             self.ident.to_tokens(tokens);
             self.colon_token.to_tokens(tokens);
             self.ty.to_tokens(tokens);
+            self.in_term.to_tokens(tokens);
+        }
+    }
+
+    impl ToTokens for QuantArgIn {
+        fn to_tokens(&self, tokens: &mut TokenStream) {
+            self.in_token.to_tokens(tokens);
+            self.brace_token.surround(tokens, |tokens| {
+                self.in_expr.to_tokens(tokens);
+            });
         }
     }
 
