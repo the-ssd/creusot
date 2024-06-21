@@ -2959,16 +2959,15 @@ module C06MapPrecond_Increment_Closure2_Type
   use seq.Seq
   use prelude.Snapshot
   use prelude.Int16
-  type c06mapprecond_increment_closure2 'u =
+  type c06mapprecond_increment_closure2  =
     | C06mapprecond_increment_closure2
     
-  let rec c06mapprecond_increment_closure2 < 'u > (input:c06mapprecond_increment_closure2 'u) (ret  )= any
+  let rec c06mapprecond_increment_closure2 < 'u > (input:c06mapprecond_increment_closure2 ) (ret  )= any
     [ good -> {C06mapprecond_increment_closure2  = input} (! ret)
     | bad -> {C06mapprecond_increment_closure2  <> input} {false} any ]
     
 end
 module C06MapPrecond_Increment_Closure2
-  type u
   let%span s06_map_precond0 = "../06_map_precond.rs" 190 24 190 25
   let%span s06_map_precond1 = "../06_map_precond.rs" 188 19 188 27
   let%span s06_map_precond2 = "../06_map_precond.rs" 189 18 189 33
@@ -2978,7 +2977,7 @@ module C06MapPrecond_Increment_Closure2
   use seq.Seq
   use prelude.Snapshot
   use C06MapPrecond_Increment_Closure2_Type as Closure'0
-  predicate unnest'0 [#"../06_map_precond.rs" 189 8 189 35] (self : Closure'0.c06mapprecond_increment_closure2 u) (_2 : Closure'0.c06mapprecond_increment_closure2 u)
+  predicate unnest'0 [#"../06_map_precond.rs" 189 8 189 35] (self : Closure'0.c06mapprecond_increment_closure2 ) (_2 : Closure'0.c06mapprecond_increment_closure2 )
     
    =
     true
@@ -2986,14 +2985,13 @@ module C06MapPrecond_Increment_Closure2
   use prelude.Borrow
   use prelude.Intrinsic
   use prelude.Int
-  predicate resolve'0 (self : borrowed (Closure'0.c06mapprecond_increment_closure2 u)) =
+  predicate resolve'0 (self : borrowed (Closure'0.c06mapprecond_increment_closure2)) =
     [%#span3]  ^ self =  * self
-  let rec resolve'0 (self:borrowed (Closure'0.c06mapprecond_increment_closure2 u)) (return'  (ret:bool))= any
+  let rec resolve'0 (self:borrowed (Closure'0.c06mapprecond_increment_closure2 )) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = resolve'0 self} (! return' {result}) ]
     
-  let rec c06mapprecond_increment_closure2 (_1:borrowed (Closure'0.c06mapprecond_increment_closure2 u)) (x:uint32) (_3:Snapshot.snap_ty (Seq.seq uint32)) (return'  (ret:uint32))= {[%#s06_map_precond1] UInt32.to_int x
-    <= 15}
-    (! bb0
+  let rec c06mapprecond_increment_closure2 [@coma:extspec] (_1:borrowed (Closure'0.c06mapprecond_increment_closure2)) (x:uint32) (_3:Snapshot.snap_ty (Seq.seq uint32)) (return'  (ret:uint32))=
+    bb0
     [ bb0 = s0
       [ s0 = -{resolve'0 _1}- s1
       | s1 = UInt32.add {x} {[%#s06_map_precond0] (1 : uint32)} (fun (_ret':uint32) ->  [ &res1 <- _ret' ] s2)
@@ -3001,16 +2999,15 @@ module C06MapPrecond_Increment_Closure2
       | s3 =  [ &_0 <- res ] s4
       | s4 = return' {_0} ]
        ]
-    )
+
     [ & _0 : uint32 = any_l ()
-    | & _1 : borrowed (Closure'0.c06mapprecond_increment_closure2 u) = _1
+    | & _1 : borrowed (Closure'0.c06mapprecond_increment_closure2) = _1
     | & x : uint32 = x
     | & res : uint32 = any_l ()
     | & res1 : uint32 = any_l () ]
     
-    [ return' (result:uint32)-> {[@expl:postcondition] unnest'0 ( * _1) ( ^ _1)}
-      {[@expl:postcondition] [%#s06_map_precond2] UInt32.to_int result = UInt32.to_int x + 1}
-      (! return' {result}) ]
+    [ return' (result:uint32)->
+      return' {result} ]
     
 end
 module C06MapPrecond_Increment
@@ -3076,26 +3073,26 @@ module C06MapPrecond_Increment
   use prelude.Int16
   use C06MapPrecond_Increment_Closure2_Type as Closure'0
   use prelude.Borrow
-  predicate invariant'7 (self : borrowed (Closure'0.c06mapprecond_increment_closure2 u)) =
+  predicate invariant'7 (self : borrowed (Closure'0.c06mapprecond_increment_closure2 )) =
     [%#span4] true
-  let rec invariant'7 (self:borrowed (Closure'0.c06mapprecond_increment_closure2 u)) (return'  (ret:bool))= any
+  let rec invariant'7 (self:borrowed (Closure'0.c06mapprecond_increment_closure2 )) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = invariant'7 self} (! return' {result}) ]
     
-  predicate inv'7 (_x : borrowed (Closure'0.c06mapprecond_increment_closure2 u))
-  let rec inv'7 (_x:borrowed (Closure'0.c06mapprecond_increment_closure2 u)) (return'  (ret:bool))= any
+  predicate inv'7 (_x : borrowed (Closure'0.c06mapprecond_increment_closure2 ))
+  let rec inv'7 (_x:borrowed (Closure'0.c06mapprecond_increment_closure2 )) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = inv'7 _x} (! return' {result}) ]
     
-  axiom inv'7 : forall x : borrowed (Closure'0.c06mapprecond_increment_closure2 u) . inv'7 x = true
-  predicate invariant'6 (self : Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 u))) =
+  axiom inv'7 : forall x : borrowed (Closure'0.c06mapprecond_increment_closure2 ) . inv'7 x = true
+  predicate invariant'6 (self : Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 ))) =
     [%#span4] true
-  let rec invariant'6 (self:Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 u))) (return'  (ret:bool))= any
+  let rec invariant'6 (self:Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 ))) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = invariant'6 self} (! return' {result}) ]
     
-  predicate inv'6 (_x : Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 u)))
-  let rec inv'6 (_x:Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 u))) (return'  (ret:bool))= any
+  predicate inv'6 (_x : Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 )))
+  let rec inv'6 (_x:Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 ))) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = inv'6 _x} (! return' {result}) ]
     
-  axiom inv'6 : forall x : Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 u)) . inv'6 x = true
+  axiom inv'6 : forall x : Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 )) . inv'6 x = true
   predicate invariant'5 (self : Seq.seq uint32) =
     [%#span4] true
   let rec invariant'5 (self:Seq.seq uint32) (return'  (ret:bool))= any
@@ -3106,16 +3103,16 @@ module C06MapPrecond_Increment
     [ return' (result:bool)-> {result = inv'5 _x} (! return' {result}) ]
     
   axiom inv'5 : forall x : Seq.seq uint32 . inv'5 x = true
-  predicate invariant'4 (self : Closure'0.c06mapprecond_increment_closure2 u) =
+  predicate invariant'4 (self : Closure'0.c06mapprecond_increment_closure2 ) =
     [%#span4] true
-  let rec invariant'4 (self:Closure'0.c06mapprecond_increment_closure2 u) (return'  (ret:bool))= any
+  let rec invariant'4 (self:Closure'0.c06mapprecond_increment_closure2 ) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = invariant'4 self} (! return' {result}) ]
     
-  predicate inv'4 (_x : Closure'0.c06mapprecond_increment_closure2 u)
-  let rec inv'4 (_x:Closure'0.c06mapprecond_increment_closure2 u) (return'  (ret:bool))= any
+  predicate inv'4 (_x : Closure'0.c06mapprecond_increment_closure2 )
+  let rec inv'4 (_x:Closure'0.c06mapprecond_increment_closure2 ) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = inv'4 _x} (! return' {result}) ]
     
-  axiom inv'4 : forall x : Closure'0.c06mapprecond_increment_closure2 u . inv'4 x = true
+  axiom inv'4 : forall x : Closure'0.c06mapprecond_increment_closure2  . inv'4 x = true
   predicate invariant'3 (self : uint32) =
     [%#span4] true
   let rec invariant'3 (self:uint32) (return'  (ret:bool))= any
@@ -3170,24 +3167,25 @@ module C06MapPrecond_Increment
     
   axiom inv'1 : forall x : borrowed u . inv'1 x = true
   use C06MapPrecond_Map_Type as Map'0
-  predicate inv'0 (_x : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32)
-  let rec inv'0 (_x:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (return'  (ret:bool))= any
+  use C06MapPrecond_Increment_Closure2 as Closure'1
+  predicate inv'0 (_x : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 ) uint32)
+  let rec inv'0 (_x:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 ) uint32) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = inv'0 _x} (! return' {result}) ]
     
-  predicate unnest'0 [#"../06_map_precond.rs" 189 8 189 35] (self : Closure'0.c06mapprecond_increment_closure2 u) (_2 : Closure'0.c06mapprecond_increment_closure2 u)
+  predicate unnest'0 [#"../06_map_precond.rs" 189 8 189 35] (self : Closure'0.c06mapprecond_increment_closure2 ) (_2 : Closure'0.c06mapprecond_increment_closure2 )
     
    =
     true
   use prelude.UInt32
   use prelude.Int
-  predicate postcondition_mut'0 [#"../06_map_precond.rs" 189 8 189 35] (self : borrowed (Closure'0.c06mapprecond_increment_closure2 u)) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32))) (result : uint32)
+  predicate postcondition_mut'0 [#"../06_map_precond.rs" 189 8 189 35] (self : borrowed (Closure'0.c06mapprecond_increment_closure2 )) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32))) (result : uint32)
     
    =
-    (let (x, _3) = args in UInt32.to_int result = UInt32.to_int x + 1) /\ unnest'0 ( * self) ( ^ self)
-  predicate precondition'0 [#"../06_map_precond.rs" 189 8 189 35] (self : Closure'0.c06mapprecond_increment_closure2 u) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32)))
+    (let (x, _3) = args in Closure'1.c06mapprecond_increment_closure2'post'return' self x _3 result) /\ unnest'0 ( * self) ( ^ self)
+  predicate precondition'0 [#"../06_map_precond.rs" 189 8 189 35] (self : Closure'0.c06mapprecond_increment_closure2 ) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32)))
     
    =
-    [%#span15] let (x, _3) = args in UInt32.to_int x <= 15
+    [%#span15] let (x, _3) = args in Closure'1.c06mapprecond_increment_closure2'pre (Borrow.borrow_logic self self 0) x _3
   use prelude.Snapshot
   use seq_ext.SeqExt
   use seq.Seq
@@ -3197,7 +3195,7 @@ module C06MapPrecond_Increment
   use prelude.Snapshot
   use C06MapPrecond_Map_Type as C06MapPrecond_Map_Type
   use seq.Seq
-  predicate produces'0 [@inline:trivial] [#"../06_map_precond.rs" 43 4 43 67] (self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (visited : Seq.seq uint32) (succ : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32)
+  predicate produces'0 [@inline:trivial] [#"../06_map_precond.rs" 43 4 43 67] (self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) (visited : Seq.seq uint32) (succ : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32)
     
    =
     [%#span16] unnest'0 (C06MapPrecond_Map_Type.map_func self) (C06MapPrecond_Map_Type.map_func succ)
@@ -3206,7 +3204,7 @@ module C06MapPrecond_Increment
     /\ produces'1 (C06MapPrecond_Map_Type.map_iter self) s (C06MapPrecond_Map_Type.map_iter succ)
     /\ Snapshot.inner (C06MapPrecond_Map_Type.map_produced succ)
     = Seq.(++) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self)) s
-    /\ (exists fs : Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 u)) . inv'6 fs
+    /\ (exists fs : Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2)) . inv'6 fs
     /\ Seq.length fs = Seq.length visited
     /\ (forall i : int . 1 <= i /\ i < Seq.length fs  ->  ^ Seq.get fs (i - 1) =  * Seq.get fs i)
     /\ (if Seq.length visited = 0 then
@@ -3219,14 +3217,14 @@ module C06MapPrecond_Increment
      -> unnest'0 (C06MapPrecond_Map_Type.map_func self) ( * Seq.get fs i)
     /\ precondition'0 ( * Seq.get fs i) (Seq.get s i, Snapshot.new (Seq.(++) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self)) (SeqExt.subsequence s 0 i)))
     /\ postcondition_mut'0 (Seq.get fs i) (Seq.get s i, Snapshot.new (Seq.(++) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self)) (SeqExt.subsequence s 0 i))) (Seq.get visited i))))
-  let rec produces'0 (self:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (visited:Seq.seq uint32) (succ:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (return'  (ret:bool))= any
+  let rec produces'0 (self:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) (visited:Seq.seq uint32) (succ:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = produces'0 self visited succ} (! return' {result}) ]
     
-  function produces_trans'0 [#"../06_map_precond.rs" 38 4 38 90] (a : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (ab : Seq.seq uint32) (b : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (bc : Seq.seq uint32) (c : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) : ()
+  function produces_trans'0 [#"../06_map_precond.rs" 38 4 38 90] (a : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) (ab : Seq.seq uint32) (b : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) (bc : Seq.seq uint32) (c : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) : ()
     
    =
     [%#span25] ()
-  let rec produces_trans'0 (a:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (ab:Seq.seq uint32) (b:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (bc:Seq.seq uint32) (c:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (return'  (ret:()))= {[@expl:precondition] [%#span23] inv'0 c}
+  let rec produces_trans'0 (a:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) (ab:Seq.seq uint32) (b:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) (bc:Seq.seq uint32) (c:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) (return'  (ret:()))= {[@expl:precondition] [%#span23] inv'0 c}
     {[@expl:precondition] [%#span22] inv'5 bc}
     {[@expl:precondition] [%#span21] inv'0 b}
     {[@expl:precondition] [%#span20] inv'5 ab}
@@ -3234,34 +3232,34 @@ module C06MapPrecond_Increment
     {[@expl:precondition] [%#span18] produces'0 b bc c}
     {[@expl:precondition] [%#span17] produces'0 a ab b}
     any [ return' (result:())-> {result = produces_trans'0 a ab b bc c} (! return' {result}) ] 
-  axiom produces_trans'0_spec : forall a : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32, ab : Seq.seq uint32, b : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32, bc : Seq.seq uint32, c : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32 . ([%#span17] produces'0 a ab b)
+  axiom produces_trans'0_spec : forall a : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32, ab : Seq.seq uint32, b : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32, bc : Seq.seq uint32, c : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32 . ([%#span17] produces'0 a ab b)
    -> ([%#span18] produces'0 b bc c)
    -> ([%#span19] inv'0 a)
    -> ([%#span20] inv'5 ab)
    -> ([%#span21] inv'0 b)
    -> ([%#span22] inv'5 bc)  -> ([%#span23] inv'0 c)  -> ([%#span24] produces'0 a (Seq.(++) ab bc) c)
-  function produces_refl'0 [#"../06_map_precond.rs" 31 4 31 26] (self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) : ()
+  function produces_refl'0 [#"../06_map_precond.rs" 31 4 31 26] (self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) : ()
     
    =
     [%#span28] ()
-  let rec produces_refl'0 (self:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (return'  (ret:()))= {[@expl:precondition] [%#span26] inv'0 self}
+  let rec produces_refl'0 (self:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) (return'  (ret:()))= {[@expl:precondition] [%#span26] inv'0 self}
     any [ return' (result:())-> {result = produces_refl'0 self} (! return' {result}) ] 
-  axiom produces_refl'0_spec : forall self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32 . ([%#span26] inv'0 self)
+  axiom produces_refl'0_spec : forall self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32 . ([%#span26] inv'0 self)
    -> ([%#span27] produces'0 self (Seq.empty  : Seq.seq uint32) self)
   use seq.Seq
-  predicate next_precondition'0 [#"../06_map_precond.rs" 83 4 83 74] (iter : u) (func : Closure'0.c06mapprecond_increment_closure2 u) (produced : Seq.seq uint32)
+  predicate next_precondition'0 [#"../06_map_precond.rs" 83 4 83 74] (iter : u) (func : Closure'0.c06mapprecond_increment_closure2) (produced : Seq.seq uint32)
     
    =
     [%#span29] forall i : u . forall e : uint32 . inv'2 i
      -> inv'3 e  -> produces'1 iter (Seq.singleton e) i  -> precondition'0 func (e, Snapshot.new produced)
-  let rec next_precondition'0 (iter:u) (func:Closure'0.c06mapprecond_increment_closure2 u) (produced:Seq.seq uint32) (return'  (ret:bool))= any
+  let rec next_precondition'0 (iter:u) (func:Closure'0.c06mapprecond_increment_closure2) (produced:Seq.seq uint32) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = next_precondition'0 iter func produced} (! return' {result}) ]
     
   use seq.Seq
-  predicate preservation'0 [#"../06_map_precond.rs" 105 4 105 45] (iter : u) (func : Closure'0.c06mapprecond_increment_closure2 u)
+  predicate preservation'0 [#"../06_map_precond.rs" 105 4 105 45] (iter : u) (func : Closure'0.c06mapprecond_increment_closure2)
     
    =
-    [%#span30] forall i : u . forall b : uint32 . forall f : borrowed (Closure'0.c06mapprecond_increment_closure2 u) . forall e2 : uint32 . forall e1 : uint32 . forall s : Seq.seq uint32 . inv'2 i
+    [%#span30] forall i : u . forall b : uint32 . forall f : borrowed (Closure'0.c06mapprecond_increment_closure2) . forall e2 : uint32 . forall e1 : uint32 . forall s : Seq.seq uint32 . inv'2 i
      -> inv'3 b
      -> inv'7 f
      -> inv'3 e2
@@ -3271,13 +3269,13 @@ module C06MapPrecond_Increment
      -> produces'1 iter (Seq.snoc (Seq.snoc s e1) e2) i
      -> precondition'0 ( * f) (e1, Snapshot.new s)
      -> postcondition_mut'0 f (e1, Snapshot.new s) b  -> precondition'0 ( ^ f) (e2, Snapshot.new (Seq.snoc s e1))
-  let rec preservation'0 (iter:u) (func:Closure'0.c06mapprecond_increment_closure2 u) (return'  (ret:bool))= any
+  let rec preservation'0 (iter:u) (func:Closure'0.c06mapprecond_increment_closure2) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = preservation'0 iter func} (! return' {result}) ]
     
-  predicate preservation_inv'0 [#"../06_map_precond.rs" 93 4 93 73] (iter : u) (func : Closure'0.c06mapprecond_increment_closure2 u) (produced : Seq.seq uint32)
+  predicate preservation_inv'0 [#"../06_map_precond.rs" 93 4 93 73] (iter : u) (func : Closure'0.c06mapprecond_increment_closure2) (produced : Seq.seq uint32)
     
    =
-    [%#span35] forall i : u . forall b : uint32 . forall f : borrowed (Closure'0.c06mapprecond_increment_closure2 u) . forall e2 : uint32 . forall e1 : uint32 . forall s : Seq.seq uint32 . inv'2 i
+    [%#span35] forall i : u . forall b : uint32 . forall f : borrowed (Closure'0.c06mapprecond_increment_closure2) . forall e2 : uint32 . forall e1 : uint32 . forall s : Seq.seq uint32 . inv'2 i
      -> inv'3 b
      -> inv'7 f
      -> inv'3 e2
@@ -3288,11 +3286,11 @@ module C06MapPrecond_Increment
      -> precondition'0 ( * f) (e1, Snapshot.new (Seq.(++) produced s))
      -> postcondition_mut'0 f (e1, Snapshot.new (Seq.(++) produced s)) b
      -> precondition'0 ( ^ f) (e2, Snapshot.new (Seq.snoc (Seq.(++) produced s) e1))
-  let rec preservation_inv'0 (iter:u) (func:Closure'0.c06mapprecond_increment_closure2 u) (produced:Seq.seq uint32) (return'  (ret:bool))= {[@expl:precondition] [%#span33] inv'5 produced}
+  let rec preservation_inv'0 (iter:u) (func:Closure'0.c06mapprecond_increment_closure2) (produced:Seq.seq uint32) (return'  (ret:bool))= {[@expl:precondition] [%#span33] inv'5 produced}
     {[@expl:precondition] [%#span32] inv'4 func}
     {[@expl:precondition] [%#span31] inv'2 iter}
     any [ return' (result:bool)-> {result = preservation_inv'0 iter func produced} (! return' {result}) ] 
-  axiom preservation_inv'0_spec : forall iter : u, func : Closure'0.c06mapprecond_increment_closure2 u, produced : Seq.seq uint32 . ([%#span31] inv'2 iter)
+  axiom preservation_inv'0_spec : forall iter : u, func : Closure'0.c06mapprecond_increment_closure2, produced : Seq.seq uint32 . ([%#span31] inv'2 iter)
    -> ([%#span32] inv'4 func)
    -> ([%#span33] inv'5 produced)
    -> ([%#span34] produced = (Seq.empty  : Seq.seq uint32)
@@ -3302,33 +3300,33 @@ module C06MapPrecond_Increment
     [ return' (result:bool)-> {result = completed'0 self} (! return' {result}) ]
     
   predicate reinitialize'0 [#"../06_map_precond.rs" 117 4 117 29] (_1 : ()) =
-    [%#span36] forall func : Closure'0.c06mapprecond_increment_closure2 u . forall iter : borrowed u . inv'4 func
+    [%#span36] forall func : Closure'0.c06mapprecond_increment_closure2 . forall iter : borrowed u . inv'4 func
      -> inv'1 iter
      -> completed'0 iter
      -> next_precondition'0 ( ^ iter) func (Seq.empty  : Seq.seq uint32) /\ preservation'0 ( ^ iter) func
   let rec reinitialize'0 (_1:()) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = reinitialize'0 _1} (! return' {result}) ]
     
-  predicate invariant'0 [#"../06_map_precond.rs" 157 4 157 30] (self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32)
+  predicate invariant'0 [#"../06_map_precond.rs" 157 4 157 30] (self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32)
     
    =
     [%#span37] reinitialize'0 ()
     /\ preservation_inv'0 (C06MapPrecond_Map_Type.map_iter self) (C06MapPrecond_Map_Type.map_func self) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self))
     /\ next_precondition'0 (C06MapPrecond_Map_Type.map_iter self) (C06MapPrecond_Map_Type.map_func self) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self))
-  let rec invariant'0 (self:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (return'  (ret:bool))= any
+  let rec invariant'0 (self:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = invariant'0 self} (! return' {result}) ]
     
-  axiom inv'0 : forall x : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32 . inv'0 x
+  axiom inv'0 : forall x : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32 . inv'0 x
   = (invariant'0 x
   /\ match x with
     | Map'0.C_Map iter func produced -> true
     end)
   use prelude.Intrinsic
-  predicate resolve'0 (self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32)
-  let rec resolve'0 (self:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (return'  (ret:bool))= any
+  predicate resolve'0 (self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32)
+  let rec resolve'0 (self:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = resolve'0 self} (! return' {result}) ]
     
-  let rec map'0 (iter:u) (func:Closure'0.c06mapprecond_increment_closure2 u) (return'  (ret:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32))= {[@expl:precondition] [%#span42] inv'4 func}
+  let rec map'0 (iter:u) (func:Closure'0.c06mapprecond_increment_closure2) (return'  (ret:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32))= {[@expl:precondition] [%#span42] inv'4 func}
     {[@expl:precondition] [%#span41] inv'2 iter}
     {[@expl:precondition] [%#span40] preservation'0 iter func}
     {[@expl:precondition] [%#span39] reinitialize'0 ()}
@@ -3336,7 +3334,7 @@ module C06MapPrecond_Increment
      -> inv'3 e
      -> produces'1 iter (Seq.singleton e) i2  -> precondition'0 func (e, Snapshot.new (Seq.empty  : Seq.seq uint32))}
     any
-    [ return' (result:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32)-> {[%#span44] inv'0 result}
+    [ return' (result:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32)-> {[%#span44] inv'0 result}
       {[%#span43] result = Map'0.C_Map iter func (Snapshot.new (Seq.empty  : Seq.seq uint32))}
       (! return' {result}) ]
     
@@ -3353,7 +3351,7 @@ module C06MapPrecond_Increment
     | bb1 = s0
       [ s0 =  [ &_6 <- Closure'0.C06mapprecond_increment_closure2 ] s1
       | s1 = map'0 {iter} {_6}
-          (fun (_ret':Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) ->
+          (fun (_ret':Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32) ->
              [ &i <- _ret' ] 
             s2)
       | s2 = bb2 ]
@@ -3361,7 +3359,7 @@ module C06MapPrecond_Increment
     | bb2 = s0
       [ s0 = {[@expl:type invariant] inv'0 i} s1
       | s1 = -{resolve'0 i}- s2
-      | s2 = {[@expl:assertion] [%#s06_map_precond0] forall fin : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32 . forall prod : Seq.seq uint32 . inv'0 fin
+      | s2 = {[@expl:assertion] [%#s06_map_precond0] forall fin : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32 . forall prod : Seq.seq uint32 . inv'0 fin
          -> produces'0 i prod fin
          -> (forall x : int . 0 <= x /\ x < Seq.length prod  -> Seq.get prod x <= (11 : uint32))}
         s3
@@ -3373,8 +3371,8 @@ module C06MapPrecond_Increment
     )
     [ & _0 : () = any_l ()
     | & iter : u = iter
-    | & i : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32 = any_l ()
-    | & _6 : Closure'0.c06mapprecond_increment_closure2 u = any_l () ]
+    | & i : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2) uint32 = any_l ()
+    | & _6 : Closure'0.c06mapprecond_increment_closure2 = any_l () ]
      [ return' (result:())-> (! return' {result}) ] 
 end
 module C06MapPrecond_Counter_Closure2_Type
@@ -3990,6 +3988,7 @@ module C06MapPrecond_Impl0
   use prelude.Snapshot
   use seq.Seq
   use seq.Seq
+
   predicate produces'0 [@inline:trivial] [#"../06_map_precond.rs" 43 4 43 67] (self : Map'0.t_map i b f item'0) (visited : Seq.seq b) (succ : Map'0.t_map i b f item'0)
     
    =
@@ -4052,8 +4051,8 @@ module C06MapPrecond_Impl0
     end
    -> inv'1 result
   /\ match result with
-    | Option'1.C_None -> completed'0 self
-    | Option'1.C_Some v -> produces'0 ( * self) (Seq.singleton v) ( ^ self)
+    | Option'0.C_None -> completed'0 self
+    | Option'0.C_Some v -> produces'0 ( * self) (Seq.singleton v) ( ^ self)
     end)
   goal produces_trans_refn : [%#s06_map_precond1] forall a : Map'0.t_map i b f item'0 . forall ab : Seq.seq b . forall b : Map'0.t_map i b f item'0 . forall bc : Seq.seq b . forall c : Map'0.t_map i b f item'0 . inv'2 c
   /\ inv'3 bc /\ inv'2 b /\ inv'3 ab /\ inv'2 a /\ produces'0 b bc c /\ produces'0 a ab b

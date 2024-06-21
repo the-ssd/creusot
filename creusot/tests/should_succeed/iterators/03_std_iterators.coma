@@ -1730,10 +1730,9 @@ module C03StdIterators_Counter_Closure0
   let rec resolve'0 (self:borrowed Closure'0.c03stditerators_counter_closure0) (return'  (ret:bool))= any
     [ return' (result:bool)-> {result = resolve'0 self} (! return' {result}) ]
     
-  let rec c03stditerators_counter_closure0 (_1:borrowed Closure'0.c03stditerators_counter_closure0) (x:uint32) (_prod:Snapshot.snap_ty (Seq.seq uint32)) (return'  (ret:uint32))= {[%#s03_std_iterators1] UIntSize.to_int ( * field_0'0 ( * _1))
-    = Seq.length (Snapshot.inner _prod)
-    /\  * field_0'0 ( * _1) < (max'0 : usize)}
-    (! bb0
+
+  let rec c03stditerators_counter_closure0 [@coma:extspec]  (_1:borrowed Closure'0.c03stditerators_counter_closure0) (x:uint32) (_prod:Snapshot.snap_ty (Seq.seq uint32)) (return'  (ret:uint32))=
+    bb0
     [ bb0 = s0
       [ s0 = Closure'0.c03stditerators_counter_closure0 { * _1}
           (fun (r'0:borrowed usize) ->
@@ -1751,18 +1750,12 @@ module C03StdIterators_Counter_Closure0
       | s4 =  [ &_0 <- res ] s5
       | s5 = return' {_0} ]
        ]
-    )
     [ & _0 : uint32 = any_l ()
     | & _1 : borrowed Closure'0.c03stditerators_counter_closure0 = _1
     | & x : uint32 = x
     | & res : uint32 = any_l ()
     | & res1 : uint32 = any_l () ]
-    
-    [ return' (result:uint32)-> {[@expl:postcondition] unnest'0 ( * _1) ( ^ _1)}
-      {[@expl:postcondition] [%#s03_std_iterators2] UIntSize.to_int ( * field_0'0 ( ^ _1))
-      = UIntSize.to_int ( * field_0'0 ( * _1)) + 1
-      /\ UIntSize.to_int ( * field_0'0 ( ^ _1)) = Seq.length (Snapshot.inner _prod) + 1 /\ result = x}
-      (! return' {result}) ]
+    [ return' (result:uint32)-> return' {result} ]
     
 end
 module C03StdIterators_Counter
@@ -1972,18 +1965,22 @@ module C03StdIterators_Counter
      ^ field_0'0 _2 =  ^ field_0'0 self
   use seq.Seq
   use prelude.Snapshot
+
+  use C03StdIterators_Counter_Closure0 as Closure'1
+
   predicate postcondition_mut'0 [#"../03_std_iterators.rs" 48 12 48 91] (self : borrowed Closure'0.c03stditerators_counter_closure0) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32))) (result : uint32)
     
    =
-    (let (x, _prod) = args in UIntSize.to_int ( * field_0'0 ( ^ self)) = UIntSize.to_int ( * field_0'0 ( * self)) + 1
-    /\ UIntSize.to_int ( * field_0'0 ( ^ self)) = Seq.length (Snapshot.inner _prod) + 1 /\ result = x)
+    (let (x, _prod) = args in
+     Closure'1.c03stditerators_counter_closure0'post'return' self x _prod result )
     /\ unnest'0 ( * self) ( ^ self)
   use seq.Seq
+
+
   predicate precondition'0 [#"../03_std_iterators.rs" 48 12 48 91] (self : Closure'0.c03stditerators_counter_closure0) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32)))
     
    =
-    [%#span10] let (x, _prod) = args in UIntSize.to_int ( * field_0'0 self) = Seq.length (Snapshot.inner _prod)
-    /\  * field_0'0 self < (max'0 : usize)
+    [%#span10] let (x, _prod) = args in Closure'1.c03stditerators_counter_closure0'pre (Borrow.borrow_logic self self 0) x _prod
   use prelude.Snapshot
   use seq_ext.SeqExt
   use seq.Seq

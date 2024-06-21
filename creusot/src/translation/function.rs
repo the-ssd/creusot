@@ -463,6 +463,58 @@ impl<'tcx> TranslationCtx<'tcx> {
     }
 }
 
+fn inferred_contract<'tcx>(ctx: &mut TranslationCtx<'tcx>, def_id: DefId) -> ClosureContract<'tcx> {
+    let TyKind::Closure(_, subst) = ctx.type_of(def_id).instantiate_identity().kind() else {
+        unreachable!()
+    };
+
+    let kind = subst.as_closure().kind();
+    let mut pre_clos_sig = ctx.sig(def_id).clone();
+
+    let contract = contract_of(ctx, def_id);
+
+    assert!(contract.is_empty());
+
+    let result_ty = pre_clos_sig.output;
+    pre_clos_sig.output = ctx.types.bool;
+
+    pre_clos_sig.contract = PreContract::default();
+
+    let mut post_sig = pre_clos_sig.clone();
+    let pre_sig = pre_clos_sig;
+
+    post_sig.inputs.push((Symbol::intern("result"), DUMMY_SP, result_ty));
+
+    let env_ty = ctx
+        .closure_env_ty(ctx.type_of(def_id).instantiate_identity(), kind, ctx.lifetimes.re_erased)
+        .peel_refs();
+    let self_ty = env_ty;
+
+    let precond = {
+        // Preconditions are the same for every kind of closure
+        let mut pre_sig = pre_sig;
+
+        pre_sig.inputs[0].0 = Symbol::intern("self");
+        pre_sig.inputs[0].2 = self_ty;
+
+
+
+        (pre_sig, precondition)
+    };
+
+    let mut contracts = ClosureContract {
+        resolve: todo!(),
+        precond: todo!(),
+        postcond_once: todo!(),
+        postcond_mut: todo!(),
+        postcond: todo!(),
+        unnest: todo!(),
+        accessors: todo!(),
+    };
+
+    contracts
+}
+
 pub(crate) fn closure_contract<'tcx>(
     ctx: &mut TranslationCtx<'tcx>,
     def_id: DefId,
@@ -534,10 +586,9 @@ pub(crate) fn closure_contract<'tcx>(
 
     post_sig.inputs.push((Symbol::intern("result"), DUMMY_SP, result_ty));
 
-    let env_ty = ctx
+    let self_ty = ctx
         .closure_env_ty(ctx.type_of(def_id).instantiate_identity(), kind, ctx.lifetimes.re_erased)
         .peel_refs();
-    let self_ty = env_ty;
 
     let precond = {
         // Preconditions are the same for every kind of closure
@@ -601,7 +652,7 @@ pub(crate) fn closure_contract<'tcx>(
         csubst.visit_mut_term(&mut postcondition);
 
         let args = subst.as_closure().sig().inputs().skip_binder()[0];
-        let unnest_subst = ctx.mk_args(&[GenericArg::from(args), GenericArg::from(env_ty)]);
+        let unnest_subst = ctx.mk_args(&[GenericArg::from(args), GenericArg::from(self_ty)]);
 
         let unnest_id = ctx.get_diagnostic_item(Symbol::intern("fn_mut_impl_unnest")).unwrap();
 
