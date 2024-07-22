@@ -162,6 +162,15 @@ impl Expr {
         }
     }
 
+    /// Adds a set of post-let bindings around `self`
+    pub fn with_(self, lets: Vec<Var>) -> Self {
+        if lets.len() == 0 {
+            self
+        } else {
+            Expr::Let(Box::new(self), lets)
+        }
+    }
+
     pub fn as_symbol(&self) -> Option<&QName> {
         if let Expr::Symbol(nm) = self {
             Some(nm)

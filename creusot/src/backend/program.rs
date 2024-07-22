@@ -1,3 +1,5 @@
+use self::float_in::float_bindings;
+
 use super::{
     clone_map::PreludeModule,
     dependency::ExtendedId,
@@ -342,6 +344,8 @@ pub fn to_why<'tcx>(
         .into_iter()
         .fold(body, |acc, req| Expr::Assert(Box::new(req), Box::new(acc)));
 
+    body = float_bindings(body);
+    
     let params = sig
         .args
         .into_iter()

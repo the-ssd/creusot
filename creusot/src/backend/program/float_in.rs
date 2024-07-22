@@ -1,12 +1,11 @@
 use std::collections::HashSet;
-
 use why3::{
     coma::{self, Arg, Param, Term, Var},
     ty::Type,
     Ident, QName,
 };
 
-pub enum ExprWFVKind {
+enum ExprWFVKind {
     Lambda(Vec<Param>, Box<ExprWFV>),
 
     Defn(Box<ExprWFV>, bool, Vec<DefnWFV>),
@@ -40,19 +39,37 @@ struct ArgWFV {
     kind: ArgKind,
 }
 
-pub enum ArgKind {
+enum ArgKind {
     Ty(Type),
     Term(Term),
     Ref(Ident),
     Cont(ExprWFV),
 }
 
-pub struct DefnWFV {
-    pub name: Ident,
-    pub writes: Vec<Ident>,
-    pub params: Vec<Param>,
-    pub body: ExprWFV,
-    pub fvs: HashSet<QName>,
+struct DefnWFV {
+    name: Ident,
+    writes: Vec<Ident>,
+    params: Vec<Param>,
+    body: ExprWFV,
+    fvs: HashSet<QName>,
+}
+
+pub(crate) fn float_bindings(expr: coma::Expr) -> coma::Expr {
+    let annot = annot(expr);
+    float_in(Vec::new(), annot)
+}
+
+impl ExprWFV {
+    fn unfold(self) -> (ExprWFV, Vec<ArgWFV>) {
+        match self.kind {
+            ExprWFVKind::App(f, a) => {
+                let (f, mut args) = f.unfold();
+                args.push(*a);
+                (f, args)
+            }
+            _ => (self, vec![]),
+        }
+    }
 }
 
 fn annot_arg(arg: coma::Arg) -> ArgWFV {
@@ -74,6 +91,15 @@ fn annot_def(def: coma::Defn) -> DefnWFV {
     let e = annot(def.body);
 
     let mut fvs = e.fvs.clone();
+
+    // if fvs.contains(&QName::from_string("old_2_0").unwrap()) {
+    //     // for d in &defs {
+    //         // eprintln!("{:?}", d.fvs);
+    //     // }
+    //     use why3::Print;
+    //     eprintln!("def has var {}", def.name.display());
+    // }
+    fvs.remove(&def.name.clone().into());
     def.params.iter().for_each(|p| match p {
         Param::Ty(_) => (),
         Param::Term(i, _) => {
@@ -82,14 +108,18 @@ fn annot_def(def: coma::Defn) -> DefnWFV {
         Param::Reference(i, _) => {
             fvs.remove(&i.clone().into());
         }
-        Param::Cont(i, _, _) => {
-            fvs.remove(&i.clone().into());
-        }
+        Param::Cont(_, _, _) => (),
+        // Param::Cont(i, _, _) => {
+        //     fvs.remove(&i.clone().into());
+        // }
     });
 
     DefnWFV { name: def.name, writes: def.writes, params: def.params, body: e, fvs }
 }
 
+/// Takes a coma expression and returns an equivalent expression annotated with its free variables at each level
+///
+/// TODO: Improve the FV representation to take advantage of sharing.
 fn annot(expr: coma::Expr) -> ExprWFV {
     match expr {
         coma::Expr::Symbol(v) => {
@@ -109,16 +139,17 @@ fn annot(expr: coma::Expr) -> ExprWFV {
             let mut fvs = e.fvs.clone();
 
             bndrs.iter().for_each(|p| match p {
-                Param::Ty(_) => todo!(),
+                Param::Ty(_) => (),
                 Param::Term(i, _) => {
                     fvs.remove(&i.clone().into());
                 }
                 Param::Reference(i, _) => {
                     fvs.remove(&i.clone().into());
                 }
-                Param::Cont(i, _, _) => {
-                    fvs.remove(&i.clone().into());
-                }
+                Param::Cont(_, _, _) => (),
+                // Param::Cont(i, _, _) => {
+                //     fvs.remove(&i.clone().into());
+                // }
             });
 
             ExprWFV { fvs, kind: ExprWFVKind::Lambda(bndrs, Box::new(e)) }
@@ -127,7 +158,7 @@ fn annot(expr: coma::Expr) -> ExprWFV {
             let e = annot(*e);
             let defs: Vec<_> = defs.into_iter().map(annot_def).collect();
 
-            let mut fvs: HashSet<_> = Default::default();
+            let mut fvs: HashSet<_> = e.fvs.clone();
 
             defs.iter().for_each(|def| fvs.extend(def.fvs.clone()));
 
@@ -157,7 +188,8 @@ fn annot(expr: coma::Expr) -> ExprWFV {
         coma::Expr::Assert(t, e) => {
             let e = annot(*e);
             let fvs = t.fvs().into_iter().map(|i| i.into()).chain(e.fvs.clone()).collect();
-
+            // use why3::Print;
+            // eprintln!("fvs: {:?} {}", fvs, t.display());
             ExprWFV { fvs, kind: ExprWFVKind::Assert(t, Box::new(e)) }
         }
         coma::Expr::Assume(t, e) => {
@@ -178,36 +210,74 @@ fn annot(expr: coma::Expr) -> ExprWFV {
     }
 }
 
+/// Attempts to push the `lets` as far down into `expr` as possible, returns the resulting expression
+/// This function will *never* duplicate lets, though it can drop them if they are unneeded.
 fn float_in(mut lets: Vec<Var>, mut expr: ExprWFV) -> coma::Expr {
     use coma::*;
     match expr.kind {
         ExprWFVKind::Lambda(pars, body) => {
-            let fvs = expr.fvs.difference(&body.fvs).cloned().collect();
-            wrap_floats(lets, fvs, |inner| Expr::Lambda(pars, Box::new(float_in(inner, *body))))
+            let bound = body.fvs.difference(&expr.fvs).cloned().collect();
+            // Drop any lets that are shadowed
+            // In theory this should not happen
+            let (_, inner) = split_floats(lets, &bound);
+            // TODO: Account for bound variables
+            Expr::Lambda(pars, Box::new(float_in(inner, *body)))
+            // wrap_floats(lets, fvs, |inner| Expr::Lambda(pars, Box::new(float_in(inner, *body))))
         }
         ExprWFVKind::Defn(e, b, defs) => {
-            let (common, mut def_lets) = split_for_case(lets,  defs.iter().map(|d| d.fvs.clone()).collect());
-            let e = float_in(common, *e);
-            let defs: Vec<_> = defs.into_iter().map(|d| float_in_defn(def_lets.pop().unwrap(), d)).collect();
+            let (common, mut def_lets) =
+                split_for_case(lets, defs.iter().map(|d| d.fvs.clone()).collect());
+            let e = float_in(Vec::new(), *e);
 
-            Expr::Defn(Box::new(e), b, defs)
+            // if expr.fvs.contains(&QName::from_string("old_2_0").unwrap()) {
+            //     for d in &defs {
+            //         eprintln!("{:?}", d.fvs);
+            //     }
+            // }
+
+            let mut defs: Vec<_> =
+                defs.into_iter().rev().map(|d| float_in_defn(def_lets.pop().unwrap(), d)).collect();
+
+            defs.reverse();
+            Expr::Defn(Box::new(e), b, defs).with_(common)
         }
         ExprWFVKind::Let(e, l) => {
             lets.extend(l);
             let e = float_in(lets, *e);
             e
         }
-        ExprWFVKind::Symbol(s) => Expr::Let(Box::new(Expr::Symbol(s)), lets),
-        ExprWFVKind::App(l, r) => {
-            let (common, mut defs) = split_for_case(lets, vec![l.fvs.clone(), r.fvs.clone()]);
+        ExprWFVKind::Symbol(s) => Expr::Symbol(s).with_(lets),
+        ExprWFVKind::App(_, _) => {
+            let (f, args) = expr.unfold();
+            let (common, mut each) = split_for_case(
+                lets,
+                std::iter::once(f.fvs.clone()).chain(args.iter().map(|a| a.fvs.clone())).collect(),
+            );
 
-            // let (shared, lefts, rights) = todo!();
+            let f = float_in(each.remove(0), f);
+            let mut unfloated = Vec::new();
+            let args = args
+                .into_iter()
+                .map(|r| {
+                    let mut arg_floats = each.remove(0);
+                    let arg = match r.kind {
+                        ArgKind::Ty(t) => Arg::Ty(t),
+                        ArgKind::Term(term) => Arg::Term(term),
+                        ArgKind::Ref(i) => Arg::Ref(i),
+                        ArgKind::Cont(c) => {
+                            let c = float_in(arg_floats, c);
+                            arg_floats = Vec::new();
+                            Arg::Cont(c)
+                        }
+                    };
+                    unfloated.extend(arg_floats);
+                    arg
+                })
+                .collect();
+            let app = f.app(args);
 
-            let l = float_in(defs.remove(0), *l);
-            let r = float_in_arg(defs.remove(0), *r);
-
-            let app = l.app(vec![r]);
-            Expr::Let(Box::new(app), common)
+            let app = app.with_(unfloated);
+            app.with_(common)
         }
         ExprWFVKind::Assign(e, asgns) => {
             let fvs = expr.fvs.difference(&e.fvs).cloned().collect();
@@ -240,26 +310,26 @@ fn split_for_case(
     defs: Vec<HashSet<QName>>,
 ) -> (Vec<Var>, Vec<Vec<Var>>) {
     let mut common = Vec::new();
-    let mut branches = vec![ Vec::new(); defs.len()];
+    let mut branches = vec![Vec::new(); defs.len()];
     for v in lets {
-        let occurs : Vec<_> = defs.iter().enumerate().filter(|(_, d)| d.contains(&v.0.clone().into())).map(|(ix, _)| ix).collect();
-        
-        let here = occurs.len() == 1; 
+        let occurs: Vec<_> = defs
+            .iter()
+            .enumerate()
+            .filter(|(_, d)| d.contains(&v.0.clone().into()))
+            .map(|(ix, _)| ix)
+            .collect();
+
+        let here = occurs.len() == 1;
         if here {
-            common.push(v);
-
-        } else {
             branches[occurs[0]].push(v)
-
+        } else {
+            common.push(v);
         }
     }
     (common, branches)
 }
 
-fn float_in_arg(mut lets: Vec<Var>, mut expr: ArgWFV) -> coma::Arg {
-    todo!()
-}
-
+/// Wraps `lets` around the given expression, pushing as many bindings as possible to the inner expression.
 fn wrap_floats(
     lets: Vec<Var>,
     fvs: HashSet<QName>,
@@ -267,21 +337,21 @@ fn wrap_floats(
 ) -> coma::Expr {
     let (floats, rest) = split_floats(lets, &fvs);
     let e = f(rest);
-    coma::Expr::Let(Box::new(e), floats)
+    e.with_(floats)
 }
 
-fn split_floats(lets: Vec<Var>, fvs: &HashSet<QName>) -> (Vec<Var>, Vec<Var>) {
-    // let mut floats = vec![];
-    // let mut rest = vec![];
+/// Splits `lets` using `fvs`, it finds a partition such that no variables in `fvs` occur in the second component.
+/// `fvs` represents the `fvs` which are "defined here"
+fn split_floats(mut lets: Vec<Var>, here: &HashSet<QName>) -> (Vec<Var>, Vec<Var>) {
+    let mut max_ix: isize = -1;
+    for (ix, v) in lets.iter().enumerate() {
+        if here.contains(&v.0.clone().into()) {
+            max_ix = ix as isize;
+        }
+    }
 
-    // for Var(id, ty, e, _) in lets {
-    //     if e.fvs().iter().any(|i| lets.iter().any(|Var(id, _, _, _)| id == i)) {
-    //         floats.push(Var(id, ty, e, false))
-    //     } else {
-    //         rest.push(Var(id, ty, e, false))
-    //     }
-    // }
+    let rest = lets.split_off(((max_ix + 1) as usize).min(lets.len()));
+    let floats = lets;
 
-    // (floats, rest)
-    todo!()
+    (floats, rest)
 }
