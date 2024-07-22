@@ -40,6 +40,8 @@ use why3::{
 
 use super::signature::sig_to_why3;
 
+mod float_in;
+
 fn closure_ty<'tcx>(ctx: &mut Why3Generator<'tcx>, def_id: DefId) -> Module {
     let mut names = Dependencies::new(ctx.tcx, [def_id]);
     let mut decls = Vec::new();

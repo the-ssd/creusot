@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use rustc_middle::mir::{self};
 use rustc_span::Symbol;
+use why3::{coma, Ident};
 use std::collections::HashSet;
 
 use crate::translation::{
@@ -332,12 +333,6 @@ impl<'tcx> SimplePropagator<'tcx> {
     }
 
     fn visit_term(&mut self, _t: &mut Term<'tcx>) {
-        // TODO: Find a way to propagate Expr into Term
-        //   _t.subst_with(|s| {
-        //     let x = self.usage.iter().find(|(k, _)| LocalIdent::anon(k).symbol() == s );
-
-        //     x.and_then(|l| self.prop.remove(l))
-        //   })
     }
 
     fn should_propagate(&self, l: Symbol) -> bool {
@@ -361,3 +356,4 @@ impl<'tcx> SimplePropagator<'tcx> {
             .unwrap_or(false)
     }
 }
+
