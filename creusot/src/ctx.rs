@@ -100,7 +100,7 @@ pub struct TranslationCtx<'tcx> {
     closure_contract: HashMap<DefId, ClosureContract<'tcx>>,
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug)]
 pub(crate) struct Opacity(Visibility<DefId>);
 
 impl Opacity {
@@ -301,10 +301,21 @@ impl<'tcx, 'sess> TranslationCtx<'tcx> {
             return Opacity(Visibility::Public);
         };
 
+        let parent = |item| match self.tcx.def_kind(item) {
+            DefKind::AssocFn => {
+                let vis = self.tcx.associated_item(item).trait_item_def_id;
+                match vis {
+                    Some(trait_item) => parent_module(self.tcx, trait_item),
+                    None => parent_module(self.tcx, item),
+                }
+            }
+            _ => parent_module(self.tcx, item),
+        };
+
         let witness = util::opacity_witness_name(self.tcx, item)
             .and_then(|nm| self.creusot_item(nm))
             .map(|id| self.visibility(id))
-            .unwrap_or_else(|| Visibility::Restricted(parent_module(self.tcx, item)));
+            .unwrap_or_else(|| Visibility::Restricted(parent(item)));
         Opacity(witness)
     }
 

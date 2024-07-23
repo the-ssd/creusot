@@ -67,8 +67,9 @@ pub(crate) fn validate_opacity(ctx: &mut TranslationCtx, item: DefId) -> Option<
     let term = ctx.term(item)?.clone();
 
     if ctx.visibility(item) != Visibility::Restricted(parent_module(ctx.tcx, item))
-        && util::opacity_witness_name(ctx.tcx, item).is_none()
+        && (util::opacity_witness_name(ctx.tcx, item).is_none() && ctx.impl_of_method(item).is_none())
     {
+
         ctx.error(ctx.def_span(item), "Non private definitions must have an explicit transparency. Please add #[open(..)] to your definition").emit();
     }
 
