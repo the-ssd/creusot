@@ -497,7 +497,7 @@ enum CloneOpacity {
 #[derive(Clone, Debug, TyEncodable, TyDecodable)]
 pub struct DepInfo {
     /// The highest 'visibility' this clone is visible from
-    level: CloneLevel,
+    pub level: CloneLevel,
     /// Whether this clone is opaque (hides the body of logical functions)
     opaque: CloneOpacity,
 

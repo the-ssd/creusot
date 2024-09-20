@@ -505,6 +505,7 @@ pub(crate) fn destructor<'tcx>(
         .app(fields.into_iter().map(|(nm, _)| Exp::var(nm)).map(Arg::Term).collect());
 
     let good_branch: coma::Defn = coma::Defn {
+        attrs: vec![],
         name: format!("good").into(),
         writes: vec![],
         params: field_args.clone(),
@@ -518,6 +519,7 @@ pub(crate) fn destructor<'tcx>(
     let bad_branch: Defn = coma::Defn {
         name: format!("bad").into(),
         writes: vec![],
+        attrs: vec![],
         params: field_args.clone(),
         body: Expr::Assert(Box::new(cons_test.neq(Exp::var("input"))), Box::new(fail)),
     };
@@ -533,6 +535,7 @@ pub(crate) fn destructor<'tcx>(
     Decl::Coma(Defn {
         name: names.eliminator(cons_id, subst).name,
         writes: vec![],
+        attrs: vec![],
         params: params.collect(),
         body: Expr::Defn(Box::new(Expr::Any), false, vec![good_branch, bad_branch]),
     })

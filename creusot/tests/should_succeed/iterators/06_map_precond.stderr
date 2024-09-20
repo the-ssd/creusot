@@ -1,0 +1,10 @@
+warning: unused variable: `i`
+   --> 06_map_precond.rs:195:9
+    |
+195 |     let i = map(iter, |x: u32, _| x + 1);
+    |         ^ help: if this is intentional, prefix it with an underscore: `_i`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: 1 warning emitted
+

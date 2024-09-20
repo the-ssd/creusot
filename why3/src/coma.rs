@@ -1,4 +1,4 @@
-use crate::{declaration::Use, ty::Type, Ident, Print, QName};
+use crate::{declaration::{Attribute, Use}, ty::Type, Ident, Print, QName};
 use pretty::docs;
 
 #[cfg(feature = "serialize")]
@@ -109,6 +109,7 @@ pub enum Arg {
 #[cfg_attr(feature = "serialize", derive(Serialize, Deserialize))]
 pub struct Defn {
     pub name: Ident,
+    pub attrs: Vec<Attribute>,
     /// Only relevant if using references
     pub writes: Vec<Ident>,
     pub params: Vec<Param>,
@@ -130,7 +131,7 @@ pub struct Module(pub Vec<Decl>);
 
 impl Defn {
     pub fn simple(name: impl Into<Ident>, body: Expr) -> Self {
-        Defn { name: name.into(), writes: vec![], params: vec![], body }
+        Defn { name: name.into(), attrs: vec![], writes: vec![], params: vec![], body }
     }
 }
 
@@ -442,6 +443,7 @@ where
     docs![
         alloc,
         defn.name.pretty(alloc),
+        alloc.intersperse(defn.attrs.iter().map(|a| a.pretty(alloc)), alloc.space()),
         alloc.space(),
         bracket_list(alloc, defn.writes.iter().map(|a| a.pretty(alloc)), " "),
         if defn.writes.is_empty() { alloc.nil() } else { alloc.space() },

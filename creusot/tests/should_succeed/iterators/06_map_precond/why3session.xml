@@ -2,10 +2,11 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "https://www.why3.org/why3session.dtd">
 <why3session shape_version="6">
+<prover id="0" name="CVC4" version="1.8" timelimit="1" steplimit="0" memlimit="1000"/>
 <prover id="1" name="Alt-Ergo" version="2.5.3" timelimit="1" steplimit="0" memlimit="1000"/>
 <prover id="2" name="Z3" version="4.12.4" timelimit="1" steplimit="0" memlimit="1000"/>
 <prover id="4" name="CVC5" version="1.0.5" timelimit="1" steplimit="0" memlimit="1000"/>
-<file format="coma" proved="true">
+<file format="coma">
 <path name=".."/><path name="06_map_precond.coma"/>
 <theory name="C06MapPrecond_Impl1_PreservationInv_Impl" proved="true">
  <goal name="vc_preservation_inv" proved="true">
@@ -316,49 +317,62 @@
 </theory>
 <theory name="C06MapPrecond_Identity" proved="true">
  <goal name="vc_identity" proved="true">
- <proof prover="1"><result status="valid" time="0.016418" steps="129"/></proof>
- </goal>
-</theory>
-<theory name="C06MapPrecond_Increment_Closure2" proved="true">
- <goal name="vc_c06mapprecond_increment_closure2" proved="true">
- <proof prover="1"><result status="valid" time="0.009703" steps="8"/></proof>
+ <proof prover="1"><result status="valid" time="0.016418" steps="1293"/></proof>
  </goal>
 </theory>
 <theory name="C06MapPrecond_Increment" proved="true">
  <goal name="vc_increment" proved="true">
  <transf name="split_vc" proved="true" >
   <goal name="vc_increment.0" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.082459" steps="15202"/></proof>
+  <proof prover="4"><result status="valid" time="0.082459" steps="11537"/></proof>
   </goal>
   <goal name="vc_increment.1" expl="precondition" proved="true">
-  <proof prover="4" timelimit="5"><result status="valid" time="0.095944" steps="14485"/></proof>
+  <proof prover="4" timelimit="5"><result status="valid" time="0.095944" steps="10879"/></proof>
   </goal>
   <goal name="vc_increment.2" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.029129" steps="82"/></proof>
+  <proof prover="1"><result status="valid" time="0.029129" steps="186"/></proof>
   </goal>
   <goal name="vc_increment.3" expl="precondition" proved="true">
-  <proof prover="4" timelimit="5"><result status="valid" time="0.151673" steps="16540"/></proof>
+  <proof prover="4" timelimit="5"><result status="valid" time="0.151673" steps="12876"/></proof>
   </goal>
   <goal name="vc_increment.4" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.011868" steps="38"/></proof>
+  <proof prover="1"><result status="valid" time="0.011868" steps="54"/></proof>
   </goal>
   <goal name="vc_increment.5" expl="type invariant" proved="true">
   <proof prover="1"><result status="valid" time="0.017114" steps="6"/></proof>
   </goal>
-  <goal name="vc_increment.6" expl="assertion" proved="true">
-  <proof prover="4" timelimit="5"><result status="valid" time="0.103075" steps="26062"/></proof>
-  </goal>
  </transf>
  </goal>
 </theory>
-<theory name="C06MapPrecond_Counter_Closure2" proved="true">
- <goal name="vc_c06mapprecond_counter_closure2" proved="true">
- <proof prover="1"><result status="valid" time="0.013350" steps="123"/></proof>
- </goal>
-</theory>
-<theory name="C06MapPrecond_Counter" proved="true">
- <goal name="vc_counter" proved="true">
- <proof prover="1"><result status="valid" time="0.053608" steps="575"/></proof>
+<theory name="C06MapPrecond_Counter">
+ <goal name="vc_counter">
+ <proof prover="0"><result status="timeout" time="1.000000" steps="136645"/></proof>
+ <proof prover="1"><result status="timeout" time="1.000000" steps="11401"/></proof>
+ <proof prover="2"><result status="timeout" time="1.000000" steps="2643381"/></proof>
+ <proof prover="4"><result status="timeout" time="1.000000" steps="189777"/></proof>
+ <transf name="split_vc" >
+  <goal name="vc_counter.0" expl="precondition" proved="true">
+  <proof prover="4"><result status="valid" time="0.036237" steps="12669"/></proof>
+  </goal>
+  <goal name="vc_counter.1" expl="precondition" proved="true">
+  <proof prover="4"><result status="valid" time="0.028006" steps="11261"/></proof>
+  </goal>
+  <goal name="vc_counter.2" expl="precondition">
+  <proof prover="0"><result status="timeout" time="1.000000" steps="130512"/></proof>
+  <proof prover="1"><result status="timeout" time="1.000000" steps="14816"/></proof>
+  <proof prover="2"><result status="timeout" time="1.000000" steps="2486492"/></proof>
+  <proof prover="4"><result status="timeout" time="1.000000" steps="199611"/></proof>
+  </goal>
+  <goal name="vc_counter.3" expl="precondition" proved="true">
+  <proof prover="4"><result status="valid" time="0.254922" steps="71470"/></proof>
+  </goal>
+  <goal name="vc_counter.4" expl="precondition" proved="true">
+  <proof prover="4"><result status="valid" time="0.090964" steps="22419"/></proof>
+  </goal>
+  <goal name="vc_counter.5" expl="type invariant" proved="true">
+  <proof prover="4"><result status="valid" time="0.027779" steps="11371"/></proof>
+  </goal>
+ </transf>
  </goal>
 </theory>
 <theory name="C06MapPrecond_Impl0" proved="true">
@@ -373,6 +387,22 @@
  <goal name="produces_refl_refn" proved="true">
  <proof prover="1"><result status="valid" time="0.007106" steps="1"/></proof>
  <proof prover="4"><result status="valid" time="0.014104" steps="8735"/></proof>
+ </goal>
+</theory>
+<theory name="C06MapPrecond_Counter_Closure2">
+ <goal name="vc_c06mapprecond_counter_closure2">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="4"><undone/></proof>
+ </goal>
+</theory>
+<theory name="C06MapPrecond_Increment_Closure2">
+ <goal name="vc_c06mapprecond_increment_closure2">
+ <proof prover="0"><undone/></proof>
+ <proof prover="1"><undone/></proof>
+ <proof prover="2"><undone/></proof>
+ <proof prover="4"><undone/></proof>
  </goal>
 </theory>
 </file>

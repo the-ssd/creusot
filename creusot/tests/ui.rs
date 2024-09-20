@@ -50,7 +50,7 @@ fn main() {
     metadata_file.args(&["--", "--package", "creusot-contracts"]).env("CREUSOT_CONTINUE", "true");
 
     if !metadata_file.status().expect("could not dump metadata for `creusot_contracts`").success() {
-        // eprintln!("{}", String::from_utf8_lossy(&metadata_file.output().unwrap().stderr));
+        eprintln!("{}", String::from_utf8_lossy(&metadata_file.output().unwrap().stderr));
         std::process::exit(1);
     }
 

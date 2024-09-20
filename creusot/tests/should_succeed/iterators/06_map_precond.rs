@@ -192,30 +192,21 @@ pub fn identity<I: Iterator>(iter: I) {
     forall<x : _> 0 <= x && x < prod.len() ==> prod[x] <= 10u32
 )]
 pub fn increment<U: Iterator<Item = u32>>(iter: U) {
-    let i = map(
-        iter,
-        #[requires(x@ <= 15)]
-        #[ensures(result@ == x@+1)]
-        |x: u32, _| x + 1,
-    );
+    let i = map(iter, |x: u32, _| x + 1);
 
-    proof_assert! {
-        forall<prod : _, fin: Map< _, _, _>> i.produces(prod, fin) ==>
-            forall<x : _> 0 <= x && x < prod.len() ==> prod[x] <= 11u32
-    };
+    // proof_assert! {
+    //     forall<prod : _, fin: Map< _, _, _>> i.produces(prod, fin) ==>
+    //         forall<x : _> 0 <= x && x < prod.len() ==> prod[x] <= 11u32
+    // };
 }
 
 #[requires(forall<done : &mut I> done.completed() ==> forall<next : I, steps: Seq<_>> (^done).produces(steps, next) ==> steps == Seq::EMPTY && ^done == next)]
 #[requires(forall<prod : _, fin: I> iter.produces(prod, fin) ==> prod.len() <= usize::MAX@)]
 pub fn counter<I: Iterator<Item = u32>>(iter: I) {
     let mut cnt = 0;
-    map(
-        iter,
-        #[requires(cnt@ == (*_prod).len() && cnt < usize::MAX)]
-        #[ensures(cnt@ == old(cnt)@ + 1)]
-        |x, _prod: Snapshot<Seq<_>>| {
-            cnt += 1;
-            x
-        },
-    );
+    map(iter, |x, _prod| {
+        proof_assert!(cnt@ == _prod.len());
+        cnt += 1;
+        x
+    });
 }

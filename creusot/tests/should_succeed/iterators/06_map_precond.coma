@@ -1824,7 +1824,7 @@ module C06MapPrecond_Impl0_Next
       (! return' {result}) ]
     
   
-  let rec next (self:borrowed (Map'0.t_map i b f item'0)) (return'  (ret:Option'0.t_option b))= {[%#s06_map_precond4] inv'2 self}
+  let rec next[#"../06_map_precond.rs" 70 4 70 44] (self:borrowed (Map'0.t_map i b f item'0)) (return'  (ret:Option'0.t_option b))= {[%#s06_map_precond4] inv'2 self}
     (! bb0
     [ bb0 = s0
       [ s0 = Map'0.t_map <i> <b> <f> <item'0> {self.current}
@@ -2119,7 +2119,7 @@ module C06MapPrecond_Map
   
   use prelude.prelude.Intrinsic
   
-  let rec map (iter:i) (func:f) (return'  (ret:Map'0.t_map i b f item'0))= {[%#s06_map_precond5] inv'1 func}
+  let rec map[#"../06_map_precond.rs" 179 0 182 17] (iter:i) (func:f) (return'  (ret:Map'0.t_map i b f item'0))= {[%#s06_map_precond5] inv'1 func}
     {[%#s06_map_precond4] inv'0 iter}
     {[%#s06_map_precond3] preservation'0 iter func}
     {[%#s06_map_precond2] reinitialize'0 ()}
@@ -2241,11 +2241,6 @@ module C06MapPrecond_Identity_Closure0
   
   use C06MapPrecond_Identity_Closure0_Type as Closure'0
   
-  predicate unnest'0 [#"../06_map_precond.rs" 187 14 187 20] (self : Closure'0.c06mapprecond_identity_closure0 i) (_2 : Closure'0.c06mapprecond_identity_closure0 i)
-    
-   =
-    true
-  
   use prelude.prelude.Borrow
   
   use prelude.prelude.Intrinsic
@@ -2253,15 +2248,11 @@ module C06MapPrecond_Identity_Closure0
   predicate resolve'0 (self : borrowed (Closure'0.c06mapprecond_identity_closure0 i)) =
     [%#span11] self.final = self.current
   
-  let rec c06mapprecond_identity_closure0 (_1:borrowed (Closure'0.c06mapprecond_identity_closure0 i)) (x:item'0) (_3:Snapshot.snap_ty (Seq.seq item'0)) (return'  (ret:item'0))= {inv'1 _3}
+  let rec c06mapprecond_identity_closure0[#"../06_map_precond.rs" 187 14 187 20] (_1:borrowed (Closure'0.c06mapprecond_identity_closure0 i)) (x:item'0) (_3:Snapshot.snap_ty (Seq.seq item'0)) (return'  (ret:item'0))= {inv'1 _3}
     {[%#s06_map_precond0] inv'0 x}
     (! bb0 [ bb0 = s0 [ s0 = -{resolve'0 _1}- s1 | s1 =  [ &_0 <- x ] s2 | s2 = bb1 ]  | bb1 = return' {_0} ] )
     [ & _0 : item'0 = any_l () | & _1 : borrowed (Closure'0.c06mapprecond_identity_closure0 i) = _1 | & x : item'0 = x ]
-    
-    [ return' (result:item'0)-> {[@expl:postcondition] [%#s06_map_precond1] inv'0 result}
-      {[@expl:postcondition] unnest'0 _1.current _1.final}
-      (! return' {result}) ]
-    
+     [ return' (result:item'0)-> {[@expl:postcondition] [%#s06_map_precond1] inv'0 result} (! return' {result}) ] 
 end
 module C06MapPrecond_Identity
   type i
@@ -2270,49 +2261,61 @@ module C06MapPrecond_Identity
   
   let%span span1 = "../../../../../creusot-contracts/src/invariant.rs" 8 8 8 12
   
-  let%span span2 = "../06_map_precond.rs" 91 8 95 9
+  let%span span2 = "../../../../../creusot-contracts/src/resolve.rs" 26 20 26 34
   
-  let%span span3 = "../06_map_precond.rs" 113 8 120 9
+  let%span span3 = "../06_map_precond.rs" 187 15 187 16
   
-  let%span span4 = "../06_map_precond.rs" 99 4 99 83
+  let%span span4 = "../06_map_precond.rs" 187 14 187 20
   
-  let%span span5 = "../06_map_precond.rs" 101 8 108 9
+  let%span span5 = "../06_map_precond.rs" 91 8 95 9
   
-  let%span span6 = "../06_map_precond.rs" 125 8 130 9
+  let%span span6 = "../06_map_precond.rs" 113 8 120 9
   
-  let%span span7 = "../06_map_precond.rs" 168 12 170 73
+  let%span span7 = "../06_map_precond.rs" 99 4 99 83
   
-  let%span span8 = "../common.rs" 19 15 19 21
+  let%span span8 = "../06_map_precond.rs" 101 8 108 9
   
-  let%span span9 = "../common.rs" 20 15 20 21
+  let%span span9 = "../06_map_precond.rs" 125 8 130 9
   
-  let%span span10 = "../common.rs" 21 15 21 21
+  let%span span10 = "../06_map_precond.rs" 168 12 170 73
   
-  let%span span11 = "../common.rs" 22 15 22 32
+  let%span span11 = "../common.rs" 19 15 19 21
   
-  let%span span12 = "../common.rs" 23 15 23 32
+  let%span span12 = "../common.rs" 20 15 20 21
   
-  let%span span13 = "../common.rs" 24 14 24 42
+  let%span span13 = "../common.rs" 21 15 21 21
   
-  let%span span14 = "../common.rs" 14 15 14 24
+  let%span span14 = "../common.rs" 22 15 22 32
   
-  let%span span15 = "../common.rs" 15 14 15 45
+  let%span span15 = "../common.rs" 23 15 23 32
   
-  let%span span16 = "../06_map_precond.rs" 175 0 175 131
+  let%span span16 = "../common.rs" 24 14 24 42
   
-  let%span span17 = "../06_map_precond.rs" 176 11 176 41
+  let%span span17 = "../common.rs" 14 15 14 24
   
-  let%span span18 = "../06_map_precond.rs" 177 11 177 51
+  let%span span18 = "../common.rs" 15 14 15 45
   
-  let%span span19 = "../06_map_precond.rs" 180 4 180 8
+  let%span span19 = "../06_map_precond.rs" 175 0 175 131
   
-  let%span span20 = "../06_map_precond.rs" 181 4 181 8
+  let%span span20 = "../06_map_precond.rs" 176 11 176 41
   
-  let%span span21 = "../06_map_precond.rs" 178 10 178 75
+  let%span span21 = "../06_map_precond.rs" 177 11 177 51
   
-  let%span span22 = "../06_map_precond.rs" 182 5 182 17
+  let%span span22 = "../06_map_precond.rs" 180 4 180 8
+  
+  let%span span23 = "../06_map_precond.rs" 181 4 181 8
+  
+  let%span span24 = "../06_map_precond.rs" 178 10 178 75
+  
+  let%span span25 = "../06_map_precond.rs" 182 5 182 17
   
   type item'0
+  
+  predicate invariant'4 (self : item'0)
+  
+  predicate inv'4 (_1 : item'0)
+  
+  axiom inv'4 : forall x : item'0 . inv'4 x = true
   
   use seq.Seq
   
@@ -2342,10 +2345,21 @@ module C06MapPrecond_Identity
   
   axiom inv'1 : forall x : i . inv'1 x = true
   
+  use prelude.prelude.Borrow
+  
+  use prelude.prelude.Intrinsic
+  
+  predicate resolve'0 (self : borrowed (Closure'0.c06mapprecond_identity_closure0 i)) =
+    [%#span2] self.final = self.current
+  
+  let rec closure0'0 [@coma:extspec] (_1:borrowed (Closure'0.c06mapprecond_identity_closure0 i)) (x:item'0) (_3:Snapshot.snap_ty (Seq.seq item'0)) (return'  (ret:item'0))= {[@expl:precondition] inv'3 _3}
+    {[@expl:precondition] [%#span3] inv'4 x}
+    any [ return' (result:item'0)-> {[%#span4] inv'4 result} (! return' {result}) ] 
+  
   predicate precondition'0 [#"../06_map_precond.rs" 187 14 187 20] (self : Closure'0.c06mapprecond_identity_closure0 i) (args : (item'0, Snapshot.snap_ty (Seq.seq item'0)))
     
    =
-    let (x, _3) = args in true
+    [%#span4] let (x, _3) = args in closure0'0'pre (Borrow.borrow_logic self self 0) x _3
   
   use prelude.prelude.Snapshot
   
@@ -2356,7 +2370,7 @@ module C06MapPrecond_Identity
   predicate next_precondition'0 [#"../06_map_precond.rs" 90 4 90 74] (iter : i) (func : Closure'0.c06mapprecond_identity_closure0 i) (produced : Seq.seq item'0)
     
    =
-    [%#span2] forall e : item'0, i : i . produces'0 iter (Seq.singleton e) i
+    [%#span5] forall e : item'0, i : i . produces'0 iter (Seq.singleton e) i
      -> precondition'0 func (e, Snapshot.new produced)
   
   predicate unnest'0 [#"../06_map_precond.rs" 187 14 187 20] (self : Closure'0.c06mapprecond_identity_closure0 i) (_2 : Closure'0.c06mapprecond_identity_closure0 i)
@@ -2364,12 +2378,10 @@ module C06MapPrecond_Identity
    =
     true
   
-  use prelude.prelude.Borrow
-  
   predicate postcondition_mut'0 [#"../06_map_precond.rs" 187 14 187 20] (self : borrowed (Closure'0.c06mapprecond_identity_closure0 i)) (args : (item'0, Snapshot.snap_ty (Seq.seq item'0))) (result : item'0)
     
    =
-    (let (x, _3) = args in true) /\ unnest'0 self.current self.final
+    (let (x, _3) = args in closure0'0'post'return' self x _3 result) /\ unnest'0 self.current self.final
   
   use seq.Seq
   
@@ -2378,7 +2390,7 @@ module C06MapPrecond_Identity
   predicate preservation'0 [#"../06_map_precond.rs" 112 4 112 45] (iter : i) (func : Closure'0.c06mapprecond_identity_closure0 i)
     
    =
-    [%#span3] forall s : Seq.seq item'0, e1 : item'0, e2 : item'0, f : borrowed (Closure'0.c06mapprecond_identity_closure0 i), b : item'0, i : i . unnest'0 func f.current
+    [%#span6] forall s : Seq.seq item'0, e1 : item'0, e2 : item'0, f : borrowed (Closure'0.c06mapprecond_identity_closure0 i), b : item'0, i : i . unnest'0 func f.current
      -> produces'0 iter (Seq.snoc (Seq.snoc s e1) e2) i
      -> precondition'0 f.current (e1, Snapshot.new s)
      -> postcondition_mut'0 f (e1, Snapshot.new s) b  -> precondition'0 f.final (e2, Snapshot.new (Seq.snoc s e1))
@@ -2388,13 +2400,13 @@ module C06MapPrecond_Identity
   predicate preservation_inv'0 [#"../06_map_precond.rs" 100 4 100 73] (iter : i) (func : Closure'0.c06mapprecond_identity_closure0 i) (produced : Seq.seq item'0)
     
    =
-    [%#span5] forall s : Seq.seq item'0, e1 : item'0, e2 : item'0, f : borrowed (Closure'0.c06mapprecond_identity_closure0 i), b : item'0, i : i . unnest'0 func f.current
+    [%#span8] forall s : Seq.seq item'0, e1 : item'0, e2 : item'0, f : borrowed (Closure'0.c06mapprecond_identity_closure0 i), b : item'0, i : i . unnest'0 func f.current
      -> produces'0 iter (Seq.snoc (Seq.snoc s e1) e2) i
      -> precondition'0 f.current (e1, Snapshot.new (Seq.(++) produced s))
      -> postcondition_mut'0 f (e1, Snapshot.new (Seq.(++) produced s)) b
      -> precondition'0 f.final (e2, Snapshot.new (Seq.snoc (Seq.(++) produced s) e1))
   
-  axiom preservation_inv'0_spec : forall iter : i, func : Closure'0.c06mapprecond_identity_closure0 i, produced : Seq.seq item'0 . [%#span4] produced
+  axiom preservation_inv'0_spec : forall iter : i, func : Closure'0.c06mapprecond_identity_closure0 i, produced : Seq.seq item'0 . [%#span7] produced
   = (Seq.empty  : Seq.seq item'0)  -> preservation_inv'0 iter func produced = preservation'0 iter func
   
   use prelude.prelude.Snapshot
@@ -2404,7 +2416,7 @@ module C06MapPrecond_Identity
   predicate completed'0 [#"../common.rs" 11 4 11 36] (self : borrowed i)
   
   predicate reinitialize'0 [#"../06_map_precond.rs" 124 4 124 29] (_1 : ()) =
-    [%#span6] forall iter : borrowed i, func : Closure'0.c06mapprecond_identity_closure0 i . completed'0 iter
+    [%#span9] forall iter : borrowed i, func : Closure'0.c06mapprecond_identity_closure0 i . completed'0 iter
      -> next_precondition'0 iter.final func (Seq.empty  : Seq.seq item'0) /\ preservation'0 iter.final func
   
   use C06MapPrecond_Map_Type as Map'0
@@ -2412,7 +2424,7 @@ module C06MapPrecond_Identity
   predicate invariant'0 [#"../06_map_precond.rs" 166 4 166 30] (self : Map'0.t_map i item'0 (Closure'0.c06mapprecond_identity_closure0 i) item'0)
     
    =
-    [%#span7] reinitialize'0 ()
+    [%#span10] reinitialize'0 ()
     /\ preservation_inv'0 (C06MapPrecond_Map_Type.map_iter self) (C06MapPrecond_Map_Type.map_func self) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self))
     /\ next_precondition'0 (C06MapPrecond_Map_Type.map_iter self) (C06MapPrecond_Map_Type.map_func self) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self))
   
@@ -2427,31 +2439,29 @@ module C06MapPrecond_Identity
   function produces_trans'0 [#"../common.rs" 25 4 25 91] (a : i) (ab : Seq.seq item'0) (b : i) (bc : Seq.seq item'0) (c : i) : ()
     
   
-  axiom produces_trans'0_spec : forall a : i, ab : Seq.seq item'0, b : i, bc : Seq.seq item'0, c : i . ([%#span8] inv'1 a)
-   -> ([%#span9] inv'1 b)
-   -> ([%#span10] inv'1 c)
-   -> ([%#span11] produces'0 a ab b)  -> ([%#span12] produces'0 b bc c)  -> ([%#span13] produces'0 a (Seq.(++) ab bc) c)
+  axiom produces_trans'0_spec : forall a : i, ab : Seq.seq item'0, b : i, bc : Seq.seq item'0, c : i . ([%#span11] inv'1 a)
+   -> ([%#span12] inv'1 b)
+   -> ([%#span13] inv'1 c)
+   -> ([%#span14] produces'0 a ab b)  -> ([%#span15] produces'0 b bc c)  -> ([%#span16] produces'0 a (Seq.(++) ab bc) c)
   
   function produces_refl'0 [#"../common.rs" 16 4 16 27] (self : i) : ()
   
-  axiom produces_refl'0_spec : forall self : i . ([%#span14] inv'1 self)
-   -> ([%#span15] produces'0 self (Seq.empty  : Seq.seq item'0) self)
+  axiom produces_refl'0_spec : forall self : i . ([%#span17] inv'1 self)
+   -> ([%#span18] produces'0 self (Seq.empty  : Seq.seq item'0) self)
   
-  use prelude.prelude.Intrinsic
-  
-  let rec map'0 (iter:i) (func:Closure'0.c06mapprecond_identity_closure0 i) (return'  (ret:Map'0.t_map i item'0 (Closure'0.c06mapprecond_identity_closure0 i) item'0))= {[@expl:precondition] [%#span20] inv'2 func}
-    {[@expl:precondition] [%#span19] inv'1 iter}
-    {[@expl:precondition] [%#span18] preservation'0 iter func}
-    {[@expl:precondition] [%#span17] reinitialize'0 ()}
-    {[@expl:precondition] [%#span16] forall e : item'0, i2 : i . produces'0 iter (Seq.singleton e) i2
+  let rec map'0 (iter:i) (func:Closure'0.c06mapprecond_identity_closure0 i) (return'  (ret:Map'0.t_map i item'0 (Closure'0.c06mapprecond_identity_closure0 i) item'0))= {[@expl:precondition] [%#span23] inv'2 func}
+    {[@expl:precondition] [%#span22] inv'1 iter}
+    {[@expl:precondition] [%#span21] preservation'0 iter func}
+    {[@expl:precondition] [%#span20] reinitialize'0 ()}
+    {[@expl:precondition] [%#span19] forall e : item'0, i2 : i . produces'0 iter (Seq.singleton e) i2
      -> precondition'0 func (e, Snapshot.new (Seq.empty  : Seq.seq item'0))}
     any
-    [ return' (result:Map'0.t_map i item'0 (Closure'0.c06mapprecond_identity_closure0 i) item'0)-> {[%#span22] inv'0 result}
-      {[%#span21] result = Map'0.C_Map iter func (Snapshot.new (Seq.empty  : Seq.seq item'0))}
+    [ return' (result:Map'0.t_map i item'0 (Closure'0.c06mapprecond_identity_closure0 i) item'0)-> {[%#span25] inv'0 result}
+      {[%#span24] result = Map'0.C_Map iter func (Snapshot.new (Seq.empty  : Seq.seq item'0))}
       (! return' {result}) ]
     
   
-  let rec identity (iter:i) (return'  (ret:()))= {[%#s06_map_precond0] inv'1 iter}
+  let rec identity[#"../06_map_precond.rs" 186 0 186 37] (iter:i) (return'  (ret:()))= {[%#s06_map_precond0] inv'1 iter}
     (! bb0
     [ bb0 = s0
       [ s0 =  [ &_4 <- Closure'0.C06mapprecond_identity_closure0 ] s1
@@ -2472,7 +2482,7 @@ module C06MapPrecond_Identity
     | & _4 : Closure'0.c06mapprecond_identity_closure0 i = any_l () ]
      [ return' (result:())-> (! return' {result}) ] 
 end
-module C06MapPrecond_Increment_Closure2_Type
+module C06MapPrecond_Increment_Closure0_Type
   use prelude.prelude.UInt32
   
   use seq.Seq
@@ -2481,24 +2491,20 @@ module C06MapPrecond_Increment_Closure2_Type
   
   use prelude.prelude.Int16
   
-  type c06mapprecond_increment_closure2 'u =
-    | C06mapprecond_increment_closure2
+  type c06mapprecond_increment_closure0 'u =
+    | C06mapprecond_increment_closure0
   
-  let rec c06mapprecond_increment_closure2 < 'u > (input:c06mapprecond_increment_closure2 'u) (ret  )= any
-    [ good -> {C06mapprecond_increment_closure2  = input} (! ret)
-    | bad -> {C06mapprecond_increment_closure2  <> input} {false} any ]
+  let rec c06mapprecond_increment_closure0 < 'u > (input:c06mapprecond_increment_closure0 'u) (ret  )= any
+    [ good -> {C06mapprecond_increment_closure0  = input} (! ret)
+    | bad -> {C06mapprecond_increment_closure0  <> input} {false} any ]
     
 end
-module C06MapPrecond_Increment_Closure2
+module C06MapPrecond_Increment_Closure0
   type u
   
-  let%span s06_map_precond0 = "../06_map_precond.rs" 199 24 199 25
+  let%span s06_map_precond0 = "../06_map_precond.rs" 195 38 195 39
   
-  let%span s06_map_precond1 = "../06_map_precond.rs" 197 19 197 27
-  
-  let%span s06_map_precond2 = "../06_map_precond.rs" 198 18 198 33
-  
-  let%span span3 = "../../../../../creusot-contracts/src/resolve.rs" 26 20 26 34
+  let%span span1 = "../../../../../creusot-contracts/src/resolve.rs" 26 20 26 34
   
   use prelude.prelude.Int16
   
@@ -2508,14 +2514,7 @@ module C06MapPrecond_Increment_Closure2
   
   use prelude.prelude.Snapshot
   
-  use C06MapPrecond_Increment_Closure2_Type as Closure'0
-  
-  predicate unnest'0 [#"../06_map_precond.rs" 198 8 198 35] (self : Closure'0.c06mapprecond_increment_closure2 u) (_2 : Closure'0.c06mapprecond_increment_closure2 u)
-    
-   =
-    true
-  
-  use prelude.prelude.UInt32
+  use C06MapPrecond_Increment_Closure0_Type as Closure'0
   
   use prelude.prelude.Borrow
   
@@ -2523,534 +2522,53 @@ module C06MapPrecond_Increment_Closure2
   
   use prelude.prelude.Int
   
-  predicate resolve'0 (self : borrowed (Closure'0.c06mapprecond_increment_closure2 u)) =
-    [%#span3] self.final = self.current
+  predicate resolve'0 (self : borrowed (Closure'0.c06mapprecond_increment_closure0 u)) =
+    [%#span1] self.final = self.current
   
-  let rec c06mapprecond_increment_closure2 (_1:borrowed (Closure'0.c06mapprecond_increment_closure2 u)) (x:uint32) (_3:Snapshot.snap_ty (Seq.seq uint32)) (return'  (ret:uint32))= {[%#s06_map_precond1] UInt32.to_int x
-    <= 15}
-    (! bb0
+  let rec c06mapprecond_increment_closure0[#"../06_map_precond.rs" 195 22 195 33] [@coma:extspec] (_1:borrowed (Closure'0.c06mapprecond_increment_closure0 u)) (x:uint32) (_3:Snapshot.snap_ty (Seq.seq uint32)) (return'  (ret:uint32))= bb0
     [ bb0 = s0
       [ s0 = -{resolve'0 _1}- s1
-      | s1 = UInt32.add {x} {[%#s06_map_precond0] (1 : uint32)} (fun (_ret':uint32) ->  [ &res1 <- _ret' ] s2)
-      | s2 =  [ &res <- res1 ] s3
-      | s3 =  [ &_0 <- res ] s4
-      | s4 = return' {_0} ]
+      | s1 = UInt32.add {x} {[%#s06_map_precond0] (1 : uint32)} (fun (_ret':uint32) ->  [ &_0 <- _ret' ] s2)
+      | s2 = return' {_0} ]
        ]
-    )
+    
     [ & _0 : uint32 = any_l ()
-    | & _1 : borrowed (Closure'0.c06mapprecond_increment_closure2 u) = _1
-    | & x : uint32 = x
-    | & res : uint32 = any_l ()
-    | & res1 : uint32 = any_l () ]
-    
-    [ return' (result:uint32)-> {[@expl:postcondition] unnest'0 _1.current _1.final}
-      {[@expl:postcondition] [%#s06_map_precond2] UInt32.to_int result = UInt32.to_int x + 1}
-      (! return' {result}) ]
-    
+    | & _1 : borrowed (Closure'0.c06mapprecond_increment_closure0 u) = _1
+    | & x : uint32 = x ]
+     [ return' (result:uint32)-> return' {result} ] 
 end
 module C06MapPrecond_Increment
   type u
   
-  let%span s06_map_precond0 = "../06_map_precond.rs" 202 4 205 5
+  let%span s06_map_precond0 = "../06_map_precond.rs" 190 0 190 158
   
-  let%span s06_map_precond1 = "../06_map_precond.rs" 190 0 190 158
+  let%span s06_map_precond1 = "../06_map_precond.rs" 191 0 193 2
   
-  let%span s06_map_precond2 = "../06_map_precond.rs" 191 0 193 2
+  let%span s06_map_precond2 = "../06_map_precond.rs" 194 42 194 46
   
-  let%span s06_map_precond3 = "../06_map_precond.rs" 194 42 194 46
+  let%span span3 = "../../../../../creusot-contracts/src/invariant.rs" 8 8 8 12
   
-  let%span span4 = "../../../../../creusot-contracts/src/invariant.rs" 35 20 35 44
+  let%span span4 = "../common.rs" 19 15 19 21
   
-  let%span span5 = "../../../../../creusot-contracts/src/invariant.rs" 8 8 8 12
+  let%span span5 = "../common.rs" 20 15 20 21
   
-  let%span span6 = "../../../../../creusot-contracts/src/std/boxed.rs" 27 8 27 18
+  let%span span6 = "../common.rs" 21 15 21 21
   
-  let%span span7 = "../../../../../creusot-contracts/src/logic/seq.rs" 197 8 197 97
+  let%span span7 = "../common.rs" 22 15 22 32
   
-  let%span span8 = "../common.rs" 19 15 19 21
+  let%span span8 = "../common.rs" 23 15 23 32
   
-  let%span span9 = "../common.rs" 20 15 20 21
+  let%span span9 = "../common.rs" 24 14 24 42
   
-  let%span span10 = "../common.rs" 21 15 21 21
+  let%span span10 = "../common.rs" 14 15 14 24
   
-  let%span span11 = "../common.rs" 22 15 22 32
+  let%span span11 = "../common.rs" 15 14 15 45
   
-  let%span span12 = "../common.rs" 23 15 23 32
+  let%span span12 = "../../../../../creusot-contracts/src/resolve.rs" 26 20 26 34
   
-  let%span span13 = "../common.rs" 24 14 24 42
+  let%span span13 = "../06_map_precond.rs" 195 38 195 39
   
-  let%span span14 = "../common.rs" 14 15 14 24
-  
-  let%span span15 = "../common.rs" 15 14 15 45
-  
-  let%span span16 = "../06_map_precond.rs" 197 19 197 27
-  
-  let%span span17 = "../06_map_precond.rs" 51 8 63 9
-  
-  let%span span18 = "../06_map_precond.rs" 39 15 39 21
-  
-  let%span span19 = "../06_map_precond.rs" 40 15 40 21
-  
-  let%span span20 = "../06_map_precond.rs" 41 15 41 21
-  
-  let%span span21 = "../06_map_precond.rs" 42 15 42 32
-  
-  let%span span22 = "../06_map_precond.rs" 43 15 43 32
-  
-  let%span span23 = "../06_map_precond.rs" 44 14 44 42
-  
-  let%span span24 = "../06_map_precond.rs" 37 4 37 10
-  
-  let%span span25 = "../06_map_precond.rs" 33 15 33 24
-  
-  let%span span26 = "../06_map_precond.rs" 34 14 34 45
-  
-  let%span span27 = "../06_map_precond.rs" 31 4 31 10
-  
-  let%span span28 = "../06_map_precond.rs" 91 8 95 9
-  
-  let%span span29 = "../06_map_precond.rs" 113 8 120 9
-  
-  let%span span30 = "../06_map_precond.rs" 99 4 99 83
-  
-  let%span span31 = "../06_map_precond.rs" 101 8 108 9
-  
-  let%span span32 = "../06_map_precond.rs" 125 8 130 9
-  
-  let%span span33 = "../06_map_precond.rs" 168 12 170 73
-  
-  let%span span34 = "../06_map_precond.rs" 175 0 175 131
-  
-  let%span span35 = "../06_map_precond.rs" 176 11 176 41
-  
-  let%span span36 = "../06_map_precond.rs" 177 11 177 51
-  
-  let%span span37 = "../06_map_precond.rs" 180 4 180 8
-  
-  let%span span38 = "../06_map_precond.rs" 181 4 181 8
-  
-  let%span span39 = "../06_map_precond.rs" 178 10 178 75
-  
-  let%span span40 = "../06_map_precond.rs" 182 5 182 17
-  
-  use prelude.prelude.UInt32
-  
-  use seq.Seq
-  
-  use prelude.prelude.Snapshot
-  
-  use prelude.prelude.Int16
-  
-  use C06MapPrecond_Increment_Closure2_Type as Closure'0
-  
-  predicate inv'2 (_1 : Closure'0.c06mapprecond_increment_closure2 u)
-  
-  use prelude.prelude.Borrow
-  
-  predicate invariant'9 (self : borrowed (Closure'0.c06mapprecond_increment_closure2 u)) =
-    [%#span4] inv'2 self.current /\ inv'2 self.final
-  
-  predicate inv'9 (_1 : borrowed (Closure'0.c06mapprecond_increment_closure2 u))
-  
-  axiom inv'9 : forall x : borrowed (Closure'0.c06mapprecond_increment_closure2 u) . inv'9 x = true
-  
-  predicate invariant'8 (self : uint32) =
-    [%#span5] true
-  
-  predicate inv'8 (_1 : uint32)
-  
-  axiom inv'8 : forall x : uint32 . inv'8 x = true
-  
-  use Alloc_Alloc_Global_Type as Global'0
-  
-  predicate invariant'7 (self : borrowed (Closure'0.c06mapprecond_increment_closure2 u)) =
-    [%#span6] inv'9 self
-  
-  predicate inv'7 (_1 : borrowed (Closure'0.c06mapprecond_increment_closure2 u))
-  
-  axiom inv'7 : forall x : borrowed (Closure'0.c06mapprecond_increment_closure2 u) . inv'7 x = true
-  
-  predicate invariant'6 (self : uint32) =
-    [%#span6] inv'8 self
-  
-  predicate inv'6 (_1 : uint32)
-  
-  axiom inv'6 : forall x : uint32 . inv'6 x = true
-  
-  predicate invariant'5 (self : Snapshot.snap_ty (Seq.seq uint32)) =
-    [%#span5] true
-  
-  predicate inv'5 (_1 : Snapshot.snap_ty (Seq.seq uint32))
-  
-  axiom inv'5 : forall x : Snapshot.snap_ty (Seq.seq uint32) . inv'5 x = true
-  
-  use seq.Seq
-  
-  use seq.Seq
-  
-  use prelude.prelude.Int
-  
-  predicate invariant'4 (self : Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 u))) =
-    [%#span7] forall i : int . 0 <= i /\ i < Seq.length self  -> inv'7 (Seq.get self i)
-  
-  predicate inv'4 (_1 : Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 u)))
-  
-  axiom inv'4 : forall x : Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 u)) . inv'4 x = true
-  
-  use seq.Seq
-  
-  use seq.Seq
-  
-  predicate invariant'3 (self : Seq.seq uint32) =
-    [%#span7] forall i : int . 0 <= i /\ i < Seq.length self  -> inv'6 (Seq.get self i)
-  
-  predicate inv'3 (_1 : Seq.seq uint32)
-  
-  axiom inv'3 : forall x : Seq.seq uint32 . inv'3 x = true
-  
-  predicate invariant'2 (self : Closure'0.c06mapprecond_increment_closure2 u) =
-    [%#span5] true
-  
-  axiom inv'2 : forall x : Closure'0.c06mapprecond_increment_closure2 u . inv'2 x = true
-  
-  predicate invariant'1 (self : u)
-  
-  predicate inv'1 (_1 : u)
-  
-  axiom inv'1 : forall x : u . inv'1 x = true
-  
-  use seq.Seq
-  
-  predicate produces'1 [#"../common.rs" 8 4 8 65] (self : u) (visited : Seq.seq uint32) (o : u)
-  
-  function produces_trans'1 [#"../common.rs" 25 4 25 91] (a : u) (ab : Seq.seq uint32) (b : u) (bc : Seq.seq uint32) (c : u) : ()
-    
-  
-  axiom produces_trans'1_spec : forall a : u, ab : Seq.seq uint32, b : u, bc : Seq.seq uint32, c : u . ([%#span8] inv'1 a)
-   -> ([%#span9] inv'1 b)
-   -> ([%#span10] inv'1 c)
-   -> ([%#span11] produces'1 a ab b)  -> ([%#span12] produces'1 b bc c)  -> ([%#span13] produces'1 a (Seq.(++) ab bc) c)
-  
-  use seq.Seq
-  
-  function produces_refl'1 [#"../common.rs" 16 4 16 27] (self : u) : ()
-  
-  axiom produces_refl'1_spec : forall self : u . ([%#span14] inv'1 self)
-   -> ([%#span15] produces'1 self (Seq.empty  : Seq.seq uint32) self)
-  
-  use C06MapPrecond_Map_Type as Map'0
-  
-  predicate unnest'0 [#"../06_map_precond.rs" 198 8 198 35] (self : Closure'0.c06mapprecond_increment_closure2 u) (_2 : Closure'0.c06mapprecond_increment_closure2 u)
-    
-   =
-    true
-  
-  use prelude.prelude.UInt32
-  
-  predicate postcondition_mut'0 [#"../06_map_precond.rs" 198 8 198 35] (self : borrowed (Closure'0.c06mapprecond_increment_closure2 u)) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32))) (result : uint32)
-    
-   =
-    (let (x, _3) = args in UInt32.to_int result = UInt32.to_int x + 1) /\ unnest'0 self.current self.final
-  
-  predicate precondition'0 [#"../06_map_precond.rs" 198 8 198 35] (self : Closure'0.c06mapprecond_increment_closure2 u) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32)))
-    
-   =
-    [%#span16] let (x, _3) = args in UInt32.to_int x <= 15
-  
-  use prelude.prelude.Snapshot
-  
-  use prelude.seq_ext.SeqExt
-  
-  use seq.Seq
-  
-  use seq.Seq
-  
-  use prelude.prelude.Snapshot
-  
-  use prelude.prelude.Snapshot
-  
-  use C06MapPrecond_Map_Type as C06MapPrecond_Map_Type
-  
-  predicate produces'0 [@inline:trivial] [#"../06_map_precond.rs" 50 4 50 67] (self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (visited : Seq.seq uint32) (succ : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32)
-    
-   =
-    [%#span17] unnest'0 (C06MapPrecond_Map_Type.map_func self) (C06MapPrecond_Map_Type.map_func succ)
-    /\ (exists s : Seq.seq uint32 . inv'3 s
-    /\ Seq.length s = Seq.length visited
-    /\ produces'1 (C06MapPrecond_Map_Type.map_iter self) s (C06MapPrecond_Map_Type.map_iter succ)
-    /\ Snapshot.inner (C06MapPrecond_Map_Type.map_produced succ)
-    = Seq.(++) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self)) s
-    /\ (exists fs : Seq.seq (borrowed (Closure'0.c06mapprecond_increment_closure2 u)) . inv'4 fs
-    /\ Seq.length fs = Seq.length visited
-    /\ (forall i : int . 1 <= i /\ i < Seq.length fs  -> (Seq.get fs (i - 1)).final = (Seq.get fs i).current)
-    /\ (if Seq.length visited = 0 then
-      C06MapPrecond_Map_Type.map_func self = C06MapPrecond_Map_Type.map_func succ
-    else
-      (Seq.get fs 0).current = C06MapPrecond_Map_Type.map_func self
-      /\ (Seq.get fs (Seq.length visited - 1)).final = C06MapPrecond_Map_Type.map_func succ
-    )
-    /\ (forall i : int . 0 <= i /\ i < Seq.length visited
-     -> unnest'0 (C06MapPrecond_Map_Type.map_func self) (Seq.get fs i).current
-    /\ precondition'0 (Seq.get fs i).current (Seq.get s i, Snapshot.new (Seq.(++) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self)) (SeqExt.subsequence s 0 i)))
-    /\ postcondition_mut'0 (Seq.get fs i) (Seq.get s i, Snapshot.new (Seq.(++) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self)) (SeqExt.subsequence s 0 i))) (Seq.get visited i))))
-  
-  predicate inv'0 (_1 : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32)
-  
-  function produces_trans'0 [#"../06_map_precond.rs" 45 4 45 90] (a : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (ab : Seq.seq uint32) (b : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) (bc : Seq.seq uint32) (c : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) : ()
-    
-   =
-    [%#span24] ()
-  
-  axiom produces_trans'0_spec : forall a : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32, ab : Seq.seq uint32, b : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32, bc : Seq.seq uint32, c : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32 . ([%#span18] inv'0 a)
-   -> ([%#span19] inv'0 b)
-   -> ([%#span20] inv'0 c)
-   -> ([%#span21] produces'0 a ab b)  -> ([%#span22] produces'0 b bc c)  -> ([%#span23] produces'0 a (Seq.(++) ab bc) c)
-  
-  function produces_refl'0 [#"../06_map_precond.rs" 35 4 35 26] (self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) : ()
-    
-   =
-    [%#span27] ()
-  
-  axiom produces_refl'0_spec : forall self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32 . ([%#span25] inv'0 self)
-   -> ([%#span26] produces'0 self (Seq.empty  : Seq.seq uint32) self)
-  
-  use seq.Seq
-  
-  predicate next_precondition'0 [#"../06_map_precond.rs" 90 4 90 74] (iter : u) (func : Closure'0.c06mapprecond_increment_closure2 u) (produced : Seq.seq uint32)
-    
-   =
-    [%#span28] forall e : uint32, i : u . produces'1 iter (Seq.singleton e) i
-     -> precondition'0 func (e, Snapshot.new produced)
-  
-  use seq.Seq
-  
-  predicate preservation'0 [#"../06_map_precond.rs" 112 4 112 45] (iter : u) (func : Closure'0.c06mapprecond_increment_closure2 u)
-    
-   =
-    [%#span29] forall s : Seq.seq uint32, e1 : uint32, e2 : uint32, f : borrowed (Closure'0.c06mapprecond_increment_closure2 u), b : uint32, i : u . unnest'0 func f.current
-     -> produces'1 iter (Seq.snoc (Seq.snoc s e1) e2) i
-     -> precondition'0 f.current (e1, Snapshot.new s)
-     -> postcondition_mut'0 f (e1, Snapshot.new s) b  -> precondition'0 f.final (e2, Snapshot.new (Seq.snoc s e1))
-  
-  predicate preservation_inv'0 [#"../06_map_precond.rs" 100 4 100 73] (iter : u) (func : Closure'0.c06mapprecond_increment_closure2 u) (produced : Seq.seq uint32)
-    
-   =
-    [%#span31] forall s : Seq.seq uint32, e1 : uint32, e2 : uint32, f : borrowed (Closure'0.c06mapprecond_increment_closure2 u), b : uint32, i : u . unnest'0 func f.current
-     -> produces'1 iter (Seq.snoc (Seq.snoc s e1) e2) i
-     -> precondition'0 f.current (e1, Snapshot.new (Seq.(++) produced s))
-     -> postcondition_mut'0 f (e1, Snapshot.new (Seq.(++) produced s)) b
-     -> precondition'0 f.final (e2, Snapshot.new (Seq.snoc (Seq.(++) produced s) e1))
-  
-  axiom preservation_inv'0_spec : forall iter : u, func : Closure'0.c06mapprecond_increment_closure2 u, produced : Seq.seq uint32 . [%#span30] produced
-  = (Seq.empty  : Seq.seq uint32)  -> preservation_inv'0 iter func produced = preservation'0 iter func
-  
-  predicate completed'0 [#"../common.rs" 11 4 11 36] (self : borrowed u)
-  
-  predicate reinitialize'0 [#"../06_map_precond.rs" 124 4 124 29] (_1 : ()) =
-    [%#span32] forall iter : borrowed u, func : Closure'0.c06mapprecond_increment_closure2 u . completed'0 iter
-     -> next_precondition'0 iter.final func (Seq.empty  : Seq.seq uint32) /\ preservation'0 iter.final func
-  
-  predicate invariant'0 [#"../06_map_precond.rs" 166 4 166 30] (self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32)
-    
-   =
-    [%#span33] reinitialize'0 ()
-    /\ preservation_inv'0 (C06MapPrecond_Map_Type.map_iter self) (C06MapPrecond_Map_Type.map_func self) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self))
-    /\ next_precondition'0 (C06MapPrecond_Map_Type.map_iter self) (C06MapPrecond_Map_Type.map_func self) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self))
-  
-  axiom inv'0 : forall x : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32 . inv'0 x
-  = (invariant'0 x
-  /\ match x with
-    | Map'0.C_Map iter func produced -> true
-    end)
-  
-  use prelude.prelude.Intrinsic
-  
-  let rec map'0 (iter:u) (func:Closure'0.c06mapprecond_increment_closure2 u) (return'  (ret:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32))= {[@expl:precondition] [%#span38] inv'2 func}
-    {[@expl:precondition] [%#span37] inv'1 iter}
-    {[@expl:precondition] [%#span36] preservation'0 iter func}
-    {[@expl:precondition] [%#span35] reinitialize'0 ()}
-    {[@expl:precondition] [%#span34] forall e : uint32, i2 : u . produces'1 iter (Seq.singleton e) i2
-     -> precondition'0 func (e, Snapshot.new (Seq.empty  : Seq.seq uint32))}
-    any
-    [ return' (result:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32)-> {[%#span40] inv'0 result}
-      {[%#span39] result = Map'0.C_Map iter func (Snapshot.new (Seq.empty  : Seq.seq uint32))}
-      (! return' {result}) ]
-    
-  
-  let rec increment (iter:u) (return'  (ret:()))= {[%#s06_map_precond3] inv'1 iter}
-    {[%#s06_map_precond2] forall prod : Seq.seq uint32, fin : u . produces'1 iter prod fin
-     -> (forall x : int . 0 <= x /\ x < Seq.length prod  -> Seq.get prod x <= (10 : uint32))}
-    {[%#s06_map_precond1] forall done' : borrowed u . completed'0 done'
-     -> (forall next : u, steps : Seq.seq uint32 . produces'1 done'.final steps next
-     -> steps = (Seq.empty  : Seq.seq uint32) /\ done'.final = next)}
-    (! bb0
-    [ bb0 = bb1
-    | bb1 = s0
-      [ s0 =  [ &_6 <- Closure'0.C06mapprecond_increment_closure2 ] s1
-      | s1 = map'0 {iter} {_6}
-          (fun (_ret':Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32) ->
-             [ &i <- _ret' ] 
-            s2)
-      | s2 = bb2 ]
-      
-    | bb2 = s0
-      [ s0 = {[@expl:type invariant] inv'0 i} s1
-      | s1 = {[@expl:assertion] [%#s06_map_precond0] forall prod : Seq.seq uint32, fin : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32 . produces'0 i prod fin
-         -> (forall x : int . 0 <= x /\ x < Seq.length prod  -> Seq.get prod x <= (11 : uint32))}
-        s2
-      | s2 = bb3 ]
-      
-    | bb3 = bb4
-    | bb4 = bb5
-    | bb5 = return' {_0} ]
-    )
-    [ & _0 : () = any_l ()
-    | & iter : u = iter
-    | & i : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure2 u) uint32 = any_l ()
-    | & _6 : Closure'0.c06mapprecond_increment_closure2 u = any_l () ]
-     [ return' (result:())-> (! return' {result}) ] 
-end
-module C06MapPrecond_Counter_Closure2_Type
-  use prelude.prelude.UInt32
-  
-  use seq.Seq
-  
-  use prelude.prelude.Snapshot
-  
-  use prelude.prelude.Int16
-  
-  use prelude.prelude.UIntSize
-  
-  use prelude.prelude.Int
-  
-  use prelude.prelude.Borrow
-  
-  type c06mapprecond_counter_closure2 'i =
-    | C06mapprecond_counter_closure2 (borrowed usize)
-  
-  let rec c06mapprecond_counter_closure2 < 'i > (input:c06mapprecond_counter_closure2 'i) (ret  (cnt:borrowed usize))= any
-    [ good (cnt:borrowed usize)-> {C06mapprecond_counter_closure2 cnt = input} (! ret {cnt})
-    | bad (cnt:borrowed usize)-> {C06mapprecond_counter_closure2 cnt <> input} {false} any ]
-    
-end
-module C06MapPrecond_Counter_Closure2
-  type i
-  
-  let%span s06_map_precond0 = "../06_map_precond.rs" 217 19 217 20
-  
-  let%span s06_map_precond1 = "../06_map_precond.rs" 214 19 214 61
-  
-  let%span s06_map_precond2 = "../06_map_precond.rs" 215 18 215 39
-  
-  let%span span3 = "" 0 0 0 0
-  
-  let%span span4 = "../../../../../creusot-contracts/src/resolve.rs" 26 20 26 34
-  
-  use prelude.prelude.Int16
-  
-  use prelude.prelude.UInt32
-  
-  use seq.Seq
-  
-  use prelude.prelude.Snapshot
-  
-  use prelude.prelude.Int
-  
-  use prelude.prelude.UIntSize
-  
-  use prelude.prelude.Borrow
-  
-  use C06MapPrecond_Counter_Closure2_Type as Closure'0
-  
-  function field_0'0 [#"../06_map_precond.rs" 215 8 215 41] (self : Closure'0.c06mapprecond_counter_closure2 i) : borrowed usize
-    
-   =
-    let Closure'0.C06mapprecond_counter_closure2 a = self in a
-  
-  predicate unnest'0 [#"../06_map_precond.rs" 215 8 215 41] (self : Closure'0.c06mapprecond_counter_closure2 i) (_2 : Closure'0.c06mapprecond_counter_closure2 i)
-    
-   =
-    (field_0'0 _2).final = (field_0'0 self).final
-  
-  constant max'0 : usize = [%#span3] (18446744073709551615 : usize)
-  
-  use seq.Seq
-  
-  use prelude.prelude.Snapshot
-  
-  use prelude.prelude.UIntSize
-  
-  use prelude.prelude.Intrinsic
-  
-  predicate resolve'0 (self : borrowed (Closure'0.c06mapprecond_counter_closure2 i)) =
-    [%#span4] self.final = self.current
-  
-  let rec c06mapprecond_counter_closure2 (_1:borrowed (Closure'0.c06mapprecond_counter_closure2 i)) (x:uint32) (_prod:Snapshot.snap_ty (Seq.seq uint32)) (return'  (ret:uint32))= {[%#s06_map_precond1] UIntSize.to_int (field_0'0 _1.current).current
-    = Seq.length (Snapshot.inner _prod)
-    /\ (field_0'0 _1.current).current < (max'0 : usize)}
-    (! bb0
-    [ bb0 = s0
-      [ s0 = Closure'0.c06mapprecond_counter_closure2 <i> {_1.current}
-          (fun (r'0:borrowed usize) ->
-            UIntSize.add {r'0.current} {[%#s06_map_precond0] (1 : usize)}
-              (fun (_ret':usize) ->
-                Closure'0.c06mapprecond_counter_closure2 <i> {_1.current}
-                  (fun (l'0:borrowed usize) ->
-                    
-                    [ &_1 <- { _1 with current = Closure'0.C06mapprecond_counter_closure2 ({ l'0 with current = _ret' ; }) ; } ]
-                    
-                    s1)))
-      | s1 = -{resolve'0 _1}- s2
-      | s2 =  [ &res1 <- x ] s3
-      | s3 =  [ &res <- res1 ] s4
-      | s4 =  [ &_0 <- res ] s5
-      | s5 = return' {_0} ]
-       ]
-    )
-    [ & _0 : uint32 = any_l ()
-    | & _1 : borrowed (Closure'0.c06mapprecond_counter_closure2 i) = _1
-    | & x : uint32 = x
-    | & res : uint32 = any_l ()
-    | & res1 : uint32 = any_l () ]
-    
-    [ return' (result:uint32)-> {[@expl:postcondition] unnest'0 _1.current _1.final}
-      {[@expl:postcondition] [%#s06_map_precond2] UIntSize.to_int (field_0'0 _1.final).current
-      = UIntSize.to_int (field_0'0 _1.current).current + 1}
-      (! return' {result}) ]
-    
-end
-module C06MapPrecond_Counter
-  type i
-  
-  let%span s06_map_precond0 = "../06_map_precond.rs" 211 18 211 19
-  
-  let%span s06_map_precond1 = "../06_map_precond.rs" 208 0 208 158
-  
-  let%span s06_map_precond2 = "../06_map_precond.rs" 209 0 209 92
-  
-  let%span s06_map_precond3 = "../06_map_precond.rs" 210 40 210 44
-  
-  let%span span4 = "../../../../../creusot-contracts/src/invariant.rs" 8 8 8 12
-  
-  let%span span5 = "../common.rs" 19 15 19 21
-  
-  let%span span6 = "../common.rs" 20 15 20 21
-  
-  let%span span7 = "../common.rs" 21 15 21 21
-  
-  let%span span8 = "../common.rs" 22 15 22 32
-  
-  let%span span9 = "../common.rs" 23 15 23 32
-  
-  let%span span10 = "../common.rs" 24 14 24 42
-  
-  let%span span11 = "../common.rs" 14 15 14 24
-  
-  let%span span12 = "../common.rs" 15 14 15 45
-  
-  let%span span13 = "" 0 0 0 0
-  
-  let%span span14 = "../06_map_precond.rs" 214 19 214 61
+  let%span span14 = "../06_map_precond.rs" 195 22 195 33
   
   let%span span15 = "../06_map_precond.rs" 91 8 95 9
   
@@ -3085,26 +2603,367 @@ module C06MapPrecond_Counter
   use prelude.prelude.Snapshot
   
   predicate invariant'3 (self : Snapshot.snap_ty (Seq.seq uint32)) =
+    [%#span3] true
+  
+  predicate inv'3 (_1 : Snapshot.snap_ty (Seq.seq uint32))
+  
+  axiom inv'3 : forall x : Snapshot.snap_ty (Seq.seq uint32) . inv'3 x = true
+  
+  use prelude.prelude.Int16
+  
+  use C06MapPrecond_Increment_Closure0_Type as Closure'0
+  
+  predicate invariant'2 (self : Closure'0.c06mapprecond_increment_closure0 u) =
+    [%#span3] true
+  
+  predicate inv'2 (_1 : Closure'0.c06mapprecond_increment_closure0 u)
+  
+  axiom inv'2 : forall x : Closure'0.c06mapprecond_increment_closure0 u . inv'2 x = true
+  
+  predicate invariant'1 (self : u)
+  
+  predicate inv'1 (_1 : u)
+  
+  axiom inv'1 : forall x : u . inv'1 x = true
+  
+  use seq.Seq
+  
+  predicate produces'0 [#"../common.rs" 8 4 8 65] (self : u) (visited : Seq.seq uint32) (o : u)
+  
+  function produces_trans'0 [#"../common.rs" 25 4 25 91] (a : u) (ab : Seq.seq uint32) (b : u) (bc : Seq.seq uint32) (c : u) : ()
+    
+  
+  axiom produces_trans'0_spec : forall a : u, ab : Seq.seq uint32, b : u, bc : Seq.seq uint32, c : u . ([%#span4] inv'1 a)
+   -> ([%#span5] inv'1 b)
+   -> ([%#span6] inv'1 c)
+   -> ([%#span7] produces'0 a ab b)  -> ([%#span8] produces'0 b bc c)  -> ([%#span9] produces'0 a (Seq.(++) ab bc) c)
+  
+  use seq.Seq
+  
+  function produces_refl'0 [#"../common.rs" 16 4 16 27] (self : u) : ()
+  
+  axiom produces_refl'0_spec : forall self : u . ([%#span10] inv'1 self)
+   -> ([%#span11] produces'0 self (Seq.empty  : Seq.seq uint32) self)
+  
+  use prelude.prelude.Borrow
+  
+  use prelude.prelude.Intrinsic
+  
+  use prelude.prelude.Int
+  
+  predicate resolve'0 (self : borrowed (Closure'0.c06mapprecond_increment_closure0 u)) =
+    [%#span12] self.final = self.current
+  
+  let rec closure0'0[#"../06_map_precond.rs" 195 22 195 33] [@coma:extspec] (_1:borrowed (Closure'0.c06mapprecond_increment_closure0 u)) (x:uint32) (_3:Snapshot.snap_ty (Seq.seq uint32)) (return'  (ret:uint32))= bb0
+    [ bb0 = s0
+      [ s0 = -{resolve'0 _1}- s1
+      | s1 = UInt32.add {x} {[%#span13] (1 : uint32)} (fun (_ret':uint32) ->  [ &_0 <- _ret' ] s2)
+      | s2 = return' {_0} ]
+       ]
+    
+    [ & _0 : uint32 = any_l ()
+    | & _1 : borrowed (Closure'0.c06mapprecond_increment_closure0 u) = _1
+    | & x : uint32 = x ]
+     [ return' (result:uint32)-> return' {result} ] 
+  
+  predicate precondition'0 [#"../06_map_precond.rs" 195 22 195 33] (self : Closure'0.c06mapprecond_increment_closure0 u) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32)))
+    
+   =
+    [%#span14] let (x, _3) = args in closure0'0'pre (Borrow.borrow_logic self self 0) x _3
+  
+  use prelude.prelude.Snapshot
+  
+  use seq.Seq
+  
+  predicate next_precondition'0 [#"../06_map_precond.rs" 90 4 90 74] (iter : u) (func : Closure'0.c06mapprecond_increment_closure0 u) (produced : Seq.seq uint32)
+    
+   =
+    [%#span15] forall e : uint32, i : u . produces'0 iter (Seq.singleton e) i
+     -> precondition'0 func (e, Snapshot.new produced)
+  
+  predicate unnest'0 [#"../06_map_precond.rs" 195 22 195 33] (self : Closure'0.c06mapprecond_increment_closure0 u) (_2 : Closure'0.c06mapprecond_increment_closure0 u)
+    
+   =
+    true
+  
+  predicate postcondition_mut'0 [#"../06_map_precond.rs" 195 22 195 33] (self : borrowed (Closure'0.c06mapprecond_increment_closure0 u)) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32))) (result : uint32)
+    
+   =
+    (let (x, _3) = args in closure0'0'post'return' self x _3 result) /\ unnest'0 self.current self.final
+  
+  use seq.Seq
+  
+  predicate preservation'0 [#"../06_map_precond.rs" 112 4 112 45] (iter : u) (func : Closure'0.c06mapprecond_increment_closure0 u)
+    
+   =
+    [%#span16] forall s : Seq.seq uint32, e1 : uint32, e2 : uint32, f : borrowed (Closure'0.c06mapprecond_increment_closure0 u), b : uint32, i : u . unnest'0 func f.current
+     -> produces'0 iter (Seq.snoc (Seq.snoc s e1) e2) i
+     -> precondition'0 f.current (e1, Snapshot.new s)
+     -> postcondition_mut'0 f (e1, Snapshot.new s) b  -> precondition'0 f.final (e2, Snapshot.new (Seq.snoc s e1))
+  
+  predicate preservation_inv'0 [#"../06_map_precond.rs" 100 4 100 73] (iter : u) (func : Closure'0.c06mapprecond_increment_closure0 u) (produced : Seq.seq uint32)
+    
+   =
+    [%#span18] forall s : Seq.seq uint32, e1 : uint32, e2 : uint32, f : borrowed (Closure'0.c06mapprecond_increment_closure0 u), b : uint32, i : u . unnest'0 func f.current
+     -> produces'0 iter (Seq.snoc (Seq.snoc s e1) e2) i
+     -> precondition'0 f.current (e1, Snapshot.new (Seq.(++) produced s))
+     -> postcondition_mut'0 f (e1, Snapshot.new (Seq.(++) produced s)) b
+     -> precondition'0 f.final (e2, Snapshot.new (Seq.snoc (Seq.(++) produced s) e1))
+  
+  axiom preservation_inv'0_spec : forall iter : u, func : Closure'0.c06mapprecond_increment_closure0 u, produced : Seq.seq uint32 . [%#span17] produced
+  = (Seq.empty  : Seq.seq uint32)  -> preservation_inv'0 iter func produced = preservation'0 iter func
+  
+  use prelude.prelude.Snapshot
+  
+  use C06MapPrecond_Map_Type as C06MapPrecond_Map_Type
+  
+  predicate completed'0 [#"../common.rs" 11 4 11 36] (self : borrowed u)
+  
+  predicate reinitialize'0 [#"../06_map_precond.rs" 124 4 124 29] (_1 : ()) =
+    [%#span19] forall iter : borrowed u, func : Closure'0.c06mapprecond_increment_closure0 u . completed'0 iter
+     -> next_precondition'0 iter.final func (Seq.empty  : Seq.seq uint32) /\ preservation'0 iter.final func
+  
+  use C06MapPrecond_Map_Type as Map'0
+  
+  predicate invariant'0 [#"../06_map_precond.rs" 166 4 166 30] (self : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure0 u) uint32)
+    
+   =
+    [%#span20] reinitialize'0 ()
+    /\ preservation_inv'0 (C06MapPrecond_Map_Type.map_iter self) (C06MapPrecond_Map_Type.map_func self) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self))
+    /\ next_precondition'0 (C06MapPrecond_Map_Type.map_iter self) (C06MapPrecond_Map_Type.map_func self) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self))
+  
+  predicate inv'0 (_1 : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure0 u) uint32)
+  
+  axiom inv'0 : forall x : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure0 u) uint32 . inv'0 x
+  = (invariant'0 x
+  /\ match x with
+    | Map'0.C_Map iter func produced -> true
+    end)
+  
+  use seq.Seq
+  
+  use seq.Seq
+  
+  let rec map'0 (iter:u) (func:Closure'0.c06mapprecond_increment_closure0 u) (return'  (ret:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure0 u) uint32))= {[@expl:precondition] [%#span25] inv'2 func}
+    {[@expl:precondition] [%#span24] inv'1 iter}
+    {[@expl:precondition] [%#span23] preservation'0 iter func}
+    {[@expl:precondition] [%#span22] reinitialize'0 ()}
+    {[@expl:precondition] [%#span21] forall e : uint32, i2 : u . produces'0 iter (Seq.singleton e) i2
+     -> precondition'0 func (e, Snapshot.new (Seq.empty  : Seq.seq uint32))}
+    any
+    [ return' (result:Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure0 u) uint32)-> {[%#span27] inv'0 result}
+      {[%#span26] result = Map'0.C_Map iter func (Snapshot.new (Seq.empty  : Seq.seq uint32))}
+      (! return' {result}) ]
+    
+  
+  let rec increment[#"../06_map_precond.rs" 194 0 194 50] (iter:u) (return'  (ret:()))= {[%#s06_map_precond2] inv'1 iter}
+    {[%#s06_map_precond1] forall prod : Seq.seq uint32, fin : u . produces'0 iter prod fin
+     -> (forall x : int . 0 <= x /\ x < Seq.length prod  -> Seq.get prod x <= (10 : uint32))}
+    {[%#s06_map_precond0] forall done' : borrowed u . completed'0 done'
+     -> (forall next : u, steps : Seq.seq uint32 . produces'0 done'.final steps next
+     -> steps = (Seq.empty  : Seq.seq uint32) /\ done'.final = next)}
+    (! bb0
+    [ bb0 = bb1
+    | bb1 = s0
+      [ s0 =  [ &_6 <- Closure'0.C06mapprecond_increment_closure0 ] s1
+      | s1 = map'0 {iter} {_6}
+          (fun (_ret':Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure0 u) uint32) ->
+             [ &i <- _ret' ] 
+            s2)
+      | s2 = bb2 ]
+      
+    | bb2 = s0 [ s0 = {[@expl:type invariant] inv'0 i} s1 | s1 = bb3 ] 
+    | bb3 = bb4
+    | bb4 = return' {_0} ]
+    )
+    [ & _0 : () = any_l ()
+    | & iter : u = iter
+    | & i : Map'0.t_map u uint32 (Closure'0.c06mapprecond_increment_closure0 u) uint32 = any_l ()
+    | & _6 : Closure'0.c06mapprecond_increment_closure0 u = any_l () ]
+     [ return' (result:())-> (! return' {result}) ] 
+end
+module C06MapPrecond_Counter_Closure0_Type
+  use prelude.prelude.UInt32
+  
+  use seq.Seq
+  
+  use prelude.prelude.Snapshot
+  
+  use prelude.prelude.Int16
+  
+  use prelude.prelude.Int32
+  
+  use prelude.prelude.Int
+  
+  use prelude.prelude.Borrow
+  
+  type c06mapprecond_counter_closure0 'i =
+    | C06mapprecond_counter_closure0 (borrowed int32)
+  
+  let rec c06mapprecond_counter_closure0 < 'i > (input:c06mapprecond_counter_closure0 'i) (ret  (cnt:borrowed int32))= any
+    [ good (cnt:borrowed int32)-> {C06mapprecond_counter_closure0 cnt = input} (! ret {cnt})
+    | bad (cnt:borrowed int32)-> {C06mapprecond_counter_closure0 cnt <> input} {false} any ]
+    
+end
+module C06MapPrecond_Counter_Closure0
+  type i
+  
+  let%span s06_map_precond0 = "../06_map_precond.rs" 208 22 208 41
+  
+  let%span s06_map_precond1 = "../06_map_precond.rs" 209 15 209 16
+  
+  let%span span2 = "../../../../../creusot-contracts/src/resolve.rs" 26 20 26 34
+  
+  use prelude.prelude.Int16
+  
+  use prelude.prelude.UInt32
+  
+  use seq.Seq
+  
+  use prelude.prelude.Snapshot
+  
+  use prelude.prelude.Intrinsic
+  
+  use prelude.prelude.Int32
+  
+  use prelude.prelude.Borrow
+  
+  use C06MapPrecond_Counter_Closure0_Type as Closure'0
+  
+  predicate resolve'0 (self : borrowed (Closure'0.c06mapprecond_counter_closure0 i)) =
+    [%#span2] self.final = self.current
+  
+  use prelude.prelude.Int
+  
+  use seq.Seq
+  
+  use prelude.prelude.Snapshot
+  
+  use prelude.prelude.Int32
+  
+  function field_0'0 [#"../06_map_precond.rs" 207 14 207 24] (self : Closure'0.c06mapprecond_counter_closure0 i) : borrowed int32
+    
+   =
+    let Closure'0.C06mapprecond_counter_closure0 a = self in a
+  
+  let rec c06mapprecond_counter_closure0[#"../06_map_precond.rs" 207 14 207 24] [@coma:extspec] (_1:borrowed (Closure'0.c06mapprecond_counter_closure0 i)) (x:uint32) (_prod:Snapshot.snap_ty (Seq.seq uint32)) (return'  (ret:uint32))= bb0
+    [ bb0 = s0
+      [ s0 = {[@expl:assertion] [%#s06_map_precond0] Int32.to_int (field_0'0 _1.current).current
+        = Seq.length (Snapshot.inner _prod)}
+        s1
+      | s1 = Closure'0.c06mapprecond_counter_closure0 <i> {_1.current}
+          (fun (r'0:borrowed int32) ->
+            Int32.add {r'0.current} {[%#s06_map_precond1] (1 : int32)}
+              (fun (_ret':int32) ->
+                Closure'0.c06mapprecond_counter_closure0 <i> {_1.current}
+                  (fun (l'0:borrowed int32) ->
+                    
+                    [ &_1 <- { _1 with current = Closure'0.C06mapprecond_counter_closure0 ({ l'0 with current = _ret' ; }) ; } ]
+                    
+                    s2)))
+      | s2 = -{resolve'0 _1}- s3
+      | s3 =  [ &_0 <- x ] s4
+      | s4 = return' {_0} ]
+       ]
+    
+    [ & _0 : uint32 = any_l ()
+    | & _1 : borrowed (Closure'0.c06mapprecond_counter_closure0 i) = _1
+    | & x : uint32 = x
+    | & _prod : Snapshot.snap_ty (Seq.seq uint32) = _prod ]
+     [ return' (result:uint32)-> return' {result} ] 
+end
+module C06MapPrecond_Counter
+  type i
+  
+  let%span s06_map_precond0 = "../06_map_precond.rs" 206 18 206 19
+  
+  let%span s06_map_precond1 = "../06_map_precond.rs" 203 0 203 158
+  
+  let%span s06_map_precond2 = "../06_map_precond.rs" 204 0 204 92
+  
+  let%span s06_map_precond3 = "../06_map_precond.rs" 205 40 205 44
+  
+  let%span span4 = "../../../../../creusot-contracts/src/invariant.rs" 8 8 8 12
+  
+  let%span span5 = "../common.rs" 19 15 19 21
+  
+  let%span span6 = "../common.rs" 20 15 20 21
+  
+  let%span span7 = "../common.rs" 21 15 21 21
+  
+  let%span span8 = "../common.rs" 22 15 22 32
+  
+  let%span span9 = "../common.rs" 23 15 23 32
+  
+  let%span span10 = "../common.rs" 24 14 24 42
+  
+  let%span span11 = "../common.rs" 14 15 14 24
+  
+  let%span span12 = "../common.rs" 15 14 15 45
+  
+  let%span span13 = "../../../../../creusot-contracts/src/resolve.rs" 26 20 26 34
+  
+  let%span span14 = "../06_map_precond.rs" 208 22 208 41
+  
+  let%span span15 = "../06_map_precond.rs" 209 15 209 16
+  
+  let%span span16 = "../06_map_precond.rs" 207 14 207 24
+  
+  let%span span17 = "../06_map_precond.rs" 91 8 95 9
+  
+  let%span span18 = "../06_map_precond.rs" 113 8 120 9
+  
+  let%span span19 = "../06_map_precond.rs" 99 4 99 83
+  
+  let%span span20 = "../06_map_precond.rs" 101 8 108 9
+  
+  let%span span21 = "../06_map_precond.rs" 125 8 130 9
+  
+  let%span span22 = "../06_map_precond.rs" 168 12 170 73
+  
+  let%span span23 = "" 0 0 0 0
+  
+  let%span span24 = "../06_map_precond.rs" 175 0 175 131
+  
+  let%span span25 = "../06_map_precond.rs" 176 11 176 41
+  
+  let%span span26 = "../06_map_precond.rs" 177 11 177 51
+  
+  let%span span27 = "../06_map_precond.rs" 180 4 180 8
+  
+  let%span span28 = "../06_map_precond.rs" 181 4 181 8
+  
+  let%span span29 = "../06_map_precond.rs" 178 10 178 75
+  
+  let%span span30 = "../06_map_precond.rs" 182 5 182 17
+  
+  use prelude.prelude.UInt32
+  
+  use seq.Seq
+  
+  use prelude.prelude.Snapshot
+  
+  predicate invariant'3 (self : Snapshot.snap_ty (Seq.seq uint32)) =
     [%#span4] true
   
   predicate inv'3 (_1 : Snapshot.snap_ty (Seq.seq uint32))
   
   axiom inv'3 : forall x : Snapshot.snap_ty (Seq.seq uint32) . inv'3 x = true
   
-  use prelude.prelude.UIntSize
+  use prelude.prelude.Int32
   
   use prelude.prelude.Borrow
   
   use prelude.prelude.Int16
   
-  use C06MapPrecond_Counter_Closure2_Type as Closure'0
+  use C06MapPrecond_Counter_Closure0_Type as Closure'0
   
-  predicate invariant'2 (self : Closure'0.c06mapprecond_counter_closure2 i) =
+  predicate invariant'2 (self : Closure'0.c06mapprecond_counter_closure0 i) =
     [%#span4] true
   
-  predicate inv'2 (_1 : Closure'0.c06mapprecond_counter_closure2 i)
+  predicate inv'2 (_1 : Closure'0.c06mapprecond_counter_closure0 i)
   
-  axiom inv'2 : forall x : Closure'0.c06mapprecond_counter_closure2 i . inv'2 x = true
+  axiom inv'2 : forall x : Closure'0.c06mapprecond_counter_closure0 i . inv'2 x = true
   
   predicate invariant'1 (self : i)
   
@@ -3131,69 +2990,95 @@ module C06MapPrecond_Counter
   axiom produces_refl'0_spec : forall self : i . ([%#span11] inv'1 self)
    -> ([%#span12] produces'0 self (Seq.empty  : Seq.seq uint32) self)
   
+  use prelude.prelude.Intrinsic
+  
+  predicate resolve'0 (self : borrowed (Closure'0.c06mapprecond_counter_closure0 i)) =
+    [%#span13] self.final = self.current
+  
   use prelude.prelude.Int
   
-  constant max'0 : usize = [%#span13] (18446744073709551615 : usize)
-  
   use seq.Seq
   
   use prelude.prelude.Snapshot
   
-  use prelude.prelude.UIntSize
+  use prelude.prelude.Int32
   
-  function field_0'0 [#"../06_map_precond.rs" 215 8 215 41] (self : Closure'0.c06mapprecond_counter_closure2 i) : borrowed usize
+  function field_0'0 [#"../06_map_precond.rs" 207 14 207 24] (self : Closure'0.c06mapprecond_counter_closure0 i) : borrowed int32
     
    =
-    let Closure'0.C06mapprecond_counter_closure2 a = self in a
+    let Closure'0.C06mapprecond_counter_closure0 a = self in a
   
-  predicate precondition'0 [#"../06_map_precond.rs" 215 8 215 41] (self : Closure'0.c06mapprecond_counter_closure2 i) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32)))
+  let rec closure0'0[#"../06_map_precond.rs" 207 14 207 24] [@coma:extspec] (_1:borrowed (Closure'0.c06mapprecond_counter_closure0 i)) (x:uint32) (_prod:Snapshot.snap_ty (Seq.seq uint32)) (return'  (ret:uint32))= bb0
+    [ bb0 = s0
+      [ s0 = {[@expl:assertion] [%#span14] Int32.to_int (field_0'0 _1.current).current
+        = Seq.length (Snapshot.inner _prod)}
+        s1
+      | s1 = Closure'0.c06mapprecond_counter_closure0 <i> {_1.current}
+          (fun (r'0:borrowed int32) ->
+            Int32.add {r'0.current} {[%#span15] (1 : int32)}
+              (fun (_ret':int32) ->
+                Closure'0.c06mapprecond_counter_closure0 <i> {_1.current}
+                  (fun (l'0:borrowed int32) ->
+                    
+                    [ &_1 <- { _1 with current = Closure'0.C06mapprecond_counter_closure0 ({ l'0 with current = _ret' ; }) ; } ]
+                    
+                    s2)))
+      | s2 = -{resolve'0 _1}- s3
+      | s3 =  [ &_0 <- x ] s4
+      | s4 = return' {_0} ]
+       ]
+    
+    [ & _0 : uint32 = any_l ()
+    | & _1 : borrowed (Closure'0.c06mapprecond_counter_closure0 i) = _1
+    | & x : uint32 = x
+    | & _prod : Snapshot.snap_ty (Seq.seq uint32) = _prod ]
+     [ return' (result:uint32)-> return' {result} ] 
+  
+  predicate precondition'0 [#"../06_map_precond.rs" 207 14 207 24] (self : Closure'0.c06mapprecond_counter_closure0 i) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32)))
     
    =
-    [%#span14] let (x, _prod) = args in UIntSize.to_int (field_0'0 self).current = Seq.length (Snapshot.inner _prod)
-    /\ (field_0'0 self).current < (max'0 : usize)
+    [%#span16] let (x, _prod) = args in closure0'0'pre (Borrow.borrow_logic self self 0) x _prod
   
   use prelude.prelude.Snapshot
   
   use seq.Seq
   
-  predicate next_precondition'0 [#"../06_map_precond.rs" 90 4 90 74] (iter : i) (func : Closure'0.c06mapprecond_counter_closure2 i) (produced : Seq.seq uint32)
+  predicate next_precondition'0 [#"../06_map_precond.rs" 90 4 90 74] (iter : i) (func : Closure'0.c06mapprecond_counter_closure0 i) (produced : Seq.seq uint32)
     
    =
-    [%#span15] forall e : uint32, i : i . produces'0 iter (Seq.singleton e) i
+    [%#span17] forall e : uint32, i : i . produces'0 iter (Seq.singleton e) i
      -> precondition'0 func (e, Snapshot.new produced)
   
-  predicate unnest'0 [#"../06_map_precond.rs" 215 8 215 41] (self : Closure'0.c06mapprecond_counter_closure2 i) (_2 : Closure'0.c06mapprecond_counter_closure2 i)
+  predicate unnest'0 [#"../06_map_precond.rs" 207 14 207 24] (self : Closure'0.c06mapprecond_counter_closure0 i) (_2 : Closure'0.c06mapprecond_counter_closure0 i)
     
    =
     (field_0'0 _2).final = (field_0'0 self).final
   
-  predicate postcondition_mut'0 [#"../06_map_precond.rs" 215 8 215 41] (self : borrowed (Closure'0.c06mapprecond_counter_closure2 i)) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32))) (result : uint32)
+  predicate postcondition_mut'0 [#"../06_map_precond.rs" 207 14 207 24] (self : borrowed (Closure'0.c06mapprecond_counter_closure0 i)) (args : (uint32, Snapshot.snap_ty (Seq.seq uint32))) (result : uint32)
     
    =
-    (let (x, _prod) = args in UIntSize.to_int (field_0'0 self.final).current
-    = UIntSize.to_int (field_0'0 self.current).current + 1)
-    /\ unnest'0 self.current self.final
+    (let (x, _prod) = args in closure0'0'post'return' self x _prod result) /\ unnest'0 self.current self.final
   
   use seq.Seq
   
-  predicate preservation'0 [#"../06_map_precond.rs" 112 4 112 45] (iter : i) (func : Closure'0.c06mapprecond_counter_closure2 i)
+  predicate preservation'0 [#"../06_map_precond.rs" 112 4 112 45] (iter : i) (func : Closure'0.c06mapprecond_counter_closure0 i)
     
    =
-    [%#span16] forall s : Seq.seq uint32, e1 : uint32, e2 : uint32, f : borrowed (Closure'0.c06mapprecond_counter_closure2 i), b : uint32, i : i . unnest'0 func f.current
+    [%#span18] forall s : Seq.seq uint32, e1 : uint32, e2 : uint32, f : borrowed (Closure'0.c06mapprecond_counter_closure0 i), b : uint32, i : i . unnest'0 func f.current
      -> produces'0 iter (Seq.snoc (Seq.snoc s e1) e2) i
      -> precondition'0 f.current (e1, Snapshot.new s)
      -> postcondition_mut'0 f (e1, Snapshot.new s) b  -> precondition'0 f.final (e2, Snapshot.new (Seq.snoc s e1))
   
-  predicate preservation_inv'0 [#"../06_map_precond.rs" 100 4 100 73] (iter : i) (func : Closure'0.c06mapprecond_counter_closure2 i) (produced : Seq.seq uint32)
+  predicate preservation_inv'0 [#"../06_map_precond.rs" 100 4 100 73] (iter : i) (func : Closure'0.c06mapprecond_counter_closure0 i) (produced : Seq.seq uint32)
     
    =
-    [%#span18] forall s : Seq.seq uint32, e1 : uint32, e2 : uint32, f : borrowed (Closure'0.c06mapprecond_counter_closure2 i), b : uint32, i : i . unnest'0 func f.current
+    [%#span20] forall s : Seq.seq uint32, e1 : uint32, e2 : uint32, f : borrowed (Closure'0.c06mapprecond_counter_closure0 i), b : uint32, i : i . unnest'0 func f.current
      -> produces'0 iter (Seq.snoc (Seq.snoc s e1) e2) i
      -> precondition'0 f.current (e1, Snapshot.new (Seq.(++) produced s))
      -> postcondition_mut'0 f (e1, Snapshot.new (Seq.(++) produced s)) b
      -> precondition'0 f.final (e2, Snapshot.new (Seq.snoc (Seq.(++) produced s) e1))
   
-  axiom preservation_inv'0_spec : forall iter : i, func : Closure'0.c06mapprecond_counter_closure2 i, produced : Seq.seq uint32 . [%#span17] produced
+  axiom preservation_inv'0_spec : forall iter : i, func : Closure'0.c06mapprecond_counter_closure0 i, produced : Seq.seq uint32 . [%#span19] produced
   = (Seq.empty  : Seq.seq uint32)  -> preservation_inv'0 iter func produced = preservation'0 iter func
   
   use C06MapPrecond_Map_Type as C06MapPrecond_Map_Type
@@ -3201,41 +3086,45 @@ module C06MapPrecond_Counter
   predicate completed'0 [#"../common.rs" 11 4 11 36] (self : borrowed i)
   
   predicate reinitialize'0 [#"../06_map_precond.rs" 124 4 124 29] (_1 : ()) =
-    [%#span19] forall iter : borrowed i, func : Closure'0.c06mapprecond_counter_closure2 i . completed'0 iter
+    [%#span21] forall iter : borrowed i, func : Closure'0.c06mapprecond_counter_closure0 i . completed'0 iter
      -> next_precondition'0 iter.final func (Seq.empty  : Seq.seq uint32) /\ preservation'0 iter.final func
   
   use C06MapPrecond_Map_Type as Map'0
   
-  predicate invariant'0 [#"../06_map_precond.rs" 166 4 166 30] (self : Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure2 i) uint32)
+  predicate invariant'0 [#"../06_map_precond.rs" 166 4 166 30] (self : Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure0 i) uint32)
     
    =
-    [%#span20] reinitialize'0 ()
+    [%#span22] reinitialize'0 ()
     /\ preservation_inv'0 (C06MapPrecond_Map_Type.map_iter self) (C06MapPrecond_Map_Type.map_func self) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self))
     /\ next_precondition'0 (C06MapPrecond_Map_Type.map_iter self) (C06MapPrecond_Map_Type.map_func self) (Snapshot.inner (C06MapPrecond_Map_Type.map_produced self))
   
-  predicate inv'0 (_1 : Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure2 i) uint32)
+  predicate inv'0 (_1 : Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure0 i) uint32)
   
-  axiom inv'0 : forall x : Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure2 i) uint32 . inv'0 x
+  axiom inv'0 : forall x : Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure0 i) uint32 . inv'0 x
   = (invariant'0 x
   /\ match x with
     | Map'0.C_Map iter func produced -> true
     end)
   
-  use prelude.prelude.Intrinsic
+  use prelude.prelude.UIntSize
   
-  let rec map'0 (iter:i) (func:Closure'0.c06mapprecond_counter_closure2 i) (return'  (ret:Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure2 i) uint32))= {[@expl:precondition] [%#span25] inv'2 func}
-    {[@expl:precondition] [%#span24] inv'1 iter}
-    {[@expl:precondition] [%#span23] preservation'0 iter func}
-    {[@expl:precondition] [%#span22] reinitialize'0 ()}
-    {[@expl:precondition] [%#span21] forall e : uint32, i2 : i . produces'0 iter (Seq.singleton e) i2
+  use prelude.prelude.UIntSize
+  
+  constant max'0 : usize = [%#span23] (18446744073709551615 : usize)
+  
+  let rec map'0 (iter:i) (func:Closure'0.c06mapprecond_counter_closure0 i) (return'  (ret:Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure0 i) uint32))= {[@expl:precondition] [%#span28] inv'2 func}
+    {[@expl:precondition] [%#span27] inv'1 iter}
+    {[@expl:precondition] [%#span26] preservation'0 iter func}
+    {[@expl:precondition] [%#span25] reinitialize'0 ()}
+    {[@expl:precondition] [%#span24] forall e : uint32, i2 : i . produces'0 iter (Seq.singleton e) i2
      -> precondition'0 func (e, Snapshot.new (Seq.empty  : Seq.seq uint32))}
     any
-    [ return' (result:Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure2 i) uint32)-> {[%#span27] inv'0 result}
-      {[%#span26] result = Map'0.C_Map iter func (Snapshot.new (Seq.empty  : Seq.seq uint32))}
+    [ return' (result:Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure0 i) uint32)-> {[%#span30] inv'0 result}
+      {[%#span29] result = Map'0.C_Map iter func (Snapshot.new (Seq.empty  : Seq.seq uint32))}
       (! return' {result}) ]
     
   
-  let rec counter (iter:i) (return'  (ret:()))= {[%#s06_map_precond3] inv'1 iter}
+  let rec counter[#"../06_map_precond.rs" 205 0 205 48] (iter:i) (return'  (ret:()))= {[%#s06_map_precond3] inv'1 iter}
     {[%#s06_map_precond2] forall prod : Seq.seq uint32, fin : i . produces'0 iter prod fin
      -> Seq.length prod <= UIntSize.to_int (max'0 : usize)}
     {[%#s06_map_precond1] forall done' : borrowed i . completed'0 done'
@@ -3244,11 +3133,11 @@ module C06MapPrecond_Counter
     (! bb0
     [ bb0 = bb1
     | bb1 = s0
-      [ s0 =  [ &cnt <- [%#s06_map_precond0] (0 : usize) ] s1
-      | s1 = Borrow.borrow_mut <usize> {cnt} (fun (_ret':borrowed usize) ->  [ &_8 <- _ret' ]  [ &cnt <- _8.final ] s2)
-      | s2 =  [ &_7 <- Closure'0.C06mapprecond_counter_closure2 _8 ] s3
+      [ s0 =  [ &cnt <- [%#s06_map_precond0] (0 : int32) ] s1
+      | s1 = Borrow.borrow_mut <int32> {cnt} (fun (_ret':borrowed int32) ->  [ &_8 <- _ret' ]  [ &cnt <- _8.final ] s2)
+      | s2 =  [ &_7 <- Closure'0.C06mapprecond_counter_closure0 _8 ] s3
       | s3 = map'0 {iter} {_7}
-          (fun (_ret':Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure2 i) uint32) ->  [ &_5 <- _ret' ] s4)
+          (fun (_ret':Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure0 i) uint32) ->  [ &_5 <- _ret' ] s4)
       | s4 = {[@expl:type invariant] inv'0 _5} s5
       | s5 = bb2 ]
       
@@ -3258,10 +3147,10 @@ module C06MapPrecond_Counter
     )
     [ & _0 : () = any_l ()
     | & iter : i = iter
-    | & cnt : usize = any_l ()
-    | & _5 : Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure2 i) uint32 = any_l ()
-    | & _7 : Closure'0.c06mapprecond_counter_closure2 i = any_l ()
-    | & _8 : borrowed usize = any_l () ]
+    | & cnt : int32 = any_l ()
+    | & _5 : Map'0.t_map i uint32 (Closure'0.c06mapprecond_counter_closure0 i) uint32 = any_l ()
+    | & _7 : Closure'0.c06mapprecond_counter_closure0 i = any_l ()
+    | & _8 : borrowed int32 = any_l () ]
      [ return' (result:())-> (! return' {result}) ] 
 end
 module C06MapPrecond_Impl0

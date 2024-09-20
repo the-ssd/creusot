@@ -6,7 +6,7 @@ use super::{
     signature::{sig_to_why3, signature_of},
     term::{lower_pat, lower_pure},
     ty::{destructor, int_ty},
-    CloneSummary, GraphDepth, NameSupply, Namer, TransId, Why3Generator,
+    CloneLevel, CloneSummary, GraphDepth, NameSupply, Namer, TransId, Why3Generator,
 };
 use crate::{
     backend::{
@@ -163,7 +163,12 @@ pub(crate) fn translate_function<'tcx, 'sess>(
         .map(|body_id| Decl::Coma(to_why(ctx, &mut names, *body_id)))
         .collect::<Vec<_>>();
 
-    let (clones, summary) = names.provide_deps(ctx, GraphDepth::Deep);
+    let (clones, mut summary) = names.provide_deps(ctx, GraphDepth::Deep);
+
+    // TODO: Fix this before merge. BIG HACK
+    if ctx.is_closure_like(def_id) {
+        summary.values_mut().for_each(|val| val.level = CloneLevel::Signature)
+    }
 
     let decls = closure_generic_decls(ctx.tcx, def_id)
         .chain(clones)
@@ -245,12 +250,19 @@ pub fn val<'tcx>(_: &mut Why3Generator<'tcx>, sig: Signature) -> Decl {
         false,
         vec![Defn {
             name: "return".into(),
+            attrs: vec![],
             writes: Vec::new(),
             params: vec![Param::Term("result".into(), sig.retty.clone().unwrap())],
             body: postcond,
         }],
     );
-    why3::declaration::Decl::Coma(Defn { name: sig.name, writes: Vec::new(), params, body })
+    why3::declaration::Decl::Coma(Defn {
+        name: sig.name,
+        attrs: vec![],
+        writes: Vec::new(),
+        params,
+        body,
+    })
 }
 
 // TODO: move to a more "central" location
@@ -299,7 +311,7 @@ pub fn to_why<'tcx, N: Namer<'tcx>>(
         })
         .collect();
 
-    let sig = if body_id.promoted.is_none() {
+    let mut sig = if body_id.promoted.is_none() {
         signature_of(ctx, names, body_id.def_id())
     } else {
         let ret = ret.unwrap();
@@ -314,9 +326,21 @@ pub fn to_why<'tcx, N: Namer<'tcx>>(
     };
     let mut body = Expr::Defn(Box::new(Expr::Symbol("bb0".into())), true, blocks);
 
+    let inferred_closure_spec = sig.contract.is_empty() && ctx.is_closure_like(body_id.def_id());
+
+    if inferred_closure_spec {
+        sig.attrs.push(Attribute::Attr("coma:extspec".into()));
+    }
+
+    // We leave the body transparent in the following cases:
+    let open_body = false
+        || inferred_closure_spec
+        || util::is_ghost_closure(ctx.tcx, body_id.def_id())
+        || body_id.promoted.is_some();
+
     let mut postcond = Expr::Symbol("return".into()).app(vec![Arg::Term(Exp::var("result"))]);
 
-    if body_id.promoted.is_none() && !util::is_ghost_closure(ctx.tcx, body_id.def_id()) {
+    if !open_body {
         postcond = Expr::BlackBox(Box::new(postcond));
     }
     postcond = sig.contract.ensures.into_iter().fold(postcond, |acc, ensures| {
@@ -326,7 +350,7 @@ pub fn to_why<'tcx, N: Namer<'tcx>>(
         )
     });
 
-    if body_id.promoted.is_none() && !util::is_ghost_closure(ctx.tcx, body_id.def_id()) {
+    if !open_body {
         body = Expr::BlackBox(Box::new(body))
     };
 
@@ -338,6 +362,7 @@ pub fn to_why<'tcx, N: Namer<'tcx>>(
         vec![Defn {
             name: "return".into(),
             writes: Vec::new(),
+            attrs: vec![],
             params: vec![Param::Term("result".into(), sig.retty.clone().unwrap())],
             body: postcond,
         }],
@@ -360,7 +385,7 @@ pub fn to_why<'tcx, N: Namer<'tcx>>(
             vec![Param::Term("ret".into(), sig.retty.unwrap())],
         )])
         .collect();
-    coma::Defn { name: sig.name, writes: Vec::new(), params, body }
+    coma::Defn { name: sig.name, attrs: sig.attrs, writes: Vec::new(), params, body }
 }
 
 use super::wto::Component;
@@ -814,8 +839,13 @@ fn mk_adt_switch<'tcx, N: Namer<'tcx>>(
             Box::new(coma::Expr::BlackBox(Box::new(tgt))),
         );
 
-        let branch =
-            coma::Defn { name: format!("br{c}").into(), body: filter, params, writes: Vec::new() };
+        let branch = coma::Defn {
+            name: format!("br{c}").into(),
+            attrs: vec![],
+            body: filter,
+            params,
+            writes: Vec::new(),
+        };
         out.push(branch)
     }
     out
@@ -905,6 +935,7 @@ where
             false,
             vec![Defn {
                 name: "any_".into(),
+                attrs: vec![],
                 writes: vec![],
                 params: vec![Param::Term(id, ty)],
                 body: Expr::BlackBox(Box::new(tail)),

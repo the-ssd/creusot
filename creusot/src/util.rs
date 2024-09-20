@@ -456,7 +456,7 @@ pub(crate) fn pre_sig_of<'tcx>(
             pre.subst(&s);
         }
 
-        if kind == ClosureKind::FnMut {
+        if kind == ClosureKind::FnMut &&  !contract.is_empty() {
             let args = subst.as_closure().sig().inputs().skip_binder()[0];
             let unnest_subst =
                 ctx.mk_args(&[GenericArg::from(args), GenericArg::from(env_ty.peel_refs())]);

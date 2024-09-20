@@ -3,7 +3,7 @@ use crate::{
     backend::{
         dependency::{Dependency, ExtendedId},
         logic::{lower_logical_defn, lower_pure_defn, sigs, spec_axiom},
-        program,
+        program::{self, to_why},
         signature::named_sig_to_why3,
         term::lower_pure,
         ty_inv::InvariantElaborator,
@@ -162,8 +162,6 @@ impl<'tcx> SymbolElaborator<'tcx> {
             util::item_type(ctx.tcx, def_id).let_kind()
         };
 
-        // eprintln!("{item:?} {kind:?}");
-
         if CloneLevel::Signature == level_of_item {
             pre_sig.contract = PreContract::default();
         }
@@ -223,6 +221,16 @@ impl<'tcx> SymbolElaborator<'tcx> {
             // If we want to inline arbitrary contract-less closure, we need to add `[@coma:extspec]`
             // and to use the resulting pre and post.
         } else {
+            if ctx.is_closure_like(def_id)
+                && pre_sig.contract.is_empty()
+                && matches!(item, DepNode::Item(_, _))
+            {
+                let mut decl = to_why(ctx, names, BodyId::new(def_id.as_local().unwrap(), None));
+
+                decl.name = names.value(def_id, subst).name;
+                return vec![Decl::Coma(decl)];
+            }
+
             val(ctx, sig, kind)
         }
     }

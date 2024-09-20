@@ -35,6 +35,16 @@ extern_spec! {
                 #[ensures(result == (*self != None))]
                 fn is_some(&self) -> bool;
 
+                #[requires(match self {
+                    None => true,
+                    Some(t) => f.precondition((t,)),
+                })]
+                #[ensures(match self {
+                    None => result == false,
+                    Some(x) => f.postcondition_once((x,), result),
+                })]
+                fn is_some_and(self, f: impl FnOnce(T) -> bool) -> bool;
+
                 #[pure]
                 #[ensures(result == (*self == None))]
                 fn is_none(&self) -> bool;
@@ -53,6 +63,55 @@ extern_spec! {
                 #[ensures(self == None ==> result == default)]
                 #[ensures(self == None || self == Some(result))]
                 fn unwrap_or(self, default: T) -> T;
+
+                #[requires(match self {
+                    None => f.precondition(()),
+                    Some(t) => true,
+                })]
+                #[ensures(match self {
+                    Some(x) => result == x,
+                    None => f.postcondition_once((), result),
+                })]
+                fn unwrap_or_else<F>(self, f: F) -> T
+                where
+                    F: FnOnce() -> T;
+
+                #[requires(match self {
+                    None => true,
+                    Some(t) => f.precondition((t,)),
+                })]
+                #[ensures(match self {
+                    None => result == None,
+                    Some(t) => exists<u: U> result == Some(u) && f.postcondition_once((t,), u),
+                })]
+                fn map<U, F>(self, f: F) -> Option<U>
+                where
+                    F: FnOnce(T) -> U;
+
+                #[requires(match self {
+                    None => true,
+                    Some(t) => f.precondition((t,)),
+                })]
+                #[ensures(match self {
+                    None => result == default,
+                    Some(t) => f.postcondition_once((t,), result),
+                })]
+                fn map_or<U, F>(self, default: U, f: F) -> U
+                where
+                    F: FnOnce(T) -> U;
+
+                #[requires(match self {
+                    None => default.precondition(()),
+                    Some(t) => f.precondition((t,)),
+                })]
+                #[ensures(match self {
+                    None => default.postcondition_once((), result),
+                    Some(t) => f.postcondition_once((t,), result),
+                })]
+                fn map_or_else<U, D, F>(self, default: D, f: F) -> U
+                where
+                    D: FnOnce() -> U,
+                    F: FnOnce(T) -> U;
 
                 #[pure]
                 #[ensures(*self == None ==> result == None && ^self == None)]

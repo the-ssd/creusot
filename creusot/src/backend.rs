@@ -120,8 +120,6 @@ impl<'tcx> Why3Generator<'tcx> {
         }
         debug!("translating {:?}", def_id);
 
-        // eprintln!("{:?}", self.param_env(def_id));
-
         match util::item_type(self.tcx, def_id) {
             ItemType::Trait => {
                 self.start(def_id);

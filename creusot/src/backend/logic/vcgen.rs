@@ -427,9 +427,12 @@ impl<'a, 'tcx> VCGen<'a, 'tcx> {
             // TODO: lol
             TermKind::Absurd => todo!("absrd"),
 
+            TermKind::Precondition {..} => Err(VCError::Closure(t.span)),
+            TermKind::Postcondition {..} => Err(VCError::Closure(t.span)),
             TermKind::Old { .. } => Err(VCError::Old(t.span)),
             TermKind::Closure { .. } => Err(VCError::Closure(t.span)),
             TermKind::Reborrow { .. } => Err(VCError::Reborrow(t.span)),
+            TermKind::Borrow { inner } => todo!(),
         }
     }
     fn build_pattern<A>(
