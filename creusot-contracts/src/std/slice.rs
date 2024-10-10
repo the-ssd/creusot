@@ -1,5 +1,6 @@
 use crate::{
     invariant::*,
+    resolve::structural_resolve,
     std::{
         alloc::Allocator,
         ops::{Index, IndexMut, Range, RangeFrom, RangeFull, RangeTo, RangeToInclusive},
@@ -12,6 +13,7 @@ impl<T> Invariant for [T] {
     #[predicate(prophetic)]
     #[open]
     #[creusot::trusted_ignore_structural_inv]
+    #[creusot::trusted_is_tyinv_trivial_if_param_trivial]
     fn invariant(self) -> bool {
         pearlite! { inv(self@) }
     }
@@ -434,18 +436,24 @@ impl<'a, T> ShallowModel for IterMut<'a, T> {
     }
 }
 
-#[trusted]
 impl<'a, T> Resolve for IterMut<'a, T> {
-    #[predicate(prophetic)]
     #[open]
+    #[predicate(prophetic)]
     fn resolve(self) -> bool {
         pearlite! { *self@ == ^self@ }
     }
+
+    #[trusted]
+    #[logic(prophetic)]
+    #[open(self)]
+    #[requires(structural_resolve(self))]
+    #[ensures((*self).resolve())]
+    fn resolve_coherence(&self) {}
 }
 
 impl<'a, T> Iterator for IterMut<'a, T> {
-    #[predicate(prophetic)]
     #[open]
+    #[predicate(prophetic)]
     fn completed(&mut self) -> bool {
         pearlite! { self.resolve() && (*self@)@ == Seq::EMPTY }
     }
@@ -460,11 +468,15 @@ impl<'a, T> Iterator for IterMut<'a, T> {
 
     #[law]
     #[open]
+    #[requires(inv(self))]
     #[ensures(self.produces(Seq::EMPTY, self))]
     fn produces_refl(self) {}
 
     #[law]
     #[open]
+    #[requires(inv(a))]
+    #[requires(inv(b))]
+    #[requires(inv(c))]
     #[requires(a.produces(ab, b))]
     #[requires(b.produces(bc, c))]
     #[ensures(a.produces(ab.concat(bc), c))]

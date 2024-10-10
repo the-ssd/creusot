@@ -265,11 +265,28 @@ pub enum Literal<'tcx> {
 
 #[derive(Clone, Debug, TyDecodable, TyEncodable, TypeFoldable, TypeVisitable)]
 pub enum Pattern<'tcx> {
-    Constructor { variant: DefId, substs: GenericArgsRef<'tcx>, fields: Vec<Pattern<'tcx>> },
+    Constructor {
+        variant: DefId,
+        substs: GenericArgsRef<'tcx>,
+        fields: Vec<Pattern<'tcx>>,
+    },
+    /// Matches the pointed element of a pointer, so for `Box<T>` it matches `T`, for mutable borrows it matches the *current* value
+    Deref {
+        pointee: Box<Pattern<'tcx>>,
+        kind: PointerKind,
+    },
     Tuple(Vec<Pattern<'tcx>>),
     Wildcard,
     Binder(Symbol),
     Boolean(bool),
+}
+
+// TODO: Pattern should store a type directly
+#[derive(Clone, Debug, TyDecodable, TyEncodable, TypeFoldable, TypeVisitable)]
+pub enum PointerKind {
+    Box,
+    Shr,
+    Mut,
 }
 
 const TRIGGER_ERROR: &str = "Triggers can only be used inside quantifiers";
@@ -1067,7 +1084,7 @@ pub(crate) fn type_invariant_term<'tcx>(
     // assert!(!name.as_str().is_empty(), "name has len 0, env={env_did:?}, ty={ty:?}");
     let arg = Term { ty, span, kind: TermKind::Var(name) };
 
-    let (inv_fn_did, inv_fn_substs) = ctx.type_invariant(env_did, ty)?;
+    let (inv_fn_did, inv_fn_substs) = ctx.type_invariant(ctx.tcx.param_env(env_did), ty)?;
     let inv_fn_ty = ctx.type_of(inv_fn_did).instantiate(ctx.tcx, inv_fn_substs);
     assert!(matches!(inv_fn_ty.kind(), TyKind::FnDef(id, _) if id == &inv_fn_did));
 
@@ -1183,6 +1200,7 @@ impl<'tcx> Pattern<'tcx> {
             }
 
             Pattern::Boolean(_) => {}
+            Pattern::Deref { pointee, .. } => pointee.binds(binders),
         }
     }
 }
@@ -1414,9 +1432,18 @@ impl<'tcx> Term<'tcx> {
         }
     }
 
-    pub(crate) fn forall(self, tcx: TyCtxt<'tcx>, binder: (Symbol, Ty<'tcx>)) -> Self {
+    pub(crate) fn forall_trig(
+        self,
+        tcx: TyCtxt<'tcx>,
+        binder: (Symbol, Ty<'tcx>),
+        trigger: Vec<Trigger<'tcx>>,
+    ) -> Self {
         let ty = Ty::new_tup(tcx, &[binder.1]);
-        self.quant(QuantKind::Forall, (vec![Ident::new(binder.0, DUMMY_SP)], ty), vec![])
+        self.quant(QuantKind::Forall, (vec![Ident::new(binder.0, DUMMY_SP)], ty), trigger)
+    }
+
+    pub(crate) fn forall(self, tcx: TyCtxt<'tcx>, binder: (Symbol, Ty<'tcx>)) -> Self {
+        self.forall_trig(tcx, binder, vec![])
     }
 
     pub(crate) fn quant(

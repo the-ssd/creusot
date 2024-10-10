@@ -5,7 +5,7 @@ use crate::{
         pearlite::{self, Term, TermKind},
         specification::PreContract,
     },
-    util::{self, get_builtin, item_name, module_name, PreSignature},
+    util::{self, get_builtin, item_name, module_name, translate_accessor_name, PreSignature},
 };
 use indexmap::IndexSet;
 use petgraph::{algo::tarjan_scc, graphmap::DiGraphMap};
@@ -23,7 +23,7 @@ use why3::{
         AdtDecl, ConstructorDecl, Contract, Decl, Field, Logic, Module, Signature, TyDecl, Use,
         ValDecl,
     },
-    exp::{Binder, Exp, Pattern},
+    exp::{Binder, Exp, Pattern, Trigger},
     ty::Type as MlT,
     Ident, QName,
 };
@@ -367,6 +367,8 @@ pub(crate) fn translate_tydecl(
                 ty_name: ty_name.clone(),
                 ty_params: ty_params.clone(),
             })],
+            attrs: Vec::from_iter(ctx.span_attr(ctx.def_span(repr))),
+            meta: ctx.display_impl_of(repr),
         };
         let _ = names.provide_deps(ctx, GraphDepth::Shallow);
         return Some(vec![modl]);
@@ -407,11 +409,14 @@ pub(crate) fn translate_tydecl(
 
     decls.extend(destructors);
 
-    let mut modls = vec![Module { name: name.clone(), decls }];
+    let attrs = Vec::from_iter(ctx.span_attr(span));
+    let mut modls = vec![Module { name: name.clone(), decls, attrs, meta: None }];
 
     modls.extend(bg.iter().filter(|did| **did != repr).map(|did| Module {
         name: module_name(ctx.tcx, *did).to_string().into(),
         decls: vec![Decl::UseDecl(Use { name: name.clone().into(), as_: None, export: true })],
+        attrs: Vec::from_iter(ctx.span_attr(ctx.def_span(did))),
+        meta: ctx.display_impl_of(*did),
     }));
 
     Some(modls)
@@ -502,7 +507,7 @@ pub(crate) fn destructor<'tcx>(
         Exp::qvar(constr).app(fields.iter().map(|(nm, _)| nm.clone()).map(Exp::var).collect());
 
     let ret = Expr::Symbol("ret".into())
-        .app(fields.into_iter().map(|(nm, _)| Exp::var(nm)).map(Arg::Term).collect());
+        .app(fields.iter().map(|(nm, _)| Exp::var(nm.clone())).map(Arg::Term).collect());
 
     let good_branch: coma::Defn = coma::Defn {
         attrs: vec![],
@@ -514,14 +519,43 @@ pub(crate) fn destructor<'tcx>(
             Box::new(Expr::BlackBox(Box::new(ret))),
         ),
     };
+    let num_variants = match base_ty.kind() {
+        TyKind::Adt(def, _) => def.variants().len(),
+        _ => 1,
+    };
 
-    let fail = Expr::Assert(Box::new(Exp::mk_false()), Box::new(Expr::Any));
-    let bad_branch: Defn = coma::Defn {
-        name: format!("bad").into(),
-        writes: vec![],
-        attrs: vec![],
-        params: field_args.clone(),
-        body: Expr::Assert(Box::new(cons_test.neq(Exp::var("input"))), Box::new(fail)),
+    let bad_branch = if num_variants > 1 {
+        let fail =
+            Expr::BlackBox(Box::new(Expr::Assert(Box::new(Exp::mk_false()), Box::new(Expr::Any))));
+
+        let fields: Vec<_> = fields.iter().cloned().collect();
+        let negative_assertion = if fields.is_empty() {
+            cons_test.neq(Exp::var("input"))
+        } else {
+            // TODO: Replace this with a pattern match to generat more readable goals
+            let ty = translate_ty_inner(
+                TyTranslation::Declaration(ty_id),
+                ctx,
+                names,
+                DUMMY_SP,
+                base_ty,
+            );
+            Exp::Forall(
+                fields,
+                vec![Trigger::single(cons_test.clone().ascribe(ty))],
+                Box::new(cons_test.neq(Exp::var("input"))),
+            )
+        };
+
+        Some(coma::Defn {
+            name: format!("bad").into(),
+            attrs: vec![],
+            writes: vec![],
+            params: vec![],
+            body: Expr::Assert(Box::new(negative_assertion), Box::new(fail)),
+        })
+    } else {
+        None
     };
 
     let ret_cont = Param::Cont("ret".into(), Vec::new(), field_args);
@@ -532,12 +566,13 @@ pub(crate) fn destructor<'tcx>(
 
     let params = ty_params(ctx, ty_id).map(|ty| Param::Ty(Type::TVar(ty))).chain([input, ret_cont]);
 
+    let branches = std::iter::once(good_branch).chain(bad_branch).collect();
     Decl::Coma(Defn {
         name: names.eliminator(cons_id, subst).name,
         writes: vec![],
         attrs: vec![],
         params: params.collect(),
-        body: Expr::Defn(Box::new(Expr::Any), false, vec![good_branch, bad_branch]),
+        body: Expr::Defn(Box::new(Expr::Any), false, branches),
     })
 }
 
@@ -662,7 +697,7 @@ pub(crate) fn translate_accessor(
     let substs = GenericArgs::identity_for_item(ctx.tcx, adt_did);
     let mut names = Dependencies::new(ctx.tcx, ctx.binding_group(adt_did).iter().copied());
 
-    let acc_name = format!("{}_{}", variant.name.as_str().to_ascii_lowercase(), field.name);
+    let acc_name = translate_accessor_name(variant.name.as_str(), field.name.as_str());
 
     let param_env = ctx.param_env(adt_did);
     let target_ty =

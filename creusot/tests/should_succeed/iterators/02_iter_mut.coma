@@ -1,132 +1,64 @@
 
-module C02IterMut_IterMut_Type
+module T_02_iter_mut__IterMut [#"../02_iter_mut.rs" 13 0 13 21]
   use prelude.prelude.Slice
   
   use prelude.prelude.Borrow
   
-  type t_itermut 't =
+  type t_IterMut 't =
     | C_IterMut (borrowed (slice 't))
   
   function any_l (_ : 'b) : 'a
   
-  let rec t_itermut < 't > (input:t_itermut 't) (ret  (inner:borrowed (slice 't)))= any
-    [ good (inner:borrowed (slice 't))-> {C_IterMut inner = input} (! ret {inner})
-    | bad (inner:borrowed (slice 't))-> {C_IterMut inner <> input} {false} any ]
+  let rec t_IterMut < 't > (input:t_IterMut 't) (ret  (inner:borrowed (slice 't)))= any
+    [ good (inner:borrowed (slice 't))-> {C_IterMut inner = input} (! ret {inner}) ]
     
   
-  function itermut_inner (self : t_itermut 't) : borrowed (slice 't) =
+  function t_IterMut__inner (self : t_IterMut 't) : borrowed (slice 't) =
     match self with
       | C_IterMut a -> a
       end
 end
-module Core_Ptr_NonNull_NonNull_Type
-  use prelude.prelude.Opaque
-  
-  type t_nonnull 't =
-    | C_NonNull opaque_ptr
-  
-  function any_l (_ : 'b) : 'a
-  
-  let rec t_nonnull < 't > (input:t_nonnull 't) (ret  (pointer:opaque_ptr))= any
-    [ good (pointer:opaque_ptr)-> {C_NonNull pointer = input} (! ret {pointer})
-    | bad (pointer:opaque_ptr)-> {C_NonNull pointer <> input} {false} any ]
-    
-end
-module Core_Marker_PhantomData_Type
-  type t_phantomdata 't =
-    | C_PhantomData
-  
-  function any_l (_ : 'b) : 'a
-  
-  let rec t_phantomdata < 't > (input:t_phantomdata 't) (ret  )= any
-    [ good -> {C_PhantomData  = input} (! ret) | bad -> {C_PhantomData  <> input} {false} any ]
-    
-end
-module Core_Ptr_Unique_Unique_Type
-  use Core_Marker_PhantomData_Type as PhantomData'0
-  
-  use Core_Ptr_NonNull_NonNull_Type as NonNull'0
-  
-  type t_unique 't =
-    | C_Unique (NonNull'0.t_nonnull 't) (PhantomData'0.t_phantomdata 't)
-  
-  function any_l (_ : 'b) : 'a
-  
-  let rec t_unique < 't > (input:t_unique 't) (ret  (pointer:NonNull'0.t_nonnull 't) (_marker:PhantomData'0.t_phantomdata 't))= any
-    [ good (pointer:NonNull'0.t_nonnull 't) (_marker:PhantomData'0.t_phantomdata 't)-> {C_Unique pointer _marker
-      = input}
-      (! ret {pointer} {_marker})
-    | bad (pointer:NonNull'0.t_nonnull 't) (_marker:PhantomData'0.t_phantomdata 't)-> {C_Unique pointer _marker
-      <> input}
-      {false}
-      any ]
-    
-end
-module Alloc_Boxed_Box_Type
-  use Core_Ptr_Unique_Unique_Type as Unique'0
-  
-  type t_box 't 'a =
-    | C_Box (Unique'0.t_unique 't) 'a
-  
-  function any_l (_ : 'b) : 'a
-end
-module Alloc_Alloc_Global_Type
-  type t_global  =
+module T_alloc__alloc__Global
+  type t_Global  =
     | C_Global
   
   function any_l (_ : 'b) : 'a
   
-  let rec t_global (input:t_global) (ret  )= any
-    [ good -> {C_Global  = input} (! ret) | bad -> {C_Global  <> input} {false} any ]
-    
+  let rec t_Global (input:t_Global) (ret  )= any [ good -> {C_Global  = input} (! ret) ] 
 end
-module C02IterMut_Impl1_ProducesRefl_Impl
+module M_02_iter_mut__qyi4305820612590367313__produces_refl [#"../02_iter_mut.rs" 51 4 51 26] (* <IterMut<'a, T> as common::Iterator> *)
   type t
   
   let%span s02_iter_mut0 = "../02_iter_mut.rs" 49 15 49 24
-  
   let%span s02_iter_mut1 = "../02_iter_mut.rs" 50 14 50 45
-  
-  let%span span2 = "../../../../../creusot-contracts/src/std/boxed.rs" 27 8 27 18
-  
-  let%span span3 = "../../../../../creusot-contracts/src/logic/seq.rs" 197 8 197 97
-  
+  let%span span2 = "../../../../../creusot-contracts/src/std/boxed.rs" 28 8 28 18
+  let%span span3 = "../../../../../creusot-contracts/src/logic/seq.rs" 198 8 198 97
   let%span span4 = "" 0 0 0 0
-  
-  let%span span5 = "../../../../../creusot-contracts/src/std/slice.rs" 27 14 27 41
-  
-  let%span span6 = "../../../../../creusot-contracts/src/std/slice.rs" 28 14 28 42
-  
-  let%span span7 = "../../../../../creusot-contracts/src/std/slice.rs" 16 20 16 30
-  
-  let%span span8 = "../../../../../creusot-contracts/src/invariant.rs" 35 20 35 44
-  
+  let%span span5 = "../../../../../creusot-contracts/src/std/slice.rs" 29 14 29 41
+  let%span span6 = "../../../../../creusot-contracts/src/std/slice.rs" 30 14 30 42
+  let%span span7 = "../../../../../creusot-contracts/src/std/slice.rs" 18 20 18 30
+  let%span span8 = "../../../../../creusot-contracts/src/invariant.rs" 34 20 34 44
   let%span span9 = "../02_iter_mut.rs" 22 20 22 64
-  
   let%span span10 = "../../../../../creusot-contracts/src/logic/ops.rs" 42 8 42 31
-  
   let%span span11 = "../../../../../creusot-contracts/src/model.rs" 108 8 108 31
-  
-  let%span span12 = "../../../../../creusot-contracts/src/std/slice.rs" 88 14 88 41
-  
-  let%span span13 = "../../../../../creusot-contracts/src/std/slice.rs" 89 4 89 86
-  
+  let%span span12 = "../../../../../creusot-contracts/src/std/slice.rs" 90 14 90 41
+  let%span span13 = "../../../../../creusot-contracts/src/std/slice.rs" 91 4 91 86
   let%span span14 = "../02_iter_mut.rs" 39 12 43 13
   
   predicate invariant'5 (self : t)
   
   predicate inv'5 (_1 : t)
   
-  axiom inv'5 : forall x : t . inv'5 x = true
+  axiom inv'5 : forall x : t [inv'5 x] . inv'5 x  -> invariant'5 x
   
-  use Alloc_Alloc_Global_Type as Global'0
+  use T_alloc__alloc__Global as Global'0
   
   predicate invariant'4 (self : t) =
     [%#span2] inv'5 self
   
   predicate inv'4 (_1 : t)
   
-  axiom inv'4 : forall x : t . inv'4 x = true
+  axiom inv'4 [@rewrite] : forall x : t [inv'4 x] . inv'4 x = invariant'4 x
   
   use seq.Seq
   
@@ -141,7 +73,7 @@ module C02IterMut_Impl1_ProducesRefl_Impl
   
   predicate inv'3 (_1 : Seq.seq t)
   
-  axiom inv'3 : forall x : Seq.seq t . inv'3 x = true
+  axiom inv'3 [@rewrite] : forall x : Seq.seq t [inv'3 x] . inv'3 x = invariant'3 x
   
   use prelude.prelude.Slice
   
@@ -151,19 +83,19 @@ module C02IterMut_Impl1_ProducesRefl_Impl
   
   use prelude.prelude.UIntSize
   
-  constant max'0 : usize = [%#span4] (18446744073709551615 : usize)
+  constant v_MAX'0 : usize = [%#span4] (18446744073709551615 : usize)
   
   function shallow_model'1 (self : slice t) : Seq.seq t
   
   axiom shallow_model'1_spec : forall self : slice t . ([%#span6] shallow_model'1 self = Slice.id self)
-  && ([%#span5] Seq.length (shallow_model'1 self) <= UIntSize.to_int (max'0 : usize))
+  && ([%#span5] Seq.length (shallow_model'1 self) <= UIntSize.to_int (v_MAX'0 : usize))
   
   predicate invariant'2 (self : slice t) =
     [%#span7] inv'3 (shallow_model'1 self)
   
   predicate inv'2 (_1 : slice t)
   
-  axiom inv'2 : forall x : slice t . inv'2 x = true
+  axiom inv'2 [@rewrite] : forall x : slice t [inv'2 x] . inv'2 x = invariant'2 x
   
   use prelude.prelude.Borrow
   
@@ -172,22 +104,22 @@ module C02IterMut_Impl1_ProducesRefl_Impl
   
   predicate inv'1 (_1 : borrowed (slice t))
   
-  axiom inv'1 : forall x : borrowed (slice t) . inv'1 x = true
+  axiom inv'1 [@rewrite] : forall x : borrowed (slice t) [inv'1 x] . inv'1 x = invariant'1 x
   
-  use C02IterMut_IterMut_Type as C02IterMut_IterMut_Type
+  use T_02_iter_mut__IterMut as T_02_iter_mut__IterMut
   
-  use C02IterMut_IterMut_Type as IterMut'0
+  use T_02_iter_mut__IterMut as IterMut'0
   
-  predicate invariant'0 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_itermut t) =
-    [%#span9] Seq.length (shallow_model'1 (C02IterMut_IterMut_Type.itermut_inner self).final)
-    = Seq.length (shallow_model'1 (C02IterMut_IterMut_Type.itermut_inner self).current)
+  predicate invariant'0 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_IterMut t) =
+    [%#span9] Seq.length (shallow_model'1 (T_02_iter_mut__IterMut.t_IterMut__inner self).final)
+    = Seq.length (shallow_model'1 (T_02_iter_mut__IterMut.t_IterMut__inner self).current)
   
-  predicate inv'0 (_1 : IterMut'0.t_itermut t)
+  predicate inv'0 (_1 : IterMut'0.t_IterMut t)
   
-  axiom inv'0 : forall x : IterMut'0.t_itermut t . inv'0 x
+  axiom inv'0 [@rewrite] : forall x : IterMut'0.t_IterMut t [inv'0 x] . inv'0 x
   = (invariant'0 x
   /\ match x with
-    | IterMut'0.C_IterMut inner -> true
+    | IterMut'0.C_IterMut inner -> inv'1 inner
     end)
   
   use seq.Seq
@@ -212,81 +144,63 @@ module C02IterMut_Impl1_ProducesRefl_Impl
   = Borrow.borrow_logic (index_logic'0 self.current i) (index_logic'0 self.final i) (Borrow.inherit_id (Borrow.get_id self) i))
   && ([%#span12] Seq.length (to_mut_seq'0 self) = Seq.length (shallow_model'0 self))
   
-  predicate produces'0 [#"../02_iter_mut.rs" 37 4 37 65] (self : IterMut'0.t_itermut t) (visited : Seq.seq (borrowed t)) (tl : IterMut'0.t_itermut t)
+  predicate produces'0 [#"../02_iter_mut.rs" 37 4 37 65] (self : IterMut'0.t_IterMut t) (visited : Seq.seq (borrowed t)) (tl : IterMut'0.t_IterMut t)
     
    =
-    [%#span14] Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner self))
-    = Seq.length visited + Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner tl))
-    /\ (forall i : int . 0 <= i /\ i < Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner self))
-     -> (Seq.get (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner self)) i).current
-    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner tl))) i).current
-    /\ (Seq.get (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner self)) i).final
-    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner tl))) i).final)
+    [%#span14] Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner self))
+    = Seq.length visited + Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))
+    /\ (forall i : int . 0 <= i /\ i < Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner self))
+     -> (Seq.get (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner self)) i).current
+    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))) i).current
+    /\ (Seq.get (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner self)) i).final
+    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))) i).final)
   
   use seq.Seq
   
-  constant self  : IterMut'0.t_itermut t
+  constant self  : IterMut'0.t_IterMut t
   
-  function produces_refl [#"../02_iter_mut.rs" 51 4 51 26] (self : IterMut'0.t_itermut t) : ()
+  function produces_refl [#"../02_iter_mut.rs" 51 4 51 26] (self : IterMut'0.t_IterMut t) : ()
   
   goal vc_produces_refl : ([%#s02_iter_mut0] inv'0 self)
    -> ([%#s02_iter_mut1] produces'0 self (Seq.empty  : Seq.seq (borrowed t)) self)
 end
-module C02IterMut_Impl1_ProducesTrans_Impl
+module M_02_iter_mut__qyi4305820612590367313__produces_trans [#"../02_iter_mut.rs" 61 4 61 90] (* <IterMut<'a, T> as common::Iterator> *)
   type t
   
   let%span s02_iter_mut0 = "../02_iter_mut.rs" 55 15 55 21
-  
   let%span s02_iter_mut1 = "../02_iter_mut.rs" 56 15 56 21
-  
   let%span s02_iter_mut2 = "../02_iter_mut.rs" 57 15 57 21
-  
   let%span s02_iter_mut3 = "../02_iter_mut.rs" 58 15 58 32
-  
   let%span s02_iter_mut4 = "../02_iter_mut.rs" 59 15 59 32
-  
   let%span s02_iter_mut5 = "../02_iter_mut.rs" 60 14 60 42
-  
-  let%span span6 = "../../../../../creusot-contracts/src/std/boxed.rs" 27 8 27 18
-  
-  let%span span7 = "../../../../../creusot-contracts/src/logic/seq.rs" 197 8 197 97
-  
+  let%span span6 = "../../../../../creusot-contracts/src/std/boxed.rs" 28 8 28 18
+  let%span span7 = "../../../../../creusot-contracts/src/logic/seq.rs" 198 8 198 97
   let%span span8 = "" 0 0 0 0
-  
-  let%span span9 = "../../../../../creusot-contracts/src/std/slice.rs" 27 14 27 41
-  
-  let%span span10 = "../../../../../creusot-contracts/src/std/slice.rs" 28 14 28 42
-  
-  let%span span11 = "../../../../../creusot-contracts/src/std/slice.rs" 16 20 16 30
-  
-  let%span span12 = "../../../../../creusot-contracts/src/invariant.rs" 35 20 35 44
-  
+  let%span span9 = "../../../../../creusot-contracts/src/std/slice.rs" 29 14 29 41
+  let%span span10 = "../../../../../creusot-contracts/src/std/slice.rs" 30 14 30 42
+  let%span span11 = "../../../../../creusot-contracts/src/std/slice.rs" 18 20 18 30
+  let%span span12 = "../../../../../creusot-contracts/src/invariant.rs" 34 20 34 44
   let%span span13 = "../02_iter_mut.rs" 22 20 22 64
-  
   let%span span14 = "../../../../../creusot-contracts/src/logic/ops.rs" 42 8 42 31
-  
   let%span span15 = "../../../../../creusot-contracts/src/model.rs" 108 8 108 31
-  
-  let%span span16 = "../../../../../creusot-contracts/src/std/slice.rs" 88 14 88 41
-  
-  let%span span17 = "../../../../../creusot-contracts/src/std/slice.rs" 89 4 89 86
-  
+  let%span span16 = "../../../../../creusot-contracts/src/std/slice.rs" 90 14 90 41
+  let%span span17 = "../../../../../creusot-contracts/src/std/slice.rs" 91 4 91 86
   let%span span18 = "../02_iter_mut.rs" 39 12 43 13
   
   predicate invariant'5 (self : t)
   
   predicate inv'5 (_1 : t)
   
-  axiom inv'5 : forall x : t . inv'5 x = true
+  axiom inv'5 : forall x : t [inv'5 x] . inv'5 x  -> invariant'5 x
   
-  use Alloc_Alloc_Global_Type as Global'0
+  use T_alloc__alloc__Global as Global'0
   
   predicate invariant'4 (self : t) =
     [%#span6] inv'5 self
   
   predicate inv'4 (_1 : t)
   
-  axiom inv'4 : forall x : t . inv'4 x = true
+  axiom inv'4 [@rewrite] : forall x : t [inv'4 x] . inv'4 x = invariant'4 x
   
   use seq.Seq
   
@@ -301,7 +215,7 @@ module C02IterMut_Impl1_ProducesTrans_Impl
   
   predicate inv'3 (_1 : Seq.seq t)
   
-  axiom inv'3 : forall x : Seq.seq t . inv'3 x = true
+  axiom inv'3 [@rewrite] : forall x : Seq.seq t [inv'3 x] . inv'3 x = invariant'3 x
   
   use prelude.prelude.Slice
   
@@ -311,19 +225,19 @@ module C02IterMut_Impl1_ProducesTrans_Impl
   
   use prelude.prelude.UIntSize
   
-  constant max'0 : usize = [%#span8] (18446744073709551615 : usize)
+  constant v_MAX'0 : usize = [%#span8] (18446744073709551615 : usize)
   
   function shallow_model'1 (self : slice t) : Seq.seq t
   
   axiom shallow_model'1_spec : forall self : slice t . ([%#span10] shallow_model'1 self = Slice.id self)
-  && ([%#span9] Seq.length (shallow_model'1 self) <= UIntSize.to_int (max'0 : usize))
+  && ([%#span9] Seq.length (shallow_model'1 self) <= UIntSize.to_int (v_MAX'0 : usize))
   
   predicate invariant'2 (self : slice t) =
     [%#span11] inv'3 (shallow_model'1 self)
   
   predicate inv'2 (_1 : slice t)
   
-  axiom inv'2 : forall x : slice t . inv'2 x = true
+  axiom inv'2 [@rewrite] : forall x : slice t [inv'2 x] . inv'2 x = invariant'2 x
   
   use prelude.prelude.Borrow
   
@@ -332,22 +246,22 @@ module C02IterMut_Impl1_ProducesTrans_Impl
   
   predicate inv'1 (_1 : borrowed (slice t))
   
-  axiom inv'1 : forall x : borrowed (slice t) . inv'1 x = true
+  axiom inv'1 [@rewrite] : forall x : borrowed (slice t) [inv'1 x] . inv'1 x = invariant'1 x
   
-  use C02IterMut_IterMut_Type as C02IterMut_IterMut_Type
+  use T_02_iter_mut__IterMut as T_02_iter_mut__IterMut
   
-  use C02IterMut_IterMut_Type as IterMut'0
+  use T_02_iter_mut__IterMut as IterMut'0
   
-  predicate invariant'0 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_itermut t) =
-    [%#span13] Seq.length (shallow_model'1 (C02IterMut_IterMut_Type.itermut_inner self).final)
-    = Seq.length (shallow_model'1 (C02IterMut_IterMut_Type.itermut_inner self).current)
+  predicate invariant'0 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_IterMut t) =
+    [%#span13] Seq.length (shallow_model'1 (T_02_iter_mut__IterMut.t_IterMut__inner self).final)
+    = Seq.length (shallow_model'1 (T_02_iter_mut__IterMut.t_IterMut__inner self).current)
   
-  predicate inv'0 (_1 : IterMut'0.t_itermut t)
+  predicate inv'0 (_1 : IterMut'0.t_IterMut t)
   
-  axiom inv'0 : forall x : IterMut'0.t_itermut t . inv'0 x
+  axiom inv'0 [@rewrite] : forall x : IterMut'0.t_IterMut t [inv'0 x] . inv'0 x
   = (invariant'0 x
   /\ match x with
-    | IterMut'0.C_IterMut inner -> true
+    | IterMut'0.C_IterMut inner -> inv'1 inner
     end)
   
   use seq.Seq
@@ -372,28 +286,28 @@ module C02IterMut_Impl1_ProducesTrans_Impl
   = Borrow.borrow_logic (index_logic'0 self.current i) (index_logic'0 self.final i) (Borrow.inherit_id (Borrow.get_id self) i))
   && ([%#span16] Seq.length (to_mut_seq'0 self) = Seq.length (shallow_model'0 self))
   
-  predicate produces'0 [#"../02_iter_mut.rs" 37 4 37 65] (self : IterMut'0.t_itermut t) (visited : Seq.seq (borrowed t)) (tl : IterMut'0.t_itermut t)
+  predicate produces'0 [#"../02_iter_mut.rs" 37 4 37 65] (self : IterMut'0.t_IterMut t) (visited : Seq.seq (borrowed t)) (tl : IterMut'0.t_IterMut t)
     
    =
-    [%#span18] Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner self))
-    = Seq.length visited + Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner tl))
-    /\ (forall i : int . 0 <= i /\ i < Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner self))
-     -> (Seq.get (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner self)) i).current
-    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner tl))) i).current
-    /\ (Seq.get (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner self)) i).final
-    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner tl))) i).final)
+    [%#span18] Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner self))
+    = Seq.length visited + Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))
+    /\ (forall i : int . 0 <= i /\ i < Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner self))
+     -> (Seq.get (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner self)) i).current
+    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))) i).current
+    /\ (Seq.get (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner self)) i).final
+    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))) i).final)
   
-  constant a  : IterMut'0.t_itermut t
+  constant a  : IterMut'0.t_IterMut t
   
   constant ab  : Seq.seq (borrowed t)
   
-  constant b  : IterMut'0.t_itermut t
+  constant b  : IterMut'0.t_IterMut t
   
   constant bc  : Seq.seq (borrowed t)
   
-  constant c  : IterMut'0.t_itermut t
+  constant c  : IterMut'0.t_IterMut t
   
-  function produces_trans [#"../02_iter_mut.rs" 61 4 61 90] (a : IterMut'0.t_itermut t) (ab : Seq.seq (borrowed t)) (b : IterMut'0.t_itermut t) (bc : Seq.seq (borrowed t)) (c : IterMut'0.t_itermut t) : ()
+  function produces_trans [#"../02_iter_mut.rs" 61 4 61 90] (a : IterMut'0.t_IterMut t) (ab : Seq.seq (borrowed t)) (b : IterMut'0.t_IterMut t) (bc : Seq.seq (borrowed t)) (c : IterMut'0.t_IterMut t) : ()
     
   
   goal vc_produces_trans : ([%#s02_iter_mut4] produces'0 b bc c)
@@ -402,85 +316,58 @@ module C02IterMut_Impl1_ProducesTrans_Impl
    -> ([%#s02_iter_mut1] inv'0 b)
    -> ([%#s02_iter_mut0] inv'0 a)  -> ([%#s02_iter_mut5] produces'0 a (Seq.(++) ab bc) c)
 end
-module Core_Option_Option_Type
-  type t_option 't =
+module T_core__option__Option
+  type t_Option 't =
     | C_None
     | C_Some 't
   
   function any_l (_ : 'b) : 'a
   
-  let rec none < 't > (input:t_option 't) (ret  )= any
-    [ good -> {C_None  = input} (! ret) | bad -> {C_None  <> input} {false} any ]
+  let rec v_None < 't > (input:t_Option 't) (ret  )= any
+    [ good -> {C_None  = input} (! ret) | bad -> {C_None  <> input} (! {false} any) ]
     
   
-  let rec some < 't > (input:t_option 't) (ret  (field_0:'t))= any
+  let rec v_Some < 't > (input:t_Option 't) (ret  (field_0:'t))= any
     [ good (field_0:'t)-> {C_Some field_0 = input} (! ret {field_0})
-    | bad (field_0:'t)-> {C_Some field_0 <> input} {false} any ]
+    | bad -> {forall field_0 : 't [C_Some field_0 : t_Option 't] . C_Some field_0 <> input} (! {false} any) ]
     
 end
-module C02IterMut_Impl1_Next
+module M_02_iter_mut__qyi4305820612590367313__next [#"../02_iter_mut.rs" 67 4 67 44] (* <IterMut<'a, T> as common::Iterator> *)
   type t
   
   let%span s02_iter_mut0 = "../02_iter_mut.rs" 67 17 67 21
-  
   let%span s02_iter_mut1 = "../02_iter_mut.rs" 63 14 66 5
-  
   let%span s02_iter_mut2 = "../02_iter_mut.rs" 67 26 67 44
-  
-  let%span span3 = "../../../../../creusot-contracts/src/std/boxed.rs" 27 8 27 18
-  
-  let%span span4 = "../../../../../creusot-contracts/src/logic/seq.rs" 197 8 197 97
-  
+  let%span span3 = "../../../../../creusot-contracts/src/std/boxed.rs" 28 8 28 18
+  let%span span4 = "../../../../../creusot-contracts/src/logic/seq.rs" 198 8 198 97
   let%span span5 = "" 0 0 0 0
-  
-  let%span span6 = "../../../../../creusot-contracts/src/std/slice.rs" 27 14 27 41
-  
-  let%span span7 = "../../../../../creusot-contracts/src/std/slice.rs" 28 14 28 42
-  
+  let%span span6 = "../../../../../creusot-contracts/src/std/slice.rs" 29 14 29 41
+  let%span span7 = "../../../../../creusot-contracts/src/std/slice.rs" 30 14 30 42
   let%span span8 = "../02_iter_mut.rs" 22 20 22 64
-  
-  let%span span9 = "../../../../../creusot-contracts/src/std/slice.rs" 16 20 16 30
-  
-  let%span span10 = "../../../../../creusot-contracts/src/invariant.rs" 35 20 35 44
-  
-  let%span span11 = "../../../../../creusot-contracts/src/invariant.rs" 8 8 8 12
-  
-  let%span span12 = "../../../../../creusot-contracts/src/logic/ops.rs" 42 8 42 31
-  
-  let%span span13 = "../../../../../creusot-contracts/src/model.rs" 108 8 108 31
-  
-  let%span span14 = "../../../../../creusot-contracts/src/std/slice.rs" 88 14 88 41
-  
-  let%span span15 = "../../../../../creusot-contracts/src/std/slice.rs" 89 4 89 86
-  
-  let%span span16 = "../02_iter_mut.rs" 39 12 43 13
-  
-  let%span span17 = "../../../../../creusot-contracts/src/resolve.rs" 26 20 26 34
-  
-  let%span span18 = "../02_iter_mut.rs" 32 8 32 76
-  
-  let%span span19 = "../../../../../creusot-contracts/src/logic/seq.rs" 65 8 65 39
-  
-  let%span span20 = "" 0 0 0 0
-  
-  let%span span21 = "../../../../../creusot-contracts/src/std/slice.rs" 293 18 300 9
-  
-  let%span span22 = "" 0 0 0 0
-  
-  predicate invariant'8 (self : t)
-  
-  predicate inv'8 (_1 : t)
-  
-  axiom inv'8 : forall x : t . inv'8 x = true
-  
-  use Alloc_Alloc_Global_Type as Global'0
-  
-  predicate invariant'7 (self : t) =
-    [%#span3] inv'8 self
+  let%span span9 = "../../../../../creusot-contracts/src/std/slice.rs" 18 20 18 30
+  let%span span10 = "../../../../../creusot-contracts/src/invariant.rs" 34 20 34 44
+  let%span span11 = "../../../../../creusot-contracts/src/logic/ops.rs" 42 8 42 31
+  let%span span12 = "../../../../../creusot-contracts/src/model.rs" 108 8 108 31
+  let%span span13 = "../../../../../creusot-contracts/src/std/slice.rs" 90 14 90 41
+  let%span span14 = "../../../../../creusot-contracts/src/std/slice.rs" 91 4 91 86
+  let%span span15 = "../02_iter_mut.rs" 39 12 43 13
+  let%span span16 = "../../../../../creusot-contracts/src/resolve.rs" 41 20 41 34
+  let%span span17 = "../02_iter_mut.rs" 32 8 32 76
+  let%span span18 = "../../../../../creusot-contracts/src/logic/seq.rs" 65 8 65 39
+  let%span span19 = "" 0 0 0 0
+  let%span span20 = "../../../../../creusot-contracts/src/std/slice.rs" 295 18 302 9
+  let%span span21 = "" 0 0 0 0
   
   predicate inv'7 (_1 : t)
   
-  axiom inv'7 : forall x : t . inv'7 x = true
+  use T_alloc__alloc__Global as Global'0
+  
+  predicate invariant'8 (self : t) =
+    [%#span3] inv'7 self
+  
+  predicate inv'9 (_1 : t)
+  
+  axiom inv'9 [@rewrite] : forall x : t [inv'9 x] . inv'9 x = invariant'8 x
   
   use seq.Seq
   
@@ -490,12 +377,16 @@ module C02IterMut_Impl1_Next
   
   use seq.Seq
   
-  predicate invariant'6 (self : Seq.seq t) =
-    [%#span4] forall i : int . 0 <= i /\ i < Seq.length self  -> inv'7 (Seq.get self i)
+  predicate invariant'7 (self : Seq.seq t) =
+    [%#span4] forall i : int . 0 <= i /\ i < Seq.length self  -> inv'9 (Seq.get self i)
   
-  predicate inv'6 (_1 : Seq.seq t)
+  predicate inv'8 (_1 : Seq.seq t)
   
-  axiom inv'6 : forall x : Seq.seq t . inv'6 x = true
+  axiom inv'8 [@rewrite] : forall x : Seq.seq t [inv'8 x] . inv'8 x = invariant'7 x
+  
+  predicate invariant'6 (self : t)
+  
+  axiom inv'7 : forall x : t [inv'7 x] . inv'7 x  -> invariant'6 x
   
   use prelude.prelude.Slice
   
@@ -509,63 +400,71 @@ module C02IterMut_Impl1_Next
   
   use prelude.prelude.UIntSize
   
-  constant max'0 : usize = [%#span5] (18446744073709551615 : usize)
+  constant v_MAX'0 : usize = [%#span5] (18446744073709551615 : usize)
   
   function shallow_model'0 (self : slice t) : Seq.seq t
   
   axiom shallow_model'0_spec : forall self : slice t . ([%#span7] shallow_model'0 self = Slice.id self)
-  && ([%#span6] Seq.length (shallow_model'0 self) <= UIntSize.to_int (max'0 : usize))
+  && ([%#span6] Seq.length (shallow_model'0 self) <= UIntSize.to_int (v_MAX'0 : usize))
   
-  use C02IterMut_IterMut_Type as C02IterMut_IterMut_Type
+  use T_02_iter_mut__IterMut as T_02_iter_mut__IterMut
   
-  use C02IterMut_IterMut_Type as IterMut'0
+  use T_02_iter_mut__IterMut as IterMut'0
   
-  predicate invariant'5 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_itermut t) =
-    [%#span8] Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner self).final)
-    = Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner self).current)
+  predicate invariant'5 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_IterMut t) =
+    [%#span8] Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner self).final)
+    = Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner self).current)
   
-  predicate inv'5 (_1 : IterMut'0.t_itermut t)
+  predicate inv'6 (_1 : IterMut'0.t_IterMut t)
   
-  axiom inv'5 : forall x : IterMut'0.t_itermut t . inv'5 x
+  axiom inv'6 [@rewrite] : forall x : IterMut'0.t_IterMut t [inv'6 x] . inv'6 x
   = (invariant'5 x
   /\ match x with
-    | IterMut'0.C_IterMut inner -> true
+    | IterMut'0.C_IterMut inner -> inv'0 inner
     end)
   
   predicate invariant'4 (self : slice t) =
-    [%#span9] inv'6 (shallow_model'0 self)
+    [%#span9] inv'8 (shallow_model'0 self)
   
-  predicate inv'4 (_1 : slice t)
+  predicate inv'5 (_1 : slice t)
   
-  axiom inv'4 : forall x : slice t . inv'4 x = true
+  axiom inv'5 [@rewrite] : forall x : slice t [inv'5 x] . inv'5 x = invariant'4 x
   
-  predicate invariant'3 (self : borrowed (borrowed (slice t))) =
+  predicate invariant'3 (self : borrowed t) =
+    [%#span10] inv'7 self.current /\ inv'7 self.final
+  
+  predicate inv'4 (_1 : borrowed t)
+  
+  axiom inv'4 [@rewrite] : forall x : borrowed t [inv'4 x] . inv'4 x = invariant'3 x
+  
+  predicate invariant'2 (self : borrowed (borrowed (slice t))) =
     [%#span10] inv'0 self.current /\ inv'0 self.final
   
   predicate inv'3 (_1 : borrowed (borrowed (slice t)))
   
-  axiom inv'3 : forall x : borrowed (borrowed (slice t)) . inv'3 x = true
+  axiom inv'3 [@rewrite] : forall x : borrowed (borrowed (slice t)) [inv'3 x] . inv'3 x = invariant'2 x
   
-  use Core_Option_Option_Type as Option'0
+  use T_core__option__Option as Option'0
   
-  predicate invariant'2 (self : Option'0.t_option (borrowed t)) =
-    [%#span11] true
+  predicate inv'2 (_1 : Option'0.t_Option (borrowed t))
   
-  predicate inv'2 (_1 : Option'0.t_option (borrowed t))
+  axiom inv'2 [@rewrite] : forall x : Option'0.t_Option (borrowed t) [inv'2 x] . inv'2 x
+  = match x with
+    | Option'0.C_None -> true
+    | Option'0.C_Some a_0 -> inv'4 a_0
+    end
   
-  axiom inv'2 : forall x : Option'0.t_option (borrowed t) . inv'2 x = true
+  predicate invariant'1 (self : borrowed (IterMut'0.t_IterMut t)) =
+    [%#span10] inv'6 self.current /\ inv'6 self.final
   
-  predicate invariant'1 (self : borrowed (IterMut'0.t_itermut t)) =
-    [%#span10] inv'5 self.current /\ inv'5 self.final
+  predicate inv'1 (_1 : borrowed (IterMut'0.t_IterMut t))
   
-  predicate inv'1 (_1 : borrowed (IterMut'0.t_itermut t))
-  
-  axiom inv'1 : forall x : borrowed (IterMut'0.t_itermut t) . inv'1 x = invariant'1 x
+  axiom inv'1 [@rewrite] : forall x : borrowed (IterMut'0.t_IterMut t) [inv'1 x] . inv'1 x = invariant'1 x
   
   predicate invariant'0 (self : borrowed (slice t)) =
-    [%#span10] inv'4 self.current /\ inv'4 self.final
+    [%#span10] inv'5 self.current /\ inv'5 self.final
   
-  axiom inv'0 : forall x : borrowed (slice t) . inv'0 x = true
+  axiom inv'0 [@rewrite] : forall x : borrowed (slice t) [inv'0 x] . inv'0 x = invariant'0 x
   
   use seq.Seq
   
@@ -574,31 +473,31 @@ module C02IterMut_Impl1_Next
   use seq.Seq
   
   function index_logic'0 [@inline:trivial] (self : slice t) (ix : int) : t =
-    [%#span12] Seq.get (shallow_model'0 self) ix
+    [%#span11] Seq.get (shallow_model'0 self) ix
   
   function shallow_model'1 (self : borrowed (slice t)) : Seq.seq t =
-    [%#span13] shallow_model'0 self.current
+    [%#span12] shallow_model'0 self.current
   
   use seq.Seq
   
   function to_mut_seq'0 (self : borrowed (slice t)) : Seq.seq (borrowed t)
   
-  axiom to_mut_seq'0_spec : forall self : borrowed (slice t) . ([%#span15] forall i : int . 0 <= i
+  axiom to_mut_seq'0_spec : forall self : borrowed (slice t) . ([%#span14] forall i : int . 0 <= i
   /\ i < Seq.length (to_mut_seq'0 self)
    -> Seq.get (to_mut_seq'0 self) i
   = Borrow.borrow_logic (index_logic'0 self.current i) (index_logic'0 self.final i) (Borrow.inherit_id (Borrow.get_id self) i))
-  && ([%#span14] Seq.length (to_mut_seq'0 self) = Seq.length (shallow_model'1 self))
+  && ([%#span13] Seq.length (to_mut_seq'0 self) = Seq.length (shallow_model'1 self))
   
-  predicate produces'0 [#"../02_iter_mut.rs" 37 4 37 65] (self : IterMut'0.t_itermut t) (visited : Seq.seq (borrowed t)) (tl : IterMut'0.t_itermut t)
+  predicate produces'0 [#"../02_iter_mut.rs" 37 4 37 65] (self : IterMut'0.t_IterMut t) (visited : Seq.seq (borrowed t)) (tl : IterMut'0.t_IterMut t)
     
    =
-    [%#span16] Seq.length (shallow_model'1 (C02IterMut_IterMut_Type.itermut_inner self))
-    = Seq.length visited + Seq.length (shallow_model'1 (C02IterMut_IterMut_Type.itermut_inner tl))
-    /\ (forall i : int . 0 <= i /\ i < Seq.length (shallow_model'1 (C02IterMut_IterMut_Type.itermut_inner self))
-     -> (Seq.get (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner self)) i).current
-    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner tl))) i).current
-    /\ (Seq.get (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner self)) i).final
-    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner tl))) i).final)
+    [%#span15] Seq.length (shallow_model'1 (T_02_iter_mut__IterMut.t_IterMut__inner self))
+    = Seq.length visited + Seq.length (shallow_model'1 (T_02_iter_mut__IterMut.t_IterMut__inner tl))
+    /\ (forall i : int . 0 <= i /\ i < Seq.length (shallow_model'1 (T_02_iter_mut__IterMut.t_IterMut__inner self))
+     -> (Seq.get (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner self)) i).current
+    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))) i).current
+    /\ (Seq.get (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner self)) i).final
+    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))) i).final)
   
   use seq.Seq
   
@@ -606,27 +505,30 @@ module C02IterMut_Impl1_Next
   
   use seq.Seq
   
-  predicate resolve'1 (self : borrowed (slice t)) =
-    [%#span17] self.final = self.current
+  predicate resolve'2 (self : borrowed (slice t)) =
+    [%#span16] self.final = self.current
   
-  predicate completed'0 [#"../02_iter_mut.rs" 31 4 31 35] (self : borrowed (IterMut'0.t_itermut t)) =
-    [%#span18] resolve'1 (C02IterMut_IterMut_Type.itermut_inner self.current)
-    /\ Seq.(==) (shallow_model'1 (C02IterMut_IterMut_Type.itermut_inner self.current)) (Seq.empty  : Seq.seq t)
+  predicate completed'0 [#"../02_iter_mut.rs" 31 4 31 35] (self : borrowed (IterMut'0.t_IterMut t)) =
+    [%#span17] resolve'2 (T_02_iter_mut__IterMut.t_IterMut__inner self.current)
+    /\ Seq.(==) (shallow_model'1 (T_02_iter_mut__IterMut.t_IterMut__inner self.current)) (Seq.empty  : Seq.seq t)
   
   use prelude.prelude.Intrinsic
   
-  predicate resolve'0 (self : borrowed (IterMut'0.t_itermut t)) =
-    [%#span17] self.final = self.current
+  predicate resolve'1 (self : borrowed (IterMut'0.t_IterMut t)) =
+    [%#span16] self.final = self.current
+  
+  predicate resolve'0 (_1 : borrowed (IterMut'0.t_IterMut t)) =
+    resolve'1 _1
   
   use prelude.seq_ext.SeqExt
   
   function tail'0 (self : Seq.seq t) : Seq.seq t =
-    [%#span19] SeqExt.subsequence self 1 (Seq.length self)
+    [%#span18] SeqExt.subsequence self 1 (Seq.length self)
   
-  let rec take_first_mut'0 (self:borrowed (borrowed (slice t))) (return'  (ret:Option'0.t_option (borrowed t)))= {[@expl:precondition] [%#span20] inv'3 self}
+  let rec take_first_mut'0 (self:borrowed (borrowed (slice t))) (return'  (ret:Option'0.t_Option (borrowed t)))= {[@expl:precondition] [%#span19] inv'3 self}
     any
-    [ return' (result:Option'0.t_option (borrowed t))-> {[%#span22] inv'2 result}
-      {[%#span21] match result with
+    [ return' (result:Option'0.t_Option (borrowed t))-> {[%#span21] inv'2 result}
+      {[%#span20] match result with
         | Option'0.C_Some r -> r.current = index_logic'0 (self.current).current 0
         /\ r.final = index_logic'0 (self.current).final 0
         /\ Seq.length (shallow_model'0 (self.current).current) > 0
@@ -641,29 +543,30 @@ module C02IterMut_Impl1_Next
       (! return' {result}) ]
     
   
-  let rec next (self:borrowed (IterMut'0.t_itermut t)) (return'  (ret:Option'0.t_option (borrowed t)))= {[%#s02_iter_mut0] inv'1 self}
+  meta "compute_max_steps" 1000000
+  
+  let rec next (self:borrowed (IterMut'0.t_IterMut t)) (return'  (ret:Option'0.t_Option (borrowed t)))= {[%#s02_iter_mut0] inv'1 self}
     (! bb0
     [ bb0 = s0
-      [ s0 = IterMut'0.t_itermut <t> {self.current}
+      [ s0 = IterMut'0.t_IterMut <t> {self.current}
           (fun (rinner'0:borrowed (slice t)) ->
+            {inv'0 rinner'0}
             Borrow.borrow_final <borrowed (slice t)> {rinner'0} {Borrow.inherit_id (Borrow.get_id self) 1}
               (fun (_ret':borrowed (borrowed (slice t))) ->
                  [ &_3 <- _ret' ] 
-                IterMut'0.t_itermut <t> {self.current}
-                  (fun (l_inner'0:borrowed (slice t)) ->
-                     [ &self <- { self with current = IterMut'0.C_IterMut _3.final ; } ] 
-                    s1)))
-      | s1 = -{inv'0 _3.final}- s2
-      | s2 = take_first_mut'0 {_3} (fun (_ret':Option'0.t_option (borrowed t)) ->  [ &_0 <- _ret' ] s3)
-      | s3 = bb1 ]
+                -{inv'0 _ret'.final}-
+                 [ &self <- { self with current = IterMut'0.C_IterMut _ret'.final ; } ] 
+                s1))
+      | s1 = take_first_mut'0 {_3} (fun (_ret':Option'0.t_Option (borrowed t)) ->  [ &_0 <- _ret' ] s2)
+      | s2 = bb1 ]
       
     | bb1 = s0 [ s0 = {[@expl:type invariant] inv'1 self} s1 | s1 = -{resolve'0 self}- s2 | s2 = return' {_0} ]  ]
     )
-    [ & _0 : Option'0.t_option (borrowed t) = any_l ()
-    | & self : borrowed (IterMut'0.t_itermut t) = self
+    [ & _0 : Option'0.t_Option (borrowed t) = any_l ()
+    | & self : borrowed (IterMut'0.t_IterMut t) = self
     | & _3 : borrowed (borrowed (slice t)) = any_l () ]
     
-    [ return' (result:Option'0.t_option (borrowed t))-> {[@expl:postcondition] [%#s02_iter_mut2] inv'2 result}
+    [ return' (result:Option'0.t_Option (borrowed t))-> {[@expl:postcondition] [%#s02_iter_mut2] inv'2 result}
       {[@expl:postcondition] [%#s02_iter_mut1] match result with
         | Option'0.C_None -> completed'0 self
         | Option'0.C_Some v -> produces'0 self.current (Seq.singleton v) self.final
@@ -671,45 +574,35 @@ module C02IterMut_Impl1_Next
       (! return' {result}) ]
     
 end
-module C02IterMut_Impl2_IntoIter
+module M_02_iter_mut__qyi7060081090368749043__into_iter [#"../02_iter_mut.rs" 74 4 74 30] (* IterMut<'a, T> *)
   type t
   
   let%span s02_iter_mut0 = "../02_iter_mut.rs" 74 17 74 21
-  
   let%span s02_iter_mut1 = "../02_iter_mut.rs" 73 14 73 28
-  
   let%span s02_iter_mut2 = "../02_iter_mut.rs" 74 26 74 30
-  
-  let%span span3 = "../../../../../creusot-contracts/src/std/boxed.rs" 27 8 27 18
-  
-  let%span span4 = "../../../../../creusot-contracts/src/logic/seq.rs" 197 8 197 97
-  
+  let%span span3 = "../../../../../creusot-contracts/src/std/boxed.rs" 28 8 28 18
+  let%span span4 = "../../../../../creusot-contracts/src/logic/seq.rs" 198 8 198 97
   let%span span5 = "" 0 0 0 0
-  
-  let%span span6 = "../../../../../creusot-contracts/src/std/slice.rs" 27 14 27 41
-  
-  let%span span7 = "../../../../../creusot-contracts/src/std/slice.rs" 28 14 28 42
-  
-  let%span span8 = "../../../../../creusot-contracts/src/std/slice.rs" 16 20 16 30
-  
-  let%span span9 = "../../../../../creusot-contracts/src/invariant.rs" 35 20 35 44
-  
+  let%span span6 = "../../../../../creusot-contracts/src/std/slice.rs" 29 14 29 41
+  let%span span7 = "../../../../../creusot-contracts/src/std/slice.rs" 30 14 30 42
+  let%span span8 = "../../../../../creusot-contracts/src/std/slice.rs" 18 20 18 30
+  let%span span9 = "../../../../../creusot-contracts/src/invariant.rs" 34 20 34 44
   let%span span10 = "../02_iter_mut.rs" 22 20 22 64
   
   predicate invariant'5 (self : t)
   
   predicate inv'5 (_1 : t)
   
-  axiom inv'5 : forall x : t . inv'5 x = true
+  axiom inv'5 : forall x : t [inv'5 x] . inv'5 x  -> invariant'5 x
   
-  use Alloc_Alloc_Global_Type as Global'0
+  use T_alloc__alloc__Global as Global'0
   
   predicate invariant'4 (self : t) =
     [%#span3] inv'5 self
   
   predicate inv'4 (_1 : t)
   
-  axiom inv'4 : forall x : t . inv'4 x = true
+  axiom inv'4 [@rewrite] : forall x : t [inv'4 x] . inv'4 x = invariant'4 x
   
   use seq.Seq
   
@@ -724,7 +617,7 @@ module C02IterMut_Impl2_IntoIter
   
   predicate inv'3 (_1 : Seq.seq t)
   
-  axiom inv'3 : forall x : Seq.seq t . inv'3 x = true
+  axiom inv'3 [@rewrite] : forall x : Seq.seq t [inv'3 x] . inv'3 x = invariant'3 x
   
   use prelude.prelude.Slice
   
@@ -734,19 +627,19 @@ module C02IterMut_Impl2_IntoIter
   
   use prelude.prelude.UIntSize
   
-  constant max'0 : usize = [%#span5] (18446744073709551615 : usize)
+  constant v_MAX'0 : usize = [%#span5] (18446744073709551615 : usize)
   
   function shallow_model'0 (self : slice t) : Seq.seq t
   
   axiom shallow_model'0_spec : forall self : slice t . ([%#span7] shallow_model'0 self = Slice.id self)
-  && ([%#span6] Seq.length (shallow_model'0 self) <= UIntSize.to_int (max'0 : usize))
+  && ([%#span6] Seq.length (shallow_model'0 self) <= UIntSize.to_int (v_MAX'0 : usize))
   
   predicate invariant'2 (self : slice t) =
     [%#span8] inv'3 (shallow_model'0 self)
   
   predicate inv'2 (_1 : slice t)
   
-  axiom inv'2 : forall x : slice t . inv'2 x = true
+  axiom inv'2 [@rewrite] : forall x : slice t [inv'2 x] . inv'2 x = invariant'2 x
   
   use prelude.prelude.Borrow
   
@@ -755,168 +648,172 @@ module C02IterMut_Impl2_IntoIter
   
   predicate inv'1 (_1 : borrowed (slice t))
   
-  axiom inv'1 : forall x : borrowed (slice t) . inv'1 x = true
+  axiom inv'1 [@rewrite] : forall x : borrowed (slice t) [inv'1 x] . inv'1 x = invariant'1 x
   
-  use C02IterMut_IterMut_Type as C02IterMut_IterMut_Type
+  use T_02_iter_mut__IterMut as T_02_iter_mut__IterMut
   
-  use C02IterMut_IterMut_Type as IterMut'0
+  use T_02_iter_mut__IterMut as IterMut'0
   
-  predicate invariant'0 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_itermut t) =
-    [%#span10] Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner self).final)
-    = Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner self).current)
+  predicate invariant'0 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_IterMut t) =
+    [%#span10] Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner self).final)
+    = Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner self).current)
   
-  predicate inv'0 (_1 : IterMut'0.t_itermut t)
+  predicate inv'0 (_1 : IterMut'0.t_IterMut t)
   
-  axiom inv'0 : forall x : IterMut'0.t_itermut t . inv'0 x
+  axiom inv'0 [@rewrite] : forall x : IterMut'0.t_IterMut t [inv'0 x] . inv'0 x
   = (invariant'0 x
   /\ match x with
-    | IterMut'0.C_IterMut inner -> true
+    | IterMut'0.C_IterMut inner -> inv'1 inner
     end)
   
   use prelude.prelude.Intrinsic
   
-  let rec into_iter (self:IterMut'0.t_itermut t) (return'  (ret:IterMut'0.t_itermut t))= {[%#s02_iter_mut0] inv'0 self}
+  meta "compute_max_steps" 1000000
+  
+  let rec into_iter (self:IterMut'0.t_IterMut t) (return'  (ret:IterMut'0.t_IterMut t))= {[%#s02_iter_mut0] inv'0 self}
     (! bb0 [ bb0 = s0 [ s0 =  [ &_0 <- self ] s1 | s1 = return' {_0} ]  ] )
-    [ & _0 : IterMut'0.t_itermut t = any_l () | & self : IterMut'0.t_itermut t = self ]
+    [ & _0 : IterMut'0.t_IterMut t = any_l () | & self : IterMut'0.t_IterMut t = self ]
     
-    [ return' (result:IterMut'0.t_itermut t)-> {[@expl:postcondition] [%#s02_iter_mut2] inv'0 result}
+    [ return' (result:IterMut'0.t_IterMut t)-> {[@expl:postcondition] [%#s02_iter_mut2] inv'0 result}
       {[@expl:postcondition] [%#s02_iter_mut1] result = self}
       (! return' {result}) ]
     
 end
-module Alloc_RawVec_Cap_Type
+module T_core__ptr__non_null__NonNull
+  use prelude.prelude.Opaque
+  
+  type t_NonNull 't =
+    | C_NonNull opaque_ptr
+  
+  function any_l (_ : 'b) : 'a
+  
+  let rec t_NonNull < 't > (input:t_NonNull 't) (ret  (pointer:opaque_ptr))= any
+    [ good (pointer:opaque_ptr)-> {C_NonNull pointer = input} (! ret {pointer}) ]
+    
+end
+module T_core__marker__PhantomData
+  type t_PhantomData 't =
+    | C_PhantomData
+  
+  function any_l (_ : 'b) : 'a
+  
+  let rec t_PhantomData < 't > (input:t_PhantomData 't) (ret  )= any [ good -> {C_PhantomData  = input} (! ret) ] 
+end
+module T_core__ptr__unique__Unique
+  use T_core__marker__PhantomData as PhantomData'0
+  
+  use T_core__ptr__non_null__NonNull as NonNull'0
+  
+  type t_Unique 't =
+    | C_Unique (NonNull'0.t_NonNull 't) (PhantomData'0.t_PhantomData 't)
+  
+  function any_l (_ : 'b) : 'a
+  
+  let rec t_Unique < 't > (input:t_Unique 't) (ret  (pointer:NonNull'0.t_NonNull 't) (_marker:PhantomData'0.t_PhantomData 't))= any
+    [ good (pointer:NonNull'0.t_NonNull 't) (_marker:PhantomData'0.t_PhantomData 't)-> {C_Unique pointer _marker
+      = input}
+      (! ret {pointer} {_marker}) ]
+    
+end
+module T_alloc__raw_vec__Cap
   use prelude.prelude.UIntSize
   
   use prelude.prelude.Int
   
-  type t_cap  =
+  type t_Cap  =
     | C_Cap usize
   
   function any_l (_ : 'b) : 'a
   
-  let rec t_cap (input:t_cap) (ret  (field_0:usize))= any
-    [ good (field_0:usize)-> {C_Cap field_0 = input} (! ret {field_0})
-    | bad (field_0:usize)-> {C_Cap field_0 <> input} {false} any ]
+  let rec t_Cap (input:t_Cap) (ret  (field_0:usize))= any
+    [ good (field_0:usize)-> {C_Cap field_0 = input} (! ret {field_0}) ]
     
 end
-module Alloc_RawVec_RawVec_Type
-  use Alloc_RawVec_Cap_Type as Cap'0
+module T_alloc__raw_vec__RawVec
+  use T_alloc__raw_vec__Cap as Cap'0
   
-  use Core_Ptr_Unique_Unique_Type as Unique'0
+  use T_core__ptr__unique__Unique as Unique'0
   
-  type t_rawvec 't 'a =
-    | C_RawVec (Unique'0.t_unique 't) (Cap'0.t_cap) 'a
+  type t_RawVec 't 'a =
+    | C_RawVec (Unique'0.t_Unique 't) (Cap'0.t_Cap) 'a
   
   function any_l (_ : 'b) : 'a
   
-  let rec t_rawvec < 't > < 'a > (input:t_rawvec 't 'a) (ret  (ptr:Unique'0.t_unique 't) (cap:Cap'0.t_cap) (alloc:'a))= any
-    [ good (ptr:Unique'0.t_unique 't) (cap:Cap'0.t_cap) (alloc:'a)-> {C_RawVec ptr cap alloc = input}
-      (! ret {ptr} {cap} {alloc})
-    | bad (ptr:Unique'0.t_unique 't) (cap:Cap'0.t_cap) (alloc:'a)-> {C_RawVec ptr cap alloc <> input} {false} any ]
+  let rec t_RawVec < 't > < 'a > (input:t_RawVec 't 'a) (ret  (ptr:Unique'0.t_Unique 't) (cap:Cap'0.t_Cap) (alloc:'a))= any
+    [ good (ptr:Unique'0.t_Unique 't) (cap:Cap'0.t_Cap) (alloc:'a)-> {C_RawVec ptr cap alloc = input}
+      (! ret {ptr} {cap} {alloc}) ]
     
 end
-module Alloc_Vec_Vec_Type
+module T_alloc__vec__Vec
   use prelude.prelude.UIntSize
   
   use prelude.prelude.Int
   
-  use Alloc_RawVec_RawVec_Type as RawVec'0
+  use T_alloc__raw_vec__RawVec as RawVec'0
   
-  type t_vec 't 'a =
-    | C_Vec (RawVec'0.t_rawvec 't 'a) usize
+  type t_Vec 't 'a =
+    | C_Vec (RawVec'0.t_RawVec 't 'a) usize
   
   function any_l (_ : 'b) : 'a
   
-  let rec t_vec < 't > < 'a > (input:t_vec 't 'a) (ret  (buf:RawVec'0.t_rawvec 't 'a) (len:usize))= any
-    [ good (buf:RawVec'0.t_rawvec 't 'a) (len:usize)-> {C_Vec buf len = input} (! ret {buf} {len})
-    | bad (buf:RawVec'0.t_rawvec 't 'a) (len:usize)-> {C_Vec buf len <> input} {false} any ]
+  let rec t_Vec < 't > < 'a > (input:t_Vec 't 'a) (ret  (buf:RawVec'0.t_RawVec 't 'a) (len:usize))= any
+    [ good (buf:RawVec'0.t_RawVec 't 'a) (len:usize)-> {C_Vec buf len = input} (! ret {buf} {len}) ]
     
 end
-module Core_Ops_Range_RangeFull_Type
-  type t_rangefull  =
+module T_core__ops__range__RangeFull
+  type t_RangeFull  =
     | C_RangeFull
   
   function any_l (_ : 'b) : 'a
   
-  let rec t_rangefull (input:t_rangefull) (ret  )= any
-    [ good -> {C_RangeFull  = input} (! ret) | bad -> {C_RangeFull  <> input} {false} any ]
-    
+  let rec t_RangeFull (input:t_RangeFull) (ret  )= any [ good -> {C_RangeFull  = input} (! ret) ] 
 end
-module C02IterMut_IterMut
+module M_02_iter_mut__iter_mut [#"../02_iter_mut.rs" 82 0 82 55]
   type t
   
   let%span s02_iter_mut0 = "../02_iter_mut.rs" 82 19 82 20
-  
   let%span s02_iter_mut1 = "../02_iter_mut.rs" 79 10 79 29
-  
   let%span s02_iter_mut2 = "../02_iter_mut.rs" 80 10 80 35
-  
   let%span s02_iter_mut3 = "../02_iter_mut.rs" 81 10 81 33
-  
   let%span s02_iter_mut4 = "../02_iter_mut.rs" 82 41 82 55
-  
-  let%span span5 = "../../../../../creusot-contracts/src/std/boxed.rs" 27 8 27 18
-  
-  let%span span6 = "../../../../../creusot-contracts/src/logic/seq.rs" 197 8 197 97
-  
-  let%span span7 = "../../../../../creusot-contracts/src/invariant.rs" 8 8 8 12
-  
-  let%span span8 = "" 0 0 0 0
-  
-  let%span span9 = "../../../../../creusot-contracts/src/std/slice.rs" 27 14 27 41
-  
-  let%span span10 = "../../../../../creusot-contracts/src/std/slice.rs" 28 14 28 42
-  
-  let%span span11 = "../02_iter_mut.rs" 22 20 22 64
-  
-  let%span span12 = "../../../../../creusot-contracts/src/invariant.rs" 35 20 35 44
-  
-  let%span span13 = "../../../../../creusot-contracts/src/std/slice.rs" 16 20 16 30
-  
-  let%span span14 = "../../../../../creusot-contracts/src/std/vec.rs" 18 14 18 41
-  
-  let%span span15 = "../../../../../creusot-contracts/src/std/vec.rs" 60 20 60 41
-  
-  let%span span16 = "../../../../../creusot-contracts/src/model.rs" 108 8 108 31
-  
-  let%span span17 = "../../../../../creusot-contracts/src/resolve.rs" 26 20 26 34
-  
-  let%span span18 = "../../../../../creusot-contracts/src/std/slice.rs" 223 20 223 24
-  
-  let%span span19 = "../../../../../creusot-contracts/src/std/slice.rs" 217 20 217 31
-  
-  let%span span20 = "../../../../../creusot-contracts/src/std/slice.rs" 211 20 211 24
-  
-  let%span span21 = "../../../../../creusot-contracts/src/std/vec.rs" 146 27 146 46
-  
+  let%span span5 = "../../../../../creusot-contracts/src/std/boxed.rs" 28 8 28 18
+  let%span span6 = "../../../../../creusot-contracts/src/logic/seq.rs" 198 8 198 97
+  let%span span7 = "" 0 0 0 0
+  let%span span8 = "../../../../../creusot-contracts/src/std/slice.rs" 29 14 29 41
+  let%span span9 = "../../../../../creusot-contracts/src/std/slice.rs" 30 14 30 42
+  let%span span10 = "../02_iter_mut.rs" 22 20 22 64
+  let%span span11 = "../../../../../creusot-contracts/src/invariant.rs" 34 20 34 44
+  let%span span12 = "../../../../../creusot-contracts/src/std/slice.rs" 18 20 18 30
+  let%span span13 = "../../../../../creusot-contracts/src/std/vec.rs" 19 14 19 41
+  let%span span14 = "../../../../../creusot-contracts/src/std/vec.rs" 68 20 68 41
+  let%span span15 = "../../../../../creusot-contracts/src/model.rs" 108 8 108 31
+  let%span span16 = "../../../../../creusot-contracts/src/resolve.rs" 41 20 41 34
+  let%span span17 = "../../../../../creusot-contracts/src/std/slice.rs" 225 20 225 24
+  let%span span18 = "../../../../../creusot-contracts/src/std/slice.rs" 219 20 219 31
+  let%span span19 = "../../../../../creusot-contracts/src/std/slice.rs" 213 20 213 24
+  let%span span20 = "../../../../../creusot-contracts/src/std/vec.rs" 155 27 155 46
+  let%span span21 = "" 0 0 0 0
   let%span span22 = "" 0 0 0 0
-  
-  let%span span23 = "" 0 0 0 0
-  
-  let%span span24 = "../../../../../creusot-contracts/src/std/vec.rs" 147 26 147 54
-  
-  let%span span25 = "../../../../../creusot-contracts/src/std/vec.rs" 148 26 148 57
-  
-  let%span span26 = "../../../../../creusot-contracts/src/std/vec.rs" 149 26 149 62
-  
-  let%span span27 = "../../../../../creusot-contracts/src/std/vec.rs" 150 26 150 55
-  
-  let%span span28 = "" 0 0 0 0
+  let%span span23 = "../../../../../creusot-contracts/src/std/vec.rs" 156 26 156 54
+  let%span span24 = "../../../../../creusot-contracts/src/std/vec.rs" 157 26 157 57
+  let%span span25 = "../../../../../creusot-contracts/src/std/vec.rs" 158 26 158 62
+  let%span span26 = "../../../../../creusot-contracts/src/std/vec.rs" 159 26 159 55
+  let%span span27 = "" 0 0 0 0
   
   predicate invariant'8 (self : t)
   
   predicate inv'8 (_1 : t)
   
-  axiom inv'8 : forall x : t . inv'8 x = true
+  axiom inv'8 : forall x : t [inv'8 x] . inv'8 x  -> invariant'8 x
   
-  use Alloc_Alloc_Global_Type as Global'0
+  use T_alloc__alloc__Global as Global'0
   
   predicate invariant'7 (self : t) =
     [%#span5] inv'8 self
   
   predicate inv'7 (_1 : t)
   
-  axiom inv'7 : forall x : t . inv'7 x = true
+  axiom inv'7 [@rewrite] : forall x : t [inv'7 x] . inv'7 x = invariant'7 x
   
   use seq.Seq
   
@@ -931,16 +828,13 @@ module C02IterMut_IterMut
   
   predicate inv'6 (_1 : Seq.seq t)
   
-  axiom inv'6 : forall x : Seq.seq t . inv'6 x = true
+  axiom inv'6 [@rewrite] : forall x : Seq.seq t [inv'6 x] . inv'6 x = invariant'6 x
   
-  use Core_Ops_Range_RangeFull_Type as RangeFull'0
+  use T_core__ops__range__RangeFull as RangeFull'0
   
-  predicate invariant'5 (self : RangeFull'0.t_rangefull) =
-    [%#span7] true
+  predicate inv'5 (_1 : RangeFull'0.t_RangeFull)
   
-  predicate inv'5 (_1 : RangeFull'0.t_rangefull)
-  
-  axiom inv'5 : forall x : RangeFull'0.t_rangefull . inv'5 x = true
+  axiom inv'5 [@rewrite] : forall x : RangeFull'0.t_RangeFull [inv'5 x] . inv'5 x = true
   
   use prelude.prelude.Slice
   
@@ -954,262 +848,226 @@ module C02IterMut_IterMut
   
   use prelude.prelude.UIntSize
   
-  constant max'0 : usize = [%#span8] (18446744073709551615 : usize)
+  constant v_MAX'0 : usize = [%#span7] (18446744073709551615 : usize)
   
   function shallow_model'2 (self : slice t) : Seq.seq t
   
-  axiom shallow_model'2_spec : forall self : slice t . ([%#span10] shallow_model'2 self = Slice.id self)
-  && ([%#span9] Seq.length (shallow_model'2 self) <= UIntSize.to_int (max'0 : usize))
+  axiom shallow_model'2_spec : forall self : slice t . ([%#span9] shallow_model'2 self = Slice.id self)
+  && ([%#span8] Seq.length (shallow_model'2 self) <= UIntSize.to_int (v_MAX'0 : usize))
   
-  use C02IterMut_IterMut_Type as C02IterMut_IterMut_Type
+  use T_02_iter_mut__IterMut as T_02_iter_mut__IterMut
   
-  use C02IterMut_IterMut_Type as IterMut'0
+  use T_02_iter_mut__IterMut as IterMut'0
   
-  predicate invariant'4 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_itermut t) =
-    [%#span11] Seq.length (shallow_model'2 (C02IterMut_IterMut_Type.itermut_inner self).final)
-    = Seq.length (shallow_model'2 (C02IterMut_IterMut_Type.itermut_inner self).current)
+  predicate invariant'4 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_IterMut t) =
+    [%#span10] Seq.length (shallow_model'2 (T_02_iter_mut__IterMut.t_IterMut__inner self).final)
+    = Seq.length (shallow_model'2 (T_02_iter_mut__IterMut.t_IterMut__inner self).current)
   
-  predicate inv'4 (_1 : IterMut'0.t_itermut t)
+  predicate inv'4 (_1 : IterMut'0.t_IterMut t)
   
-  axiom inv'4 : forall x : IterMut'0.t_itermut t . inv'4 x
+  axiom inv'4 [@rewrite] : forall x : IterMut'0.t_IterMut t [inv'4 x] . inv'4 x
   = (invariant'4 x
   /\ match x with
-    | IterMut'0.C_IterMut inner -> true
+    | IterMut'0.C_IterMut inner -> inv'2 inner
     end)
   
-  use Alloc_Vec_Vec_Type as Vec'0
+  use T_alloc__vec__Vec as Vec'0
   
-  predicate inv'0 (_1 : Vec'0.t_vec t (Global'0.t_global))
+  predicate inv'0 (_1 : Vec'0.t_Vec t (Global'0.t_Global))
   
-  predicate invariant'3 (self : borrowed (Vec'0.t_vec t (Global'0.t_global))) =
-    [%#span12] inv'0 self.current /\ inv'0 self.final
+  predicate invariant'3 (self : borrowed (Vec'0.t_Vec t (Global'0.t_Global))) =
+    [%#span11] inv'0 self.current /\ inv'0 self.final
   
-  predicate inv'3 (_1 : borrowed (Vec'0.t_vec t (Global'0.t_global)))
+  predicate inv'3 (_1 : borrowed (Vec'0.t_Vec t (Global'0.t_Global)))
   
-  axiom inv'3 : forall x : borrowed (Vec'0.t_vec t (Global'0.t_global)) . inv'3 x = true
+  axiom inv'3 [@rewrite] : forall x : borrowed (Vec'0.t_Vec t (Global'0.t_Global)) [inv'3 x] . inv'3 x = invariant'3 x
   
   predicate inv'1 (_1 : slice t)
   
   predicate invariant'2 (self : borrowed (slice t)) =
-    [%#span12] inv'1 self.current /\ inv'1 self.final
+    [%#span11] inv'1 self.current /\ inv'1 self.final
   
-  axiom inv'2 : forall x : borrowed (slice t) . inv'2 x = true
+  axiom inv'2 [@rewrite] : forall x : borrowed (slice t) [inv'2 x] . inv'2 x = invariant'2 x
   
   predicate invariant'1 (self : slice t) =
-    [%#span13] inv'6 (shallow_model'2 self)
+    [%#span12] inv'6 (shallow_model'2 self)
   
-  axiom inv'1 : forall x : slice t . inv'1 x = true
+  axiom inv'1 [@rewrite] : forall x : slice t [inv'1 x] . inv'1 x = invariant'1 x
   
-  function shallow_model'3 (self : Vec'0.t_vec t (Global'0.t_global)) : Seq.seq t
+  function shallow_model'3 (self : Vec'0.t_Vec t (Global'0.t_Global)) : Seq.seq t
   
-  axiom shallow_model'3_spec : forall self : Vec'0.t_vec t (Global'0.t_global) . [%#span14] Seq.length (shallow_model'3 self)
-  <= UIntSize.to_int (max'0 : usize)
+  axiom shallow_model'3_spec : forall self : Vec'0.t_Vec t (Global'0.t_Global) . [%#span13] Seq.length (shallow_model'3 self)
+  <= UIntSize.to_int (v_MAX'0 : usize)
   
-  predicate invariant'0 (self : Vec'0.t_vec t (Global'0.t_global)) =
-    [%#span15] inv'6 (shallow_model'3 self)
+  predicate invariant'0 (self : Vec'0.t_Vec t (Global'0.t_Global)) =
+    [%#span14] inv'6 (shallow_model'3 self)
   
-  axiom inv'0 : forall x : Vec'0.t_vec t (Global'0.t_global) . inv'0 x = true
+  axiom inv'0 [@rewrite] : forall x : Vec'0.t_Vec t (Global'0.t_Global) [inv'0 x] . inv'0 x = invariant'0 x
   
-  function shallow_model'1 (self : borrowed (Vec'0.t_vec t (Global'0.t_global))) : Seq.seq t =
-    [%#span16] shallow_model'3 self.current
+  function shallow_model'1 (self : borrowed (Vec'0.t_Vec t (Global'0.t_Global))) : Seq.seq t =
+    [%#span15] shallow_model'3 self.current
   
   function shallow_model'0 (self : borrowed (slice t)) : Seq.seq t =
-    [%#span16] shallow_model'2 self.current
+    [%#span15] shallow_model'2 self.current
   
   use prelude.prelude.Intrinsic
   
-  predicate resolve'1 (self : borrowed (Vec'0.t_vec t (Global'0.t_global))) =
-    [%#span17] self.final = self.current
+  predicate resolve'3 (self : borrowed (Vec'0.t_Vec t (Global'0.t_Global))) =
+    [%#span16] self.final = self.current
   
-  predicate resolve'0 (self : borrowed (slice t)) =
-    [%#span17] self.final = self.current
+  predicate resolve'1 (_1 : borrowed (Vec'0.t_Vec t (Global'0.t_Global))) =
+    resolve'3 _1
   
-  predicate resolve_elswhere'0 (self : RangeFull'0.t_rangefull) (_old : Seq.seq t) (_fin : Seq.seq t) =
-    [%#span18] true
+  predicate resolve'2 (self : borrowed (slice t)) =
+    [%#span16] self.final = self.current
   
-  predicate has_value'0 (self : RangeFull'0.t_rangefull) (seq : Seq.seq t) (out : slice t) =
-    [%#span19] seq = shallow_model'2 out
+  predicate resolve'0 (_1 : borrowed (slice t)) =
+    resolve'2 _1
   
-  predicate in_bounds'0 (self : RangeFull'0.t_rangefull) (_seq : Seq.seq t) =
-    [%#span20] true
+  predicate resolve_elswhere'0 (self : RangeFull'0.t_RangeFull) (_old : Seq.seq t) (_fin : Seq.seq t) =
+    [%#span17] true
   
-  let rec index_mut'0 (self:borrowed (Vec'0.t_vec t (Global'0.t_global))) (index:RangeFull'0.t_rangefull) (return'  (ret:borrowed (slice t)))= {[@expl:precondition] [%#span23] inv'5 index}
-    {[@expl:precondition] [%#span22] inv'3 self}
-    {[@expl:precondition] [%#span21] in_bounds'0 index (shallow_model'1 self)}
+  predicate has_value'0 (self : RangeFull'0.t_RangeFull) (seq : Seq.seq t) (out : slice t) =
+    [%#span18] seq = shallow_model'2 out
+  
+  predicate in_bounds'0 (self : RangeFull'0.t_RangeFull) (_seq : Seq.seq t) =
+    [%#span19] true
+  
+  let rec index_mut'0 (self:borrowed (Vec'0.t_Vec t (Global'0.t_Global))) (index:RangeFull'0.t_RangeFull) (return'  (ret:borrowed (slice t)))= {[@expl:precondition] [%#span22] inv'5 index}
+    {[@expl:precondition] [%#span21] inv'3 self}
+    {[@expl:precondition] [%#span20] in_bounds'0 index (shallow_model'1 self)}
     any
-    [ return' (result:borrowed (slice t))-> {[%#span28] inv'2 result}
-      {[%#span27] Seq.length (shallow_model'3 self.final) = Seq.length (shallow_model'1 self)}
-      {[%#span26] resolve_elswhere'0 index (shallow_model'1 self) (shallow_model'3 self.final)}
-      {[%#span25] has_value'0 index (shallow_model'3 self.final) result.final}
-      {[%#span24] has_value'0 index (shallow_model'1 self) result.current}
+    [ return' (result:borrowed (slice t))-> {[%#span27] inv'2 result}
+      {[%#span26] Seq.length (shallow_model'3 self.final) = Seq.length (shallow_model'1 self)}
+      {[%#span25] resolve_elswhere'0 index (shallow_model'1 self) (shallow_model'3 self.final)}
+      {[%#span24] has_value'0 index (shallow_model'3 self.final) result.final}
+      {[%#span23] has_value'0 index (shallow_model'1 self) result.current}
       (! return' {result}) ]
     
   
-  let rec iter_mut (v:borrowed (Vec'0.t_vec t (Global'0.t_global))) (return'  (ret:IterMut'0.t_itermut t))= {[%#s02_iter_mut0] inv'3 v}
+  meta "compute_max_steps" 1000000
+  
+  let rec iter_mut (v:borrowed (Vec'0.t_Vec t (Global'0.t_Global))) (return'  (ret:IterMut'0.t_IterMut t))= {[%#s02_iter_mut0] inv'3 v}
     (! bb0
     [ bb0 = s0
-      [ s0 = Borrow.borrow_final <Vec'0.t_vec t (Global'0.t_global)> {v.current} {Borrow.get_id v}
-          (fun (_ret':borrowed (Vec'0.t_vec t (Global'0.t_global))) ->
+      [ s0 = {inv'0 v.current}
+        Borrow.borrow_final <Vec'0.t_Vec t (Global'0.t_Global)> {v.current} {Borrow.get_id v}
+          (fun (_ret':borrowed (Vec'0.t_Vec t (Global'0.t_Global))) ->
              [ &_8 <- _ret' ] 
-             [ &v <- { v with current = _8.final ; } ] 
+            -{inv'0 _ret'.final}-
+             [ &v <- { v with current = _ret'.final ; } ] 
             s1)
-      | s1 = -{inv'0 _8.final}- s2
-      | s2 =  [ &_9 <- RangeFull'0.C_RangeFull ] s3
-      | s3 = index_mut'0 {_8} {_9} (fun (_ret':borrowed (slice t)) ->  [ &_7 <- _ret' ] s4)
-      | s4 = bb1 ]
+      | s1 =  [ &_9 <- RangeFull'0.C_RangeFull ] s2
+      | s2 = index_mut'0 {_8} {_9} (fun (_ret':borrowed (slice t)) ->  [ &_7 <- _ret' ] s3)
+      | s3 = bb1 ]
       
     | bb1 = s0
-      [ s0 = Borrow.borrow_final <slice t> {_7.current} {Borrow.get_id _7}
-          (fun (_ret':borrowed (slice t)) ->  [ &_6 <- _ret' ]  [ &_7 <- { _7 with current = _6.final ; } ] s1)
-      | s1 = -{inv'1 _6.final}- s2
-      | s2 = Borrow.borrow_final <slice t> {_6.current} {Borrow.get_id _6}
-          (fun (_ret':borrowed (slice t)) ->  [ &_5 <- _ret' ]  [ &_6 <- { _6 with current = _5.final ; } ] s3)
-      | s3 = -{inv'1 _5.final}- s4
-      | s4 =  [ &_0 <- IterMut'0.C_IterMut _5 ] s5
-      | s5 = {[@expl:type invariant] inv'2 _7} s6
-      | s6 = -{resolve'0 _7}- s7
-      | s7 = {[@expl:type invariant] inv'2 _6} s8
-      | s8 = -{resolve'0 _6}- s9
-      | s9 = {[@expl:type invariant] inv'3 v} s10
-      | s10 = -{resolve'1 v}- s11
-      | s11 = return' {_0} ]
+      [ s0 = {inv'1 _7.current}
+        Borrow.borrow_final <slice t> {_7.current} {Borrow.get_id _7}
+          (fun (_ret':borrowed (slice t)) ->
+             [ &_6 <- _ret' ] 
+            -{inv'1 _ret'.final}-
+             [ &_7 <- { _7 with current = _ret'.final ; } ] 
+            s1)
+      | s1 = {inv'1 _6.current}
+        Borrow.borrow_final <slice t> {_6.current} {Borrow.get_id _6}
+          (fun (_ret':borrowed (slice t)) ->
+             [ &_5 <- _ret' ] 
+            -{inv'1 _ret'.final}-
+             [ &_6 <- { _6 with current = _ret'.final ; } ] 
+            s2)
+      | s2 =  [ &_0 <- IterMut'0.C_IterMut _5 ] s3
+      | s3 = {[@expl:type invariant] inv'2 _7} s4
+      | s4 = -{resolve'0 _7}- s5
+      | s5 = {[@expl:type invariant] inv'2 _6} s6
+      | s6 = -{resolve'0 _6}- s7
+      | s7 = {[@expl:type invariant] inv'3 v} s8
+      | s8 = -{resolve'1 v}- s9
+      | s9 = return' {_0} ]
        ]
     )
-    [ & _0 : IterMut'0.t_itermut t = any_l ()
-    | & v : borrowed (Vec'0.t_vec t (Global'0.t_global)) = v
+    [ & _0 : IterMut'0.t_IterMut t = any_l ()
+    | & v : borrowed (Vec'0.t_Vec t (Global'0.t_Global)) = v
     | & _5 : borrowed (slice t) = any_l ()
     | & _6 : borrowed (slice t) = any_l ()
     | & _7 : borrowed (slice t) = any_l ()
-    | & _8 : borrowed (Vec'0.t_vec t (Global'0.t_global)) = any_l ()
-    | & _9 : RangeFull'0.t_rangefull = any_l () ]
+    | & _8 : borrowed (Vec'0.t_Vec t (Global'0.t_Global)) = any_l ()
+    | & _9 : RangeFull'0.t_RangeFull = any_l () ]
     
-    [ return' (result:IterMut'0.t_itermut t)-> {[@expl:postcondition] [%#s02_iter_mut4] inv'4 result}
+    [ return' (result:IterMut'0.t_IterMut t)-> {[@expl:postcondition] [%#s02_iter_mut4] inv'4 result}
       {[@expl:postcondition] [%#s02_iter_mut3] Seq.length (shallow_model'3 v.final) = Seq.length (shallow_model'1 v)}
-      {[@expl:postcondition] [%#s02_iter_mut2] shallow_model'2 (C02IterMut_IterMut_Type.itermut_inner result).final
+      {[@expl:postcondition] [%#s02_iter_mut2] shallow_model'2 (T_02_iter_mut__IterMut.t_IterMut__inner result).final
       = shallow_model'3 v.final}
-      {[@expl:postcondition] [%#s02_iter_mut1] shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner result)
+      {[@expl:postcondition] [%#s02_iter_mut1] shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner result)
       = shallow_model'1 v}
       (! return' {result}) ]
     
 end
-module C02IterMut_AllZero
+module M_02_iter_mut__all_zero [#"../02_iter_mut.rs" 88 0 88 35]
   let%span s02_iter_mut0 = "../02_iter_mut.rs" 90 19 90 35
-  
   let%span s02_iter_mut1 = "../02_iter_mut.rs" 91 23 91 47
-  
   let%span s02_iter_mut2 = "../02_iter_mut.rs" 92 16 92 23
-  
   let%span s02_iter_mut3 = "../02_iter_mut.rs" 93 16 93 55
-  
   let%span s02_iter_mut4 = "../02_iter_mut.rs" 92 4 92 25
-  
   let%span s02_iter_mut5 = "../02_iter_mut.rs" 98 27 98 75
-  
   let%span s02_iter_mut6 = "../02_iter_mut.rs" 99 21 99 22
-  
   let%span s02_iter_mut7 = "../02_iter_mut.rs" 86 10 86 33
-  
   let%span s02_iter_mut8 = "../02_iter_mut.rs" 87 0 87 66
-  
-  let%span span9 = "../../../../../creusot-contracts/src/invariant.rs" 8 8 8 12
-  
-  let%span span10 = "../../../../../creusot-contracts/src/std/boxed.rs" 27 8 27 18
-  
-  let%span span11 = "../../../../../creusot-contracts/src/logic/seq.rs" 197 8 197 97
-  
-  let%span span12 = "" 0 0 0 0
-  
-  let%span span13 = "../../../../../creusot-contracts/src/std/slice.rs" 27 14 27 41
-  
-  let%span span14 = "../../../../../creusot-contracts/src/std/slice.rs" 28 14 28 42
-  
-  let%span span15 = "../../../../../creusot-contracts/src/std/slice.rs" 16 20 16 30
-  
-  let%span span16 = "../../../../../creusot-contracts/src/std/vec.rs" 18 14 18 41
-  
-  let%span span17 = "../../../../../creusot-contracts/src/std/vec.rs" 60 20 60 41
-  
-  let%span span18 = "../../../../../creusot-contracts/src/invariant.rs" 35 20 35 44
-  
-  let%span span19 = "../../../../../creusot-contracts/src/logic/ops.rs" 42 8 42 31
-  
-  let%span span20 = "../../../../../creusot-contracts/src/model.rs" 108 8 108 31
-  
-  let%span span21 = "../../../../../creusot-contracts/src/std/slice.rs" 88 14 88 41
-  
-  let%span span22 = "../../../../../creusot-contracts/src/std/slice.rs" 89 4 89 86
-  
-  let%span span23 = "../02_iter_mut.rs" 39 12 43 13
-  
-  let%span span24 = "../02_iter_mut.rs" 55 15 55 21
-  
-  let%span span25 = "../02_iter_mut.rs" 56 15 56 21
-  
-  let%span span26 = "../02_iter_mut.rs" 57 15 57 21
-  
-  let%span span27 = "../02_iter_mut.rs" 58 15 58 32
-  
-  let%span span28 = "../02_iter_mut.rs" 59 15 59 32
-  
-  let%span span29 = "../02_iter_mut.rs" 60 14 60 42
-  
-  let%span span30 = "../02_iter_mut.rs" 53 4 53 10
-  
-  let%span span31 = "../02_iter_mut.rs" 49 15 49 24
-  
-  let%span span32 = "../02_iter_mut.rs" 50 14 50 45
-  
-  let%span span33 = "../02_iter_mut.rs" 47 4 47 10
-  
-  let%span span34 = "../02_iter_mut.rs" 22 20 22 64
-  
-  let%span span35 = "../../../../../creusot-contracts/src/logic/ops.rs" 20 8 20 31
-  
-  let%span span36 = "../../../../../creusot-contracts/src/resolve.rs" 26 20 26 34
-  
-  let%span span37 = "../02_iter_mut.rs" 32 8 32 76
-  
-  let%span span38 = "../02_iter_mut.rs" 67 17 67 21
-  
-  let%span span39 = "../02_iter_mut.rs" 63 14 66 5
-  
-  let%span span40 = "../02_iter_mut.rs" 67 26 67 44
-  
-  let%span span41 = "../../../../../creusot-contracts/src/logic/ops.rs" 86 8 86 33
-  
-  let%span span42 = "../02_iter_mut.rs" 74 17 74 21
-  
-  let%span span43 = "../02_iter_mut.rs" 73 14 73 28
-  
-  let%span span44 = "../02_iter_mut.rs" 74 26 74 30
-  
-  let%span span45 = "../02_iter_mut.rs" 82 19 82 20
-  
-  let%span span46 = "../02_iter_mut.rs" 79 10 79 29
-  
-  let%span span47 = "../02_iter_mut.rs" 80 10 80 35
-  
-  let%span span48 = "../02_iter_mut.rs" 81 10 81 33
-  
-  let%span span49 = "../02_iter_mut.rs" 82 41 82 55
+  let%span span9 = "../../../../../creusot-contracts/src/std/boxed.rs" 28 8 28 18
+  let%span span10 = "../../../../../creusot-contracts/src/logic/seq.rs" 198 8 198 97
+  let%span span11 = "" 0 0 0 0
+  let%span span12 = "../../../../../creusot-contracts/src/std/slice.rs" 29 14 29 41
+  let%span span13 = "../../../../../creusot-contracts/src/std/slice.rs" 30 14 30 42
+  let%span span14 = "../../../../../creusot-contracts/src/std/slice.rs" 18 20 18 30
+  let%span span15 = "../../../../../creusot-contracts/src/std/vec.rs" 19 14 19 41
+  let%span span16 = "../../../../../creusot-contracts/src/std/vec.rs" 68 20 68 41
+  let%span span17 = "../../../../../creusot-contracts/src/invariant.rs" 34 20 34 44
+  let%span span18 = "../../../../../creusot-contracts/src/logic/ops.rs" 42 8 42 31
+  let%span span19 = "../../../../../creusot-contracts/src/model.rs" 108 8 108 31
+  let%span span20 = "../../../../../creusot-contracts/src/std/slice.rs" 90 14 90 41
+  let%span span21 = "../../../../../creusot-contracts/src/std/slice.rs" 91 4 91 86
+  let%span span22 = "../02_iter_mut.rs" 39 12 43 13
+  let%span span23 = "../02_iter_mut.rs" 55 15 55 21
+  let%span span24 = "../02_iter_mut.rs" 56 15 56 21
+  let%span span25 = "../02_iter_mut.rs" 57 15 57 21
+  let%span span26 = "../02_iter_mut.rs" 58 15 58 32
+  let%span span27 = "../02_iter_mut.rs" 59 15 59 32
+  let%span span28 = "../02_iter_mut.rs" 60 14 60 42
+  let%span span29 = "../02_iter_mut.rs" 53 4 53 10
+  let%span span30 = "../02_iter_mut.rs" 49 15 49 24
+  let%span span31 = "../02_iter_mut.rs" 50 14 50 45
+  let%span span32 = "../02_iter_mut.rs" 47 4 47 10
+  let%span span33 = "../02_iter_mut.rs" 22 20 22 64
+  let%span span34 = "../../../../../creusot-contracts/src/logic/ops.rs" 20 8 20 31
+  let%span span35 = "../../../../../creusot-contracts/src/resolve.rs" 41 20 41 34
+  let%span span36 = "../02_iter_mut.rs" 32 8 32 76
+  let%span span37 = "../02_iter_mut.rs" 67 17 67 21
+  let%span span38 = "../02_iter_mut.rs" 63 14 66 5
+  let%span span39 = "../02_iter_mut.rs" 67 26 67 44
+  let%span span40 = "../../../../../creusot-contracts/src/logic/ops.rs" 86 8 86 33
+  let%span span41 = "../02_iter_mut.rs" 74 17 74 21
+  let%span span42 = "../02_iter_mut.rs" 73 14 73 28
+  let%span span43 = "../02_iter_mut.rs" 74 26 74 30
+  let%span span44 = "../02_iter_mut.rs" 82 19 82 20
+  let%span span45 = "../02_iter_mut.rs" 79 10 79 29
+  let%span span46 = "../02_iter_mut.rs" 80 10 80 35
+  let%span span47 = "../02_iter_mut.rs" 81 10 81 33
+  let%span span48 = "../02_iter_mut.rs" 82 41 82 55
   
   use prelude.prelude.UIntSize
   
-  predicate invariant'9 (self : usize) =
-    [%#span9] true
-  
   predicate inv'9 (_1 : usize)
   
-  axiom inv'9 : forall x : usize . inv'9 x = true
+  axiom inv'9 [@rewrite] : forall x : usize [inv'9 x] . inv'9 x = true
   
-  use Alloc_Alloc_Global_Type as Global'0
+  use T_alloc__alloc__Global as Global'0
   
   predicate invariant'8 (self : usize) =
-    [%#span10] inv'9 self
+    [%#span9] inv'9 self
   
   predicate inv'8 (_1 : usize)
   
-  axiom inv'8 : forall x : usize . inv'8 x = true
+  axiom inv'8 [@rewrite] : forall x : usize [inv'8 x] . inv'8 x = true
   
   use seq.Seq
   
@@ -1220,11 +1078,11 @@ module C02IterMut_AllZero
   use seq.Seq
   
   predicate invariant'7 (self : Seq.seq usize) =
-    [%#span11] forall i : int . 0 <= i /\ i < Seq.length self  -> inv'8 (Seq.get self i)
+    [%#span10] forall i : int . 0 <= i /\ i < Seq.length self  -> inv'8 (Seq.get self i)
   
   predicate inv'7 (_1 : Seq.seq usize)
   
-  axiom inv'7 : forall x : Seq.seq usize . inv'7 x = true
+  axiom inv'7 [@rewrite] : forall x : Seq.seq usize [inv'7 x] . inv'7 x = true
   
   use prelude.prelude.Slice
   
@@ -1232,69 +1090,66 @@ module C02IterMut_AllZero
   
   use prelude.prelude.UIntSize
   
-  constant max'0 : usize = [%#span12] (18446744073709551615 : usize)
+  constant v_MAX'0 : usize = [%#span11] (18446744073709551615 : usize)
   
   function shallow_model'3 (self : slice usize) : Seq.seq usize
   
-  axiom shallow_model'3_spec : forall self : slice usize . ([%#span14] shallow_model'3 self = Slice.id self)
-  && ([%#span13] Seq.length (shallow_model'3 self) <= UIntSize.to_int (max'0 : usize))
+  axiom shallow_model'3_spec : forall self : slice usize . ([%#span13] shallow_model'3 self = Slice.id self)
+  && ([%#span12] Seq.length (shallow_model'3 self) <= UIntSize.to_int (v_MAX'0 : usize))
   
   predicate invariant'6 (self : slice usize) =
-    [%#span15] inv'7 (shallow_model'3 self)
+    [%#span14] inv'7 (shallow_model'3 self)
   
   predicate inv'6 (_1 : slice usize)
   
-  axiom inv'6 : forall x : slice usize . inv'6 x = true
+  axiom inv'6 [@rewrite] : forall x : slice usize [inv'6 x] . inv'6 x = true
   
-  use Alloc_Vec_Vec_Type as Vec'0
+  use T_alloc__vec__Vec as Vec'0
   
-  function shallow_model'0 (self : Vec'0.t_vec usize (Global'0.t_global)) : Seq.seq usize
+  function shallow_model'0 (self : Vec'0.t_Vec usize (Global'0.t_Global)) : Seq.seq usize
   
-  axiom shallow_model'0_spec : forall self : Vec'0.t_vec usize (Global'0.t_global) . [%#span16] Seq.length (shallow_model'0 self)
-  <= UIntSize.to_int (max'0 : usize)
+  axiom shallow_model'0_spec : forall self : Vec'0.t_Vec usize (Global'0.t_Global) . [%#span15] Seq.length (shallow_model'0 self)
+  <= UIntSize.to_int (v_MAX'0 : usize)
   
-  predicate invariant'5 (self : Vec'0.t_vec usize (Global'0.t_global)) =
-    [%#span17] inv'7 (shallow_model'0 self)
+  predicate invariant'5 (self : Vec'0.t_Vec usize (Global'0.t_Global)) =
+    [%#span16] inv'7 (shallow_model'0 self)
   
-  predicate inv'5 (_1 : Vec'0.t_vec usize (Global'0.t_global))
+  predicate inv'5 (_1 : Vec'0.t_Vec usize (Global'0.t_Global))
   
-  axiom inv'5 : forall x : Vec'0.t_vec usize (Global'0.t_global) . inv'5 x = true
+  axiom inv'5 [@rewrite] : forall x : Vec'0.t_Vec usize (Global'0.t_Global) [inv'5 x] . inv'5 x = true
   
   use prelude.prelude.Borrow
   
   predicate invariant'4 (self : borrowed (slice usize)) =
-    [%#span18] inv'6 self.current /\ inv'6 self.final
+    [%#span17] inv'6 self.current /\ inv'6 self.final
   
   predicate inv'4 (_1 : borrowed (slice usize))
   
-  axiom inv'4 : forall x : borrowed (slice usize) . inv'4 x = true
+  axiom inv'4 [@rewrite] : forall x : borrowed (slice usize) [inv'4 x] . inv'4 x = true
   
-  use Core_Option_Option_Type as Option'0
+  use T_core__option__Option as Option'0
   
-  predicate invariant'3 (self : Option'0.t_option (borrowed usize)) =
-    [%#span9] true
+  predicate inv'3 (_1 : Option'0.t_Option (borrowed usize))
   
-  predicate inv'3 (_1 : Option'0.t_option (borrowed usize))
+  axiom inv'3 [@rewrite] : forall x : Option'0.t_Option (borrowed usize) [inv'3 x] . inv'3 x = true
   
-  axiom inv'3 : forall x : Option'0.t_option (borrowed usize) . inv'3 x = true
+  use T_02_iter_mut__IterMut as IterMut'0
   
-  use C02IterMut_IterMut_Type as IterMut'0
+  predicate inv'0 (_1 : IterMut'0.t_IterMut usize)
   
-  predicate inv'0 (_1 : IterMut'0.t_itermut usize)
+  predicate invariant'2 (self : borrowed (IterMut'0.t_IterMut usize)) =
+    [%#span17] inv'0 self.current /\ inv'0 self.final
   
-  predicate invariant'2 (self : borrowed (IterMut'0.t_itermut usize)) =
-    [%#span18] inv'0 self.current /\ inv'0 self.final
+  predicate inv'2 (_1 : borrowed (IterMut'0.t_IterMut usize))
   
-  predicate inv'2 (_1 : borrowed (IterMut'0.t_itermut usize))
+  axiom inv'2 [@rewrite] : forall x : borrowed (IterMut'0.t_IterMut usize) [inv'2 x] . inv'2 x = invariant'2 x
   
-  axiom inv'2 : forall x : borrowed (IterMut'0.t_itermut usize) . inv'2 x = invariant'2 x
+  predicate invariant'1 (self : borrowed (Vec'0.t_Vec usize (Global'0.t_Global))) =
+    [%#span17] inv'5 self.current /\ inv'5 self.final
   
-  predicate invariant'1 (self : borrowed (Vec'0.t_vec usize (Global'0.t_global))) =
-    [%#span18] inv'5 self.current /\ inv'5 self.final
+  predicate inv'1 (_1 : borrowed (Vec'0.t_Vec usize (Global'0.t_Global)))
   
-  predicate inv'1 (_1 : borrowed (Vec'0.t_vec usize (Global'0.t_global)))
-  
-  axiom inv'1 : forall x : borrowed (Vec'0.t_vec usize (Global'0.t_global)) . inv'1 x = true
+  axiom inv'1 [@rewrite] : forall x : borrowed (Vec'0.t_Vec usize (Global'0.t_Global)) [inv'1 x] . inv'1 x = true
   
   use seq.Seq
   
@@ -1303,77 +1158,83 @@ module C02IterMut_AllZero
   use seq.Seq
   
   function index_logic'2 [@inline:trivial] (self : slice usize) (ix : int) : usize =
-    [%#span19] Seq.get (shallow_model'3 self) ix
+    [%#span18] Seq.get (shallow_model'3 self) ix
   
   function shallow_model'2 (self : borrowed (slice usize)) : Seq.seq usize =
-    [%#span20] shallow_model'3 self.current
+    [%#span19] shallow_model'3 self.current
   
   use seq.Seq
   
   function to_mut_seq'0 (self : borrowed (slice usize)) : Seq.seq (borrowed usize)
   
-  axiom to_mut_seq'0_spec : forall self : borrowed (slice usize) . ([%#span22] forall i : int . 0 <= i
+  axiom to_mut_seq'0_spec : forall self : borrowed (slice usize) . ([%#span21] forall i : int . 0 <= i
   /\ i < Seq.length (to_mut_seq'0 self)
    -> Seq.get (to_mut_seq'0 self) i
   = Borrow.borrow_logic (index_logic'2 self.current i) (index_logic'2 self.final i) (Borrow.inherit_id (Borrow.get_id self) i))
-  && ([%#span21] Seq.length (to_mut_seq'0 self) = Seq.length (shallow_model'2 self))
+  && ([%#span20] Seq.length (to_mut_seq'0 self) = Seq.length (shallow_model'2 self))
   
-  use C02IterMut_IterMut_Type as C02IterMut_IterMut_Type
+  use T_02_iter_mut__IterMut as T_02_iter_mut__IterMut
   
-  predicate produces'0 [#"../02_iter_mut.rs" 37 4 37 65] (self : IterMut'0.t_itermut usize) (visited : Seq.seq (borrowed usize)) (tl : IterMut'0.t_itermut usize)
+  predicate produces'0 [#"../02_iter_mut.rs" 37 4 37 65] (self : IterMut'0.t_IterMut usize) (visited : Seq.seq (borrowed usize)) (tl : IterMut'0.t_IterMut usize)
     
    =
-    [%#span23] Seq.length (shallow_model'2 (C02IterMut_IterMut_Type.itermut_inner self))
-    = Seq.length visited + Seq.length (shallow_model'2 (C02IterMut_IterMut_Type.itermut_inner tl))
-    /\ (forall i : int . 0 <= i /\ i < Seq.length (shallow_model'2 (C02IterMut_IterMut_Type.itermut_inner self))
-     -> (Seq.get (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner self)) i).current
-    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner tl))) i).current
-    /\ (Seq.get (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner self)) i).final
-    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner tl))) i).final)
+    [%#span22] Seq.length (shallow_model'2 (T_02_iter_mut__IterMut.t_IterMut__inner self))
+    = Seq.length visited + Seq.length (shallow_model'2 (T_02_iter_mut__IterMut.t_IterMut__inner tl))
+    /\ (forall i : int . 0 <= i /\ i < Seq.length (shallow_model'2 (T_02_iter_mut__IterMut.t_IterMut__inner self))
+     -> (Seq.get (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner self)) i).current
+    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))) i).current
+    /\ (Seq.get (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner self)) i).final
+    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))) i).final)
   
-  function produces_trans'0 [#"../02_iter_mut.rs" 61 4 61 90] (a : IterMut'0.t_itermut usize) (ab : Seq.seq (borrowed usize)) (b : IterMut'0.t_itermut usize) (bc : Seq.seq (borrowed usize)) (c : IterMut'0.t_itermut usize) : ()
+  function produces_trans'0 [#"../02_iter_mut.rs" 61 4 61 90] (a : IterMut'0.t_IterMut usize) (ab : Seq.seq (borrowed usize)) (b : IterMut'0.t_IterMut usize) (bc : Seq.seq (borrowed usize)) (c : IterMut'0.t_IterMut usize) : ()
     
    =
-    [%#span30] ()
+    [%#span29] ()
   
-  axiom produces_trans'0_spec : forall a : IterMut'0.t_itermut usize, ab : Seq.seq (borrowed usize), b : IterMut'0.t_itermut usize, bc : Seq.seq (borrowed usize), c : IterMut'0.t_itermut usize . ([%#span24] inv'0 a)
-   -> ([%#span25] inv'0 b)
-   -> ([%#span26] inv'0 c)
-   -> ([%#span27] produces'0 a ab b)  -> ([%#span28] produces'0 b bc c)  -> ([%#span29] produces'0 a (Seq.(++) ab bc) c)
+  axiom produces_trans'0_spec : forall a : IterMut'0.t_IterMut usize, ab : Seq.seq (borrowed usize), b : IterMut'0.t_IterMut usize, bc : Seq.seq (borrowed usize), c : IterMut'0.t_IterMut usize . ([%#span23] inv'0 a)
+   -> ([%#span24] inv'0 b)
+   -> ([%#span25] inv'0 c)
+   -> ([%#span26] produces'0 a ab b)  -> ([%#span27] produces'0 b bc c)  -> ([%#span28] produces'0 a (Seq.(++) ab bc) c)
   
   use seq.Seq
   
-  function produces_refl'0 [#"../02_iter_mut.rs" 51 4 51 26] (self : IterMut'0.t_itermut usize) : () =
-    [%#span33] ()
+  function produces_refl'0 [#"../02_iter_mut.rs" 51 4 51 26] (self : IterMut'0.t_IterMut usize) : () =
+    [%#span32] ()
   
-  axiom produces_refl'0_spec : forall self : IterMut'0.t_itermut usize . ([%#span31] inv'0 self)
-   -> ([%#span32] produces'0 self (Seq.empty  : Seq.seq (borrowed usize)) self)
+  axiom produces_refl'0_spec : forall self : IterMut'0.t_IterMut usize . ([%#span30] inv'0 self)
+   -> ([%#span31] produces'0 self (Seq.empty  : Seq.seq (borrowed usize)) self)
   
-  predicate invariant'0 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_itermut usize) =
-    [%#span34] Seq.length (shallow_model'3 (C02IterMut_IterMut_Type.itermut_inner self).final)
-    = Seq.length (shallow_model'3 (C02IterMut_IterMut_Type.itermut_inner self).current)
+  predicate invariant'0 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_IterMut usize) =
+    [%#span33] Seq.length (shallow_model'3 (T_02_iter_mut__IterMut.t_IterMut__inner self).final)
+    = Seq.length (shallow_model'3 (T_02_iter_mut__IterMut.t_IterMut__inner self).current)
   
-  axiom inv'0 : forall x : IterMut'0.t_itermut usize . inv'0 x
+  axiom inv'0 [@rewrite] : forall x : IterMut'0.t_IterMut usize [inv'0 x] . inv'0 x
   = (invariant'0 x
   /\ match x with
     | IterMut'0.C_IterMut inner -> true
     end)
   
-  function index_logic'1 [@inline:trivial] (self : Vec'0.t_vec usize (Global'0.t_global)) (ix : int) : usize =
-    [%#span35] Seq.get (shallow_model'0 self) ix
+  function index_logic'1 [@inline:trivial] (self : Vec'0.t_Vec usize (Global'0.t_Global)) (ix : int) : usize =
+    [%#span34] Seq.get (shallow_model'0 self) ix
   
-  function shallow_model'1 (self : borrowed (Vec'0.t_vec usize (Global'0.t_global))) : Seq.seq usize =
-    [%#span20] shallow_model'0 self.current
+  function shallow_model'1 (self : borrowed (Vec'0.t_Vec usize (Global'0.t_Global))) : Seq.seq usize =
+    [%#span19] shallow_model'0 self.current
   
   use prelude.prelude.Snapshot
   
   use prelude.prelude.Intrinsic
   
-  predicate resolve'1 (self : borrowed (Vec'0.t_vec usize (Global'0.t_global))) =
-    [%#span36] self.final = self.current
+  predicate resolve'3 (self : borrowed (Vec'0.t_Vec usize (Global'0.t_Global))) =
+    [%#span35] self.final = self.current
   
-  predicate resolve'0 (self : borrowed usize) =
-    [%#span36] self.final = self.current
+  predicate resolve'1 (_1 : borrowed (Vec'0.t_Vec usize (Global'0.t_Global))) =
+    resolve'3 _1
+  
+  predicate resolve'2 (self : borrowed usize) =
+    [%#span35] self.final = self.current
+  
+  predicate resolve'0 (_1 : borrowed usize) =
+    resolve'2 _1
   
   use seq.Seq
   
@@ -1381,17 +1242,17 @@ module C02IterMut_AllZero
   
   use seq.Seq
   
-  predicate resolve'2 (self : borrowed (slice usize)) =
-    [%#span36] self.final = self.current
+  predicate resolve'4 (self : borrowed (slice usize)) =
+    [%#span35] self.final = self.current
   
-  predicate completed'0 [#"../02_iter_mut.rs" 31 4 31 35] (self : borrowed (IterMut'0.t_itermut usize)) =
-    [%#span37] resolve'2 (C02IterMut_IterMut_Type.itermut_inner self.current)
-    /\ Seq.(==) (shallow_model'2 (C02IterMut_IterMut_Type.itermut_inner self.current)) (Seq.empty  : Seq.seq usize)
+  predicate completed'0 [#"../02_iter_mut.rs" 31 4 31 35] (self : borrowed (IterMut'0.t_IterMut usize)) =
+    [%#span36] resolve'4 (T_02_iter_mut__IterMut.t_IterMut__inner self.current)
+    /\ Seq.(==) (shallow_model'2 (T_02_iter_mut__IterMut.t_IterMut__inner self.current)) (Seq.empty  : Seq.seq usize)
   
-  let rec next'0 (self:borrowed (IterMut'0.t_itermut usize)) (return'  (ret:Option'0.t_option (borrowed usize)))= {[@expl:precondition] [%#span38] inv'2 self}
+  let rec next'0 (self:borrowed (IterMut'0.t_IterMut usize)) (return'  (ret:Option'0.t_Option (borrowed usize)))= {[@expl:precondition] [%#span37] inv'2 self}
     any
-    [ return' (result:Option'0.t_option (borrowed usize))-> {[%#span40] inv'3 result}
-      {[%#span39] match result with
+    [ return' (result:Option'0.t_Option (borrowed usize))-> {[%#span39] inv'3 result}
+      {[%#span38] match result with
         | Option'0.C_None -> completed'0 self
         | Option'0.C_Some v -> produces'0 self.current (Seq.singleton v) self.final
         end}
@@ -1403,7 +1264,7 @@ module C02IterMut_AllZero
   function index_logic'0 [@inline:trivial] (self : Snapshot.snap_ty (Seq.seq (borrowed usize))) (ix : int) : borrowed usize
     
    =
-    [%#span41] Seq.get (Snapshot.inner self) ix
+    [%#span40] Seq.get (Snapshot.inner self) ix
   
   use prelude.prelude.Snapshot
   
@@ -1413,33 +1274,35 @@ module C02IterMut_AllZero
   
   use prelude.prelude.Snapshot
   
-  let rec into_iter'0 (self:IterMut'0.t_itermut usize) (return'  (ret:IterMut'0.t_itermut usize))= {[@expl:precondition] [%#span42] inv'0 self}
+  let rec into_iter'0 (self:IterMut'0.t_IterMut usize) (return'  (ret:IterMut'0.t_IterMut usize))= {[@expl:precondition] [%#span41] inv'0 self}
     any
-    [ return' (result:IterMut'0.t_itermut usize)-> {[%#span44] inv'0 result}
-      {[%#span43] result = self}
+    [ return' (result:IterMut'0.t_IterMut usize)-> {[%#span43] inv'0 result}
+      {[%#span42] result = self}
       (! return' {result}) ]
     
   
-  let rec iter_mut'0 (v:borrowed (Vec'0.t_vec usize (Global'0.t_global))) (return'  (ret:IterMut'0.t_itermut usize))= {[@expl:precondition] [%#span45] inv'1 v}
+  let rec iter_mut'0 (v:borrowed (Vec'0.t_Vec usize (Global'0.t_Global))) (return'  (ret:IterMut'0.t_IterMut usize))= {[@expl:precondition] [%#span44] inv'1 v}
     any
-    [ return' (result:IterMut'0.t_itermut usize)-> {[%#span49] inv'0 result}
-      {[%#span48] Seq.length (shallow_model'0 v.final) = Seq.length (shallow_model'1 v)}
-      {[%#span47] shallow_model'3 (C02IterMut_IterMut_Type.itermut_inner result).final = shallow_model'0 v.final}
-      {[%#span46] shallow_model'2 (C02IterMut_IterMut_Type.itermut_inner result) = shallow_model'1 v}
+    [ return' (result:IterMut'0.t_IterMut usize)-> {[%#span48] inv'0 result}
+      {[%#span47] Seq.length (shallow_model'0 v.final) = Seq.length (shallow_model'1 v)}
+      {[%#span46] shallow_model'3 (T_02_iter_mut__IterMut.t_IterMut__inner result).final = shallow_model'0 v.final}
+      {[%#span45] shallow_model'2 (T_02_iter_mut__IterMut.t_IterMut__inner result) = shallow_model'1 v}
       (! return' {result}) ]
     
   
-  let rec all_zero (v:borrowed (Vec'0.t_vec usize (Global'0.t_global))) (return'  (ret:()))= (! bb0
+  meta "compute_max_steps" 1000000
+  
+  let rec all_zero (v:borrowed (Vec'0.t_Vec usize (Global'0.t_Global))) (return'  (ret:()))= (! bb0
     [ bb0 = s0
-      [ s0 = Borrow.borrow_final <Vec'0.t_vec usize (Global'0.t_global)> {v.current} {Borrow.get_id v}
-          (fun (_ret':borrowed (Vec'0.t_vec usize (Global'0.t_global))) ->
+      [ s0 = Borrow.borrow_final <Vec'0.t_Vec usize (Global'0.t_Global)> {v.current} {Borrow.get_id v}
+          (fun (_ret':borrowed (Vec'0.t_Vec usize (Global'0.t_Global))) ->
              [ &_6 <- _ret' ] 
-             [ &v <- { v with current = _6.final ; } ] 
+             [ &v <- { v with current = _ret'.final ; } ] 
             s1)
-      | s1 = iter_mut'0 {_6} (fun (_ret':IterMut'0.t_itermut usize) ->  [ &_5 <- _ret' ] s2)
+      | s1 = iter_mut'0 {_6} (fun (_ret':IterMut'0.t_IterMut usize) ->  [ &_5 <- _ret' ] s2)
       | s2 = bb1 ]
       
-    | bb1 = s0 [ s0 = into_iter'0 {_5} (fun (_ret':IterMut'0.t_itermut usize) ->  [ &it <- _ret' ] s1) | s1 = bb2 ] 
+    | bb1 = s0 [ s0 = into_iter'0 {_5} (fun (_ret':IterMut'0.t_IterMut usize) ->  [ &it <- _ret' ] s1) | s1 = bb2 ] 
     | bb2 = s0 [ s0 =  [ &iter_old <- [%#s02_iter_mut0] Snapshot.new it ] s1 | s1 = bb3 ] 
     | bb3 = s0
       [ s0 =  [ &produced <- [%#s02_iter_mut1] Snapshot.new (Seq.empty  : Seq.seq (borrowed usize)) ] s1 | s1 = bb4 ]
@@ -1452,18 +1315,22 @@ module C02IterMut_AllZero
         {[@expl:loop invariant] [%#s02_iter_mut2] inv'0 it}
         (! s0) [ s0 = bb6 ] 
         [ bb6 = s0
-          [ s0 = Borrow.borrow_mut <IterMut'0.t_itermut usize> {it}
-              (fun (_ret':borrowed (IterMut'0.t_itermut usize)) ->  [ &_16 <- _ret' ]  [ &it <- _16.final ] s1)
-          | s1 = -{inv'0 _16.final}- s2
-          | s2 = next'0 {_16} (fun (_ret':Option'0.t_option (borrowed usize)) ->  [ &_15 <- _ret' ] s3)
-          | s3 = bb7 ]
+          [ s0 = {inv'0 it}
+            Borrow.borrow_mut <IterMut'0.t_IterMut usize> {it}
+              (fun (_ret':borrowed (IterMut'0.t_IterMut usize)) ->
+                 [ &_16 <- _ret' ] 
+                -{inv'0 _ret'.final}-
+                 [ &it <- _ret'.final ] 
+                s1)
+          | s1 = next'0 {_16} (fun (_ret':Option'0.t_Option (borrowed usize)) ->  [ &_15 <- _ret' ] s2)
+          | s2 = bb7 ]
           
         | bb7 = any
           [ br0 -> {_15 = Option'0.C_None } (! bb10) | br1 (a:borrowed usize)-> {_15 = Option'0.C_Some a} (! bb9) ]
           
         | bb9 = bb11
         | bb11 = s0
-          [ s0 = Option'0.some <borrowed usize> {_15} (fun (r0'0:borrowed usize) ->  [ &x <- r0'0 ] s1)
+          [ s0 = Option'0.v_Some <borrowed usize> {_15} (fun (r0'0:borrowed usize) ->  [ &x <- r0'0 ] s1)
           | s1 =  [ &_19 <- [%#s02_iter_mut5] Snapshot.new (Seq.(++) (Snapshot.inner produced) (Seq.singleton x)) ] s2
           | s2 = bb12 ]
           
@@ -1478,14 +1345,14 @@ module C02IterMut_AllZero
     | bb10 = s0 [ s0 = {[@expl:type invariant] inv'0 it} s1 | s1 = -{resolve'1 v}- s2 | s2 = return' {_0} ]  ]
     )
     [ & _0 : () = any_l ()
-    | & v : borrowed (Vec'0.t_vec usize (Global'0.t_global)) = v
-    | & it : IterMut'0.t_itermut usize = any_l ()
-    | & _5 : IterMut'0.t_itermut usize = any_l ()
-    | & _6 : borrowed (Vec'0.t_vec usize (Global'0.t_global)) = any_l ()
-    | & iter_old : Snapshot.snap_ty (IterMut'0.t_itermut usize) = any_l ()
+    | & v : borrowed (Vec'0.t_Vec usize (Global'0.t_Global)) = v
+    | & it : IterMut'0.t_IterMut usize = any_l ()
+    | & _5 : IterMut'0.t_IterMut usize = any_l ()
+    | & _6 : borrowed (Vec'0.t_Vec usize (Global'0.t_Global)) = any_l ()
+    | & iter_old : Snapshot.snap_ty (IterMut'0.t_IterMut usize) = any_l ()
     | & produced : Snapshot.snap_ty (Seq.seq (borrowed usize)) = any_l ()
-    | & _15 : Option'0.t_option (borrowed usize) = any_l ()
-    | & _16 : borrowed (IterMut'0.t_itermut usize) = any_l ()
+    | & _15 : Option'0.t_Option (borrowed usize) = any_l ()
+    | & _16 : borrowed (IterMut'0.t_IterMut usize) = any_l ()
     | & x : borrowed usize = any_l ()
     | & _19 : Snapshot.snap_ty (Seq.seq (borrowed usize)) = any_l () ]
     
@@ -1495,64 +1362,41 @@ module C02IterMut_AllZero
       (! return' {result}) ]
     
 end
-module C02IterMut_Impl0
+module M_02_iter_mut__qyi3160965152947035565 [#"../02_iter_mut.rs" 17 0 17 40] (* <IterMut<'a, T> as creusot_contracts::Invariant> *)
   type t
 end
-module C02IterMut_Impl1
+module M_02_iter_mut__qyi4305820612590367313 [#"../02_iter_mut.rs" 26 0 26 39] (* <IterMut<'a, T> as common::Iterator> *)
   type t
   
   let%span s02_iter_mut0 = "../02_iter_mut.rs" 61 4 61 90
-  
   let%span s02_iter_mut1 = "../02_iter_mut.rs" 51 4 51 26
-  
   let%span s02_iter_mut2 = "../02_iter_mut.rs" 67 4 67 44
-  
-  let%span span3 = "../../../../../creusot-contracts/src/std/boxed.rs" 27 8 27 18
-  
-  let%span span4 = "../../../../../creusot-contracts/src/logic/seq.rs" 197 8 197 97
-  
+  let%span span3 = "../../../../../creusot-contracts/src/std/boxed.rs" 28 8 28 18
+  let%span span4 = "../../../../../creusot-contracts/src/logic/seq.rs" 198 8 198 97
   let%span span5 = "" 0 0 0 0
-  
-  let%span span6 = "../../../../../creusot-contracts/src/std/slice.rs" 27 14 27 41
-  
-  let%span span7 = "../../../../../creusot-contracts/src/std/slice.rs" 28 14 28 42
-  
-  let%span span8 = "../../../../../creusot-contracts/src/std/slice.rs" 16 20 16 30
-  
-  let%span span9 = "../../../../../creusot-contracts/src/invariant.rs" 35 20 35 44
-  
-  let%span span10 = "../../../../../creusot-contracts/src/invariant.rs" 8 8 8 12
-  
-  let%span span11 = "../02_iter_mut.rs" 22 20 22 64
-  
-  let%span span12 = "../../../../../creusot-contracts/src/model.rs" 108 8 108 31
-  
-  let%span span13 = "../../../../../creusot-contracts/src/resolve.rs" 26 20 26 34
-  
-  let%span span14 = "../02_iter_mut.rs" 32 8 32 76
-  
-  let%span span15 = "../../../../../creusot-contracts/src/logic/ops.rs" 42 8 42 31
-  
-  let%span span16 = "../../../../../creusot-contracts/src/std/slice.rs" 88 14 88 41
-  
-  let%span span17 = "../../../../../creusot-contracts/src/std/slice.rs" 89 4 89 86
-  
-  let%span span18 = "../02_iter_mut.rs" 39 12 43 13
-  
-  predicate invariant'7 (self : t)
-  
-  predicate inv'7 (_1 : t)
-  
-  axiom inv'7 : forall x : t . inv'7 x = true
-  
-  use Alloc_Alloc_Global_Type as Global'0
-  
-  predicate invariant'6 (self : t) =
-    [%#span3] inv'7 self
+  let%span span6 = "../../../../../creusot-contracts/src/std/slice.rs" 29 14 29 41
+  let%span span7 = "../../../../../creusot-contracts/src/std/slice.rs" 30 14 30 42
+  let%span span8 = "../../../../../creusot-contracts/src/std/slice.rs" 18 20 18 30
+  let%span span9 = "../../../../../creusot-contracts/src/invariant.rs" 34 20 34 44
+  let%span span10 = "../02_iter_mut.rs" 22 20 22 64
+  let%span span11 = "../../../../../creusot-contracts/src/model.rs" 108 8 108 31
+  let%span span12 = "../../../../../creusot-contracts/src/resolve.rs" 41 20 41 34
+  let%span span13 = "../02_iter_mut.rs" 32 8 32 76
+  let%span span14 = "../../../../../creusot-contracts/src/logic/ops.rs" 42 8 42 31
+  let%span span15 = "../../../../../creusot-contracts/src/std/slice.rs" 90 14 90 41
+  let%span span16 = "../../../../../creusot-contracts/src/std/slice.rs" 91 4 91 86
+  let%span span17 = "../02_iter_mut.rs" 39 12 43 13
   
   predicate inv'6 (_1 : t)
   
-  axiom inv'6 : forall x : t . inv'6 x = true
+  use T_alloc__alloc__Global as Global'0
+  
+  predicate invariant'7 (self : t) =
+    [%#span3] inv'6 self
+  
+  predicate inv'8 (_1 : t)
+  
+  axiom inv'8 [@rewrite] : forall x : t [inv'8 x] . inv'8 x = invariant'7 x
   
   use seq.Seq
   
@@ -1562,12 +1406,16 @@ module C02IterMut_Impl1
   
   use seq.Seq
   
-  predicate invariant'5 (self : Seq.seq t) =
-    [%#span4] forall i : int . 0 <= i /\ i < Seq.length self  -> inv'6 (Seq.get self i)
+  predicate invariant'6 (self : Seq.seq t) =
+    [%#span4] forall i : int . 0 <= i /\ i < Seq.length self  -> inv'8 (Seq.get self i)
   
-  predicate inv'5 (_1 : Seq.seq t)
+  predicate inv'7 (_1 : Seq.seq t)
   
-  axiom inv'5 : forall x : Seq.seq t . inv'5 x = true
+  axiom inv'7 [@rewrite] : forall x : Seq.seq t [inv'7 x] . inv'7 x = invariant'6 x
+  
+  predicate invariant'5 (self : t)
+  
+  axiom inv'6 : forall x : t [inv'6 x] . inv'6 x  -> invariant'5 x
   
   use prelude.prelude.Slice
   
@@ -1577,59 +1425,67 @@ module C02IterMut_Impl1
   
   use prelude.prelude.UIntSize
   
-  constant max'0 : usize = [%#span5] (18446744073709551615 : usize)
+  constant v_MAX'0 : usize = [%#span5] (18446744073709551615 : usize)
   
   function shallow_model'1 (self : slice t) : Seq.seq t
   
   axiom shallow_model'1_spec : forall self : slice t . ([%#span7] shallow_model'1 self = Slice.id self)
-  && ([%#span6] Seq.length (shallow_model'1 self) <= UIntSize.to_int (max'0 : usize))
+  && ([%#span6] Seq.length (shallow_model'1 self) <= UIntSize.to_int (v_MAX'0 : usize))
   
   predicate invariant'4 (self : slice t) =
-    [%#span8] inv'5 (shallow_model'1 self)
+    [%#span8] inv'7 (shallow_model'1 self)
   
-  predicate inv'4 (_1 : slice t)
+  predicate inv'5 (_1 : slice t)
   
-  axiom inv'4 : forall x : slice t . inv'4 x = true
+  axiom inv'5 [@rewrite] : forall x : slice t [inv'5 x] . inv'5 x = invariant'4 x
   
   use prelude.prelude.Borrow
   
-  predicate invariant'3 (self : borrowed (slice t)) =
-    [%#span9] inv'4 self.current /\ inv'4 self.final
+  predicate invariant'3 (self : borrowed t) =
+    [%#span9] inv'6 self.current /\ inv'6 self.final
+  
+  predicate inv'4 (_1 : borrowed t)
+  
+  axiom inv'4 [@rewrite] : forall x : borrowed t [inv'4 x] . inv'4 x = invariant'3 x
+  
+  predicate invariant'2 (self : borrowed (slice t)) =
+    [%#span9] inv'5 self.current /\ inv'5 self.final
   
   predicate inv'3 (_1 : borrowed (slice t))
   
-  axiom inv'3 : forall x : borrowed (slice t) . inv'3 x = true
+  axiom inv'3 [@rewrite] : forall x : borrowed (slice t) [inv'3 x] . inv'3 x = invariant'2 x
   
-  use Core_Option_Option_Type as Option'0
+  use T_core__option__Option as Option'0
   
-  predicate invariant'2 (self : Option'0.t_option (borrowed t)) =
-    [%#span10] true
+  predicate inv'2 (_1 : Option'0.t_Option (borrowed t))
   
-  predicate inv'2 (_1 : Option'0.t_option (borrowed t))
+  axiom inv'2 [@rewrite] : forall x : Option'0.t_Option (borrowed t) [inv'2 x] . inv'2 x
+  = match x with
+    | Option'0.C_None -> true
+    | Option'0.C_Some a_0 -> inv'4 a_0
+    end
   
-  axiom inv'2 : forall x : Option'0.t_option (borrowed t) . inv'2 x = true
+  use T_02_iter_mut__IterMut as IterMut'0
   
-  use C02IterMut_IterMut_Type as IterMut'0
+  predicate inv'0 (_1 : IterMut'0.t_IterMut t)
   
-  predicate inv'0 (_1 : IterMut'0.t_itermut t)
-  
-  predicate invariant'1 (self : borrowed (IterMut'0.t_itermut t)) =
+  predicate invariant'1 (self : borrowed (IterMut'0.t_IterMut t)) =
     [%#span9] inv'0 self.current /\ inv'0 self.final
   
-  predicate inv'1 (_1 : borrowed (IterMut'0.t_itermut t))
+  predicate inv'1 (_1 : borrowed (IterMut'0.t_IterMut t))
   
-  axiom inv'1 : forall x : borrowed (IterMut'0.t_itermut t) . inv'1 x = invariant'1 x
+  axiom inv'1 [@rewrite] : forall x : borrowed (IterMut'0.t_IterMut t) [inv'1 x] . inv'1 x = invariant'1 x
   
-  use C02IterMut_IterMut_Type as C02IterMut_IterMut_Type
+  use T_02_iter_mut__IterMut as T_02_iter_mut__IterMut
   
-  predicate invariant'0 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_itermut t) =
-    [%#span11] Seq.length (shallow_model'1 (C02IterMut_IterMut_Type.itermut_inner self).final)
-    = Seq.length (shallow_model'1 (C02IterMut_IterMut_Type.itermut_inner self).current)
+  predicate invariant'0 [#"../02_iter_mut.rs" 20 4 20 30] (self : IterMut'0.t_IterMut t) =
+    [%#span10] Seq.length (shallow_model'1 (T_02_iter_mut__IterMut.t_IterMut__inner self).final)
+    = Seq.length (shallow_model'1 (T_02_iter_mut__IterMut.t_IterMut__inner self).current)
   
-  axiom inv'0 : forall x : IterMut'0.t_itermut t . inv'0 x
+  axiom inv'0 [@rewrite] : forall x : IterMut'0.t_IterMut t [inv'0 x] . inv'0 x
   = (invariant'0 x
   /\ match x with
-    | IterMut'0.C_IterMut inner -> true
+    | IterMut'0.C_IterMut inner -> inv'3 inner
     end)
   
   use seq.Seq
@@ -1639,14 +1495,14 @@ module C02IterMut_Impl1
   use seq.Seq
   
   function shallow_model'0 (self : borrowed (slice t)) : Seq.seq t =
-    [%#span12] shallow_model'1 self.current
+    [%#span11] shallow_model'1 self.current
   
   predicate resolve'0 (self : borrowed (slice t)) =
-    [%#span13] self.final = self.current
+    [%#span12] self.final = self.current
   
-  predicate completed'0 [#"../02_iter_mut.rs" 31 4 31 35] (self : borrowed (IterMut'0.t_itermut t)) =
-    [%#span14] resolve'0 (C02IterMut_IterMut_Type.itermut_inner self.current)
-    /\ Seq.(==) (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner self.current)) (Seq.empty  : Seq.seq t)
+  predicate completed'0 [#"../02_iter_mut.rs" 31 4 31 35] (self : borrowed (IterMut'0.t_IterMut t)) =
+    [%#span13] resolve'0 (T_02_iter_mut__IterMut.t_IterMut__inner self.current)
+    /\ Seq.(==) (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner self.current)) (Seq.empty  : Seq.seq t)
   
   use seq.Seq
   
@@ -1659,44 +1515,44 @@ module C02IterMut_Impl1
   use seq.Seq
   
   function index_logic'0 [@inline:trivial] (self : slice t) (ix : int) : t =
-    [%#span15] Seq.get (shallow_model'1 self) ix
+    [%#span14] Seq.get (shallow_model'1 self) ix
   
   use seq.Seq
   
   function to_mut_seq'0 (self : borrowed (slice t)) : Seq.seq (borrowed t)
   
-  axiom to_mut_seq'0_spec : forall self : borrowed (slice t) . ([%#span17] forall i : int . 0 <= i
+  axiom to_mut_seq'0_spec : forall self : borrowed (slice t) . ([%#span16] forall i : int . 0 <= i
   /\ i < Seq.length (to_mut_seq'0 self)
    -> Seq.get (to_mut_seq'0 self) i
   = Borrow.borrow_logic (index_logic'0 self.current i) (index_logic'0 self.final i) (Borrow.inherit_id (Borrow.get_id self) i))
-  && ([%#span16] Seq.length (to_mut_seq'0 self) = Seq.length (shallow_model'0 self))
+  && ([%#span15] Seq.length (to_mut_seq'0 self) = Seq.length (shallow_model'0 self))
   
-  predicate produces'0 [#"../02_iter_mut.rs" 37 4 37 65] (self : IterMut'0.t_itermut t) (visited : Seq.seq (borrowed t)) (tl : IterMut'0.t_itermut t)
+  predicate produces'0 [#"../02_iter_mut.rs" 37 4 37 65] (self : IterMut'0.t_IterMut t) (visited : Seq.seq (borrowed t)) (tl : IterMut'0.t_IterMut t)
     
    =
-    [%#span18] Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner self))
-    = Seq.length visited + Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner tl))
-    /\ (forall i : int . 0 <= i /\ i < Seq.length (shallow_model'0 (C02IterMut_IterMut_Type.itermut_inner self))
-     -> (Seq.get (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner self)) i).current
-    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner tl))) i).current
-    /\ (Seq.get (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner self)) i).final
-    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (C02IterMut_IterMut_Type.itermut_inner tl))) i).final)
+    [%#span17] Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner self))
+    = Seq.length visited + Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))
+    /\ (forall i : int . 0 <= i /\ i < Seq.length (shallow_model'0 (T_02_iter_mut__IterMut.t_IterMut__inner self))
+     -> (Seq.get (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner self)) i).current
+    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))) i).current
+    /\ (Seq.get (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner self)) i).final
+    = (Seq.get (Seq.(++) visited (to_mut_seq'0 (T_02_iter_mut__IterMut.t_IterMut__inner tl))) i).final)
   
-  goal produces_trans_refn : [%#s02_iter_mut0] forall a : IterMut'0.t_itermut t . forall ab : Seq.seq (borrowed t) . forall b : IterMut'0.t_itermut t . forall bc : Seq.seq (borrowed t) . forall c : IterMut'0.t_itermut t . produces'0 b bc c
+  goal produces_trans_refn : [%#s02_iter_mut0] forall a : IterMut'0.t_IterMut t . forall ab : Seq.seq (borrowed t) . forall b : IterMut'0.t_IterMut t . forall bc : Seq.seq (borrowed t) . forall c : IterMut'0.t_IterMut t . produces'0 b bc c
   /\ produces'0 a ab b /\ inv'0 c /\ inv'0 b /\ inv'0 a
    -> produces'0 b bc c
   /\ produces'0 a ab b
   /\ inv'0 c
   /\ inv'0 b /\ inv'0 a /\ (forall result : () . produces'0 a (Seq.(++) ab bc) c  -> produces'0 a (Seq.(++) ab bc) c)
   
-  goal produces_refl_refn : [%#s02_iter_mut1] forall self : IterMut'0.t_itermut t . inv'0 self
+  goal produces_refl_refn : [%#s02_iter_mut1] forall self : IterMut'0.t_IterMut t . inv'0 self
    -> inv'0 self
   /\ (forall result : () . produces'0 self (Seq.empty  : Seq.seq (borrowed t)) self
    -> produces'0 self (Seq.empty  : Seq.seq (borrowed t)) self)
   
-  goal next_refn : [%#s02_iter_mut2] forall self : borrowed (IterMut'0.t_itermut t) . inv'1 self
+  goal next_refn : [%#s02_iter_mut2] forall self : borrowed (IterMut'0.t_IterMut t) . inv'1 self
    -> inv'1 self
-  /\ (forall result : Option'0.t_option (borrowed t) . inv'2 result
+  /\ (forall result : Option'0.t_Option (borrowed t) . inv'2 result
   /\ match result with
     | Option'0.C_None -> completed'0 self
     | Option'0.C_Some v -> produces'0 self.current (Seq.singleton v) self.final

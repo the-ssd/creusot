@@ -1,4 +1,3 @@
-use heck::ToSnakeCase;
 use rustc_ast_ir::visit::VisitorResult;
 use rustc_hir::{def::DefKind, def_id::DefId};
 use rustc_macros::{TypeFoldable, TypeVisitable};
@@ -9,13 +8,10 @@ use rustc_type_ir::{fold::TypeFoldable, visit::TypeVisitable, AliasTyKind, Inter
 use crate::{
     ctx::TranslationCtx,
     translation::traits,
-    util::{self, item_symb, ItemType},
+    util::{self, item_symb, translate_accessor_name, type_name, value_name, ItemType},
 };
 
-use super::{
-    ty_inv::{inv_module_name, TyInvKind},
-    PreludeModule, TransId,
-};
+use super::{structural_resolve, ty_inv::tyinv_head_and_subst, PreludeModule, TransId};
 
 /// Dependencies between items and the resolution logic to find the 'monomorphic' forms accounting
 /// for various Creusot hacks like the handling of closures.
@@ -27,7 +23,11 @@ use super::{
 pub(crate) enum Dependency<'tcx> {
     Type(Ty<'tcx>),
     Item(DefId, GenericArgsRef<'tcx>),
-    TyInv(Ty<'tcx>, TyInvKind),
+    // Type invariants and structual resolution expressions
+    // are identified by a substituted type, each of these entries is associated with a `TransId` containing a
+    // 'skeleton type' (aka type with identity substs).
+    TyInv(Ty<'tcx>),
+    StructuralResolve(Ty<'tcx>),
     Hacked(ExtendedId, DefId, GenericArgsRef<'tcx>),
     Builtin(PreludeModule),
 }
@@ -69,7 +69,7 @@ impl<'tcx> Dependency<'tcx> {
         }
     }
 
-    pub(crate) fn from_trans_id(tcx: TyCtxt<'tcx>, trans_id: TransId) -> Self {
+    pub(crate) fn from_trans_id(tcx: TyCtxt<'tcx>, trans_id: TransId<'tcx>) -> Self {
         match trans_id {
             TransId::Item(self_id) => {
                 let subst = match tcx.def_kind(self_id) {
@@ -82,7 +82,7 @@ impl<'tcx> Dependency<'tcx> {
 
                 Dependency::new(tcx, (self_id, subst)).erase_regions(tcx)
             }
-            TransId::TyInv(inv_kind) => Dependency::TyInv(inv_kind.to_skeleton_ty(tcx), inv_kind),
+            TransId::TyInv(ty) => Dependency::TyInv(ty),
             TransId::Hacked(h, self_id) => {
                 let subst = match tcx.def_kind(self_id) {
                     DefKind::Closure => match tcx.type_of(self_id).instantiate_identity().kind() {
@@ -93,16 +93,28 @@ impl<'tcx> Dependency<'tcx> {
                 };
                 Dependency::Hacked(h, self_id, subst).erase_regions(tcx)
             }
+            TransId::StructuralResolve(ty) => Dependency::StructuralResolve(ty),
         }
     }
 
-    pub(crate) fn to_trans_id(self) -> Option<TransId> {
+    pub(crate) fn to_trans_id(
+        self,
+        tcx: TyCtxt<'tcx>,
+        param_env: ParamEnv<'tcx>,
+    ) -> Option<TransId<'tcx>> {
         match self {
             Dependency::Type(_) => None,
             Dependency::Item(id, _) => Some(TransId::Item(id)),
-            Dependency::TyInv(_, k) => Some(TransId::TyInv(k)),
+            Dependency::TyInv(ty) => {
+                let ty = tyinv_head_and_subst(tcx, ty, param_env).0;
+                Some(TransId::TyInv(ty))
+            }
             Dependency::Hacked(h, id, _) => Some(TransId::Hacked(h, id)),
             Dependency::Builtin(_) => None,
+            Dependency::StructuralResolve(ty) => {
+                let ty = structural_resolve::head_and_subst(tcx, ty).0;
+                Some(TransId::StructuralResolve(ty))
+            }
         }
     }
 
@@ -121,14 +133,15 @@ impl<'tcx> Dependency<'tcx> {
     pub(crate) fn did(self) -> Option<(DefId, GenericArgsRef<'tcx>)> {
         match self {
             Dependency::Item(def_id, subst) => Some((def_id, subst)),
-            Dependency::Type(t) | Dependency::TyInv(t, _) => match t.kind() {
+            Dependency::Type(t) => match t.kind() {
                 TyKind::Adt(def, substs) => Some((def.did(), substs)),
                 TyKind::Closure(id, substs) => Some((*id, substs)),
                 TyKind::Alias(AliasTyKind::Projection, aty) => Some((aty.def_id, aty.args)),
                 _ => None,
             },
             Dependency::Hacked(_, id, substs) => Some((id, substs)),
-            Dependency::Builtin(_) => None,
+            Dependency::TyInv(_) | Dependency::Builtin(_) => None,
+            Dependency::StructuralResolve(_) => None,
         }
     }
 
@@ -142,9 +155,16 @@ impl<'tcx> Dependency<'tcx> {
     }
 
     #[inline]
-    pub(crate) fn subst(self, tcx: TyCtxt<'tcx>, other: Dependency<'tcx>) -> Self {
-        let substs = if let Dependency::TyInv(ty, inv_kind) = other {
-            inv_kind.tyinv_substs(tcx, ty)
+    pub(crate) fn subst(
+        self,
+        tcx: TyCtxt<'tcx>,
+        other: Dependency<'tcx>,
+        param_env: ParamEnv<'tcx>,
+    ) -> Self {
+        let substs = if let Dependency::TyInv(ty) = other {
+            tyinv_head_and_subst(tcx, ty, param_env).1
+        } else if let Dependency::StructuralResolve(ty) = other {
+            structural_resolve::head_and_subst(tcx, ty).1
         } else if let Some((_, substs)) = other.did() {
             substs
         } else {
@@ -154,13 +174,20 @@ impl<'tcx> Dependency<'tcx> {
         EarlyBinder::bind(self).instantiate(tcx, substs)
     }
 
+    /// We need to "overload" certain identifiers in rustc so that we can distinguish them while
+    /// rustc doesn't. In particular, closures act as both a type and a function and are missing many
+    /// identifiers for things like accessors.
+    ///
+    /// We also use this to overload "structural resolution" for types
     #[inline]
-    pub(crate) fn closure_hack(self, tcx: TyCtxt<'tcx>) -> Self {
+    pub(crate) fn identify_overloads(self, tcx: TyCtxt<'tcx>) -> Self {
         match self {
             Dependency::Item(did, subst) => {
                 let (hacked_id, id, subst) = closure_hack(tcx, did, subst);
                 if let Some(hacked_id) = hacked_id {
                     Dependency::Hacked(hacked_id, id, subst)
+                } else if let Some(ty) = structural_resolve(tcx, (id, subst)) {
+                    Dependency::StructuralResolve(ty)
                 } else {
                     Dependency::new(tcx, (id, subst))
                 }
@@ -172,22 +199,19 @@ impl<'tcx> Dependency<'tcx> {
 
     pub(crate) fn base_ident(self, tcx: TyCtxt<'tcx>) -> Symbol {
         match self {
-            Dependency::Type(ty) => {
-                let nm = match ty.kind() {
-                    TyKind::Adt(def, _) => {
-                        item_symb(tcx, def.did(), rustc_hir::def::Namespace::TypeNS)
-                    }
-                    TyKind::Alias(_, aty) => tcx.item_name(aty.def_id),
-                    TyKind::Closure(def_id, _) => {
-                        item_symb(tcx, *def_id, rustc_hir::def::Namespace::TypeNS)
-                    }
-                    _ => Symbol::intern("debug_ty_name"),
-                };
-                Symbol::intern(&nm.as_str().to_snake_case())
-            }
+            Dependency::Type(ty) => match ty.kind() {
+                TyKind::Adt(def, _) => item_symb(tcx, def.did(), rustc_hir::def::Namespace::TypeNS),
+                TyKind::Alias(_, aty) => {
+                    Symbol::intern(&type_name(tcx.item_name(aty.def_id).as_str()))
+                }
+                TyKind::Closure(def_id, _) => {
+                    item_symb(tcx, *def_id, rustc_hir::def::Namespace::TypeNS)
+                }
+                _ => Symbol::intern("debug_ty_name"),
+            },
             Dependency::Item(_, _) => {
                 let did = self.did().unwrap().0;
-                let base = match util::item_type(tcx, did) {
+                match util::item_type(tcx, did) {
                     ItemType::Impl => tcx.item_name(tcx.trait_id_of_impl(did).unwrap()),
                     ItemType::Closure => Symbol::intern(&format!(
                         "closure{}",
@@ -195,18 +219,15 @@ impl<'tcx> Dependency<'tcx> {
                     )),
                     ItemType::Field => {
                         let variant = tcx.parent(did);
-                        let name = format!(
-                            "{}_{}",
-                            tcx.item_name(variant).as_str().to_ascii_lowercase(),
-                            tcx.item_name(did),
+                        let name = translate_accessor_name(
+                            &tcx.item_name(variant).as_str(),
+                            &tcx.item_name(did).as_str(),
                         );
                         Symbol::intern(&name)
                     }
-                    _ => tcx.item_name(did),
-                };
-                Symbol::intern(&base.as_str().to_snake_case())
+                    _ => Symbol::intern(&value_name(tcx.item_name(did).as_str())),
+                }
             }
-            Dependency::TyInv(_, inv_kind) => Symbol::intern(&*inv_module_name(tcx, inv_kind)),
             Dependency::Hacked(hacked_id, _, _) => match hacked_id {
                 ExtendedId::PostconditionOnce => Symbol::intern("postcondition_once"),
                 ExtendedId::PostconditionMut => Symbol::intern("postcondition_mut"),
@@ -216,7 +237,9 @@ impl<'tcx> Dependency<'tcx> {
                 ExtendedId::Resolve => Symbol::intern("resolve"),
                 ExtendedId::Accessor(ix) => Symbol::intern(&format!("field_{ix}")),
             },
+            Dependency::TyInv(..) => Symbol::intern("tyinv_should_not_appear"),
             Dependency::Builtin(_) => Symbol::intern("builtin_should_not_appear"),
+            Dependency::StructuralResolve(_) => Symbol::intern("structural_resolve"),
         }
     }
 }
@@ -241,8 +264,21 @@ fn resolve_item<'tcx>(
     let (hacked_id, id, subst) = closure_hack(tcx, resolved.0, resolved.1);
     if let Some(hacked_id) = hacked_id {
         Dependency::Hacked(hacked_id, id, subst)
+    } else if let Some(ty) = structural_resolve(tcx, resolved) {
+        Dependency::StructuralResolve(ty)
     } else {
         Dependency::new(tcx, (id, subst))
+    }
+}
+
+fn structural_resolve<'tcx>(
+    tcx: TyCtxt<'tcx>,
+    dep: (DefId, GenericArgsRef<'tcx>),
+) -> Option<Ty<'tcx>> {
+    if tcx.get_diagnostic_item(Symbol::intern("creusot_structural_resolve")).unwrap() == dep.0 {
+        Some(dep.1.type_at(0))
+    } else {
+        None
     }
 }
 
@@ -274,9 +310,7 @@ pub(crate) fn closure_hack<'tcx>(
         }
     };
 
-    if tcx.is_diagnostic_item(Symbol::intern("creusot_resolve_default"), def_id)
-        || tcx.is_diagnostic_item(Symbol::intern("creusot_resolve_method"), def_id)
-    {
+    if tcx.is_diagnostic_item(Symbol::intern("creusot_resolve_method"), def_id) {
         let self_ty = subst.types().nth(0).unwrap();
         if let TyKind::Closure(id, csubst) = self_ty.kind() {
             return (Some(ExtendedId::Resolve), *id, csubst);

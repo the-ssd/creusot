@@ -1,177 +1,93 @@
 
-module Core_Result_Result_Type
-  type t_result 't 'e =
+module T_core__result__Result
+  type t_Result 't 'e =
     | C_Ok 't
     | C_Err 'e
   
   function any_l (_ : 'b) : 'a
   
-  let rec ok < 't > < 'e > (input:t_result 't 'e) (ret  (field_0:'t))= any
+  let rec v_Ok < 't > < 'e > (input:t_Result 't 'e) (ret  (field_0:'t))= any
     [ good (field_0:'t)-> {C_Ok field_0 = input} (! ret {field_0})
-    | bad (field_0:'t)-> {C_Ok field_0 <> input} {false} any ]
+    | bad -> {forall field_0 : 't [C_Ok field_0 : t_Result 't 'e] . C_Ok field_0 <> input} (! {false} any) ]
     
   
-  let rec err < 't > < 'e > (input:t_result 't 'e) (ret  (field_0:'e))= any
+  let rec v_Err < 't > < 'e > (input:t_Result 't 'e) (ret  (field_0:'e))= any
     [ good (field_0:'e)-> {C_Err field_0 = input} (! ret {field_0})
-    | bad (field_0:'e)-> {C_Err field_0 <> input} {false} any ]
+    | bad -> {forall field_0 : 'e [C_Err field_0 : t_Result 't 'e] . C_Err field_0 <> input} (! {false} any) ]
     
 end
-module Core_Cmp_Ordering_Type
-  type t_ordering  =
+module T_core__cmp__Ordering
+  type t_Ordering  =
     | C_Less
     | C_Equal
     | C_Greater
   
   function any_l (_ : 'b) : 'a
   
-  let rec less (input:t_ordering) (ret  )= any
-    [ good -> {C_Less  = input} (! ret) | bad -> {C_Less  <> input} {false} any ]
+  let rec v_Less (input:t_Ordering) (ret  )= any
+    [ good -> {C_Less  = input} (! ret) | bad -> {C_Less  <> input} (! {false} any) ]
     
   
-  let rec equal (input:t_ordering) (ret  )= any
-    [ good -> {C_Equal  = input} (! ret) | bad -> {C_Equal  <> input} {false} any ]
+  let rec v_Equal (input:t_Ordering) (ret  )= any
+    [ good -> {C_Equal  = input} (! ret) | bad -> {C_Equal  <> input} (! {false} any) ]
     
   
-  let rec greater (input:t_ordering) (ret  )= any
-    [ good -> {C_Greater  = input} (! ret) | bad -> {C_Greater  <> input} {false} any ]
-    
-end
-module Core_Ptr_NonNull_NonNull_Type
-  use prelude.prelude.Opaque
-  
-  type t_nonnull 't =
-    | C_NonNull opaque_ptr
-  
-  function any_l (_ : 'b) : 'a
-  
-  let rec t_nonnull < 't > (input:t_nonnull 't) (ret  (pointer:opaque_ptr))= any
-    [ good (pointer:opaque_ptr)-> {C_NonNull pointer = input} (! ret {pointer})
-    | bad (pointer:opaque_ptr)-> {C_NonNull pointer <> input} {false} any ]
+  let rec v_Greater (input:t_Ordering) (ret  )= any
+    [ good -> {C_Greater  = input} (! ret) | bad -> {C_Greater  <> input} (! {false} any) ]
     
 end
-module Core_Marker_PhantomData_Type
-  type t_phantomdata 't =
-    | C_PhantomData
-  
-  function any_l (_ : 'b) : 'a
-  
-  let rec t_phantomdata < 't > (input:t_phantomdata 't) (ret  )= any
-    [ good -> {C_PhantomData  = input} (! ret) | bad -> {C_PhantomData  <> input} {false} any ]
-    
-end
-module Core_Ptr_Unique_Unique_Type
-  use Core_Marker_PhantomData_Type as PhantomData'0
-  
-  use Core_Ptr_NonNull_NonNull_Type as NonNull'0
-  
-  type t_unique 't =
-    | C_Unique (NonNull'0.t_nonnull 't) (PhantomData'0.t_phantomdata 't)
-  
-  function any_l (_ : 'b) : 'a
-  
-  let rec t_unique < 't > (input:t_unique 't) (ret  (pointer:NonNull'0.t_nonnull 't) (_marker:PhantomData'0.t_phantomdata 't))= any
-    [ good (pointer:NonNull'0.t_nonnull 't) (_marker:PhantomData'0.t_phantomdata 't)-> {C_Unique pointer _marker
-      = input}
-      (! ret {pointer} {_marker})
-    | bad (pointer:NonNull'0.t_nonnull 't) (_marker:PhantomData'0.t_phantomdata 't)-> {C_Unique pointer _marker
-      <> input}
-      {false}
-      any ]
-    
-end
-module Alloc_Boxed_Box_Type
-  use Core_Ptr_Unique_Unique_Type as Unique'0
-  
-  type t_box 't 'a =
-    | C_Box (Unique'0.t_unique 't) 'a
-  
-  function any_l (_ : 'b) : 'a
-end
-module Alloc_Alloc_Global_Type
-  type t_global  =
+module T_alloc__alloc__Global
+  type t_Global  =
     | C_Global
   
   function any_l (_ : 'b) : 'a
   
-  let rec t_global (input:t_global) (ret  )= any
-    [ good -> {C_Global  = input} (! ret) | bad -> {C_Global  <> input} {false} any ]
-    
+  let rec t_Global (input:t_Global) (ret  )= any [ good -> {C_Global  = input} (! ret) ] 
 end
-module C02Std_BinarySearch
+module M_02_std__binary_search [#"../02_std.rs" 8 0 8 40]
   let%span s02_std0 = "../02_std.rs" 11 20 11 27
-  
   let%span s02_std1 = "../02_std.rs" 6 0 6 64
-  
   let%span s02_std2 = "../02_std.rs" 7 11 7 24
-  
   let%span s02_std3 = "../02_std.rs" 9 30 9 31
-  
-  let%span span4 = "../../../../../creusot-contracts/src/std/boxed.rs" 27 8 27 18
-  
-  let%span span5 = "../../../../../creusot-contracts/src/logic/seq.rs" 197 8 197 97
-  
-  let%span span6 = "../../../../../creusot-contracts/src/invariant.rs" 8 8 8 12
-  
-  let%span span7 = "" 0 0 0 0
-  
-  let%span span8 = "../../../../../creusot-contracts/src/std/slice.rs" 27 14 27 41
-  
-  let%span span9 = "../../../../../creusot-contracts/src/std/slice.rs" 28 14 28 42
-  
-  let%span span10 = "../../../../../creusot-contracts/src/std/slice.rs" 16 20 16 30
-  
-  let%span span11 = "../../../../../creusot-contracts/src/invariant.rs" 26 8 26 18
-  
-  let%span span12 = "../../../../../creusot-contracts/src/logic/ops.rs" 42 8 42 31
-  
-  let%span span13 = "../../../../../creusot-contracts/src/model.rs" 90 8 90 31
-  
-  let%span span14 = "../../../../../creusot-contracts/src/std/result.rs" 53 16 53 55
-  
-  let%span span15 = "" 0 0 0 0
-  
-  let%span span16 = "../../../../../creusot-contracts/src/std/result.rs" 18 0 135 1
-  
-  let%span span17 = "" 0 0 0 0
-  
-  let%span span18 = "../../../../../creusot-contracts/src/std/num.rs" 22 16 22 35
-  
-  let%span span19 = "../../../../../creusot-contracts/src/model.rs" 81 8 81 28
-  
-  let%span span20 = "../../../../../creusot-contracts/src/std/slice.rs" 40 14 40 44
-  
-  let%span span21 = "../../../../../creusot-contracts/src/std/slice.rs" 41 4 41 98
-  
-  let%span span22 = "../../../../../creusot-contracts/src/logic/seq.rs" 154 8 156 9
-  
-  let%span span23 = "../../../../../creusot-contracts/src/logic/seq.rs" 165 8 165 40
-  
-  let%span span24 = "../../../../../creusot-contracts/src/std/slice.rs" 247 0 356 1
-  
+  let%span span4 = "../../../../../creusot-contracts/src/std/boxed.rs" 28 8 28 18
+  let%span span5 = "../../../../../creusot-contracts/src/logic/seq.rs" 198 8 198 97
+  let%span span6 = "" 0 0 0 0
+  let%span span7 = "../../../../../creusot-contracts/src/std/slice.rs" 29 14 29 41
+  let%span span8 = "../../../../../creusot-contracts/src/std/slice.rs" 30 14 30 42
+  let%span span9 = "../../../../../creusot-contracts/src/std/slice.rs" 18 20 18 30
+  let%span span10 = "../../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
+  let%span span11 = "../../../../../creusot-contracts/src/logic/ops.rs" 42 8 42 31
+  let%span span12 = "../../../../../creusot-contracts/src/model.rs" 90 8 90 31
+  let%span span13 = "../../../../../creusot-contracts/src/std/result.rs" 53 16 53 55
+  let%span span14 = "" 0 0 0 0
+  let%span span15 = "../../../../../creusot-contracts/src/std/result.rs" 18 0 135 1
+  let%span span16 = "" 0 0 0 0
+  let%span span17 = "../../../../../creusot-contracts/src/std/num.rs" 22 16 22 35
+  let%span span18 = "../../../../../creusot-contracts/src/model.rs" 81 8 81 28
+  let%span span19 = "../../../../../creusot-contracts/src/std/slice.rs" 42 14 42 44
+  let%span span20 = "../../../../../creusot-contracts/src/std/slice.rs" 43 4 43 98
+  let%span span21 = "../../../../../creusot-contracts/src/logic/seq.rs" 154 8 156 9
+  let%span span22 = "../../../../../creusot-contracts/src/logic/seq.rs" 165 8 165 40
+  let%span span23 = "../../../../../creusot-contracts/src/std/slice.rs" 249 0 358 1
+  let%span span24 = "" 0 0 0 0
   let%span span25 = "" 0 0 0 0
-  
-  let%span span26 = "" 0 0 0 0
-  
-  let%span span27 = "../../../../../creusot-contracts/src/std/slice.rs" 323 8 323 118
-  
-  let%span span28 = "../../../../../creusot-contracts/src/std/slice.rs" 324 8 325 96
-  
-  let%span span29 = "../../../../../creusot-contracts/src/std/slice.rs" 326 8 327 78
-  
-  let%span span30 = "../../../../../creusot-contracts/src/std/slice.rs" 328 8 329 99
+  let%span span26 = "../../../../../creusot-contracts/src/std/slice.rs" 325 8 325 118
+  let%span span27 = "../../../../../creusot-contracts/src/std/slice.rs" 326 8 327 96
+  let%span span28 = "../../../../../creusot-contracts/src/std/slice.rs" 328 8 329 78
+  let%span span29 = "../../../../../creusot-contracts/src/std/slice.rs" 330 8 331 99
   
   use prelude.prelude.UInt32
   
   predicate inv'5 (_1 : uint32)
   
-  use Alloc_Alloc_Global_Type as Global'0
+  use T_alloc__alloc__Global as Global'0
   
   predicate invariant'7 (self : uint32) =
     [%#span4] inv'5 self
   
   predicate inv'7 (_1 : uint32)
   
-  axiom inv'7 : forall x : uint32 . inv'7 x = true
+  axiom inv'7 [@rewrite] : forall x : uint32 [inv'7 x] . inv'7 x = true
   
   use seq.Seq
   
@@ -186,12 +102,9 @@ module C02Std_BinarySearch
   
   predicate inv'6 (_1 : Seq.seq uint32)
   
-  axiom inv'6 : forall x : Seq.seq uint32 . inv'6 x = true
+  axiom inv'6 [@rewrite] : forall x : Seq.seq uint32 [inv'6 x] . inv'6 x = true
   
-  predicate invariant'5 (self : uint32) =
-    [%#span6] true
-  
-  axiom inv'5 : forall x : uint32 . inv'5 x = true
+  axiom inv'5 [@rewrite] : forall x : uint32 [inv'5 x] . inv'5 x = true
   
   use prelude.prelude.Slice
   
@@ -201,68 +114,62 @@ module C02Std_BinarySearch
   
   use prelude.prelude.UIntSize
   
-  constant max'0 : usize = [%#span7] (18446744073709551615 : usize)
+  constant v_MAX'0 : usize = [%#span6] (18446744073709551615 : usize)
   
   function shallow_model'1 (self : slice uint32) : Seq.seq uint32
   
-  axiom shallow_model'1_spec : forall self : slice uint32 . ([%#span9] shallow_model'1 self = Slice.id self)
-  && ([%#span8] Seq.length (shallow_model'1 self) <= UIntSize.to_int (max'0 : usize))
+  axiom shallow_model'1_spec : forall self : slice uint32 . ([%#span8] shallow_model'1 self = Slice.id self)
+  && ([%#span7] Seq.length (shallow_model'1 self) <= UIntSize.to_int (v_MAX'0 : usize))
   
   predicate invariant'4 (self : slice uint32) =
-    [%#span10] inv'6 (shallow_model'1 self)
+    [%#span9] inv'6 (shallow_model'1 self)
   
   predicate inv'4 (_1 : slice uint32)
   
-  axiom inv'4 : forall x : slice uint32 . inv'4 x = true
-  
-  predicate invariant'3 (self : usize) =
-    [%#span6] true
+  axiom inv'4 [@rewrite] : forall x : slice uint32 [inv'4 x] . inv'4 x = true
   
   predicate inv'3 (_1 : usize)
   
-  axiom inv'3 : forall x : usize . inv'3 x = true
+  axiom inv'3 [@rewrite] : forall x : usize [inv'3 x] . inv'3 x = true
   
-  use Core_Result_Result_Type as Result'0
+  use T_core__result__Result as Result'0
   
-  predicate invariant'2 (self : Result'0.t_result usize usize) =
-    [%#span6] true
+  predicate inv'2 (_1 : Result'0.t_Result usize usize)
   
-  predicate inv'2 (_1 : Result'0.t_result usize usize)
-  
-  axiom inv'2 : forall x : Result'0.t_result usize usize . inv'2 x = true
+  axiom inv'2 [@rewrite] : forall x : Result'0.t_Result usize usize [inv'2 x] . inv'2 x = true
   
   use prelude.prelude.Borrow
   
   predicate invariant'1 (self : uint32) =
-    [%#span11] inv'5 self
+    [%#span10] inv'5 self
   
   predicate inv'1 (_1 : uint32)
   
-  axiom inv'1 : forall x : uint32 . inv'1 x = true
+  axiom inv'1 [@rewrite] : forall x : uint32 [inv'1 x] . inv'1 x = true
   
   predicate invariant'0 (self : slice uint32) =
-    [%#span11] inv'4 self
+    [%#span10] inv'4 self
   
   predicate inv'0 (_1 : slice uint32)
   
-  axiom inv'0 : forall x : slice uint32 . inv'0 x = true
+  axiom inv'0 [@rewrite] : forall x : slice uint32 [inv'0 x] . inv'0 x = true
   
   use prelude.prelude.UInt32
   
   use seq.Seq
   
   function index_logic'0 [@inline:trivial] (self : slice uint32) (ix : int) : uint32 =
-    [%#span12] Seq.get (shallow_model'1 self) ix
+    [%#span11] Seq.get (shallow_model'1 self) ix
   
   function shallow_model'0 (self : slice uint32) : Seq.seq uint32 =
-    [%#span13] shallow_model'1 self
+    [%#span12] shallow_model'1 self
   
   use prelude.prelude.Intrinsic
   
-  let rec unwrap'0 (self:Result'0.t_result usize usize) (return'  (ret:usize))= {[@expl:precondition] [%#span15] inv'2 self}
-    {[@expl:precondition] [%#span14] exists t : usize . self = Result'0.C_Ok t}
+  let rec unwrap'0 (self:Result'0.t_Result usize usize) (return'  (ret:usize))= {[@expl:precondition] [%#span14] inv'2 self}
+    {[@expl:precondition] [%#span13] exists t : usize . self = Result'0.C_Ok t}
     any
-    [ return' (result:usize)-> {[%#span17] inv'3 result} {[%#span16] Result'0.C_Ok result = self} (! return' {result}) ]
+    [ return' (result:usize)-> {[%#span16] inv'3 result} {[%#span15] Result'0.C_Ok result = self} (! return' {result}) ]
     
   
   use prelude.prelude.Int
@@ -270,10 +177,10 @@ module C02Std_BinarySearch
   use int.Int
   
   function deep_model'3 (self : uint32) : int =
-    [%#span18] UInt32.to_int self
+    [%#span17] UInt32.to_int self
   
   function deep_model'2 (self : uint32) : int =
-    [%#span19] deep_model'3 self
+    [%#span18] deep_model'3 self
   
   use seq.Seq
   
@@ -281,35 +188,35 @@ module C02Std_BinarySearch
   
   function deep_model'1 (self : slice uint32) : Seq.seq int
   
-  axiom deep_model'1_spec : forall self : slice uint32 . ([%#span21] forall i : int . 0 <= i
+  axiom deep_model'1_spec : forall self : slice uint32 . ([%#span20] forall i : int . 0 <= i
   /\ i < Seq.length (deep_model'1 self)  -> Seq.get (deep_model'1 self) i = deep_model'3 (index_logic'0 self i))
-  && ([%#span20] Seq.length (shallow_model'0 self) = Seq.length (deep_model'1 self))
+  && ([%#span19] Seq.length (shallow_model'0 self) = Seq.length (deep_model'1 self))
   
   use int.Int
   
   predicate sorted_range'0 (self : Seq.seq int) (l : int) (u : int) =
-    [%#span22] forall i : int, j : int . l <= i /\ i <= j /\ j < u  -> Seq.get self i <= Seq.get self j
+    [%#span21] forall i : int, j : int . l <= i /\ i <= j /\ j < u  -> Seq.get self i <= Seq.get self j
   
   predicate sorted'0 (self : Seq.seq int) =
-    [%#span23] sorted_range'0 self 0 (Seq.length self)
+    [%#span22] sorted_range'0 self 0 (Seq.length self)
   
   function deep_model'0 (self : slice uint32) : Seq.seq int =
-    [%#span19] deep_model'1 self
+    [%#span18] deep_model'1 self
   
-  let rec binary_search'0 (self:slice uint32) (x:uint32) (return'  (ret:Result'0.t_result usize usize))= {[@expl:precondition] [%#span26] inv'1 x}
-    {[@expl:precondition] [%#span25] inv'0 self}
-    {[@expl:precondition] [%#span24] sorted'0 (deep_model'0 self)}
+  let rec binary_search'0 (self:slice uint32) (x:uint32) (return'  (ret:Result'0.t_Result usize usize))= {[@expl:precondition] [%#span25] inv'1 x}
+    {[@expl:precondition] [%#span24] inv'0 self}
+    {[@expl:precondition] [%#span23] sorted'0 (deep_model'0 self)}
     any
-    [ return' (result:Result'0.t_result usize usize)-> {[%#span30] forall i : usize . result = Result'0.C_Err i
+    [ return' (result:Result'0.t_Result usize usize)-> {[%#span29] forall i : usize . result = Result'0.C_Err i
        -> (forall j : usize . i <= j /\ UIntSize.to_int j < Seq.length (shallow_model'0 self)
        -> deep_model'2 x < Seq.get (deep_model'0 self) (UIntSize.to_int j))}
-      {[%#span29] forall i : usize . result = Result'0.C_Err i
-       -> (forall j : usize . j < i  -> Seq.get (deep_model'0 self) (UIntSize.to_int j) < deep_model'2 x)}
       {[%#span28] forall i : usize . result = Result'0.C_Err i
+       -> (forall j : usize . j < i  -> Seq.get (deep_model'0 self) (UIntSize.to_int j) < deep_model'2 x)}
+      {[%#span27] forall i : usize . result = Result'0.C_Err i
        -> UIntSize.to_int i <= Seq.length (shallow_model'0 self)
       /\ (forall j : int . 0 <= j /\ j < Seq.length (shallow_model'0 self)
        -> Seq.get (deep_model'0 self) j <> deep_model'2 x)}
-      {[%#span27] forall i : usize . result = Result'0.C_Ok i
+      {[%#span26] forall i : usize . result = Result'0.C_Ok i
        -> UIntSize.to_int i < Seq.length (shallow_model'0 self)
       /\ Seq.get (deep_model'1 self) (UIntSize.to_int i) = deep_model'2 x}
       (! return' {result}) ]
@@ -319,6 +226,8 @@ module C02Std_BinarySearch
     [ bb0 = s0 [ s0 =  [ &_0 <- [%#s02_std3] (2 : uint32) ] s1 | s1 = return' {_0} ]  ]
      [ & _0 : uint32 = any_l () ]  [ return' (result:uint32)-> return' {result} ] 
   
+  meta "compute_max_steps" 1000000
+  
   let rec binary_search (s:slice uint32) (return'  (ret:usize))= {[%#s02_std2] Seq.length (shallow_model'0 s) = 5}
     {[%#s02_std1] forall i : int . 0 <= i /\ i < Seq.length (shallow_model'0 s)
      -> UInt32.to_int (index_logic'0 s i) = i}
@@ -326,7 +235,7 @@ module C02Std_BinarySearch
     [ bb0 = s0
       [ s0 = promoted0 (fun (pr0:uint32) ->  [ &_12 <- pr0 ] s1)
       | s1 =  [ &_8 <- _12 ] s2
-      | s2 = binary_search'0 {s} {_8} (fun (_ret':Result'0.t_result usize usize) ->  [ &_5 <- _ret' ] s3)
+      | s2 = binary_search'0 {s} {_8} (fun (_ret':Result'0.t_Result usize usize) ->  [ &_5 <- _ret' ] s3)
       | s3 = bb1 ]
       
     | bb1 = s0 [ s0 = unwrap'0 {_5} (fun (_ret':usize) ->  [ &ix <- _ret' ] s1) | s1 = bb2 ] 
@@ -337,7 +246,7 @@ module C02Std_BinarySearch
     [ & _0 : usize = any_l ()
     | & s : slice uint32 = s
     | & ix : usize = any_l ()
-    | & _5 : Result'0.t_result usize usize = any_l ()
+    | & _5 : Result'0.t_Result usize usize = any_l ()
     | & _8 : uint32 = any_l ()
     | & _12 : uint32 = any_l () ]
      [ return' (result:usize)-> (! return' {result}) ] 

@@ -113,8 +113,10 @@ fn builtin_body<'tcx>(
     decls.push(Decl::ValDecl(ValDecl { ghost: false, val: true, kind: None, sig: val_sig }));
 
     let name = Ident::build(&module_name(ctx.tcx, def_id).to_string());
+    let attrs = Vec::from_iter(ctx.span_attr(ctx.def_span(def_id)));
+    let meta = ctx.display_impl_of(def_id);
 
-    (Module { name, decls }, summary)
+    (Module { name, decls, attrs, meta }, summary)
 }
 
 // Create the program symbol with the same name that has a contract agreeing with the logical symbol.
@@ -145,7 +147,7 @@ fn body_decls<'tcx, N: Namer<'tcx>>(
     let mut decls: Vec<_> = Vec::new();
 
     // let (mut sig, val_sig) = sigs(ctx, sig);
-    if is_trusted_function(ctx.tcx, def_id) || !util::has_body(ctx, def_id) {
+    if !util::has_body(ctx, def_id) {
         let mut sig = signature_of(ctx, names, def_id);
         sig.contract.variant = Vec::new();
 
@@ -381,8 +383,10 @@ fn proof_module(ctx: &mut Why3Generator, def_id: DefId) -> Option<Module> {
     decls.extend(clones);
     decls.extend(body_decls);
 
-    let name = impl_name(ctx, def_id);
-    Some(Module { name, decls })
+    let name = module_ident(ctx, def_id);
+    let attrs = Vec::from_iter(ctx.span_attr(ctx.def_span(def_id)));
+    let meta = ctx.display_impl_of(def_id);
+    Some(Module { name, decls, attrs, meta })
 }
 
 pub(crate) fn spec_axiom(sig: &Signature) -> Axiom {
@@ -446,6 +450,6 @@ fn definition_axiom(sig: &Signature, body: Exp, suffix: &str) -> Axiom {
     Axiom { name: name.into(), rewrite: false, axiom }
 }
 
-pub(crate) fn impl_name(ctx: &TranslationCtx, def_id: DefId) -> Ident {
-    format!("{}_Impl", module_name(ctx.tcx, def_id)).into()
+pub(crate) fn module_ident(ctx: &TranslationCtx, def_id: DefId) -> Ident {
+    Ident::build(module_name(ctx.tcx, def_id).as_str())
 }

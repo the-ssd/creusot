@@ -1,32 +1,27 @@
 
-module C06_Test
+module M_06__test [#"../06.rs" 9 0 11 15]
   type t
   
   let%span s060 = "../06.rs" 13 9 13 10
-  
   let%span s061 = "../06.rs" 9 19 9 20
-  
   let%span s062 = "../06.rs" 9 29 9 35
-  
-  let%span span3 = "../../../../../creusot-contracts/src/invariant.rs" 26 8 26 18
-  
+  let%span span3 = "../../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
   let%span span4 = "../06.rs" 6 11 6 15
-  
   let%span span5 = "../06.rs" 6 31 6 40
   
   predicate invariant'2 (self : t)
   
   predicate inv'2 (_1 : t)
   
-  axiom inv'2 : forall x : t . inv'2 x = true
+  axiom inv'2 : forall x : t [inv'2 x] . inv'2 x  -> invariant'2 x
   
-  type tgt'0
+  type t_Tgt'0
   
-  predicate invariant'1 (self : tgt'0)
+  predicate invariant'1 (self : t_Tgt'0)
   
-  predicate inv'1 (_1 : tgt'0)
+  predicate inv'1 (_1 : t_Tgt'0)
   
-  axiom inv'1 : forall x : tgt'0 . inv'1 x = true
+  axiom inv'1 : forall x : t_Tgt'0 [inv'1 x] . inv'1 x  -> invariant'1 x
   
   use prelude.prelude.Borrow
   
@@ -35,7 +30,7 @@ module C06_Test
   
   predicate inv'0 (_1 : t)
   
-  axiom inv'0 : forall x : t . inv'0 x = true
+  axiom inv'0 [@rewrite] : forall x : t [inv'0 x] . inv'0 x = invariant'0 x
   
   use prelude.prelude.Intrinsic
   
@@ -43,14 +38,16 @@ module C06_Test
   
   use prelude.prelude.Int
   
-  let rec ix'0 (self:t) (ix:usize) (return'  (ret:tgt'0))= {[@expl:precondition] [%#span4] inv'0 self}
-    any [ return' (result:tgt'0)-> {[%#span5] inv'1 result} (! return' {result}) ] 
+  let rec ix'0 (self:t) (ix:usize) (return'  (ret:t_Tgt'0))= {[@expl:precondition] [%#span4] inv'0 self}
+    any [ return' (result:t_Tgt'0)-> {[%#span5] inv'1 result} (! return' {result}) ] 
   
-  let rec test (a:t) (return'  (ret:tgt'0))= {[%#s061] inv'0 a}
+  meta "compute_max_steps" 1000000
+  
+  let rec test (a:t) (return'  (ret:t_Tgt'0))= {[%#s061] inv'0 a}
     (! bb0
-    [ bb0 = s0 [ s0 = ix'0 {a} {[%#s060] (0 : usize)} (fun (_ret':tgt'0) ->  [ &_0 <- _ret' ] s1) | s1 = bb1 ] 
+    [ bb0 = s0 [ s0 = ix'0 {a} {[%#s060] (0 : usize)} (fun (_ret':t_Tgt'0) ->  [ &_0 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = return' {_0} ]
-    ) [ & _0 : tgt'0 = any_l () | & a : t = a ] 
-    [ return' (result:tgt'0)-> {[@expl:postcondition] [%#s062] inv'1 result} (! return' {result}) ]
+    ) [ & _0 : t_Tgt'0 = any_l () | & a : t = a ] 
+    [ return' (result:t_Tgt'0)-> {[@expl:postcondition] [%#s062] inv'1 result} (! return' {result}) ]
     
 end

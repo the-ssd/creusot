@@ -1,9 +1,7 @@
 
-module C17ImplRefinement_Impl0_MyFunction
+module M_17_impl_refinement__qyi14398438181735515246__my_function [#"../17_impl_refinement.rs" 14 4 14 34] (* <() as Tr> *)
   let%span s17_impl_refinement0 = "../17_impl_refinement.rs" 15 8 15 10
-  
   let%span s17_impl_refinement1 = "../17_impl_refinement.rs" 12 15 12 19
-  
   let%span s17_impl_refinement2 = "../17_impl_refinement.rs" 13 14 13 27
   
   use prelude.prelude.Borrow
@@ -16,6 +14,8 @@ module C17ImplRefinement_Impl0_MyFunction
   
   use prelude.prelude.Int
   
+  meta "compute_max_steps" 1000000
+  
   let rec my_function (self:()) (return'  (ret:usize))= {[%#s17_impl_refinement1] true}
     (! bb0 [ bb0 = s0 [ s0 =  [ &_0 <- [%#s17_impl_refinement0] (20 : usize) ] s1 | s1 = return' {_0} ]  ] )
     [ & _0 : usize = any_l () ]
@@ -24,7 +24,7 @@ module C17ImplRefinement_Impl0_MyFunction
       (! return' {result}) ]
     
 end
-module C17ImplRefinement_Impl1_NeedFalse_Impl
+module M_17_impl_refinement__qyi15782060473717464421__need_false [#"../17_impl_refinement.rs" 29 4 29 25] (* <() as ReqFalse> *)
   let%span s17_impl_refinement0 = "../17_impl_refinement.rs" 28 15 28 23
   
   use prelude.prelude.UInt64
@@ -39,28 +39,22 @@ module C17ImplRefinement_Impl1_NeedFalse_Impl
   
   goal vc_need_false : true
 end
-module C17ImplRefinement_Impl0
+module M_17_impl_refinement__qyi14398438181735515246 [#"../17_impl_refinement.rs" 11 0 11 14] (* <() as Tr> *)
   let%span s17_impl_refinement0 = "../17_impl_refinement.rs" 14 4 14 34
-  
-  let%span span1 = "../../../../../creusot-contracts/src/invariant.rs" 8 8 8 12
-  
-  let%span span2 = "../../../../../creusot-contracts/src/invariant.rs" 26 8 26 18
-  
-  predicate invariant'1 (self : ()) =
-    [%#span1] true
+  let%span span1 = "../../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
   
   predicate inv'1 (_1 : ())
   
-  axiom inv'1 : forall x : () . inv'1 x = true
+  axiom inv'1 [@rewrite] : forall x : () [inv'1 x] . inv'1 x = true
   
   use prelude.prelude.Borrow
   
   predicate invariant'0 (self : ()) =
-    [%#span2] inv'1 self
+    [%#span1] inv'1 self
   
   predicate inv'0 (_1 : ())
   
-  axiom inv'0 : forall x : () . inv'0 x = true
+  axiom inv'0 [@rewrite] : forall x : () [inv'0 x] . inv'0 x = true
   
   use prelude.prelude.UIntSize
   
@@ -71,7 +65,7 @@ module C17ImplRefinement_Impl0
   goal my_function_refn : [%#s17_impl_refinement0] forall self : () . inv'0 self
    -> (forall result : usize . UIntSize.to_int result >= 15  -> UIntSize.to_int result >= 10)
 end
-module C17ImplRefinement_Impl1
+module M_17_impl_refinement__qyi15782060473717464421 [#"../17_impl_refinement.rs" 25 0 25 20] (* <() as ReqFalse> *)
   let%span s17_impl_refinement0 = "../17_impl_refinement.rs" 29 4 29 25
   
   use prelude.prelude.UInt64

@@ -1,16 +1,15 @@
 
-module C08_Tr_Program
+module M_08__Tr__program [#"../08.rs" 12 4 12 21]
   type self
   
   let%span s080 = "../08.rs" 12 16 12 20
-  
-  let%span span1 = "../../../../../creusot-contracts/src/invariant.rs" 26 8 26 18
+  let%span span1 = "../../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
   
   predicate invariant'1 (self : self)
   
   predicate inv'1 (_1 : self)
   
-  axiom inv'1 : forall x : self . inv'1 x = true
+  axiom inv'1 : forall x : self [inv'1 x] . inv'1 x  -> invariant'1 x
   
   use prelude.prelude.Borrow
   
@@ -19,25 +18,31 @@ module C08_Tr_Program
   
   predicate inv'0 (_1 : self)
   
-  axiom inv'0 : forall x : self . inv'0 x = true
+  axiom inv'0 [@rewrite] : forall x : self [inv'0 x] . inv'0 x = invariant'0 x
   
   use prelude.prelude.Intrinsic
+  
+  meta "compute_max_steps" 1000000
   
   let rec program (self:self) (return'  (ret:()))= {[%#s080] inv'0 self}
     (! bb0 [ bb0 = return' {_0} ] ) [ & _0 : () = any_l () ]  [ return' (result:())-> (! return' {result}) ] 
 end
-module C08_Test
+module M_08__test [#"../08.rs" 15 0 15 24]
   type t
   
   predicate invariant'0 (self : t)
   
   predicate inv'0 (_1 : t)
   
-  axiom inv'0 : forall x : t . inv'0 x = true
+  axiom inv'0 : forall x : t [inv'0 x] . inv'0 x  -> invariant'0 x
   
   use prelude.prelude.Intrinsic
   
-  predicate resolve'0 (self : t)
+  use prelude.prelude.Borrow
+  
+  predicate resolve'0 (_1 : t)
+  
+  meta "compute_max_steps" 1000000
   
   let rec test (_1:t) (return'  (ret:()))= {inv'0 _1}
     (! bb0

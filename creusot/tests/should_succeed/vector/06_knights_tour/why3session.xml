@@ -5,202 +5,159 @@
 <prover id="0" name="Alt-Ergo" version="2.5.3" timelimit="1" steplimit="0" memlimit="1000"/>
 <prover id="1" name="CVC5" version="1.0.5" timelimit="1" steplimit="0" memlimit="1000"/>
 <prover id="2" name="Z3" version="4.12.4" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="3" name="CVC4" version="1.8" timelimit="5" steplimit="0" memlimit="1000"/>
 <file format="coma" proved="true">
 <path name=".."/><path name="06_knights_tour.coma"/>
-<theory name="C06KnightsTour_Impl3_Clone" proved="true">
+<theory name="M_06_knights_tour__qyi50474406909270761__clone" proved="true">
  <goal name="vc_clone&#39;" proved="true">
- <proof prover="0"><result status="valid" time="0.007358" steps="8"/></proof>
+ <proof prover="2" timelimit="1"><result status="valid" time="0.010212" steps="257"/></proof>
  </goal>
 </theory>
-<theory name="C06KnightsTour_Impl0_Mov" proved="true">
+<theory name="M_06_knights_tour__qyi18370800917002056__mov" proved="true">
  <goal name="vc_mov" proved="true">
- <proof prover="0"><result status="valid" time="0.027338" steps="635"/></proof>
+ <proof prover="1"><result status="valid" time="0.017285" steps="2069"/></proof>
  </goal>
 </theory>
-<theory name="C06KnightsTour_Impl1_New_Closure3" proved="true">
- <goal name="vc_c06knightstour_impl1_new_closure3" proved="true">
- <proof prover="0"><result status="valid" time="0.017609" steps="45"/></proof>
+<theory name="M_06_knights_tour__qyi4580598960913230815__new__qy123zclosureqy35z3qy125z" proved="true">
+ <goal name="vc_m_06_knights_tour__qyi4580598960913230815__new__qy123zclosureqy35z3qy125z" proved="true">
+ <proof prover="0"><result status="valid" time="0.017609" steps="30"/></proof>
  </goal>
 </theory>
-<theory name="C06KnightsTour_Impl1_New" proved="true">
+<theory name="M_06_knights_tour__qyi4580598960913230815__new" proved="true">
  <goal name="vc_new" proved="true">
  <transf name="split_vc" proved="true" >
   <goal name="vc_new.0" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.022748" steps="5"/></proof>
+  <proof prover="0"><result status="valid" time="0.020334" steps="5"/></proof>
   </goal>
   <goal name="vc_new.1" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.017173" steps="13"/></proof>
+  <proof prover="0"><result status="valid" time="0.022748" steps="13"/></proof>
   </goal>
   <goal name="vc_new.2" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.020583" steps="47"/></proof>
+  <proof prover="0"><result status="valid" time="0.020583" steps="56"/></proof>
   </goal>
   <goal name="vc_new.3" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.029865" steps="176"/></proof>
+  <proof prover="0"><result status="valid" time="0.029865" steps="193"/></proof>
   </goal>
   <goal name="vc_new.4" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.022329" steps="22"/></proof>
+  <proof prover="0"><result status="valid" time="0.022329" steps="24"/></proof>
   </goal>
   <goal name="vc_new.5" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.020334" steps="11"/></proof>
+  <proof prover="0"><result status="valid" time="0.017173" steps="11"/></proof>
   </goal>
   <goal name="vc_new.6" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.156481" steps="375505"/></proof>
+  <proof prover="2"><result status="valid" time="0.156481" steps="465471"/></proof>
   </goal>
   <goal name="vc_new.7" expl="postcondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.035396" steps="55"/></proof>
+  <proof prover="0"><result status="valid" time="0.035396" steps="57"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="C06KnightsTour_Impl1_Available" proved="true">
+<theory name="M_06_knights_tour__qyi4580598960913230815__available" proved="true">
  <goal name="vc_available" proved="true">
- <proof prover="0"><result status="valid" time="0.678846" steps="6615"/></proof>
+ <proof prover="1"><result status="valid" time="0.068844" steps="20672"/></proof>
  </goal>
 </theory>
-<theory name="C06KnightsTour_Impl1_CountDegree" proved="true">
+<theory name="M_06_knights_tour__qyi4580598960913230815__count_degree" proved="true">
  <goal name="vc_count_degree" proved="true">
  <transf name="split_vc" proved="true" >
   <goal name="vc_count_degree.0" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.013460" steps="11"/></proof>
+  <proof prover="0"><result status="valid" time="0.013479" steps="11"/></proof>
   </goal>
   <goal name="vc_count_degree.1" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" time="0.013080" steps="8"/></proof>
   </goal>
   <goal name="vc_count_degree.2" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_count_degree.2.0" expl="loop invariant" proved="true">
-   <proof prover="0"><result status="valid" time="0.034585" steps="13"/></proof>
-   </goal>
-  </transf>
+  <proof prover="1" timelimit="5"><result status="valid" time="0.038518" steps="12887"/></proof>
   </goal>
   <goal name="vc_count_degree.3" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.033387" steps="13087"/></proof>
+  <proof prover="1"><result status="valid" time="0.033387" steps="13141"/></proof>
   </goal>
   <goal name="vc_count_degree.4" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.016815" steps="14"/></proof>
+  <proof prover="0" timelimit="5"><result status="valid" time="0.009631" steps="14"/></proof>
   </goal>
-  <goal name="vc_count_degree.5" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.013479" steps="25"/></proof>
+  <goal name="vc_count_degree.5" expl="loop invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.016815" steps="16"/></proof>
   </goal>
   <goal name="vc_count_degree.6" expl="precondition" proved="true">
-  <transf name="use_th" proved="true" arg1="seq.FreeMonoid">
-   <goal name="vc_count_degree.6.0" expl="precondition" proved="true">
-   <transf name="split_vc" proved="true" >
-    <goal name="vc_count_degree.6.0.0" proved="true">
-    <transf name="inline_goal" proved="true" >
-     <goal name="vc_count_degree.6.0.0.0" proved="true">
-     <transf name="split_all_full" proved="true" >
-      <goal name="vc_count_degree.6.0.0.0.0" proved="true">
-      <transf name="inline_goal" proved="true" >
-       <goal name="vc_count_degree.6.0.0.0.0.0" proved="true">
-       <proof prover="0" timelimit="30" memlimit="4000"><result status="valid" time="0.155256" steps="1215"/></proof>
-       </goal>
-      </transf>
-      </goal>
-     </transf>
-     </goal>
-    </transf>
-    </goal>
-    <goal name="vc_count_degree.6.0.1" proved="true">
-    <transf name="inline_goal" proved="true" >
-     <goal name="vc_count_degree.6.0.1.0" proved="true">
-     <transf name="split_all_full" proved="true" >
-      <goal name="vc_count_degree.6.0.1.0.0" proved="true">
-      <transf name="inline_goal" proved="true" >
-       <goal name="vc_count_degree.6.0.1.0.0.0" proved="true">
-       <proof prover="0" timelimit="30" memlimit="4000"><result status="valid" time="0.158709" steps="1215"/></proof>
-       </goal>
-      </transf>
-      </goal>
-     </transf>
-     </goal>
-    </transf>
-    </goal>
-   </transf>
-   </goal>
-  </transf>
+  <proof prover="0"><result status="valid" time="0.013460" steps="25"/></proof>
   </goal>
   <goal name="vc_count_degree.7" expl="precondition" proved="true">
   <transf name="use_th" proved="true" arg1="seq.FreeMonoid">
    <goal name="vc_count_degree.7.0" expl="precondition" proved="true">
    <transf name="split_vc" proved="true" >
     <goal name="vc_count_degree.7.0.0" proved="true">
-    <transf name="inline_goal" proved="true" >
-     <goal name="vc_count_degree.7.0.0.0" proved="true">
-     <transf name="split_all_full" proved="true" >
-      <goal name="vc_count_degree.7.0.0.0.0" proved="true">
-      <transf name="inline_goal" proved="true" >
-       <goal name="vc_count_degree.7.0.0.0.0.0" proved="true">
-       <proof prover="0" timelimit="30" memlimit="4000"><result status="valid" time="0.182294" steps="1300"/></proof>
-       </goal>
-      </transf>
-      </goal>
-     </transf>
-     </goal>
-    </transf>
+    <proof prover="0" timelimit="10"><result status="valid" time="2.078458" steps="39810"/></proof>
     </goal>
     <goal name="vc_count_degree.7.0.1" proved="true">
-    <transf name="inline_goal" proved="true" >
-     <goal name="vc_count_degree.7.0.1.0" proved="true">
-     <transf name="split_all_full" proved="true" >
-      <goal name="vc_count_degree.7.0.1.0.0" proved="true">
-      <transf name="inline_goal" proved="true" >
-       <goal name="vc_count_degree.7.0.1.0.0.0" proved="true">
-       <proof prover="0" timelimit="30" memlimit="4000"><result status="valid" time="0.140445" steps="1300"/></proof>
-       </goal>
-      </transf>
-      </goal>
-     </transf>
-     </goal>
-    </transf>
+    <proof prover="0" timelimit="5"><result status="valid" time="2.034471" steps="39669"/></proof>
     </goal>
    </transf>
    </goal>
   </transf>
   </goal>
   <goal name="vc_count_degree.8" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.025839" steps="76"/></proof>
-  </goal>
-  <goal name="vc_count_degree.9" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.023150" steps="85"/></proof>
-  </goal>
-  <goal name="vc_count_degree.10" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.019615" steps="36"/></proof>
-  </goal>
-  <goal name="vc_count_degree.11" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_count_degree.11.0" expl="loop invariant" proved="true">
-   <proof prover="0"><result status="valid" time="0.079623" steps="72"/></proof>
+  <transf name="use_th" proved="true" arg1="seq.FreeMonoid">
+   <goal name="vc_count_degree.8.0" expl="precondition" proved="true">
+   <transf name="split_vc" proved="true" >
+    <goal name="vc_count_degree.8.0.0" proved="true">
+    <proof prover="0" timelimit="5"><result status="valid" time="2.232882" steps="42879"/></proof>
+    </goal>
+    <goal name="vc_count_degree.8.0.1" proved="true">
+    <proof prover="0" timelimit="5"><result status="valid" time="2.221888" steps="42911"/></proof>
+    </goal>
+   </transf>
    </goal>
   </transf>
   </goal>
+  <goal name="vc_count_degree.9" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.023150" steps="70"/></proof>
+  </goal>
+  <goal name="vc_count_degree.10" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.025839" steps="79"/></proof>
+  </goal>
+  <goal name="vc_count_degree.11" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.019615" steps="31"/></proof>
+  </goal>
   <goal name="vc_count_degree.12" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.076768" steps="13945"/></proof>
+  <proof prover="0" timelimit="5"><result status="valid" time="0.012138" steps="68"/></proof>
   </goal>
   <goal name="vc_count_degree.13" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.017593" steps="70"/></proof>
+  <proof prover="1"><result status="valid" time="0.075614" steps="13910"/></proof>
   </goal>
-  <goal name="vc_count_degree.14" expl="integer overflow" proved="true">
-  <proof prover="0"><result status="valid" time="0.090568" steps="463"/></proof>
+  <goal name="vc_count_degree.14" expl="loop invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.022082" steps="98207"/></proof>
   </goal>
   <goal name="vc_count_degree.15" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.020861" steps="81"/></proof>
+  <proof prover="0"><result status="valid" time="0.022473" steps="65"/></proof>
   </goal>
-  <goal name="vc_count_degree.16" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.075614" steps="13974"/></proof>
+  <goal name="vc_count_degree.16" expl="integer overflow" proved="true">
+  <proof prover="0"><result status="valid" time="0.090568" steps="447"/></proof>
   </goal>
   <goal name="vc_count_degree.17" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.022473" steps="77"/></proof>
+  <proof prover="0"><result status="valid" time="0.020861" steps="76"/></proof>
+  </goal>
+  <goal name="vc_count_degree.18" expl="loop invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.076768" steps="13938"/></proof>
+  </goal>
+  <goal name="vc_count_degree.19" expl="loop invariant" proved="true">
+  <proof prover="3"><result status="valid" time="0.153830" steps="20216"/></proof>
+  </goal>
+  <goal name="vc_count_degree.20" expl="loop invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.017593" steps="73"/></proof>
+  </goal>
+  <goal name="vc_count_degree.21" proved="true">
+  <proof prover="1"><result status="valid" time="0.030092" steps="11725"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="C06KnightsTour_Impl1_Set" proved="true">
+<theory name="M_06_knights_tour__qyi4580598960913230815__set" proved="true">
  <goal name="vc_set" proved="true">
- <proof prover="0"><result status="valid" time="0.159808" steps="863"/></proof>
+ <proof prover="1"><result status="valid" time="0.076240" steps="23337"/></proof>
  </goal>
 </theory>
-<theory name="C06KnightsTour_Min" proved="true">
+<theory name="M_06_knights_tour__min" proved="true">
  <goal name="vc_min" proved="true">
  <transf name="use_th" proved="true" arg1="seq.FreeMonoid">
   <goal name="vc_min.0" proved="true">
@@ -212,234 +169,234 @@
    <proof prover="0"><result status="valid" time="0.012637" steps="2"/></proof>
    </goal>
    <goal name="vc_min.0.2" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.028150" steps="8378"/></proof>
+   <proof prover="1"><result status="valid" time="0.028150" steps="8471"/></proof>
    </goal>
    <goal name="vc_min.0.3" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.133446" steps="8328"/></proof>
+   <proof prover="1" timelimit="5"><result status="valid" time="0.027732" steps="8421"/></proof>
    </goal>
-   <goal name="vc_min.0.4" expl="postcondition" proved="true">
-   <proof prover="0"><result status="valid" time="0.025971" steps="67"/></proof>
+   <goal name="vc_min.0.4" expl="loop invariant" proved="true">
+   <proof prover="1"><result status="valid" time="0.133446" steps="8426"/></proof>
    </goal>
-   <goal name="vc_min.0.5" expl="loop invariant" proved="true">
-   <proof prover="0"><result status="valid" time="0.044756" steps="1712"/></proof>
+   <goal name="vc_min.0.5" expl="postcondition" proved="true">
+   <proof prover="0"><result status="valid" time="0.025971" steps="65"/></proof>
    </goal>
    <goal name="vc_min.0.6" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.059118" steps="12992"/></proof>
+   <proof prover="0" timelimit="5"><result status="valid" time="0.101001" steps="2133"/></proof>
    </goal>
    <goal name="vc_min.0.7" expl="loop invariant" proved="true">
-   <proof prover="0"><result status="valid" time="0.016609" steps="39"/></proof>
+   <proof prover="1"><result status="valid" time="0.059118" steps="15872"/></proof>
    </goal>
    <goal name="vc_min.0.8" expl="loop invariant" proved="true">
-   <transf name="split_vc" proved="true" >
-    <goal name="vc_min.0.8.0" expl="loop invariant" proved="true">
-    <transf name="split_vc" proved="true" >
-     <goal name="vc_min.0.8.0.0" expl="loop invariant" proved="true">
-     <transf name="split_vc" proved="true" >
-      <goal name="vc_min.0.8.0.0.0" expl="loop invariant" proved="true">
-      <transf name="split_vc" proved="true" >
-       <goal name="vc_min.0.8.0.0.0.0" expl="loop invariant" proved="true">
-       <proof prover="0" timelimit="5" memlimit="2000"><result status="valid" time="0.026611" steps="140"/></proof>
-       </goal>
-      </transf>
-      </goal>
-     </transf>
-     </goal>
-    </transf>
-    </goal>
-   </transf>
+   <proof prover="3"><result status="valid" time="0.165730" steps="22237"/></proof>
    </goal>
    <goal name="vc_min.0.9" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.135505" steps="15996"/></proof>
+   <proof prover="0"><result status="valid" time="0.016609" steps="36"/></proof>
    </goal>
    <goal name="vc_min.0.10" expl="loop invariant" proved="true">
-   <proof prover="0"><result status="valid" time="0.016803" steps="41"/></proof>
+   <proof prover="0"><result status="valid" time="0.031501" steps="146"/></proof>
    </goal>
    <goal name="vc_min.0.11" expl="loop invariant" proved="true">
-   <proof prover="0"><result status="valid" time="0.314167" steps="2892"/></proof>
+   <proof prover="1"><result status="valid" time="0.078365" steps="16208"/></proof>
    </goal>
    <goal name="vc_min.0.12" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.078365" steps="15962"/></proof>
+   <proof prover="0" timelimit="5"><result status="valid" time="0.012893" steps="41"/></proof>
    </goal>
    <goal name="vc_min.0.13" expl="loop invariant" proved="true">
-   <proof prover="2" timelimit="1"><result status="valid" time="0.020000" steps="105194"/></proof>
+   <proof prover="2" timelimit="1"><result status="valid" time="0.020000" steps="105974"/></proof>
+   </goal>
+   <goal name="vc_min.0.14" expl="loop invariant" proved="true">
+   <proof prover="0"><result status="valid" time="0.184133" steps="3587"/></proof>
+   </goal>
+   <goal name="vc_min.0.15" expl="loop invariant" proved="true">
+   <proof prover="1"><result status="valid" time="0.135505" steps="16158"/></proof>
+   </goal>
+   <goal name="vc_min.0.16" expl="loop invariant" proved="true">
+   <proof prover="1" timelimit="5"><result status="valid" time="0.039347" steps="14644"/></proof>
+   </goal>
+   <goal name="vc_min.0.17" expl="loop invariant" proved="true">
+   <proof prover="0"><result status="valid" time="0.016803" steps="47"/></proof>
+   </goal>
+   <goal name="vc_min.0.18" proved="true">
+   <proof prover="1"><result status="valid" time="0.031971" steps="12756"/></proof>
+   </goal>
+   <goal name="vc_min.0.19" proved="true">
+   <proof prover="1"><result status="valid" time="0.031286" steps="12599"/></proof>
    </goal>
   </transf>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="C06KnightsTour_DumbNonlinearArith_Impl" proved="true">
+<theory name="M_06_knights_tour__dumb_nonlinear_arith" proved="true">
  <goal name="vc_dumb_nonlinear_arith" proved="true">
  <proof prover="0"><result status="valid" time="0.007049" steps="4"/></proof>
  </goal>
 </theory>
-<theory name="C06KnightsTour_KnightsTour" proved="true">
+<theory name="M_06_knights_tour__knights_tour" proved="true">
  <goal name="vc_knights_tour" proved="true">
  <transf name="split_vc" proved="true" >
   <goal name="vc_knights_tour.0" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" time="0.020255" steps="8"/></proof>
   </goal>
   <goal name="vc_knights_tour.1" expl="integer overflow" proved="true">
-  <proof prover="0"><result status="valid" time="0.016786" steps="27"/></proof>
+  <proof prover="0"><result status="valid" time="0.016786" steps="28"/></proof>
   </goal>
   <goal name="vc_knights_tour.2" expl="integer overflow" proved="true">
   <proof prover="0"><result status="valid" time="0.019765" steps="33"/></proof>
   </goal>
   <goal name="vc_knights_tour.3" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.021640" steps="318"/></proof>
+  <proof prover="0"><result status="valid" time="0.021640" steps="228"/></proof>
   </goal>
   <goal name="vc_knights_tour.4" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.020942" steps="26"/></proof>
+  <proof prover="0"><result status="valid" time="0.020942" steps="21"/></proof>
   </goal>
   <goal name="vc_knights_tour.5" expl="integer overflow" proved="true">
-  <proof prover="0"><result status="valid" time="0.025367" steps="51"/></proof>
+  <proof prover="0"><result status="valid" time="0.025367" steps="43"/></proof>
   </goal>
   <goal name="vc_knights_tour.6" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.030545" steps="144"/></proof>
+  <proof prover="0"><result status="valid" time="0.025413" steps="135"/></proof>
   </goal>
   <goal name="vc_knights_tour.7" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.017405" steps="49"/></proof>
+  <proof prover="0"><result status="valid" time="0.017405" steps="43"/></proof>
   </goal>
   <goal name="vc_knights_tour.8" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_knights_tour.8.0" expl="loop invariant" proved="true">
-   <proof prover="0"><result status="valid" time="0.052907" steps="1157"/></proof>
-   </goal>
-  </transf>
+  <proof prover="0" timelimit="5"><result status="valid" time="0.143861" steps="1088"/></proof>
   </goal>
   <goal name="vc_knights_tour.9" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.054622" steps="9214"/></proof>
+  <proof prover="1"><result status="valid" time="0.054622" steps="9327"/></proof>
   </goal>
   <goal name="vc_knights_tour.10" expl="loop invariant" proved="true">
-  <proof prover="1" timelimit="5" memlimit="2000"><result status="valid" time="0.130000" steps="9612"/></proof>
+  <proof prover="1"><result status="valid" time="0.044457" steps="9731"/></proof>
   </goal>
   <goal name="vc_knights_tour.11" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.012789" steps="221"/></proof>
+  <proof prover="0"><result status="valid" time="0.012789" steps="210"/></proof>
   </goal>
   <goal name="vc_knights_tour.12" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.019997" steps="66"/></proof>
+  <proof prover="0"><result status="valid" time="0.021623" steps="60"/></proof>
   </goal>
-  <goal name="vc_knights_tour.13" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.033314" steps="233"/></proof>
+  <goal name="vc_knights_tour.13" expl="loop invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.019997" steps="187"/></proof>
   </goal>
   <goal name="vc_knights_tour.14" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.025413" steps="303"/></proof>
+  <proof prover="0"><result status="valid" time="0.033314" steps="226"/></proof>
   </goal>
   <goal name="vc_knights_tour.15" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.012759" steps="144"/></proof>
+  <proof prover="0"><result status="valid" time="0.031817" steps="287"/></proof>
   </goal>
-  <goal name="vc_knights_tour.16" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_knights_tour.16.0" expl="loop invariant" proved="true">
-   <proof prover="0"><result status="valid" time="0.026006" steps="151"/></proof>
-   </goal>
-  </transf>
+  <goal name="vc_knights_tour.16" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.012759" steps="132"/></proof>
   </goal>
   <goal name="vc_knights_tour.17" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.176502" steps="22637"/></proof>
+  <proof prover="0" timelimit="5"><result status="valid" time="0.010462" steps="138"/></proof>
   </goal>
   <goal name="vc_knights_tour.18" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.021623" steps="155"/></proof>
+  <proof prover="1"><result status="valid" time="0.057458" steps="22818"/></proof>
   </goal>
-  <goal name="vc_knights_tour.19" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.031817" steps="342"/></proof>
+  <goal name="vc_knights_tour.19" expl="loop invariant" proved="true">
+  <proof prover="1" timelimit="5"><result status="valid" time="0.037013" steps="16314"/></proof>
   </goal>
-  <goal name="vc_knights_tour.20" expl="precondition" proved="true">
-  <transf name="use_th" proved="true" arg1="seq.FreeMonoid">
-   <goal name="vc_knights_tour.20.0" expl="precondition" proved="true">
-   <transf name="split_vc" proved="true" >
-    <goal name="vc_knights_tour.20.0.0" proved="true">
-    <proof prover="0" timelimit="5" memlimit="2000"><result status="valid" time="0.571140" steps="6569"/></proof>
-    </goal>
-    <goal name="vc_knights_tour.20.0.1" proved="true">
-    <proof prover="0" timelimit="5"><result status="valid" time="0.550261" steps="6568"/></proof>
-    </goal>
-   </transf>
-   </goal>
-  </transf>
+  <goal name="vc_knights_tour.20" expl="loop invariant" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.020040" steps="312"/></proof>
   </goal>
   <goal name="vc_knights_tour.21" expl="precondition" proved="true">
-  <transf name="use_th" proved="true" arg1="seq.FreeMonoid">
-   <goal name="vc_knights_tour.21.0" expl="precondition" proved="true">
-   <transf name="split_vc" proved="true" >
-    <goal name="vc_knights_tour.21.0.0" proved="true">
-    <proof prover="0" timelimit="5"><result status="valid" time="0.672435" steps="6739"/></proof>
-    </goal>
-    <goal name="vc_knights_tour.21.0.1" proved="true">
-    <proof prover="0" timelimit="5" memlimit="2000"><result status="valid" time="0.637254" steps="6738"/></proof>
-    </goal>
-   </transf>
-   </goal>
-  </transf>
+  <proof prover="0"><result status="valid" time="0.030440" steps="329"/></proof>
   </goal>
   <goal name="vc_knights_tour.22" expl="precondition" proved="true">
   <transf name="use_th" proved="true" arg1="seq.FreeMonoid">
    <goal name="vc_knights_tour.22.0" expl="precondition" proved="true">
-   <proof prover="0"><result status="valid" time="0.054955" steps="673"/></proof>
+   <proof prover="0" timelimit="5"><result status="valid" time="0.464475" steps="10153"/></proof>
    </goal>
   </transf>
   </goal>
   <goal name="vc_knights_tour.23" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.161000" steps="705"/></proof>
+  <transf name="use_th" proved="true" arg1="seq.FreeMonoid">
+   <goal name="vc_knights_tour.23.0" expl="precondition" proved="true">
+   <proof prover="0" timelimit="5"><result status="valid" time="0.489001" steps="10440"/></proof>
+   </goal>
+  </transf>
   </goal>
   <goal name="vc_knights_tour.24" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.027311" steps="218"/></proof>
+  <proof prover="0"><result status="valid" time="0.026735" steps="643"/></proof>
   </goal>
-  <goal name="vc_knights_tour.25" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.263549" steps="28485"/></proof>
+  <goal name="vc_knights_tour.25" expl="precondition" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.032379" steps="681"/></proof>
   </goal>
-  <goal name="vc_knights_tour.26" expl="loop invariant" proved="true">
-  <proof prover="1" timelimit="5"><result status="valid" time="0.120406" steps="23566"/></proof>
+  <goal name="vc_knights_tour.26" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.018927" steps="202"/></proof>
   </goal>
   <goal name="vc_knights_tour.27" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.033684" steps="595"/></proof>
+  <proof prover="1"><result status="valid" time="0.103254" steps="28453"/></proof>
   </goal>
-  <goal name="vc_knights_tour.28" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.064023" steps="229"/></proof>
+  <goal name="vc_knights_tour.28" expl="loop invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.100854" steps="2088"/></proof>
   </goal>
-  <goal name="vc_knights_tour.29" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.018927" steps="229"/></proof>
+  <goal name="vc_knights_tour.29" expl="loop invariant" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.031773" steps="565"/></proof>
   </goal>
-  <goal name="vc_knights_tour.30" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.141854" steps="599"/></proof>
+  <goal name="vc_knights_tour.30" expl="loop invariant" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.029840" steps="569"/></proof>
   </goal>
   <goal name="vc_knights_tour.31" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.030440" steps="611"/></proof>
+  <proof prover="0"><result status="valid" time="0.064023" steps="213"/></proof>
   </goal>
-  <goal name="vc_knights_tour.32" expl="loop invariant" proved="true">
-  <proof prover="1" timelimit="5"><result status="valid" time="0.402574" steps="55563"/></proof>
+  <goal name="vc_knights_tour.32" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.020171" steps="213"/></proof>
   </goal>
-  <goal name="vc_knights_tour.33" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.200799" steps="2572"/></proof>
+  <goal name="vc_knights_tour.33" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.027356" steps="569"/></proof>
   </goal>
-  <goal name="vc_knights_tour.34" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.142641" steps="640"/></proof>
+  <goal name="vc_knights_tour.34" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.030545" steps="579"/></proof>
   </goal>
-  <goal name="vc_knights_tour.35" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.207282" steps="1635"/></proof>
+  <goal name="vc_knights_tour.35" expl="loop invariant" proved="true">
+  <proof prover="1" timelimit="5"><result status="valid" time="0.147839" steps="38173"/></proof>
   </goal>
-  <goal name="vc_knights_tour.36" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.020171" steps="274"/></proof>
+  <goal name="vc_knights_tour.36" expl="loop invariant" proved="true">
+  <proof prover="1" timelimit="5"><result status="valid" time="0.068528" steps="23655"/></proof>
   </goal>
   <goal name="vc_knights_tour.37" expl="loop invariant" proved="true">
-  <proof prover="0" timelimit="5"><result status="valid" time="0.469239" steps="7877"/></proof>
+  <proof prover="0" timelimit="5"><result status="valid" time="0.027161" steps="608"/></proof>
   </goal>
   <goal name="vc_knights_tour.38" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.017689" steps="290"/></proof>
+  <proof prover="0"><result status="valid" time="0.027721" steps="613"/></proof>
   </goal>
-  <goal name="vc_knights_tour.39" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.185958" steps="17744"/></proof>
+  <goal name="vc_knights_tour.39" proved="true">
+  <proof prover="1"><result status="valid" time="0.044056" steps="17392"/></proof>
   </goal>
-  <goal name="vc_knights_tour.40" expl="loop invariant" proved="true">
-  <proof prover="0" timelimit="5"><result status="valid" time="0.398529" steps="6883"/></proof>
+  <goal name="vc_knights_tour.40" proved="true">
+  <proof prover="1"><result status="valid" time="0.025537" steps="10528"/></proof>
   </goal>
-  <goal name="vc_knights_tour.41" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.146429" steps="557"/></proof>
+  <goal name="vc_knights_tour.41" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.070572" steps="1590"/></proof>
+  </goal>
+  <goal name="vc_knights_tour.42" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.027311" steps="264"/></proof>
+  </goal>
+  <goal name="vc_knights_tour.43" expl="loop invariant" proved="true">
+  <proof prover="1" timelimit="5"><result status="valid" time="0.126336" steps="36200"/></proof>
+  </goal>
+  <goal name="vc_knights_tour.44" expl="loop invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.017689" steps="274"/></proof>
+  </goal>
+  <goal name="vc_knights_tour.45" expl="loop invariant" proved="true">
+  <proof prover="1" timelimit="5" memlimit="2000"><result status="valid" time="0.130000" steps="17837"/></proof>
+  </goal>
+  <goal name="vc_knights_tour.46" expl="loop invariant" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.258887" steps="6612"/></proof>
+  </goal>
+  <goal name="vc_knights_tour.47" expl="loop invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.033684" steps="532"/></proof>
+  </goal>
+  <goal name="vc_knights_tour.48" expl="loop invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.026677" steps="538"/></proof>
+  </goal>
+  <goal name="vc_knights_tour.49" proved="true">
+  <proof prover="1"><result status="valid" time="0.043193" steps="17856"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="C06KnightsTour_Impl3" proved="true">
+<theory name="M_06_knights_tour__qyi50474406909270761" proved="true">
  <goal name="clone&#39;_refn" proved="true">
  <proof prover="0"><result status="valid" time="0.006577" steps="6"/></proof>
  </goal>

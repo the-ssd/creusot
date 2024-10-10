@@ -1,7 +1,11 @@
 use indexmap::{IndexMap, IndexSet};
 use rustc_hir::{def::DefKind, def_id::DefId};
-use rustc_middle::ty::{AliasTy, GenericParamDef, GenericParamDefKind, TyCtxt};
-use rustc_span::{RealFileName, Span, DUMMY_SP};
+use rustc_middle::ty::{
+    AliasTy, GenericArgs, GenericParamDef, GenericParamDefKind, ParamEnv, Ty, TyCtxt,
+};
+use rustc_span::{RealFileName, Span, Symbol, DUMMY_SP};
+use signature::sig_to_why3;
+use term::lower_pure;
 use why3::declaration::{Decl, TyDecl};
 
 use crate::{
@@ -18,10 +22,7 @@ use std::{
 use crate::{options::SpanMode, run_why3::SpanMap};
 pub(crate) use clone_map::*;
 
-use self::{
-    dependency::{Dependency, ExtendedId},
-    ty_inv::TyInvKind,
-};
+use self::dependency::{Dependency, ExtendedId};
 
 pub(crate) mod clone_map;
 pub(crate) mod constant;
@@ -32,6 +33,7 @@ pub(crate) mod optimization;
 pub(crate) mod place;
 pub(crate) mod program;
 pub(crate) mod signature;
+pub(crate) mod structural_resolve;
 pub(crate) mod term;
 pub(crate) mod traits;
 pub(crate) mod ty;
@@ -39,13 +41,14 @@ pub(crate) mod ty_inv;
 pub(crate) mod wto;
 
 #[derive(Copy, Clone, PartialEq, Eq, Hash, Debug)]
-pub(crate) enum TransId {
+pub(crate) enum TransId<'tcx> {
     Item(DefId),
-    TyInv(TyInvKind),
+    TyInv(Ty<'tcx>),
+    StructuralResolve(Ty<'tcx>),
     Hacked(ExtendedId, DefId),
 }
 
-impl From<DefId> for TransId {
+impl<'tcx> From<DefId> for TransId<'tcx> {
     fn from(def_id: DefId) -> Self {
         TransId::Item(def_id)
     }
@@ -53,11 +56,11 @@ impl From<DefId> for TransId {
 
 pub struct Why3Generator<'tcx> {
     ctx: TranslationCtx<'tcx>,
-    dependencies: IndexMap<TransId, CloneSummary<'tcx>>,
+    dependencies: IndexMap<TransId<'tcx>, CloneSummary<'tcx>>,
     projections_in_ty: HashMap<DefId, Vec<AliasTy<'tcx>>>,
-    functions: IndexMap<TransId, TranslatedItem>,
-    translated_items: IndexSet<TransId>,
-    in_translation: Vec<IndexSet<TransId>>,
+    functions: IndexMap<TransId<'tcx>, TranslatedItem>,
+    translated_items: IndexSet<TransId<'tcx>>,
+    in_translation: Vec<IndexSet<TransId<'tcx>>>,
     pub(crate) span_map: SpanMap,
 }
 
@@ -88,7 +91,7 @@ impl<'tcx> Why3Generator<'tcx> {
         }
     }
 
-    fn term(&mut self, id: impl Into<TransId>) -> Option<&Term<'tcx>> {
+    fn term(&mut self, id: impl Into<TransId<'tcx>>) -> Option<&Term<'tcx>> {
         match id.into() {
             TransId::Item(id) => self.ctx.term(id),
             // For the moment at least
@@ -105,11 +108,12 @@ impl<'tcx> Why3Generator<'tcx> {
                     ExtendedId::Accessor(ix) => Some(&c.accessors[ix as usize].1),
                 }
             }
+            TransId::StructuralResolve(_) => unreachable!(),
         }
     }
 
     // Checks if we are allowed to recurse into
-    fn safe_cycle(&self, trans_id: TransId) -> bool {
+    fn safe_cycle(&self, trans_id: TransId<'tcx>) -> bool {
         self.in_translation.last().map(|l| l.contains(&trans_id)).unwrap_or_default()
     }
 
@@ -203,10 +207,32 @@ impl<'tcx> Why3Generator<'tcx> {
         let translated = match util::item_type(self.tcx, def_id) {
             ItemType::Logic { .. } | ItemType::Predicate { .. } => {
                 debug!("translating {:?} as logical", def_id);
-                let (proof_modl, deps) = logic::translate_logic_or_predicate(self, def_id);
-                self.dependencies.insert(def_id.into(), deps);
 
-                TranslatedItem::Logic { proof_modl }
+                if util::is_resolve_function(self.tcx, def_id) {
+                    let mut names = Dependencies::new(self.tcx, [TransId::Item(def_id)]);
+                    let pre_sig = self.ctx.sig(def_id).clone();
+                    sig_to_why3(self, &mut names, &pre_sig, def_id);
+
+                    let method = self
+                        .tcx
+                        .get_diagnostic_item(Symbol::intern("creusot_resolve_method"))
+                        .unwrap();
+                    let substs = GenericArgs::identity_for_item(self.tcx, def_id);
+                    let arg = Term::var(pre_sig.inputs[0].0, pre_sig.inputs[0].2);
+
+                    lower_pure(self, &mut names, &Term::call(self.tcx, method, substs, vec![arg]));
+
+                    let deps = names.provide_deps(self, GraphDepth::Shallow).1;
+
+                    // eprintln!("deps for {def_id:?} : {deps:?}");
+                    self.dependencies.insert(def_id.into(), deps);
+
+                    TranslatedItem::Logic { proof_modl: None }
+                } else {
+                    let (proof_modl, deps) = logic::translate_logic_or_predicate(self, def_id);
+                    self.dependencies.insert(def_id.into(), deps);
+                    TranslatedItem::Logic { proof_modl }
+                }
             }
             ItemType::Closure => {
                 let (deps, ty_modl, modl) = program::translate_closure(self, def_id);
@@ -250,34 +276,37 @@ impl<'tcx> Why3Generator<'tcx> {
         // self.types[&repr_id].accessors;
     }
 
-    pub(crate) fn translate_tyinv(&mut self, inv_kind: TyInvKind) {
-        let tid = TransId::TyInv(inv_kind);
+    pub(crate) fn translate_tyinv(&mut self, ty: Ty<'tcx>) {
+        let tid = TransId::TyInv(ty);
         if self.dependencies.contains_key(&tid) {
             return;
         }
 
-        if let TyInvKind::Adt(adt_did) = inv_kind {
-            self.translate(adt_did);
+        if let Some(adt) = ty.ty_adt_def()
+            && !adt.is_box()
+        {
+            self.translate(adt.did());
         }
 
-        let deps = ty_inv::build_inv_module(self, inv_kind);
+        let deps = ty_inv::get_tyinv_deps(self, ty);
         self.dependencies.insert(tid, deps);
-        self.functions.insert(tid, TranslatedItem::TyInv {});
     }
 
-    // pub(crate) fn item(&self, def_id: DefId) -> Option<&TranslatedItem> {
-    //     let tid: TransId = if matches!(util::item_type(***self, def_id), ItemType::Type) {
-    //         self.representative_type(def_id)
-    //     } else {
-    //         def_id
-    //     }
-    //     .into();
-    //     self.functions.get(&tid)
-    // }
+    pub(crate) fn translate_structural_resolve(&mut self, ty: Ty<'tcx>) {
+        let tid = TransId::StructuralResolve(ty);
+        if self.dependencies.contains_key(&tid) {
+            return;
+        }
+
+        let deps = structural_resolve::record_deps(self, ty);
+
+        // eprintln!("structural_resolve({ty:?}) :- {deps:?}");
+        self.dependencies.insert(tid, deps);
+    }
 
     pub(crate) fn modules<'a>(
         &'a mut self,
-    ) -> impl Iterator<Item = (TransId, TranslatedItem)> + 'a {
+    ) -> impl Iterator<Item = (TransId<'tcx>, TranslatedItem)> + 'a {
         self.functions.drain(..)
     }
 
@@ -324,8 +353,12 @@ impl<'tcx> Why3Generator<'tcx> {
         self.translated_items.insert(tid);
     }
 
-    pub(crate) fn dependencies(&self, key: Dependency<'tcx>) -> Option<&CloneSummary<'tcx>> {
-        let tid = key.to_trans_id()?;
+    pub(crate) fn dependencies(
+        &self,
+        param_env: ParamEnv<'tcx>,
+        key: Dependency<'tcx>,
+    ) -> Option<&CloneSummary<'tcx>> {
+        let tid = key.to_trans_id(self.tcx, param_env)?;
         self.dependencies.get(&tid)
     }
 
@@ -404,6 +437,32 @@ impl<'tcx> Why3Generator<'tcx> {
             hi.line,
             hi.col_display,
         ))
+    }
+
+    pub fn display_impl_of(&self, def_id: DefId) -> Option<String> {
+        let tcx = self.ctx.tcx;
+        let mut id = def_id;
+        loop {
+            let key = tcx.def_key(id);
+            let parent_id = match key.parent {
+                None => return None, // The last segment is CrateRoot. Skip it.
+                Some(parent_id) => parent_id,
+            };
+            match key.disambiguated_data.data {
+                rustc_hir::definitions::DefPathData::Impl => {
+                    return Some(display_impl_subject(&tcx.impl_subject(id).skip_binder()))
+                }
+                _ => {}
+            }
+            id.index = parent_id;
+        }
+    }
+}
+
+fn display_impl_subject(i: &rustc_middle::ty::ImplSubject<'_>) -> String {
+    match i {
+        rustc_middle::ty::ImplSubject::Trait(trait_ref) => trait_ref.to_string(),
+        rustc_middle::ty::ImplSubject::Inherent(ty) => ty.to_string(),
     }
 }
 

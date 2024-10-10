@@ -1,6 +1,6 @@
 #![cfg_attr(
     creusot,
-    feature(unsized_locals, fn_traits, min_specialization),
+    feature(unsized_locals, fn_traits),
     allow(incomplete_features),
     feature(slice_take),
     feature(print_internals, fmt_internals, fmt_helpers_for_derive)
@@ -252,7 +252,7 @@ mod base_prelude {
         ghost::GhostBox,
         logic::{IndexLogic as _, Int, OrdLogic, Seq},
         model::{DeepModel, ShallowModel},
-        resolve::Resolve,
+        resolve::*,
         snapshot::Snapshot,
         std::{
             // Shadow std::prelude by our version.
