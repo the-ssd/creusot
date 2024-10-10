@@ -15,12 +15,7 @@ use crate::{
         place,
         ty::{self, translate_closure_ty, translate_ty},
         wto::weak_topological_order,
-    },
-    ctx::{BodyId, Dependencies, TranslationCtx},
-    fmir::{self, Body, BorrowKind, Operand, TrivialInv},
-    pearlite::{self, PointerKind},
-    translation::fmir::{Block, Branches, LocalDecls, Place, RValue, Statement, Terminator},
-    util::{self, module_name},
+    }, ctx::{BodyId, Dependencies, TranslationCtx}, fmir::{self, Body, BorrowKind, Operand, TrivialInv}, pearlite::{self, PointerKind}, specification::contract_of, translation::fmir::{Block, Branches, LocalDecls, Place, RValue, Statement, Terminator}, util::{self, module_name}
 };
 
 use petgraph::graphmap::DiGraphMap;
@@ -336,7 +331,7 @@ pub fn to_why<'tcx, N: Namer<'tcx>>(
     };
     let mut body = Expr::Defn(Box::new(Expr::Symbol("bb0".into())), true, blocks);
 
-    let inferred_closure_spec = sig.contract.is_empty() && ctx.is_closure_like(body_id.def_id());
+    let inferred_closure_spec = contract_of(ctx, body_id.def_id()).is_empty() && ctx.is_closure_like(body_id.def_id());
 
     if inferred_closure_spec {
         sig.attrs.push(Attribute::Attr("coma:extspec".into()));

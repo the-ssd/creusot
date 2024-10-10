@@ -2159,12 +2159,12 @@ module M_06_map_precond__identity__qy123zclosureqy35z0qy125z [#"../06_map_precon
   
   meta "compute_max_steps" 1000000
   
-  let rec m_06_map_precond__identity__qy123zclosureqy35z0qy125z[#"../06_map_precond.rs" 199 14 199 20] (_1:borrowed (Closure'0.m_06_map_precond__identity__qy123zclosureqy35z0qy125z i)) (x:t_Item'0) (_3:Snapshot.snap_ty (Seq.seq t_Item'0)) (return'  (ret:t_Item'0))= {[%#s06_map_precond0] inv'0 x}
-    (! bb0 [ bb0 = s0 [ s0 = -{resolve'0 _1}- s1 | s1 =  [ &_0 <- x ] s2 | s2 = bb1 ]  | bb1 = return' {_0} ] )
+  let rec m_06_map_precond__identity__qy123zclosureqy35z0qy125z[#"../06_map_precond.rs" 199 14 199 20] [@coma:extspec] (_1:borrowed (Closure'0.m_06_map_precond__identity__qy123zclosureqy35z0qy125z i)) (x:t_Item'0) (_3:Snapshot.snap_ty (Seq.seq t_Item'0)) (return'  (ret:t_Item'0))= {[%#s06_map_precond0] inv'0 x}
+    bb0 [ bb0 = s0 [ s0 = -{resolve'0 _1}- s1 | s1 =  [ &_0 <- x ] s2 | s2 = bb1 ]  | bb1 = return' {_0} ] 
     [ & _0 : t_Item'0 = any_l ()
     | & _1 : borrowed (Closure'0.m_06_map_precond__identity__qy123zclosureqy35z0qy125z i) = _1
     | & x : t_Item'0 = x ]
-     [ return' (result:t_Item'0)-> {[@expl:postcondition] [%#s06_map_precond1] inv'0 result} (! return' {result}) ] 
+     [ return' (result:t_Item'0)-> {[@expl:postcondition] [%#s06_map_precond1] inv'0 result} return' {result} ] 
 end
 module M_06_map_precond__identity [#"../06_map_precond.rs" 198 0 198 37]
   type i
@@ -2272,8 +2272,12 @@ module M_06_map_precond__identity [#"../06_map_precond.rs" 198 0 198 37]
   predicate resolve'0 (_1 : borrowed (Closure'0.m_06_map_precond__identity__qy123zclosureqy35z0qy125z i)) =
     resolve'1 _1
   
-  let rec closure0'0 (_1:borrowed (Closure'0.m_06_map_precond__identity__qy123zclosureqy35z0qy125z i)) (x:t_Item'0) (_3:Snapshot.snap_ty (Seq.seq t_Item'0)) (return'  (ret:t_Item'0))= {[@expl:precondition] [%#span5] inv'2 x}
-    any [ return' (result:t_Item'0)-> {[%#span6] inv'2 result} (! return' {result}) ] 
+  let rec closure0'0[#"../06_map_precond.rs" 199 14 199 20] [@coma:extspec] (_1:borrowed (Closure'0.m_06_map_precond__identity__qy123zclosureqy35z0qy125z i)) (x:t_Item'0) (_3:Snapshot.snap_ty (Seq.seq t_Item'0)) (return'  (ret:t_Item'0))= {[%#span5] inv'2 x}
+    bb0 [ bb0 = s0 [ s0 = -{resolve'0 _1}- s1 | s1 =  [ &_0 <- x ] s2 | s2 = bb1 ]  | bb1 = return' {_0} ] 
+    [ & _0 : t_Item'0 = any_l ()
+    | & _1 : borrowed (Closure'0.m_06_map_precond__identity__qy123zclosureqy35z0qy125z i) = _1
+    | & x : t_Item'0 = x ]
+     [ return' (result:t_Item'0)-> {[@expl:postcondition] [%#span6] inv'2 result} return' {result} ] 
   
   predicate precondition'0 [#"../06_map_precond.rs" 199 14 199 20] (self : Closure'0.m_06_map_precond__identity__qy123zclosureqy35z0qy125z i) (args : (t_Item'0, Snapshot.snap_ty (Seq.seq t_Item'0)))
     

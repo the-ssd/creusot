@@ -10,14 +10,10 @@ use crate::{
         ty::translate_ty,
         ty_inv::InvariantElaborator,
         TransId, Why3Generator,
-    },
-    ctx::*,
-    traits,
-    translation::{
+    }, ctx::*, specification::contract_of, traits, translation::{
         pearlite::{normalize, Term},
         specification::PreContract,
-    },
-    util::{self, get_builtin, ident_of, PreSignature},
+    }, util::{self, get_builtin, ident_of, PreSignature}
 };
 use indexmap::IndexSet;
 use rustc_middle::ty::{self, Const, EarlyBinder, ParamEnv, Ty, TyCtxt, TyKind, TypeFoldable};
@@ -278,7 +274,7 @@ impl<'tcx> SymbolElaborator<'tcx> {
             // and to use the resulting pre and post.
         } else {
             if ctx.is_closure_like(def_id)
-                && pre_sig.contract.is_empty()
+                && contract_of(ctx, def_id).is_empty()
                 && matches!(item, Dependency::Item(_, _))
             {
                 let mut decl = to_why(ctx, names, BodyId::new(def_id.as_local().unwrap(), None));
