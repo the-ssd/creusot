@@ -7,6 +7,16 @@
 <prover id="2" name="Z3" version="4.12.4" timelimit="1" steplimit="0" memlimit="1000"/>
 <file format="coma" proved="true">
 <path name=".."/><path name="hashmap.coma"/>
+<theory name="M_hashmap__qyi11479661188956547742" proved="true">
+ <goal name="clone&#39;_refn" proved="true">
+ <proof prover="0"><result status="valid" time="0.006599" steps="1"/></proof>
+ </goal>
+</theory>
+<theory name="M_hashmap__qyi9060063638777358169" proved="true">
+ <goal name="hash_refn" proved="true">
+ <proof prover="0"><result status="valid" time="0.006454" steps="1"/></proof>
+ </goal>
+</theory>
 <theory name="M_hashmap__qyi9060063638777358169__hash" proved="true">
  <goal name="vc_hash" proved="true">
  <proof prover="0"><result status="valid" time="0.006892" steps="4"/></proof>
@@ -92,7 +102,7 @@
   <goal name="vc_add.23" expl="type invariant" proved="true">
   <transf name="split_vc" proved="true" >
    <goal name="vc_add.23.0" expl="type invariant" proved="true">
-   <proof prover="0" timelimit="30" memlimit="4000"><result status="valid" time="5.105100" steps="68401"/></proof>
+   <proof prover="0" timelimit="30" memlimit="4000"><result status="valid" time="6.250627" steps="68401"/></proof>
    </goal>
   </transf>
   </goal>
@@ -100,7 +110,7 @@
   <proof prover="2"><result status="valid" time="0.088165" steps="340324"/></proof>
   </goal>
   <goal name="vc_add.25" proved="true">
-  <proof prover="0" timelimit="5"><result status="valid" time="0.209766" steps="2112"/></proof>
+  <proof prover="0" timelimit="5"><result status="valid" time="0.088193" steps="2112"/></proof>
   </goal>
   <goal name="vc_add.26" proved="true">
   <proof prover="0" timelimit="5"><result status="valid" time="0.040132" steps="2149"/></proof>
@@ -171,12 +181,12 @@
   <goal name="vc_add.48" expl="type invariant" proved="true">
   <transf name="split_vc" proved="true" >
    <goal name="vc_add.48.0" expl="type invariant" proved="true">
-   <proof prover="0" timelimit="30" memlimit="4000"><result status="valid" time="3.440148" steps="53597"/></proof>
+   <proof prover="0" timelimit="30" memlimit="4000"><result status="valid" time="4.132554" steps="53597"/></proof>
    </goal>
   </transf>
   </goal>
   <goal name="vc_add.49" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="1.876410" steps="5241678"/></proof>
+  <proof prover="0" timelimit="5"><result status="valid" time="0.776669" steps="16561"/></proof>
   </goal>
   <goal name="vc_add.50" proved="true">
   <proof prover="0"><result status="valid" time="0.024476" steps="74"/></proof>
@@ -192,7 +202,7 @@
 </theory>
 <theory name="M_hashmap__qyi7664122466964245986__get" proved="true">
  <goal name="vc_get" proved="true">
- <proof prover="0"><result status="valid" time="0.750743" steps="14181"/></proof>
+ <proof prover="0" timelimit="5"><result status="valid" time="0.794470" steps="14181"/></proof>
  </goal>
 </theory>
 <theory name="M_hashmap__qyi7664122466964245986__resize" proved="true">
@@ -375,16 +385,6 @@
 <theory name="M_hashmap__main" proved="true">
  <goal name="vc_main" proved="true">
  <proof prover="2"><result status="valid" time="0.046479" steps="202249"/></proof>
- </goal>
-</theory>
-<theory name="M_hashmap__qyi11479661188956547742" proved="true">
- <goal name="clone&#39;_refn" proved="true">
- <proof prover="0"><result status="valid" time="0.006599" steps="1"/></proof>
- </goal>
-</theory>
-<theory name="M_hashmap__qyi9060063638777358169" proved="true">
- <goal name="hash_refn" proved="true">
- <proof prover="0"><result status="valid" time="0.006454" steps="1"/></proof>
  </goal>
 </theory>
 </file>

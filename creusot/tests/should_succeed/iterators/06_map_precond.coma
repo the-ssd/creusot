@@ -2825,17 +2825,17 @@ module M_06_map_precond__counter__qy123zclosureqy35z0qy125z_Type [#"../06_map_pr
   
   use prelude.prelude.Int16
   
-  use prelude.prelude.Int32
+  use prelude.prelude.UIntSize
   
   use prelude.prelude.Int
   
   use prelude.prelude.Borrow
   
   type m_06_map_precond__counter__qy123zclosureqy35z0qy125z 'i =
-    | M_06_map_precond__counter__qy123zclosureqy35z0qy125z (borrowed int32)
+    | M_06_map_precond__counter__qy123zclosureqy35z0qy125z (borrowed usize)
   
-  let rec m_06_map_precond__counter__qy123zclosureqy35z0qy125z < 'i > (input:m_06_map_precond__counter__qy123zclosureqy35z0qy125z 'i) (ret  (cnt:borrowed int32))= any
-    [ good (cnt:borrowed int32)-> {M_06_map_precond__counter__qy123zclosureqy35z0qy125z cnt = input} (! ret {cnt}) ]
+  let rec m_06_map_precond__counter__qy123zclosureqy35z0qy125z < 'i > (input:m_06_map_precond__counter__qy123zclosureqy35z0qy125z 'i) (ret  (cnt:borrowed usize))= any
+    [ good (cnt:borrowed usize)-> {M_06_map_precond__counter__qy123zclosureqy35z0qy125z cnt = input} (! ret {cnt}) ]
     
 end
 module M_06_map_precond__counter__qy123zclosureqy35z0qy125z [#"../06_map_precond.rs" 219 14 219 24]
@@ -2855,7 +2855,7 @@ module M_06_map_precond__counter__qy123zclosureqy35z0qy125z [#"../06_map_precond
   
   use prelude.prelude.Intrinsic
   
-  use prelude.prelude.Int32
+  use prelude.prelude.UIntSize
   
   use prelude.prelude.Borrow
   
@@ -2873,9 +2873,9 @@ module M_06_map_precond__counter__qy123zclosureqy35z0qy125z [#"../06_map_precond
   
   use prelude.prelude.Snapshot
   
-  use prelude.prelude.Int32
+  use prelude.prelude.UIntSize
   
-  function field_0'0 [#"../06_map_precond.rs" 219 14 219 24] (self : Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z i) : borrowed int32
+  function field_0'0 [#"../06_map_precond.rs" 219 14 219 24] (self : Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z i) : borrowed usize
     
    =
     let Closure'0.M_06_map_precond__counter__qy123zclosureqy35z0qy125z a = self in a
@@ -2884,15 +2884,15 @@ module M_06_map_precond__counter__qy123zclosureqy35z0qy125z [#"../06_map_precond
   
   let rec m_06_map_precond__counter__qy123zclosureqy35z0qy125z[#"../06_map_precond.rs" 219 14 219 24] [@coma:extspec] (_1:borrowed (Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z i)) (x:uint32) (_prod:Snapshot.snap_ty (Seq.seq uint32)) (return'  (ret:uint32))= bb0
     [ bb0 = s0
-      [ s0 = {[@expl:assertion] [%#s06_map_precond0] Int32.to_int (field_0'0 _1.current).current
+      [ s0 = {[@expl:assertion] [%#s06_map_precond0] UIntSize.to_int (field_0'0 _1.current).current
         = Seq.length (Snapshot.inner _prod)}
         s1
       | s1 = Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z <i> {_1.current}
-          (fun (r'0:borrowed int32) ->
-            Int32.add {r'0.current} {[%#s06_map_precond1] (1 : int32)}
-              (fun (_ret':int32) ->
+          (fun (r'0:borrowed usize) ->
+            UIntSize.add {r'0.current} {[%#s06_map_precond1] (1 : usize)}
+              (fun (_ret':usize) ->
                 Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z <i> {_1.current}
-                  (fun (r'1:borrowed int32) ->
+                  (fun (r'1:borrowed usize) ->
                     
                     [ &_1 <- { _1 with current = Closure'0.M_06_map_precond__counter__qy123zclosureqy35z0qy125z ({ r'1 with current = _ret' ; }) ; } ]
                     
@@ -2911,7 +2911,7 @@ end
 module M_06_map_precond__counter [#"../06_map_precond.rs" 217 0 217 48]
   type i
   
-  let%span s06_map_precond0 = "../06_map_precond.rs" 218 18 218 19
+  let%span s06_map_precond0 = "../06_map_precond.rs" 218 18 218 24
   let%span s06_map_precond1 = "../06_map_precond.rs" 215 0 215 171
   let%span s06_map_precond2 = "../06_map_precond.rs" 216 0 216 117
   let%span s06_map_precond3 = "../06_map_precond.rs" 217 40 217 44
@@ -2958,7 +2958,7 @@ module M_06_map_precond__counter [#"../06_map_precond.rs" 217 0 217 48]
   
   axiom inv'7 [@rewrite] : forall x : uint32 [inv'7 x] . inv'7 x = true
   
-  use prelude.prelude.Int32
+  use prelude.prelude.UIntSize
   
   use prelude.prelude.Borrow
   
@@ -3040,24 +3040,24 @@ module M_06_map_precond__counter [#"../06_map_precond.rs" 217 0 217 48]
   
   use prelude.prelude.Snapshot
   
-  use prelude.prelude.Int32
+  use prelude.prelude.UIntSize
   
-  function field_0'0 [#"../06_map_precond.rs" 219 14 219 24] (self : Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z i) : borrowed int32
+  function field_0'0 [#"../06_map_precond.rs" 219 14 219 24] (self : Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z i) : borrowed usize
     
    =
     let Closure'0.M_06_map_precond__counter__qy123zclosureqy35z0qy125z a = self in a
   
   let rec closure0'0[#"../06_map_precond.rs" 219 14 219 24] [@coma:extspec] (_1:borrowed (Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z i)) (x:uint32) (_prod:Snapshot.snap_ty (Seq.seq uint32)) (return'  (ret:uint32))= bb0
     [ bb0 = s0
-      [ s0 = {[@expl:assertion] [%#span16] Int32.to_int (field_0'0 _1.current).current
+      [ s0 = {[@expl:assertion] [%#span16] UIntSize.to_int (field_0'0 _1.current).current
         = Seq.length (Snapshot.inner _prod)}
         s1
       | s1 = Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z <i> {_1.current}
-          (fun (r'0:borrowed int32) ->
-            Int32.add {r'0.current} {[%#span17] (1 : int32)}
-              (fun (_ret':int32) ->
+          (fun (r'0:borrowed usize) ->
+            UIntSize.add {r'0.current} {[%#span17] (1 : usize)}
+              (fun (_ret':usize) ->
                 Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z <i> {_1.current}
-                  (fun (r'1:borrowed int32) ->
+                  (fun (r'1:borrowed usize) ->
                     
                     [ &_1 <- { _1 with current = Closure'0.M_06_map_precond__counter__qy123zclosureqy35z0qy125z ({ r'1 with current = _ret' ; }) ; } ]
                     
@@ -3149,10 +3149,6 @@ module M_06_map_precond__counter [#"../06_map_precond.rs" 217 0 217 48]
     | Map'0.C_Map iter func produced -> inv'3 iter
     end)
   
-  use prelude.prelude.UIntSize
-  
-  use prelude.prelude.UIntSize
-  
   constant v_MAX'0 : usize = [%#span25] (18446744073709551615 : usize)
   
   let rec map'0 (iter:i) (func:Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z i) (return'  (ret:Map'0.t_Map i uint32 (Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z i) uint32))= {[@expl:precondition] [%#span30] inv'5 func}
@@ -3178,9 +3174,9 @@ module M_06_map_precond__counter [#"../06_map_precond.rs" 217 0 217 48]
     (! bb0
     [ bb0 = bb1
     | bb1 = s0
-      [ s0 =  [ &cnt <- [%#s06_map_precond0] (0 : int32) ] s1
-      | s1 = Borrow.borrow_mut <int32> {cnt}
-          (fun (_ret':borrowed int32) ->  [ &_8 <- _ret' ]  [ &cnt <- _ret'.final ] s2)
+      [ s0 =  [ &cnt <- [%#s06_map_precond0] (0 : usize) ] s1
+      | s1 = Borrow.borrow_mut <usize> {cnt}
+          (fun (_ret':borrowed usize) ->  [ &_8 <- _ret' ]  [ &cnt <- _ret'.final ] s2)
       | s2 =  [ &_7 <- Closure'0.M_06_map_precond__counter__qy123zclosureqy35z0qy125z _8 ] s3
       | s3 = map'0 {iter} {_7}
           (fun (_ret':Map'0.t_Map i uint32 (Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z i) uint32) ->
@@ -3195,10 +3191,10 @@ module M_06_map_precond__counter [#"../06_map_precond.rs" 217 0 217 48]
     )
     [ & _0 : () = any_l ()
     | & iter : i = iter
-    | & cnt : int32 = any_l ()
+    | & cnt : usize = any_l ()
     | & _5 : Map'0.t_Map i uint32 (Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z i) uint32 = any_l ()
     | & _7 : Closure'0.m_06_map_precond__counter__qy123zclosureqy35z0qy125z i = any_l ()
-    | & _8 : borrowed int32 = any_l () ]
+    | & _8 : borrowed usize = any_l () ]
      [ return' (result:())-> (! return' {result}) ] 
 end
 module M_06_map_precond__qyi18374305379273630819 [#"../06_map_precond.rs" 19 0 19 94] (* <Map<I, B, F> as common::Iterator> *)

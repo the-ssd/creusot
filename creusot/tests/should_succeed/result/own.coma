@@ -97,7 +97,7 @@ module M_own__qyi6204940358182728290__is_ok [#"../own.rs" 31 4 31 31] (* OwnResu
   
   meta "compute_max_steps" 1000000
   
-  let rec is_ok (self:OwnResult'0.t_OwnResult t e) (return'  (ret:bool))= {[%#sown2] inv'0 self}
+  let rec is_ok[#"../own.rs" 31 4 31 31] (self:OwnResult'0.t_OwnResult t e) (return'  (ret:bool))= {[%#sown2] inv'0 self}
     (! bb0
     [ bb0 = any [ br0 (a:t)-> {self = OwnResult'0.C_Ok a} (! bb2) | br1 (a:e)-> {self = OwnResult'0.C_Err a} (! bb1) ] 
     | bb1 = s0 [ s0 =  [ &_0 <- [%#smod0] false ] s1 | s1 = bb4 ] 
@@ -160,7 +160,7 @@ module M_own__qyi6204940358182728290__is_err [#"../own.rs" 36 4 36 32] (* OwnRes
   
   meta "compute_max_steps" 1000000
   
-  let rec is_err (self:OwnResult'0.t_OwnResult t e) (return'  (ret:bool))= {[%#sown0] inv'0 self}
+  let rec is_err[#"../own.rs" 36 4 36 32] (self:OwnResult'0.t_OwnResult t e) (return'  (ret:bool))= {[%#sown0] inv'0 self}
     (! bb0
     [ bb0 = s0 [ s0 = is_ok'0 {self} (fun (_ret':bool) ->  [ &_3 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = s0 [ s0 =  [ &_0 <- not _3 ] s1 | s1 = return' {_0} ]  ]
@@ -235,7 +235,7 @@ module M_own__qyi6204940358182728290__ok [#"../own.rs" 42 4 42 32] (* OwnResult<
   
   meta "compute_max_steps" 1000000
   
-  let rec ok (self:OwnResult'0.t_OwnResult t e) (return'  (ret:Option'0.t_Option t))= {[%#sown0] inv'1 self}
+  let rec ok[#"../own.rs" 42 4 42 32] (self:OwnResult'0.t_OwnResult t e) (return'  (ret:Option'0.t_Option t))= {[%#sown0] inv'1 self}
     (! bb0
     [ bb0 = bb1
     | bb1 = bb2
@@ -320,7 +320,7 @@ module M_own__qyi6204940358182728290__err [#"../own.rs" 52 4 52 33] (* OwnResult
   
   meta "compute_max_steps" 1000000
   
-  let rec err (self:OwnResult'0.t_OwnResult t e) (return'  (ret:Option'0.t_Option e))= {[%#sown0] inv'1 self}
+  let rec err[#"../own.rs" 52 4 52 33] (self:OwnResult'0.t_OwnResult t e) (return'  (ret:Option'0.t_Option e))= {[%#sown0] inv'1 self}
     (! bb0
     [ bb0 = bb1
     | bb1 = bb2
@@ -423,7 +423,7 @@ module M_own__qyi6204940358182728290__as_ref [#"../own.rs" 62 4 62 45] (* OwnRes
   
   meta "compute_max_steps" 1000000
   
-  let rec as_ref (self:OwnResult'0.t_OwnResult t e) (return'  (ret:OwnResult'0.t_OwnResult t e))= {[%#sown0] inv'0 self}
+  let rec as_ref[#"../own.rs" 62 4 62 45] (self:OwnResult'0.t_OwnResult t e) (return'  (ret:OwnResult'0.t_OwnResult t e))= {[%#sown0] inv'0 self}
     (! bb0
     [ bb0 = any [ br0 (a:t)-> {self = OwnResult'0.C_Ok a} (! bb2) | br1 (a:e)-> {self = OwnResult'0.C_Err a} (! bb3) ] 
     | bb3 = s0
@@ -536,7 +536,7 @@ module M_own__qyi6204940358182728290__as_mut [#"../own.rs" 77 4 77 57] (* OwnRes
   
   meta "compute_max_steps" 1000000
   
-  let rec as_mut (self:borrowed (OwnResult'0.t_OwnResult t e)) (return'  (ret:OwnResult'0.t_OwnResult (borrowed t) (borrowed e)))= {[%#sown0] inv'4 self}
+  let rec as_mut[#"../own.rs" 77 4 77 57] (self:borrowed (OwnResult'0.t_OwnResult t e)) (return'  (ret:OwnResult'0.t_OwnResult (borrowed t) (borrowed e)))= {[%#sown0] inv'4 self}
     (! bb0
     [ bb0 = any
       [ br0 (a:t)-> {self.current = OwnResult'0.C_Ok a} (! bb2)
@@ -645,7 +645,7 @@ module M_own__qyi6204940358182728290__unwrap [#"../own.rs" 86 4 88 29] (* OwnRes
   
   meta "compute_max_steps" 1000000
   
-  let rec unwrap (self:OwnResult'0.t_OwnResult t e) (return'  (ret:t))= {[%#sown2] inv'1 self}
+  let rec unwrap[#"../own.rs" 86 4 88 29] (self:OwnResult'0.t_OwnResult t e) (return'  (ret:t))= {[%#sown2] inv'1 self}
     {[%#sown1] exists t : t . self = OwnResult'0.C_Ok t}
     (! bb0
     [ bb0 = bb1
@@ -710,7 +710,7 @@ module M_own__qyi6204940358182728290__expect [#"../own.rs" 98 4 100 29] (* OwnRe
   
   meta "compute_max_steps" 1000000
   
-  let rec expect (self:OwnResult'0.t_OwnResult t e) (msg:string) (return'  (ret:t))= {[%#sown2] inv'1 self}
+  let rec expect[#"../own.rs" 98 4 100 29] (self:OwnResult'0.t_OwnResult t e) (msg:string) (return'  (ret:t))= {[%#sown2] inv'1 self}
     {[%#sown1] exists t : t . self = OwnResult'0.C_Ok t}
     (! bb0
     [ bb0 = bb1
@@ -775,7 +775,7 @@ module M_own__qyi6204940358182728290__unwrap_err [#"../own.rs" 110 4 112 29] (* 
   
   meta "compute_max_steps" 1000000
   
-  let rec unwrap_err (self:OwnResult'0.t_OwnResult t e) (return'  (ret:e))= {[%#sown2] inv'1 self}
+  let rec unwrap_err[#"../own.rs" 110 4 112 29] (self:OwnResult'0.t_OwnResult t e) (return'  (ret:e))= {[%#sown2] inv'1 self}
     {[%#sown1] exists e : e . self = OwnResult'0.C_Err e}
     (! bb0
     [ bb0 = bb1
@@ -842,7 +842,7 @@ module M_own__qyi6204940358182728290__unwrap_or [#"../own.rs" 122 4 122 43] (* O
   
   meta "compute_max_steps" 1000000
   
-  let rec unwrap_or (self:OwnResult'0.t_OwnResult t e) (default:t) (return'  (ret:t))= {[%#sown1] inv'1 default}
+  let rec unwrap_or[#"../own.rs" 122 4 122 43] (self:OwnResult'0.t_OwnResult t e) (default:t) (return'  (ret:t))= {[%#sown1] inv'1 default}
     {[%#sown0] inv'2 self}
     (! bb0
     [ bb0 = bb1
@@ -938,7 +938,7 @@ module M_own__qyi6204940358182728290__unwrap_or_default [#"../own.rs" 132 4 134 
   
   meta "compute_max_steps" 1000000
   
-  let rec unwrap_or_default (self:OwnResult'0.t_OwnResult t e) (return'  (ret:t))= {[%#sown1] inv'0 self}
+  let rec unwrap_or_default[#"../own.rs" 132 4 134 19] (self:OwnResult'0.t_OwnResult t e) (return'  (ret:t))= {[%#sown1] inv'0 self}
     (! bb0
     [ bb0 = bb1
     | bb1 = bb2
@@ -1034,7 +1034,7 @@ module M_own__qyi6204940358182728290__and [#"../own.rs" 144 4 144 64] (* OwnResu
   
   meta "compute_max_steps" 1000000
   
-  let rec and (self:OwnResult'0.t_OwnResult t e) (res:OwnResult'0.t_OwnResult u e) (return'  (ret:OwnResult'0.t_OwnResult u e))= {[%#sown1] inv'0 res}
+  let rec and[#"../own.rs" 144 4 144 64] (self:OwnResult'0.t_OwnResult t e) (res:OwnResult'0.t_OwnResult u e) (return'  (ret:OwnResult'0.t_OwnResult u e))= {[%#sown1] inv'0 res}
     {[%#sown0] inv'2 self}
     (! bb0
     [ bb0 = bb1
@@ -1145,7 +1145,7 @@ module M_own__qyi6204940358182728290__or [#"../own.rs" 154 4 154 63] (* OwnResul
   
   meta "compute_max_steps" 1000000
   
-  let rec or (self:OwnResult'0.t_OwnResult t e) (res:OwnResult'0.t_OwnResult t f) (return'  (ret:OwnResult'0.t_OwnResult t f))= {[%#sown1] inv'1 res}
+  let rec or[#"../own.rs" 154 4 154 63] (self:OwnResult'0.t_OwnResult t e) (res:OwnResult'0.t_OwnResult t f) (return'  (ret:OwnResult'0.t_OwnResult t f))= {[%#sown1] inv'1 res}
     {[%#sown0] inv'2 self}
     (! bb0
     [ bb0 = bb1
@@ -1237,7 +1237,7 @@ module M_own__qyi13172074075585881807__copied [#"../own.rs" 166 4 168 16] (* Own
   
   meta "compute_max_steps" 1000000
   
-  let rec copied (self:OwnResult'0.t_OwnResult t e) (return'  (ret:OwnResult'0.t_OwnResult t e))= {[%#sown0] inv'0 self}
+  let rec copied[#"../own.rs" 166 4 168 16] (self:OwnResult'0.t_OwnResult t e) (return'  (ret:OwnResult'0.t_OwnResult t e))= {[%#sown0] inv'0 self}
     (! bb0
     [ bb0 = bb1
     | bb1 = bb2
@@ -1329,7 +1329,7 @@ module M_own__qyi13172074075585881807__cloned [#"../own.rs" 179 4 181 17] (* Own
   
   meta "compute_max_steps" 1000000
   
-  let rec cloned (self:OwnResult'0.t_OwnResult t e) (return'  (ret:OwnResult'0.t_OwnResult t e))= {[%#sown0] inv'0 self}
+  let rec cloned[#"../own.rs" 179 4 181 17] (self:OwnResult'0.t_OwnResult t e) (return'  (ret:OwnResult'0.t_OwnResult t e))= {[%#sown0] inv'0 self}
     (! bb0
     [ bb0 = bb1
     | bb1 = bb2
@@ -1425,7 +1425,7 @@ module M_own__qyi10012309719472384256__copied [#"../own.rs" 194 4 196 16] (* Own
   
   meta "compute_max_steps" 1000000
   
-  let rec copied (self:OwnResult'0.t_OwnResult (borrowed t) e) (return'  (ret:OwnResult'0.t_OwnResult t e))= {[%#sown0] inv'1 self}
+  let rec copied[#"../own.rs" 194 4 196 16] (self:OwnResult'0.t_OwnResult (borrowed t) e) (return'  (ret:OwnResult'0.t_OwnResult t e))= {[%#sown0] inv'1 self}
     (! bb0
     [ bb0 = bb1
     | bb1 = bb2
@@ -1537,7 +1537,7 @@ module M_own__qyi10012309719472384256__cloned [#"../own.rs" 207 4 209 17] (* Own
   
   meta "compute_max_steps" 1000000
   
-  let rec cloned (self:OwnResult'0.t_OwnResult (borrowed t) e) (return'  (ret:OwnResult'0.t_OwnResult t e))= {[%#sown0] inv'1 self}
+  let rec cloned[#"../own.rs" 207 4 209 17] (self:OwnResult'0.t_OwnResult (borrowed t) e) (return'  (ret:OwnResult'0.t_OwnResult t e))= {[%#sown0] inv'1 self}
     (! bb0
     [ bb0 = bb1
     | bb1 = bb2
@@ -1643,7 +1643,7 @@ module M_own__qyi12833551122006947340__transpose [#"../own.rs" 223 4 223 53] (* 
   
   meta "compute_max_steps" 1000000
   
-  let rec transpose (self:OwnResult'0.t_OwnResult (Option'0.t_Option t) e) (return'  (ret:Option'0.t_Option (OwnResult'0.t_OwnResult t e)))= {[%#sown0] inv'0 self}
+  let rec transpose[#"../own.rs" 223 4 223 53] (self:OwnResult'0.t_OwnResult (Option'0.t_Option t) e) (return'  (ret:Option'0.t_Option (OwnResult'0.t_OwnResult t e)))= {[%#sown0] inv'0 self}
     (! bb0
     [ bb0 = bb1
     | bb1 = bb2

@@ -39,7 +39,7 @@ module M_10_proof_assert_in_closure__immutable_capture__qy123zclosureqy35z0qy125
   
   meta "compute_max_steps" 1000000
   
-  let rec m_10_proof_assert_in_closure__immutable_capture__qy123zclosureqy35z0qy125z (_1:Closure'0.m_10_proof_assert_in_closure__immutable_capture__qy123zclosureqy35z0qy125z) (return'  (ret:()))= {[%#s10_proof_assert_in_closure1] field_0'0 _1
+  let rec m_10_proof_assert_in_closure__immutable_capture__qy123zclosureqy35z0qy125z[#"../10_proof_assert_in_closure.rs" 7 4 7 6] (_1:Closure'0.m_10_proof_assert_in_closure__immutable_capture__qy123zclosureqy35z0qy125z) (return'  (ret:()))= {[%#s10_proof_assert_in_closure1] field_0'0 _1
     = (1 : int32)}
     (! bb0
     [ bb0 = s0
@@ -77,7 +77,7 @@ module M_10_proof_assert_in_closure__immutable_capture [#"../10_proof_assert_in_
   
   meta "compute_max_steps" 1000000
   
-  let rec immutable_capture (_1:()) (return'  (ret:()))= (! bb0
+  let rec immutable_capture[#"../10_proof_assert_in_closure.rs" 4 0 4 26] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 =  [ &x <- [%#s10_proof_assert_in_closure0] (1 : int32) ] s1
       | s1 =  [ &_4 <- Closure'0.M_10_proof_assert_in_closure__immutable_capture__qy123zclosureqy35z0qy125z x ] s2
@@ -150,7 +150,7 @@ module M_10_proof_assert_in_closure__mutable_capture__qy123zclosureqy35z0qy125z 
   
   meta "compute_max_steps" 1000000
   
-  let rec m_10_proof_assert_in_closure__mutable_capture__qy123zclosureqy35z0qy125z (_1:borrowed Closure'0.m_10_proof_assert_in_closure__mutable_capture__qy123zclosureqy35z0qy125z) (return'  (ret:()))= {[%#s10_proof_assert_in_closure3] (field_0'0 _1.current).current
+  let rec m_10_proof_assert_in_closure__mutable_capture__qy123zclosureqy35z0qy125z[#"../10_proof_assert_in_closure.rs" 15 4 15 6] (_1:borrowed Closure'0.m_10_proof_assert_in_closure__mutable_capture__qy123zclosureqy35z0qy125z) (return'  (ret:()))= {[%#s10_proof_assert_in_closure3] (field_0'0 _1.current).current
     = (1 : int32)}
     (! bb0
     [ bb0 = s0
@@ -226,7 +226,7 @@ module M_10_proof_assert_in_closure__mutable_capture [#"../10_proof_assert_in_cl
   
   meta "compute_max_steps" 1000000
   
-  let rec mutable_capture (_1:()) (return'  (ret:()))= (! bb0
+  let rec mutable_capture[#"../10_proof_assert_in_closure.rs" 12 0 12 24] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 =  [ &x <- [%#s10_proof_assert_in_closure0] (1 : int32) ] s1
       | s1 = Borrow.borrow_mut <int32> {x} (fun (_ret':borrowed int32) ->  [ &_5 <- _ret' ]  [ &x <- _ret'.final ] s2)
@@ -309,7 +309,7 @@ module M_10_proof_assert_in_closure__captures_and_call__qy123zclosureqy35z0qy125
   
   meta "compute_max_steps" 1000000
   
-  let rec m_10_proof_assert_in_closure__captures_and_call__qy123zclosureqy35z0qy125z (_1:borrowed Closure'0.m_10_proof_assert_in_closure__captures_and_call__qy123zclosureqy35z0qy125z) (return'  (ret:()))= {[%#s10_proof_assert_in_closure3] (field_0'0 _1.current).current
+  let rec m_10_proof_assert_in_closure__captures_and_call__qy123zclosureqy35z0qy125z[#"../10_proof_assert_in_closure.rs" 32 4 32 25] (_1:borrowed Closure'0.m_10_proof_assert_in_closure__captures_and_call__qy123zclosureqy35z0qy125z) (return'  (ret:()))= {[%#s10_proof_assert_in_closure3] (field_0'0 _1.current).current
     = (1 : int32)}
     (! bb0
     [ bb0 = s0
@@ -380,7 +380,7 @@ module M_10_proof_assert_in_closure__captures_and_call [#"../10_proof_assert_in_
   
   meta "compute_max_steps" 1000000
   
-  let rec captures_and_call (_1:()) (return'  (ret:()))= (! bb0
+  let rec captures_and_call[#"../10_proof_assert_in_closure.rs" 29 0 29 26] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 =  [ &x <- [%#s10_proof_assert_in_closure0] (1 : int32) ] s1
       | s1 = Borrow.borrow_mut <int32> {x} (fun (_ret':borrowed int32) ->  [ &_3 <- _ret' ]  [ &x <- _ret'.final ] s2)

@@ -158,7 +158,7 @@ module M_10_once__qyi9558967427796228243__next [#"../10_once.rs" 48 4 48 35] (* 
   let%span span5 = "../../../../../creusot-contracts/src/resolve.rs" 41 20 41 34
   let%span span6 = "../10_once.rs" 16 20 16 57
   let%span span7 = "" 0 0 0 0
-  let%span span8 = "../../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span8 = "../../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span9 = "" 0 0 0 0
   
   use T_core__option__Option as Option'0
@@ -235,7 +235,7 @@ module M_10_once__qyi9558967427796228243__next [#"../10_once.rs" 48 4 48 35] (* 
   
   meta "compute_max_steps" 1000000
   
-  let rec next (self:borrowed (Once'0.t_Once t)) (return'  (ret:Option'0.t_Option t))= {[%#s10_once0] inv'1 self}
+  let rec next[#"../10_once.rs" 48 4 48 35] (self:borrowed (Once'0.t_Once t)) (return'  (ret:Option'0.t_Option t))= {[%#s10_once0] inv'1 self}
     (! bb0
     [ bb0 = s0
       [ s0 = Once'0.t_Once <t> {self.current}

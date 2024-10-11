@@ -143,7 +143,7 @@ module M_instant__test_instant [#"../instant.rs" 7 0 7 21]
   let%span sinstant19 = "../instant.rs" 10 4 10 42
   let%span span20 = "../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
   let%span span21 = "../../../../creusot-contracts/src/logic/ord.rs" 140 16 146 17
-  let%span span22 = "../../../../creusot-contracts/src/std/option.rs" 155 8 160 9
+  let%span span22 = "../../../../creusot-contracts/src/std/option.rs" 214 8 219 9
   let%span span23 = "../../../../creusot-contracts/src/logic/ord.rs" 69 14 69 59
   let%span span24 = "../../../../creusot-contracts/src/logic/ord.rs" 64 15 64 48
   let%span span25 = "../../../../creusot-contracts/src/logic/ord.rs" 65 14 65 44
@@ -169,7 +169,7 @@ module M_instant__test_instant [#"../instant.rs" 7 0 7 21]
   let%span span45 = "../../../../creusot-contracts/src/std/time.rs" 175 16 175 60
   let%span span46 = "../../../../creusot-contracts/src/std/time.rs" 176 16 176 62
   let%span span47 = "" 0 0 0 0
-  let%span span48 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span48 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span49 = "" 0 0 0 0
   let%span span50 = "../../../../creusot-contracts/src/std/option.rs" 35 26 35 51
   let%span span51 = "../../../../creusot-contracts/src/std/time.rs" 170 16 170 64
@@ -192,7 +192,7 @@ module M_instant__test_instant [#"../instant.rs" 7 0 7 21]
   let%span span68 = "../../../../creusot-contracts/src/std/time.rs" 186 16 186 97
   let%span span69 = "../../../../creusot-contracts/src/std/time.rs" 210 8 210 50
   let%span span70 = "../../../../creusot-contracts/src/std/time.rs" 211 8 211 48
-  let%span span71 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span71 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span72 = "" 0 0 0 0
   let%span span73 = "" 0 0 0 0
   let%span span74 = "../../../../creusot-contracts/src/std/time.rs" 180 16 180 81
@@ -502,7 +502,7 @@ module M_instant__test_instant [#"../instant.rs" 7 0 7 21]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_instant (_1:()) (return'  (ret:()))= (! bb0
+  let rec test_instant[#"../instant.rs" 7 0 7 21] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = now'0 {[%#sinstant0] ()} (fun (_ret':Instant'0.t_Instant) ->  [ &instant <- _ret' ] s1) | s1 = bb1 ]
       

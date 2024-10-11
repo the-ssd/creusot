@@ -25,7 +25,7 @@ module M_red_black_tree__qyi11959472507597060150__clone [#"../red_black_tree.rs"
   
   meta "compute_max_steps" 1000000
   
-  let rec clone' (self:Color'0.t_Color) (return'  (ret:Color'0.t_Color))= (! bb0
+  let rec clone'[#"../red_black_tree.rs" 12 9 12 14] (self:Color'0.t_Color) (return'  (ret:Color'0.t_Color))= (! bb0
     [ bb0 = any [ br0 -> {self = Color'0.C_Red } (! bb2) | br1 -> {self = Color'0.C_Black } (! bb3) ] 
     | bb3 = s0 [ s0 =  [ &_0 <- Color'0.C_Black ] s1 | s1 = bb5 ] 
     | bb2 = bb4
@@ -1139,7 +1139,7 @@ module M_red_black_tree__qyi2476155906044564626__is_red [#"../red_black_tree.rs"
   
   meta "compute_max_steps" 1000000
   
-  let rec is_red (self:Tree'0.t_Tree k v) (return'  (ret:bool))= {[%#sred_black_tree2] inv'0 self}
+  let rec is_red[#"../red_black_tree.rs" 419 4 419 28] (self:Tree'0.t_Tree k v) (return'  (ret:bool))= {[%#sred_black_tree2] inv'0 self}
     (! bb0
     [ bb0 = Tree'0.t_Tree <k> <v> {self}
         (fun (rnode'0:Option'0.t_Option (Node'0.t_Node k v)) ->
@@ -1218,10 +1218,10 @@ module M_red_black_tree__qyi17561227306860881838__rotate_right [#"../red_black_t
   let%span span46 = "" 0 0 0 0
   let%span span47 = "../../../../creusot-contracts/src/std/mem.rs" 13 22 13 30
   let%span span48 = "../../../../creusot-contracts/src/std/mem.rs" 14 22 14 30
-  let%span span49 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span49 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span50 = "" 0 0 0 0
   let%span span51 = "" 0 0 0 0
-  let%span span52 = "../../../../creusot-contracts/src/std/option.rs" 147 20 147 32
+  let%span span52 = "../../../../creusot-contracts/src/std/option.rs" 206 20 206 32
   let%span span53 = "" 0 0 0 0
   let%span span54 = "../../../../creusot-contracts/src/std/mem.rs" 17 22 17 37
   let%span span55 = "../../../../creusot-contracts/src/std/mem.rs" 18 22 18 42
@@ -1555,7 +1555,7 @@ module M_red_black_tree__qyi17561227306860881838__rotate_right [#"../red_black_t
   
   meta "compute_max_steps" 1000000
   
-  let rec rotate_right (self:borrowed (Node'0.t_Node k v)) (return'  (ret:()))= {[%#sred_black_tree4] inv'7 self}
+  let rec rotate_right[#"../red_black_tree.rs" 443 4 443 30] (self:borrowed (Node'0.t_Node k v)) (return'  (ret:()))= {[%#sred_black_tree4] inv'7 self}
     {[%#sred_black_tree3] color'0 (T_red_black_tree__Node.t_Node__left self.current) = Color'0.C_Red}
     {[%#sred_black_tree2] internal_invariant'0 self.current}
     (! bb0
@@ -1812,10 +1812,10 @@ module M_red_black_tree__qyi17561227306860881838__rotate_left [#"../red_black_tr
   let%span span46 = "" 0 0 0 0
   let%span span47 = "../../../../creusot-contracts/src/std/mem.rs" 13 22 13 30
   let%span span48 = "../../../../creusot-contracts/src/std/mem.rs" 14 22 14 30
-  let%span span49 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span49 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span50 = "" 0 0 0 0
   let%span span51 = "" 0 0 0 0
-  let%span span52 = "../../../../creusot-contracts/src/std/option.rs" 147 20 147 32
+  let%span span52 = "../../../../creusot-contracts/src/std/option.rs" 206 20 206 32
   let%span span53 = "" 0 0 0 0
   let%span span54 = "../../../../creusot-contracts/src/std/mem.rs" 17 22 17 37
   let%span span55 = "../../../../creusot-contracts/src/std/mem.rs" 18 22 18 42
@@ -2149,7 +2149,7 @@ module M_red_black_tree__qyi17561227306860881838__rotate_left [#"../red_black_tr
   
   meta "compute_max_steps" 1000000
   
-  let rec rotate_left (self:borrowed (Node'0.t_Node k v)) (return'  (ret:()))= {[%#sred_black_tree4] inv'7 self}
+  let rec rotate_left[#"../red_black_tree.rs" 493 4 493 29] (self:borrowed (Node'0.t_Node k v)) (return'  (ret:()))= {[%#sred_black_tree4] inv'7 self}
     {[%#sred_black_tree3] color'0 (T_red_black_tree__Node.t_Node__right self.current) = Color'0.C_Red}
     {[%#sred_black_tree2] internal_invariant'0 self.current}
     (! bb0
@@ -2404,12 +2404,12 @@ module M_red_black_tree__qyi17561227306860881838__flip_colors [#"../red_black_tr
   let%span span44 = "" 0 0 0 0
   let%span span45 = "../../../../creusot-contracts/src/std/mem.rs" 13 22 13 30
   let%span span46 = "../../../../creusot-contracts/src/std/mem.rs" 14 22 14 30
-  let%span span47 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span47 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span48 = "" 0 0 0 0
   let%span span49 = "" 0 0 0 0
   let%span span50 = "" 0 0 0 0
-  let%span span51 = "../../../../creusot-contracts/src/std/option.rs" 58 16 58 77
-  let%span span52 = "../../../../creusot-contracts/src/std/option.rs" 59 16 62 18
+  let%span span51 = "../../../../creusot-contracts/src/std/option.rs" 117 16 117 77
+  let%span span52 = "../../../../creusot-contracts/src/std/option.rs" 118 16 121 18
   let%span span53 = "" 0 0 0 0
   
   predicate invariant'7 (self : v)
@@ -2702,7 +2702,7 @@ module M_red_black_tree__qyi17561227306860881838__flip_colors [#"../red_black_tr
   
   meta "compute_max_steps" 1000000
   
-  let rec flip_colors (self:borrowed (Node'0.t_Node k v)) (return'  (ret:()))= {[%#sred_black_tree4] inv'2 self}
+  let rec flip_colors[#"../red_black_tree.rs" 517 4 517 29] (self:borrowed (Node'0.t_Node k v)) (return'  (ret:()))= {[%#sred_black_tree4] inv'2 self}
     {[%#sred_black_tree3] color'0 (T_red_black_tree__Node.t_Node__left self.current)
     = color'0 (T_red_black_tree__Node.t_Node__right self.current)}
     {[%#sred_black_tree2] T_red_black_tree__Tree.t_Tree__node (T_red_black_tree__Node.t_Node__right self.current)
@@ -2916,12 +2916,12 @@ module M_red_black_tree__qyi17561227306860881838__balance [#"../red_black_tree.r
   let%span span70 = "../red_black_tree.rs" 437 14 437 42
   let%span span71 = "../red_black_tree.rs" 438 14 438 44
   let%span span72 = "../red_black_tree.rs" 439 4 442 36
-  let%span span73 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span73 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span74 = "" 0 0 0 0
   let%span span75 = "" 0 0 0 0
   let%span span76 = "" 0 0 0 0
-  let%span span77 = "../../../../creusot-contracts/src/std/option.rs" 66 16 66 60
-  let%span span78 = "../../../../creusot-contracts/src/std/option.rs" 67 16 69 18
+  let%span span77 = "../../../../creusot-contracts/src/std/option.rs" 125 16 125 60
+  let%span span78 = "../../../../creusot-contracts/src/std/option.rs" 126 16 128 18
   let%span span79 = "" 0 0 0 0
   let%span span80 = "../red_black_tree.rs" 481 15 481 43
   let%span span81 = "../red_black_tree.rs" 482 15 482 43
@@ -3318,7 +3318,7 @@ module M_red_black_tree__qyi17561227306860881838__balance [#"../red_black_tree.r
   
   meta "compute_max_steps" 1000000
   
-  let rec balance (self:borrowed (Node'0.t_Node k v)) (return'  (ret:()))= {[%#sred_black_tree4] inv'1 self}
+  let rec balance[#"../red_black_tree.rs" 541 4 541 25] (self:borrowed (Node'0.t_Node k v)) (return'  (ret:()))= {[%#sred_black_tree4] inv'1 self}
     {[%#sred_black_tree3] T_red_black_tree__Node.t_Node__color self.current = Color'0.C_Red
     /\ color'0 (T_red_black_tree__Node.t_Node__right self.current) = Color'0.C_Red
     /\ color'0 (T_red_black_tree__Node.t_Node__left self.current) = Color'0.C_Red  -> false}
@@ -3541,12 +3541,12 @@ module M_red_black_tree__qyi17561227306860881838__move_red_left [#"../red_black_
   let%span span72 = "../red_black_tree.rs" 439 4 442 36
   let%span span73 = "../red_black_tree.rs" 419 15 419 19
   let%span span74 = "../red_black_tree.rs" 418 14 418 45
-  let%span span75 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span75 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span76 = "" 0 0 0 0
   let%span span77 = "" 0 0 0 0
   let%span span78 = "" 0 0 0 0
-  let%span span79 = "../../../../creusot-contracts/src/std/option.rs" 58 16 58 77
-  let%span span80 = "../../../../creusot-contracts/src/std/option.rs" 59 16 62 18
+  let%span span79 = "../../../../creusot-contracts/src/std/option.rs" 117 16 117 77
+  let%span span80 = "../../../../creusot-contracts/src/std/option.rs" 118 16 121 18
   let%span span81 = "" 0 0 0 0
   let%span span82 = "../red_black_tree.rs" 503 15 503 43
   let%span span83 = "../red_black_tree.rs" 504 15 504 40
@@ -3950,7 +3950,7 @@ module M_red_black_tree__qyi17561227306860881838__move_red_left [#"../red_black_
   
   meta "compute_max_steps" 1000000
   
-  let rec move_red_left (self:borrowed (Node'0.t_Node k v)) (return'  (ret:borrowed (Node'0.t_Node k v)))= {[%#sred_black_tree3] inv'3 self}
+  let rec move_red_left[#"../red_black_tree.rs" 573 4 573 44] (self:borrowed (Node'0.t_Node k v)) (return'  (ret:borrowed (Node'0.t_Node k v)))= {[%#sred_black_tree3] inv'3 self}
     {[%#sred_black_tree2] match_n'0 (cpn'0 (Color'0.C_Red) (cpn'0 (Color'0.C_Black) (CP'0.C_CPL (Color'0.C_Black)) (CP'0.C_CPL (Color'0.C_Black))) (CP'0.C_CPL (Color'0.C_Black))) self.current}
     {[%#sred_black_tree1] internal_invariant'0 self.current}
     {[%#sred_black_tree0] T_red_black_tree__Tree.t_Tree__node (T_red_black_tree__Node.t_Node__right self.current)
@@ -4202,12 +4202,12 @@ module M_red_black_tree__qyi17561227306860881838__move_red_right [#"../red_black
   let%span span62 = "../red_black_tree.rs" 439 4 442 36
   let%span span63 = "../red_black_tree.rs" 419 15 419 19
   let%span span64 = "../red_black_tree.rs" 418 14 418 45
-  let%span span65 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span65 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span66 = "" 0 0 0 0
   let%span span67 = "" 0 0 0 0
   let%span span68 = "" 0 0 0 0
-  let%span span69 = "../../../../creusot-contracts/src/std/option.rs" 58 16 58 77
-  let%span span70 = "../../../../creusot-contracts/src/std/option.rs" 59 16 62 18
+  let%span span69 = "../../../../creusot-contracts/src/std/option.rs" 117 16 117 77
+  let%span span70 = "../../../../creusot-contracts/src/std/option.rs" 118 16 121 18
   let%span span71 = "" 0 0 0 0
   let%span span72 = "../red_black_tree.rs" 503 15 503 43
   let%span span73 = "../red_black_tree.rs" 504 15 504 40
@@ -4592,7 +4592,7 @@ module M_red_black_tree__qyi17561227306860881838__move_red_right [#"../red_black
   
   meta "compute_max_steps" 1000000
   
-  let rec move_red_right (self:borrowed (Node'0.t_Node k v)) (return'  (ret:borrowed (Node'0.t_Node k v)))= {[%#sred_black_tree3] inv'3 self}
+  let rec move_red_right[#"../red_black_tree.rs" 602 4 602 45] (self:borrowed (Node'0.t_Node k v)) (return'  (ret:borrowed (Node'0.t_Node k v)))= {[%#sred_black_tree3] inv'3 self}
     {[%#sred_black_tree2] match_n'0 (cpn'0 (Color'0.C_Red) (CP'0.C_CPL (Color'0.C_Black)) (cpn'0 (Color'0.C_Black) (CP'0.C_CPL (Color'0.C_Black)) (CP'0.C_CPL (Color'0.C_Black)))) self.current}
     {[%#sred_black_tree1] internal_invariant'0 self.current}
     {[%#sred_black_tree0] T_red_black_tree__Tree.t_Tree__node (T_red_black_tree__Node.t_Node__left self.current)
@@ -5179,7 +5179,7 @@ module M_red_black_tree__qyi2476155906044564626__insert_rec [#"../red_black_tree
   
   meta "compute_max_steps" 1000000
   
-  let rec insert_rec (self:borrowed (Tree'0.t_Tree k v)) (key:k) (val':v) (return'  (ret:()))= {[%#sred_black_tree4] inv'6 val'}
+  let rec insert_rec[#"../red_black_tree.rs" 625 4 625 44] (self:borrowed (Tree'0.t_Tree k v)) (key:k) (val':v) (return'  (ret:()))= {[%#sred_black_tree4] inv'6 val'}
     {[%#sred_black_tree3] inv'5 key}
     {[%#sred_black_tree2] inv'2 self}
     {[%#sred_black_tree1] color_invariant'0 self.current}
@@ -5424,11 +5424,11 @@ module M_red_black_tree__qyi2476155906044564626__delete_max_rec [#"../red_black_
   let%span span38 = "../red_black_tree.rs" 242 12 248 13
   let%span span39 = "../red_black_tree.rs" 394 12 394 59
   let%span span40 = "../red_black_tree.rs" 185 8 187 9
-  let%span span41 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span41 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span42 = "" 0 0 0 0
   let%span span43 = "" 0 0 0 0
   let%span span44 = "../../../../creusot-contracts/src/resolve.rs" 41 20 41 34
-  let%span span45 = "../../../../creusot-contracts/src/std/option.rs" 147 20 147 32
+  let%span span45 = "../../../../creusot-contracts/src/std/option.rs" 206 20 206 32
   let%span span46 = "" 0 0 0 0
   let%span span47 = "../../../../creusot-contracts/src/std/mem.rs" 17 22 17 37
   let%span span48 = "../../../../creusot-contracts/src/std/mem.rs" 18 22 18 42
@@ -5471,8 +5471,8 @@ module M_red_black_tree__qyi2476155906044564626__delete_max_rec [#"../red_black_
   let%span span85 = "../red_black_tree.rs" 600 4 601 45
   let%span span86 = "../red_black_tree.rs" 602 36 602 45
   let%span span87 = "" 0 0 0 0
-  let%span span88 = "../../../../creusot-contracts/src/std/option.rs" 66 16 66 60
-  let%span span89 = "../../../../creusot-contracts/src/std/option.rs" 67 16 69 18
+  let%span span88 = "../../../../creusot-contracts/src/std/option.rs" 125 16 125 60
+  let%span span89 = "../../../../creusot-contracts/src/std/option.rs" 126 16 128 18
   let%span span90 = "" 0 0 0 0
   let%span span91 = "../red_black_tree.rs" 431 15 431 43
   let%span span92 = "../red_black_tree.rs" 432 15 432 42
@@ -5491,8 +5491,8 @@ module M_red_black_tree__qyi2476155906044564626__delete_max_rec [#"../red_black_
   let%span span105 = "../../../../creusot-contracts/src/std/boxed.rs" 44 26 44 43
   let%span span106 = "" 0 0 0 0
   let%span span107 = "" 0 0 0 0
-  let%span span108 = "../../../../creusot-contracts/src/std/option.rs" 58 16 58 77
-  let%span span109 = "../../../../creusot-contracts/src/std/option.rs" 59 16 62 18
+  let%span span108 = "../../../../creusot-contracts/src/std/option.rs" 117 16 117 77
+  let%span span109 = "../../../../creusot-contracts/src/std/option.rs" 118 16 121 18
   let%span span110 = "" 0 0 0 0
   
   predicate invariant'9 (self : v)
@@ -5990,7 +5990,7 @@ module M_red_black_tree__qyi2476155906044564626__delete_max_rec [#"../red_black_
   
   meta "compute_max_steps" 1000000
   
-  let rec delete_max_rec (self:borrowed (Tree'0.t_Tree k v)) (return'  (ret:(k, v)))= {[%#sred_black_tree2] inv'6 self}
+  let rec delete_max_rec[#"../red_black_tree.rs" 659 4 659 42] (self:borrowed (Tree'0.t_Tree k v)) (return'  (ret:(k, v)))= {[%#sred_black_tree2] inv'6 self}
     {[%#sred_black_tree1] match_t'0 (CP'0.C_CPL (Color'0.C_Red)) self.current
     \/ match_t'0 (cpn'0 (Color'0.C_Black) (CP'0.C_CPL (Color'0.C_Red)) (CP'0.C_CPL (Color'0.C_Black))) self.current}
     {[%#sred_black_tree0] internal_invariant'0 self.current}
@@ -6287,11 +6287,11 @@ module M_red_black_tree__qyi2476155906044564626__delete_min_rec [#"../red_black_
   let%span span38 = "../red_black_tree.rs" 242 12 248 13
   let%span span39 = "../red_black_tree.rs" 394 12 394 59
   let%span span40 = "../red_black_tree.rs" 185 8 187 9
-  let%span span41 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span41 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span42 = "" 0 0 0 0
   let%span span43 = "" 0 0 0 0
   let%span span44 = "../../../../creusot-contracts/src/resolve.rs" 41 20 41 34
-  let%span span45 = "../../../../creusot-contracts/src/std/option.rs" 147 20 147 32
+  let%span span45 = "../../../../creusot-contracts/src/std/option.rs" 206 20 206 32
   let%span span46 = "" 0 0 0 0
   let%span span47 = "../../../../creusot-contracts/src/std/mem.rs" 17 22 17 37
   let%span span48 = "../../../../creusot-contracts/src/std/mem.rs" 18 22 18 42
@@ -6334,8 +6334,8 @@ module M_red_black_tree__qyi2476155906044564626__delete_min_rec [#"../red_black_
   let%span span85 = "../red_black_tree.rs" 571 4 572 45
   let%span span86 = "../red_black_tree.rs" 573 35 573 44
   let%span span87 = "" 0 0 0 0
-  let%span span88 = "../../../../creusot-contracts/src/std/option.rs" 66 16 66 60
-  let%span span89 = "../../../../creusot-contracts/src/std/option.rs" 67 16 69 18
+  let%span span88 = "../../../../creusot-contracts/src/std/option.rs" 125 16 125 60
+  let%span span89 = "../../../../creusot-contracts/src/std/option.rs" 126 16 128 18
   let%span span90 = "" 0 0 0 0
   let%span span91 = "../red_black_tree.rs" 419 15 419 19
   let%span span92 = "../red_black_tree.rs" 418 14 418 45
@@ -6344,8 +6344,8 @@ module M_red_black_tree__qyi2476155906044564626__delete_min_rec [#"../red_black_
   let%span span95 = "../../../../creusot-contracts/src/std/boxed.rs" 44 26 44 43
   let%span span96 = "" 0 0 0 0
   let%span span97 = "" 0 0 0 0
-  let%span span98 = "../../../../creusot-contracts/src/std/option.rs" 58 16 58 77
-  let%span span99 = "../../../../creusot-contracts/src/std/option.rs" 59 16 62 18
+  let%span span98 = "../../../../creusot-contracts/src/std/option.rs" 117 16 117 77
+  let%span span99 = "../../../../creusot-contracts/src/std/option.rs" 118 16 121 18
   let%span span100 = "" 0 0 0 0
   
   predicate invariant'9 (self : v)
@@ -6824,7 +6824,7 @@ module M_red_black_tree__qyi2476155906044564626__delete_min_rec [#"../red_black_
   
   meta "compute_max_steps" 1000000
   
-  let rec delete_min_rec (self:borrowed (Tree'0.t_Tree k v)) (return'  (ret:(k, v)))= {[%#sred_black_tree2] inv'6 self}
+  let rec delete_min_rec[#"../red_black_tree.rs" 687 4 687 42] (self:borrowed (Tree'0.t_Tree k v)) (return'  (ret:(k, v)))= {[%#sred_black_tree2] inv'6 self}
     {[%#sred_black_tree1] match_t'0 (CP'0.C_CPL (Color'0.C_Red)) self.current
     \/ match_t'0 (cpn'0 (Color'0.C_Black) (CP'0.C_CPL (Color'0.C_Red)) (CP'0.C_CPL (Color'0.C_Black))) self.current}
     {[%#sred_black_tree0] internal_invariant'0 self.current}
@@ -7183,21 +7183,21 @@ module M_red_black_tree__qyi2476155906044564626__delete_rec [#"../red_black_tree
   let%span span121 = "../red_black_tree.rs" 598 14 599 61
   let%span span122 = "../red_black_tree.rs" 600 4 601 45
   let%span span123 = "../red_black_tree.rs" 602 36 602 45
-  let%span span124 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span124 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span125 = "" 0 0 0 0
   let%span span126 = "" 0 0 0 0
   let%span span127 = "" 0 0 0 0
-  let%span span128 = "../../../../creusot-contracts/src/std/option.rs" 66 16 66 60
-  let%span span129 = "../../../../creusot-contracts/src/std/option.rs" 67 16 69 18
+  let%span span128 = "../../../../creusot-contracts/src/std/option.rs" 125 16 125 60
+  let%span span129 = "../../../../creusot-contracts/src/std/option.rs" 126 16 128 18
   let%span span130 = "" 0 0 0 0
   let%span span131 = "../red_black_tree.rs" 185 8 187 9
-  let%span span132 = "../../../../creusot-contracts/src/std/option.rs" 147 20 147 32
+  let%span span132 = "../../../../creusot-contracts/src/std/option.rs" 206 20 206 32
   let%span span133 = "" 0 0 0 0
   let%span span134 = "../../../../creusot-contracts/src/std/mem.rs" 17 22 17 37
   let%span span135 = "../../../../creusot-contracts/src/std/mem.rs" 18 22 18 42
   let%span span136 = "" 0 0 0 0
   let%span span137 = "" 0 0 0 0
-  let%span span138 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span138 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span139 = "../red_black_tree.rs" 431 15 431 43
   let%span span140 = "../red_black_tree.rs" 432 15 432 42
   let%span span141 = "../red_black_tree.rs" 443 25 443 29
@@ -7218,8 +7218,8 @@ module M_red_black_tree__qyi2476155906044564626__delete_rec [#"../red_black_tree
   let%span span156 = "../../../../creusot-contracts/src/std/boxed.rs" 44 26 44 43
   let%span span157 = "" 0 0 0 0
   let%span span158 = "" 0 0 0 0
-  let%span span159 = "../../../../creusot-contracts/src/std/option.rs" 58 16 58 77
-  let%span span160 = "../../../../creusot-contracts/src/std/option.rs" 59 16 62 18
+  let%span span159 = "../../../../creusot-contracts/src/std/option.rs" 117 16 117 77
+  let%span span160 = "../../../../creusot-contracts/src/std/option.rs" 118 16 121 18
   let%span span161 = "" 0 0 0 0
   
   predicate inv'10 (_1 : v)
@@ -7897,7 +7897,7 @@ module M_red_black_tree__qyi2476155906044564626__delete_rec [#"../red_black_tree
   
   meta "compute_max_steps" 1000000
   
-  let rec delete_rec (self:borrowed (Tree'0.t_Tree k v)) (key:k) (return'  (ret:Option'0.t_Option (k, v)))= {[%#sred_black_tree4] inv'12 key}
+  let rec delete_rec[#"../red_black_tree.rs" 713 4 713 55] (self:borrowed (Tree'0.t_Tree k v)) (key:k) (return'  (ret:Option'0.t_Option (k, v)))= {[%#sred_black_tree4] inv'12 key}
     {[%#sred_black_tree3] inv'7 self}
     {[%#sred_black_tree2] match_t'0 (CP'0.C_CPL (Color'0.C_Red)) self.current
     \/ match_t'0 (cpn'0 (Color'0.C_Black) (CP'0.C_CPL (Color'0.C_Red)) (CP'0.C_CPL (Color'0.C_Black))) self.current}
@@ -8912,7 +8912,7 @@ module M_red_black_tree__qyi1501420612169366910__new [#"../red_black_tree.rs" 81
   
   meta "compute_max_steps" 1000000
   
-  let rec new (_1:()) (return'  (ret:Map'0.t_Map k v))= (! bb0
+  let rec new[#"../red_black_tree.rs" 810 4 810 24] (_1:()) (return'  (ret:Map'0.t_Map k v))= (! bb0
     [ bb0 = s0 [ s0 =  [ &_3 <- Option'0.C_None ] s1 | s1 =  [ &_2 <- Tree'0.C_Tree _3 ] s2 | s2 = bb1 ] 
     | bb1 = s0 [ s0 =  [ &_0 <- Map'0.C_Map _2 ] s1 | s1 = bb2 ] 
     | bb2 = return' {_0} ]
@@ -8976,12 +8976,12 @@ module M_red_black_tree__qyi1501420612169366910__insert [#"../red_black_tree.rs"
   let%span span42 = "../red_black_tree.rs" 113 4 113 80
   let%span span43 = "../red_black_tree.rs" 119 12 119 61
   let%span span44 = "../../../../creusot-contracts/src/resolve.rs" 41 20 41 34
-  let%span span45 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span45 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span46 = "" 0 0 0 0
   let%span span47 = "" 0 0 0 0
   let%span span48 = "" 0 0 0 0
-  let%span span49 = "../../../../creusot-contracts/src/std/option.rs" 58 16 58 77
-  let%span span50 = "../../../../creusot-contracts/src/std/option.rs" 59 16 62 18
+  let%span span49 = "../../../../creusot-contracts/src/std/option.rs" 117 16 117 77
+  let%span span50 = "../../../../creusot-contracts/src/std/option.rs" 118 16 121 18
   let%span span51 = "" 0 0 0 0
   let%span span52 = "../red_black_tree.rs" 270 12 275 13
   let%span span53 = "../red_black_tree.rs" 263 16 263 48
@@ -9365,7 +9365,7 @@ module M_red_black_tree__qyi1501420612169366910__insert [#"../red_black_tree.rs"
   
   meta "compute_max_steps" 1000000
   
-  let rec insert (self:borrowed (Map'0.t_Map k v)) (key:k) (val':v) (return'  (ret:()))= {[%#sred_black_tree3] inv'5 val'}
+  let rec insert[#"../red_black_tree.rs" 815 4 815 44] (self:borrowed (Map'0.t_Map k v)) (key:k) (val':v) (return'  (ret:()))= {[%#sred_black_tree3] inv'5 val'}
     {[%#sred_black_tree2] inv'4 key}
     {[%#sred_black_tree1] inv'3 self}
     (! bb0
@@ -9487,12 +9487,12 @@ module M_red_black_tree__qyi1501420612169366910__delete_max [#"../red_black_tree
   let%span span43 = "../red_black_tree.rs" 112 15 112 35
   let%span span44 = "../red_black_tree.rs" 113 4 113 80
   let%span span45 = "../red_black_tree.rs" 119 12 119 61
-  let%span span46 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span46 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span47 = "" 0 0 0 0
   let%span span48 = "" 0 0 0 0
   let%span span49 = "" 0 0 0 0
-  let%span span50 = "../../../../creusot-contracts/src/std/option.rs" 58 16 58 77
-  let%span span51 = "../../../../creusot-contracts/src/std/option.rs" 59 16 62 18
+  let%span span50 = "../../../../creusot-contracts/src/std/option.rs" 117 16 117 77
+  let%span span51 = "../../../../creusot-contracts/src/std/option.rs" 118 16 121 18
   let%span span52 = "" 0 0 0 0
   let%span span53 = "../red_black_tree.rs" 263 16 263 48
   let%span span54 = "../red_black_tree.rs" 270 12 275 13
@@ -9917,7 +9917,7 @@ module M_red_black_tree__qyi1501420612169366910__delete_max [#"../red_black_tree
   
   meta "compute_max_steps" 1000000
   
-  let rec delete_max (self:borrowed (Map'0.t_Map k v)) (return'  (ret:Option'0.t_Option (k, v)))= {[%#sred_black_tree3] inv'2 self}
+  let rec delete_max[#"../red_black_tree.rs" 827 4 827 50] (self:borrowed (Map'0.t_Map k v)) (return'  (ret:Option'0.t_Option (k, v)))= {[%#sred_black_tree3] inv'2 self}
     (! bb0
     [ bb0 = s0 [ s0 =  [ &old_self <- [%#sred_black_tree0] Snapshot.new self ] s1 | s1 = bb1 ] 
     | bb1 = s0
@@ -10109,12 +10109,12 @@ module M_red_black_tree__qyi1501420612169366910__delete_min [#"../red_black_tree
   let%span span33 = "../red_black_tree.rs" 177 20 177 54
   let%span span34 = "../red_black_tree.rs" 768 8 768 29
   let%span span35 = "../../../../creusot-contracts/src/model.rs" 108 8 108 31
-  let%span span36 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span36 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span37 = "" 0 0 0 0
   let%span span38 = "" 0 0 0 0
   let%span span39 = "" 0 0 0 0
-  let%span span40 = "../../../../creusot-contracts/src/std/option.rs" 58 16 58 77
-  let%span span41 = "../../../../creusot-contracts/src/std/option.rs" 59 16 62 18
+  let%span span40 = "../../../../creusot-contracts/src/std/option.rs" 117 16 117 77
+  let%span span41 = "../../../../creusot-contracts/src/std/option.rs" 118 16 121 18
   let%span span42 = "" 0 0 0 0
   let%span span43 = "../red_black_tree.rs" 263 16 263 48
   let%span span44 = "../red_black_tree.rs" 270 12 275 13
@@ -10538,7 +10538,7 @@ module M_red_black_tree__qyi1501420612169366910__delete_min [#"../red_black_tree
   
   meta "compute_max_steps" 1000000
   
-  let rec delete_min (self:borrowed (Map'0.t_Map k v)) (return'  (ret:Option'0.t_Option (k, v)))= {[%#sred_black_tree1] inv'2 self}
+  let rec delete_min[#"../red_black_tree.rs" 852 4 852 50] (self:borrowed (Map'0.t_Map k v)) (return'  (ret:Option'0.t_Option (k, v)))= {[%#sred_black_tree1] inv'2 self}
     (! bb0
     [ bb0 = s0 [ s0 =  [ &_3 <- [%#sred_black_tree0] Snapshot.new () ] s1 | s1 = bb1 ] 
     | bb1 = s0
@@ -10729,12 +10729,12 @@ module M_red_black_tree__qyi1501420612169366910__delete [#"../red_black_tree.rs"
   let%span span36 = "../red_black_tree.rs" 768 8 768 29
   let%span span37 = "../../../../creusot-contracts/src/model.rs" 108 8 108 31
   let%span span38 = "../../../../creusot-contracts/src/model.rs" 81 8 81 28
-  let%span span39 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span39 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span40 = "" 0 0 0 0
   let%span span41 = "" 0 0 0 0
   let%span span42 = "" 0 0 0 0
-  let%span span43 = "../../../../creusot-contracts/src/std/option.rs" 58 16 58 77
-  let%span span44 = "../../../../creusot-contracts/src/std/option.rs" 59 16 62 18
+  let%span span43 = "../../../../creusot-contracts/src/std/option.rs" 117 16 117 77
+  let%span span44 = "../../../../creusot-contracts/src/std/option.rs" 118 16 121 18
   let%span span45 = "" 0 0 0 0
   let%span span46 = "../red_black_tree.rs" 263 16 263 48
   let%span span47 = "../red_black_tree.rs" 270 12 275 13
@@ -11171,7 +11171,7 @@ module M_red_black_tree__qyi1501420612169366910__delete [#"../red_black_tree.rs"
   
   meta "compute_max_steps" 1000000
   
-  let rec delete (self:borrowed (Map'0.t_Map k v)) (key:k) (return'  (ret:Option'0.t_Option (k, v)))= {[%#sred_black_tree2] inv'6 key}
+  let rec delete[#"../red_black_tree.rs" 875 4 875 55] (self:borrowed (Map'0.t_Map k v)) (key:k) (return'  (ret:Option'0.t_Option (k, v)))= {[%#sred_black_tree2] inv'6 key}
     {[%#sred_black_tree1] inv'2 self}
     (! bb0
     [ bb0 = s0 [ s0 =  [ &_5 <- [%#sred_black_tree0] Snapshot.new () ] s1 | s1 = bb1 ] 
@@ -11689,7 +11689,7 @@ module M_red_black_tree__qyi1501420612169366910__get [#"../red_black_tree.rs" 89
   
   meta "compute_max_steps" 1000000
   
-  let rec get (self:Map'0.t_Map k v) (key:k) (return'  (ret:Option'0.t_Option v))= {[%#sred_black_tree5] inv'2 key}
+  let rec get[#"../red_black_tree.rs" 896 4 896 44] (self:Map'0.t_Map k v) (key:k) (return'  (ret:Option'0.t_Option v))= {[%#sred_black_tree5] inv'2 key}
     {[%#sred_black_tree4] inv'1 self}
     (! bb0
     [ bb0 = s0 [ s0 =  [ &_5 <- [%#sred_black_tree0] Snapshot.new () ] s1 | s1 = bb1 ] 
@@ -12213,7 +12213,7 @@ module M_red_black_tree__qyi1501420612169366910__get_mut [#"../red_black_tree.rs
   
   meta "compute_max_steps" 1000000
   
-  let rec get_mut (self:borrowed (Map'0.t_Map k v)) (key:k) (return'  (ret:Option'0.t_Option (borrowed v)))= {[%#sred_black_tree8] inv'9 key}
+  let rec get_mut[#"../red_black_tree.rs" 917 4 917 56] (self:borrowed (Map'0.t_Map k v)) (key:k) (return'  (ret:Option'0.t_Option (borrowed v)))= {[%#sred_black_tree8] inv'9 key}
     {[%#sred_black_tree7] inv'8 self}
     (! bb0
     [ bb0 = s0 [ s0 =  [ &_5 <- [%#sred_black_tree0] Snapshot.new () ] s1 | s1 = bb1 ] 

@@ -105,7 +105,7 @@ module M_duration__test_duration [#"../duration.rs" 7 0 7 22]
   let%span span56 = "" 0 0 0 0
   let%span span57 = "../../../../creusot-contracts/src/std/option.rs" 35 26 35 51
   let%span span58 = "" 0 0 0 0
-  let%span span59 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span59 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span60 = "../../../../creusot-contracts/src/std/time.rs" 137 16 137 86
   let%span span61 = "../../../../creusot-contracts/src/std/time.rs" 138 16 138 114
   let%span span62 = "../../../../creusot-contracts/src/std/time.rs" 32 4 32 17
@@ -334,7 +334,7 @@ module M_duration__test_duration [#"../duration.rs" 7 0 7 22]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_duration (_1:()) (return'  (ret:()))= (! bb0
+  let rec test_duration[#"../duration.rs" 7 0 7 22] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = new'0 {[%#sduration0] (0 : uint64)} {[%#sduration1] (0 : uint32)}
           (fun (_ret':Duration'0.t_Duration) ->  [ &zero <- _ret' ] s1)

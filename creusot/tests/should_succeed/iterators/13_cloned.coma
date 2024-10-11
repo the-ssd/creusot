@@ -310,8 +310,8 @@ module M_13_cloned__qyi7043136317404314719__next [#"../13_cloned.rs" 57 4 57 35]
   let%span span15 = "../13_cloned.rs" 29 8 34 9
   let%span span16 = "../13_cloned.rs" 23 8 23 43
   let%span span17 = "" 0 0 0 0
-  let%span span18 = "../../../../../creusot-contracts/src/std/option.rs" 105 16 105 59
-  let%span span19 = "../../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span18 = "../../../../../creusot-contracts/src/std/option.rs" 164 16 164 59
+  let%span span19 = "../../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span20 = "" 0 0 0 0
   let%span span21 = "../../../../../creusot-contracts/src/resolve.rs" 41 20 41 34
   let%span span22 = "../common.rs" 31 17 31 21
@@ -475,7 +475,7 @@ module M_13_cloned__qyi7043136317404314719__next [#"../13_cloned.rs" 57 4 57 35]
   
   meta "compute_max_steps" 1000000
   
-  let rec next (self:borrowed (Cloned'0.t_Cloned i)) (return'  (ret:Option'0.t_Option t))= {[%#s13_cloned0] inv'1 self}
+  let rec next[#"../13_cloned.rs" 57 4 57 35] (self:borrowed (Cloned'0.t_Cloned i)) (return'  (ret:Option'0.t_Option t))= {[%#s13_cloned0] inv'1 self}
     (! bb0
     [ bb0 = s0
       [ s0 = Cloned'0.t_Cloned <i> {self.current}

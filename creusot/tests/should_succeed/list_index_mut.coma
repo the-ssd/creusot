@@ -57,12 +57,12 @@ module M_list_index_mut__index_mut [#"../list_index_mut.rs" 37 0 37 61]
   let%span span13 = "../../../../creusot-contracts/src/std/boxed.rs" 28 8 28 18
   let%span span14 = "../../../../creusot-contracts/src/invariant.rs" 34 20 34 44
   let%span span15 = "../../../../creusot-contracts/src/resolve.rs" 41 20 41 34
-  let%span span16 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span16 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span17 = "" 0 0 0 0
   let%span span18 = "" 0 0 0 0
   let%span span19 = "" 0 0 0 0
-  let%span span20 = "../../../../creusot-contracts/src/std/option.rs" 58 16 58 77
-  let%span span21 = "../../../../creusot-contracts/src/std/option.rs" 59 16 62 18
+  let%span span20 = "../../../../creusot-contracts/src/std/option.rs" 117 16 117 77
+  let%span span21 = "../../../../creusot-contracts/src/std/option.rs" 118 16 121 18
   let%span span22 = "" 0 0 0 0
   let%span span23 = "../../../../creusot-contracts/src/model.rs" 90 8 90 31
   let%span span24 = "../../../../creusot-contracts/src/snapshot.rs" 27 20 27 48
@@ -193,7 +193,7 @@ module M_list_index_mut__index_mut [#"../list_index_mut.rs" 37 0 37 61]
   
   meta "compute_max_steps" 1000000
   
-  let rec index_mut (l:borrowed (List'0.t_List)) (ix:usize) (return'  (ret:borrowed uint32))= {[%#slist_index_mut8] UIntSize.to_int ix
+  let rec index_mut[#"../list_index_mut.rs" 37 0 37 61] (l:borrowed (List'0.t_List)) (ix:usize) (return'  (ret:borrowed uint32))= {[%#slist_index_mut8] UIntSize.to_int ix
     < len'0 l.current}
     (! bb0
     [ bb0 = s0 [ s0 =  [ &old_l <- [%#slist_index_mut0] Snapshot.new l ] s1 | s1 = bb1 ] 
@@ -354,7 +354,7 @@ module M_list_index_mut__write [#"../list_index_mut.rs" 63 0 63 45]
   
   meta "compute_max_steps" 1000000
   
-  let rec write (l:borrowed (List'0.t_List)) (ix:usize) (v:uint32) (return'  (ret:()))= {[%#slist_index_mut0] UIntSize.to_int ix
+  let rec write[#"../list_index_mut.rs" 63 0 63 45] (l:borrowed (List'0.t_List)) (ix:usize) (v:uint32) (return'  (ret:()))= {[%#slist_index_mut0] UIntSize.to_int ix
     < len'0 l.current}
     (! bb0
     [ bb0 = s0
@@ -448,7 +448,7 @@ module M_list_index_mut__f [#"../list_index_mut.rs" 67 0 67 10]
   
   meta "compute_max_steps" 1000000
   
-  let rec f (_1:()) (return'  (ret:()))= (! bb0
+  let rec f[#"../list_index_mut.rs" 67 0 67 10] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 =  [ &_5 <- Option'0.C_None ] s1
       | s1 =  [ &_4 <- List'0.C_List ([%#slist_index_mut0] (10 : uint32)) _5 ] s2

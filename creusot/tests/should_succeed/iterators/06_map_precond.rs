@@ -215,7 +215,7 @@ pub fn increment<U: Iterator<Item = u32>>(iter: U) {
 #[requires(forall<done : &mut I> inv(done) && done.completed() ==> forall<next : I, steps: Seq<_>> (^done).produces(steps, next) ==> steps == Seq::EMPTY && ^done == next)]
 #[requires(forall<prod : _, fin: I> inv(prod) && inv(fin) && iter.produces(prod, fin) ==> prod.len() <= usize::MAX@)]
 pub fn counter<I: Iterator<Item = u32>>(iter: I) {
-    let mut cnt = 0;
+    let mut cnt = 0usize;
     map(iter, |x, _prod| {
         proof_assert!(cnt@ == _prod.len());
         cnt += 1;

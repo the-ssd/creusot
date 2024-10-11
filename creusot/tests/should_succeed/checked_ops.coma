@@ -66,8 +66,8 @@ module M_checked_ops__test_u8_add_example [#"../checked_ops.rs" 5 0 5 28]
   let%span span47 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span48 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
   let%span span49 = "" 0 0 0 0
-  let%span span50 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
-  let%span span51 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span50 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
+  let%span span51 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span52 = "" 0 0 0 0
   let%span span53 = "" 0 0 0 0
   let%span span54 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -192,7 +192,7 @@ module M_checked_ops__test_u8_add_example [#"../checked_ops.rs" 5 0 5 28]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_add_example (_1:()) (return'  (ret:()))= (! bb0
+  let rec test_u8_add_example[#"../checked_ops.rs" 5 0 5 28] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = checked_add'0 {[%#schecked_ops0] (5 : uint8)} {[%#schecked_ops1] (10 : uint8)}
           (fun (_ret':Option'0.t_Option uint8) ->  [ &_4 <- _ret' ] s1)
@@ -341,7 +341,7 @@ module M_checked_ops__test_u8_add_overflow [#"../checked_ops.rs" 23 0 23 34]
   let%span span27 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span28 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
   let%span span29 = "" 0 0 0 0
-  let%span span30 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span30 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span31 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
   let%span span32 = "../../../../creusot-contracts/src/std/num.rs" 133 16 133 89
   
@@ -452,7 +452,8 @@ module M_checked_ops__test_u8_add_overflow [#"../checked_ops.rs" 23 0 23 34]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_add_overflow (a:uint8) (return'  (ret:()))= {[%#schecked_ops12] UInt8.to_int a <> 0}
+  let rec test_u8_add_overflow[#"../checked_ops.rs" 23 0 23 34] (a:uint8) (return'  (ret:()))= {[%#schecked_ops12] UInt8.to_int a
+    <> 0}
     (! bb0
     [ bb0 = s0
       [ s0 = checked_add'0 {[%#schecked_ops0] (255 : uint8)} {a}
@@ -569,7 +570,7 @@ module M_checked_ops__test_u8_wrapping_add [#"../checked_ops.rs" 34 0 34 47]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_wrapping_add (a:uint8) (b:uint8) (return'  (ret:uint8))= (! bb0
+  let rec test_u8_wrapping_add[#"../checked_ops.rs" 34 0 34 47] (a:uint8) (b:uint8) (return'  (ret:uint8))= (! bb0
     [ bb0 = s0 [ s0 = wrapping_add'0 {a} {b} (fun (_ret':uint8) ->  [ &_0 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = return' {_0} ]
     ) [ & _0 : uint8 = any_l () | & a : uint8 = a | & b : uint8 = b ] 
@@ -584,7 +585,7 @@ module M_checked_ops__test_u8_overflowing_add [#"../checked_ops.rs" 39 0 39 44]
   let%span schecked_ops1 = "../checked_ops.rs" 40 4 40 56
   let%span span2 = "../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
   let%span span3 = "" 0 0 0 0
-  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span5 = "" 0 0 0 0
   let%span span6 = "" 0 0 0 0
   let%span span7 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -696,7 +697,7 @@ module M_checked_ops__test_u8_overflowing_add [#"../checked_ops.rs" 39 0 39 44]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_overflowing_add (a:uint8) (b:uint8) (return'  (ret:()))= (! bb0
+  let rec test_u8_overflowing_add[#"../checked_ops.rs" 39 0 39 44] (a:uint8) (b:uint8) (return'  (ret:()))= (! bb0
     [ bb0 = s0 [ s0 = overflowing_add'0 {a} {b} (fun (_ret':(uint8, bool)) ->  [ &_6 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = s0 [ s0 = wrapping_add'0 {a} {b} (fun (_ret':uint8) ->  [ &_9 <- _ret' ] s1) | s1 = bb2 ] 
     | bb2 = s0
@@ -776,11 +777,11 @@ module M_checked_ops__test_u8_sub_example [#"../checked_ops.rs" 45 0 45 28]
   let%span span46 = "../../../../creusot-contracts/src/std/num.rs" 144 16 147 18
   let%span span47 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span48 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
-  let%span span49 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span49 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span50 = "" 0 0 0 0
   let%span span51 = "" 0 0 0 0
   let%span span52 = "" 0 0 0 0
-  let%span span53 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span53 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span54 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
   let%span span55 = "../../../../creusot-contracts/src/std/num.rs" 133 16 133 89
   
@@ -903,7 +904,7 @@ module M_checked_ops__test_u8_sub_example [#"../checked_ops.rs" 45 0 45 28]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_sub_example (_1:()) (return'  (ret:()))= (! bb0
+  let rec test_u8_sub_example[#"../checked_ops.rs" 45 0 45 28] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = checked_sub'0 {[%#schecked_ops0] (5 : uint8)} {[%#schecked_ops1] (10 : uint8)}
           (fun (_ret':Option'0.t_Option uint8) ->  [ &_4 <- _ret' ] s1)
@@ -1054,7 +1055,7 @@ module M_checked_ops__test_u8_sub_overflow [#"../checked_ops.rs" 63 0 63 34]
   let%span span29 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span30 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
   let%span span31 = "" 0 0 0 0
-  let%span span32 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span32 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span33 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
   let%span span34 = "../../../../creusot-contracts/src/std/num.rs" 133 16 133 89
   
@@ -1165,7 +1166,8 @@ module M_checked_ops__test_u8_sub_overflow [#"../checked_ops.rs" 63 0 63 34]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_sub_overflow (a:uint8) (return'  (ret:()))= {[%#schecked_ops14] UInt8.to_int a <> 0}
+  let rec test_u8_sub_overflow[#"../checked_ops.rs" 63 0 63 34] (a:uint8) (return'  (ret:()))= {[%#schecked_ops14] UInt8.to_int a
+    <> 0}
     (! bb0
     [ bb0 = s0
       [ s0 = checked_sub'0 {[%#schecked_ops0] (0 : uint8)} {a}
@@ -1285,7 +1287,7 @@ module M_checked_ops__test_u8_wrapping_sub [#"../checked_ops.rs" 74 0 74 47]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_wrapping_sub (a:uint8) (b:uint8) (return'  (ret:uint8))= (! bb0
+  let rec test_u8_wrapping_sub[#"../checked_ops.rs" 74 0 74 47] (a:uint8) (b:uint8) (return'  (ret:uint8))= (! bb0
     [ bb0 = s0 [ s0 = wrapping_sub'0 {a} {b} (fun (_ret':uint8) ->  [ &_0 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = return' {_0} ]
     ) [ & _0 : uint8 = any_l () | & a : uint8 = a | & b : uint8 = b ] 
@@ -1300,7 +1302,7 @@ module M_checked_ops__test_u8_overflowing_sub [#"../checked_ops.rs" 79 0 79 44]
   let%span schecked_ops1 = "../checked_ops.rs" 80 4 80 56
   let%span span2 = "../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
   let%span span3 = "" 0 0 0 0
-  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span5 = "" 0 0 0 0
   let%span span6 = "" 0 0 0 0
   let%span span7 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -1412,7 +1414,7 @@ module M_checked_ops__test_u8_overflowing_sub [#"../checked_ops.rs" 79 0 79 44]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_overflowing_sub (a:uint8) (b:uint8) (return'  (ret:()))= (! bb0
+  let rec test_u8_overflowing_sub[#"../checked_ops.rs" 79 0 79 44] (a:uint8) (b:uint8) (return'  (ret:()))= (! bb0
     [ bb0 = s0 [ s0 = overflowing_sub'0 {a} {b} (fun (_ret':(uint8, bool)) ->  [ &_6 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = s0 [ s0 = wrapping_sub'0 {a} {b} (fun (_ret':uint8) ->  [ &_9 <- _ret' ] s1) | s1 = bb2 ] 
     | bb2 = s0
@@ -1493,8 +1495,8 @@ module M_checked_ops__test_u8_mul_example [#"../checked_ops.rs" 85 0 85 28]
   let%span span47 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span48 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
   let%span span49 = "" 0 0 0 0
-  let%span span50 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
-  let%span span51 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span50 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
+  let%span span51 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span52 = "" 0 0 0 0
   let%span span53 = "" 0 0 0 0
   let%span span54 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -1619,7 +1621,7 @@ module M_checked_ops__test_u8_mul_example [#"../checked_ops.rs" 85 0 85 28]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_mul_example (_1:()) (return'  (ret:()))= (! bb0
+  let rec test_u8_mul_example[#"../checked_ops.rs" 85 0 85 28] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = checked_mul'0 {[%#schecked_ops0] (5 : uint8)} {[%#schecked_ops1] (10 : uint8)}
           (fun (_ret':Option'0.t_Option uint8) ->  [ &_4 <- _ret' ] s1)
@@ -1766,7 +1768,7 @@ module M_checked_ops__test_u8_mul_zero [#"../checked_ops.rs" 102 0 102 30]
   let%span span25 = "../../../../creusot-contracts/src/std/num.rs" 144 16 147 18
   let%span span26 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span27 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
-  let%span span28 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span28 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span29 = "" 0 0 0 0
   let%span span30 = "" 0 0 0 0
   let%span span31 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -1879,7 +1881,7 @@ module M_checked_ops__test_u8_mul_zero [#"../checked_ops.rs" 102 0 102 30]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_mul_zero (a:uint8) (return'  (ret:()))= (! bb0
+  let rec test_u8_mul_zero[#"../checked_ops.rs" 102 0 102 30] (a:uint8) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = checked_mul'0 {[%#schecked_ops0] (0 : uint8)} {a}
           (fun (_ret':Option'0.t_Option uint8) ->  [ &_5 <- _ret' ] s1)
@@ -1946,7 +1948,7 @@ module M_checked_ops__test_u8_overflowing_mul [#"../checked_ops.rs" 111 0 111 44
   let%span schecked_ops1 = "../checked_ops.rs" 112 4 112 56
   let%span span2 = "../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
   let%span span3 = "" 0 0 0 0
-  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span5 = "" 0 0 0 0
   let%span span6 = "" 0 0 0 0
   let%span span7 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -2058,7 +2060,7 @@ module M_checked_ops__test_u8_overflowing_mul [#"../checked_ops.rs" 111 0 111 44
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_overflowing_mul (a:uint8) (b:uint8) (return'  (ret:()))= (! bb0
+  let rec test_u8_overflowing_mul[#"../checked_ops.rs" 111 0 111 44] (a:uint8) (b:uint8) (return'  (ret:()))= (! bb0
     [ bb0 = s0 [ s0 = overflowing_mul'0 {a} {b} (fun (_ret':(uint8, bool)) ->  [ &_6 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = s0 [ s0 = wrapping_mul'0 {a} {b} (fun (_ret':uint8) ->  [ &_9 <- _ret' ] s1) | s1 = bb2 ] 
     | bb2 = s0
@@ -2121,11 +2123,11 @@ module M_checked_ops__test_u8_div_example [#"../checked_ops.rs" 117 0 117 28]
   let%span span29 = "../../../../creusot-contracts/src/std/num.rs" 75 27 75 36
   let%span span30 = "../../../../creusot-contracts/src/std/num.rs" 77 16 77 85
   let%span span31 = "../../../../creusot-contracts/src/std/num.rs" 79 26 79 89
-  let%span span32 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span32 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span33 = "" 0 0 0 0
   let%span span34 = "" 0 0 0 0
   let%span span35 = "" 0 0 0 0
-  let%span span36 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span36 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span37 = "../../../../creusot-contracts/src/std/num.rs" 67 26 67 97
   let%span span38 = "../../../../creusot-contracts/src/std/num.rs" 69 16 69 85
   
@@ -2213,7 +2215,7 @@ module M_checked_ops__test_u8_div_example [#"../checked_ops.rs" 117 0 117 28]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_div_example (_1:()) (return'  (ret:()))= (! bb0
+  let rec test_u8_div_example[#"../checked_ops.rs" 117 0 117 28] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = checked_div'0 {[%#schecked_ops0] (5 : uint8)} {[%#schecked_ops1] (0 : uint8)}
           (fun (_ret':Option'0.t_Option uint8) ->  [ &_4 <- _ret' ] s1)
@@ -2309,7 +2311,7 @@ module M_checked_ops__test_u8_div_no_overflow [#"../checked_ops.rs" 128 0 128 44
   let%span span18 = "../../../../creusot-contracts/src/std/num.rs" 75 27 75 36
   let%span span19 = "../../../../creusot-contracts/src/std/num.rs" 77 16 77 85
   let%span span20 = "../../../../creusot-contracts/src/std/num.rs" 79 26 79 89
-  let%span span21 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span21 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span22 = "" 0 0 0 0
   let%span span23 = "" 0 0 0 0
   let%span span24 = "../../../../creusot-contracts/src/std/num.rs" 67 26 67 97
@@ -2387,7 +2389,8 @@ module M_checked_ops__test_u8_div_no_overflow [#"../checked_ops.rs" 128 0 128 44
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_div_no_overflow (a:uint8) (b:uint8) (return'  (ret:()))= {[%#schecked_ops9] UInt8.to_int b <> 0}
+  let rec test_u8_div_no_overflow[#"../checked_ops.rs" 128 0 128 44] (a:uint8) (b:uint8) (return'  (ret:()))= {[%#schecked_ops9] UInt8.to_int b
+    <> 0}
     (! bb0
     [ bb0 = s0 [ s0 = checked_div'0 {a} {b} (fun (_ret':Option'0.t_Option uint8) ->  [ &_7 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = s0 [ s0 = unwrap'0 {_7} (fun (_ret':uint8) ->  [ &_6 <- _ret' ] s1) | s1 = bb2 ] 
@@ -2482,7 +2485,7 @@ module M_checked_ops__test_u8_div_zero [#"../checked_ops.rs" 137 0 137 30]
   let%span schecked_ops1 = "../checked_ops.rs" 138 4 138 39
   let%span span2 = "../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
   let%span span3 = "" 0 0 0 0
-  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span5 = "" 0 0 0 0
   let%span span6 = "../../../../creusot-contracts/src/std/num.rs" 67 26 67 97
   let%span span7 = "../../../../creusot-contracts/src/std/num.rs" 69 16 69 85
@@ -2525,7 +2528,7 @@ module M_checked_ops__test_u8_div_zero [#"../checked_ops.rs" 137 0 137 30]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_u8_div_zero (a:uint8) (return'  (ret:()))= (! bb0
+  let rec test_u8_div_zero[#"../checked_ops.rs" 137 0 137 30] (a:uint8) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = checked_div'0 {a} {[%#schecked_ops0] (0 : uint8)}
           (fun (_ret':Option'0.t_Option uint8) ->  [ &_5 <- _ret' ] s1)
@@ -2606,8 +2609,8 @@ module M_checked_ops__test_i8_add_example [#"../checked_ops.rs" 142 0 142 28]
   let%span span63 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span64 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
   let%span span65 = "" 0 0 0 0
-  let%span span66 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
-  let%span span67 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span66 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
+  let%span span67 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span68 = "" 0 0 0 0
   let%span span69 = "" 0 0 0 0
   let%span span70 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -2728,7 +2731,7 @@ module M_checked_ops__test_i8_add_example [#"../checked_ops.rs" 142 0 142 28]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_add_example (_1:()) (return'  (ret:()))= (! bb0
+  let rec test_i8_add_example[#"../checked_ops.rs" 142 0 142 28] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = checked_add'0 {[%#schecked_ops0] (5 : int8)} {[%#schecked_ops1] (10 : int8)}
           (fun (_ret':Option'0.t_Option int8) ->  [ &_4 <- _ret' ] s1)
@@ -2933,7 +2936,7 @@ module M_checked_ops__test_i8_add_overflow_pos [#"../checked_ops.rs" 165 0 165 3
   let%span span29 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span30 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
   let%span span31 = "" 0 0 0 0
-  let%span span32 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span32 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span33 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
   let%span span34 = "../../../../creusot-contracts/src/std/num.rs" 133 16 133 89
   
@@ -3040,7 +3043,8 @@ module M_checked_ops__test_i8_add_overflow_pos [#"../checked_ops.rs" 165 0 165 3
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_add_overflow_pos (a:int8) (return'  (ret:()))= {[%#schecked_ops14] Int8.to_int a > 0}
+  let rec test_i8_add_overflow_pos[#"../checked_ops.rs" 165 0 165 38] (a:int8) (return'  (ret:()))= {[%#schecked_ops14] Int8.to_int a
+    > 0}
     (! bb0
     [ bb0 = s0
       [ s0 = checked_add'0 {[%#schecked_ops0] (127 : int8)} {a}
@@ -3139,7 +3143,7 @@ module M_checked_ops__test_i8_add_overflow_neg [#"../checked_ops.rs" 175 0 175 3
   let%span span29 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span30 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
   let%span span31 = "" 0 0 0 0
-  let%span span32 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span32 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span33 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
   let%span span34 = "../../../../creusot-contracts/src/std/num.rs" 133 16 133 89
   
@@ -3246,7 +3250,8 @@ module M_checked_ops__test_i8_add_overflow_neg [#"../checked_ops.rs" 175 0 175 3
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_add_overflow_neg (a:int8) (return'  (ret:()))= {[%#schecked_ops14] Int8.to_int a < 0}
+  let rec test_i8_add_overflow_neg[#"../checked_ops.rs" 175 0 175 38] (a:int8) (return'  (ret:()))= {[%#schecked_ops14] Int8.to_int a
+    < 0}
     (! bb0
     [ bb0 = s0
       [ s0 = checked_add'0 {[%#schecked_ops0] (-128 : int8)} {a}
@@ -3364,7 +3369,7 @@ module M_checked_ops__test_i8_wrapping_add [#"../checked_ops.rs" 186 0 186 47]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_wrapping_add (a:int8) (b:int8) (return'  (ret:int8))= (! bb0
+  let rec test_i8_wrapping_add[#"../checked_ops.rs" 186 0 186 47] (a:int8) (b:int8) (return'  (ret:int8))= (! bb0
     [ bb0 = s0 [ s0 = wrapping_add'0 {a} {b} (fun (_ret':int8) ->  [ &_0 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = return' {_0} ]
     ) [ & _0 : int8 = any_l () | & a : int8 = a | & b : int8 = b ] 
@@ -3380,7 +3385,7 @@ module M_checked_ops__test_i8_overflowing_add [#"../checked_ops.rs" 191 0 191 44
   let%span schecked_ops1 = "../checked_ops.rs" 192 4 192 56
   let%span span2 = "../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
   let%span span3 = "" 0 0 0 0
-  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span5 = "" 0 0 0 0
   let%span span6 = "" 0 0 0 0
   let%span span7 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -3488,7 +3493,7 @@ module M_checked_ops__test_i8_overflowing_add [#"../checked_ops.rs" 191 0 191 44
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_overflowing_add (a:int8) (b:int8) (return'  (ret:()))= (! bb0
+  let rec test_i8_overflowing_add[#"../checked_ops.rs" 191 0 191 44] (a:int8) (b:int8) (return'  (ret:()))= (! bb0
     [ bb0 = s0 [ s0 = overflowing_add'0 {a} {b} (fun (_ret':(int8, bool)) ->  [ &_6 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = s0 [ s0 = wrapping_add'0 {a} {b} (fun (_ret':int8) ->  [ &_9 <- _ret' ] s1) | s1 = bb2 ] 
     | bb2 = s0
@@ -3586,8 +3591,8 @@ module M_checked_ops__test_i8_sub_example [#"../checked_ops.rs" 197 0 197 28]
   let%span span64 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span65 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
   let%span span66 = "" 0 0 0 0
-  let%span span67 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
-  let%span span68 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span67 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
+  let%span span68 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span69 = "" 0 0 0 0
   let%span span70 = "" 0 0 0 0
   let%span span71 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -3708,7 +3713,7 @@ module M_checked_ops__test_i8_sub_example [#"../checked_ops.rs" 197 0 197 28]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_sub_example (_1:()) (return'  (ret:()))= (! bb0
+  let rec test_i8_sub_example[#"../checked_ops.rs" 197 0 197 28] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = checked_sub'0 {[%#schecked_ops0] (5 : int8)} {[%#schecked_ops1] (10 : int8)}
           (fun (_ret':Option'0.t_Option int8) ->  [ &_4 <- _ret' ] s1)
@@ -3917,7 +3922,7 @@ module M_checked_ops__test_i8_sub_overflow_pos [#"../checked_ops.rs" 220 0 220 3
   let%span span29 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span30 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
   let%span span31 = "" 0 0 0 0
-  let%span span32 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span32 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span33 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
   let%span span34 = "../../../../creusot-contracts/src/std/num.rs" 133 16 133 89
   
@@ -4024,7 +4029,8 @@ module M_checked_ops__test_i8_sub_overflow_pos [#"../checked_ops.rs" 220 0 220 3
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_sub_overflow_pos (a:int8) (return'  (ret:()))= {[%#schecked_ops14] Int8.to_int a > 0}
+  let rec test_i8_sub_overflow_pos[#"../checked_ops.rs" 220 0 220 38] (a:int8) (return'  (ret:()))= {[%#schecked_ops14] Int8.to_int a
+    > 0}
     (! bb0
     [ bb0 = s0
       [ s0 = checked_sub'0 {[%#schecked_ops0] (-128 : int8)} {a}
@@ -4123,7 +4129,7 @@ module M_checked_ops__test_i8_sub_overflow_neg [#"../checked_ops.rs" 230 0 230 3
   let%span span29 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span30 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
   let%span span31 = "" 0 0 0 0
-  let%span span32 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span32 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span33 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
   let%span span34 = "../../../../creusot-contracts/src/std/num.rs" 133 16 133 89
   
@@ -4230,7 +4236,8 @@ module M_checked_ops__test_i8_sub_overflow_neg [#"../checked_ops.rs" 230 0 230 3
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_sub_overflow_neg (a:int8) (return'  (ret:()))= {[%#schecked_ops14] Int8.to_int a < 0}
+  let rec test_i8_sub_overflow_neg[#"../checked_ops.rs" 230 0 230 38] (a:int8) (return'  (ret:()))= {[%#schecked_ops14] Int8.to_int a
+    < 0}
     (! bb0
     [ bb0 = s0
       [ s0 = checked_sub'0 {[%#schecked_ops0] (127 : int8)} {a}
@@ -4352,7 +4359,7 @@ module M_checked_ops__test_i8_wrapping_sub [#"../checked_ops.rs" 241 0 241 47]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_wrapping_sub (a:int8) (b:int8) (return'  (ret:int8))= (! bb0
+  let rec test_i8_wrapping_sub[#"../checked_ops.rs" 241 0 241 47] (a:int8) (b:int8) (return'  (ret:int8))= (! bb0
     [ bb0 = s0 [ s0 = wrapping_sub'0 {a} {b} (fun (_ret':int8) ->  [ &_0 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = return' {_0} ]
     ) [ & _0 : int8 = any_l () | & a : int8 = a | & b : int8 = b ] 
@@ -4368,7 +4375,7 @@ module M_checked_ops__test_i8_overflowing_sub [#"../checked_ops.rs" 246 0 246 44
   let%span schecked_ops1 = "../checked_ops.rs" 247 4 247 56
   let%span span2 = "../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
   let%span span3 = "" 0 0 0 0
-  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span5 = "" 0 0 0 0
   let%span span6 = "" 0 0 0 0
   let%span span7 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -4476,7 +4483,7 @@ module M_checked_ops__test_i8_overflowing_sub [#"../checked_ops.rs" 246 0 246 44
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_overflowing_sub (a:int8) (b:int8) (return'  (ret:()))= (! bb0
+  let rec test_i8_overflowing_sub[#"../checked_ops.rs" 246 0 246 44] (a:int8) (b:int8) (return'  (ret:()))= (! bb0
     [ bb0 = s0 [ s0 = overflowing_sub'0 {a} {b} (fun (_ret':(int8, bool)) ->  [ &_6 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = s0 [ s0 = wrapping_sub'0 {a} {b} (fun (_ret':int8) ->  [ &_9 <- _ret' ] s1) | s1 = bb2 ] 
     | bb2 = s0
@@ -4573,8 +4580,8 @@ module M_checked_ops__test_i8_mul_example [#"../checked_ops.rs" 252 0 252 28]
   let%span span63 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span64 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
   let%span span65 = "" 0 0 0 0
-  let%span span66 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
-  let%span span67 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span66 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
+  let%span span67 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span68 = "" 0 0 0 0
   let%span span69 = "" 0 0 0 0
   let%span span70 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -4695,7 +4702,7 @@ module M_checked_ops__test_i8_mul_example [#"../checked_ops.rs" 252 0 252 28]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_mul_example (_1:()) (return'  (ret:()))= (! bb0
+  let rec test_i8_mul_example[#"../checked_ops.rs" 252 0 252 28] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = checked_mul'0 {[%#schecked_ops0] (5 : int8)} {[%#schecked_ops1] (10 : int8)}
           (fun (_ret':Option'0.t_Option int8) ->  [ &_4 <- _ret' ] s1)
@@ -4896,7 +4903,7 @@ module M_checked_ops__test_i8_mul_zero [#"../checked_ops.rs" 274 0 274 30]
   let%span span25 = "../../../../creusot-contracts/src/std/num.rs" 144 16 147 18
   let%span span26 = "../../../../creusot-contracts/src/std/num.rs" 151 16 155 18
   let%span span27 = "../../../../creusot-contracts/src/std/num.rs" 156 16 160 18
-  let%span span28 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span28 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span29 = "" 0 0 0 0
   let%span span30 = "" 0 0 0 0
   let%span span31 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -5005,7 +5012,7 @@ module M_checked_ops__test_i8_mul_zero [#"../checked_ops.rs" 274 0 274 30]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_mul_zero (a:int8) (return'  (ret:()))= (! bb0
+  let rec test_i8_mul_zero[#"../checked_ops.rs" 274 0 274 30] (a:int8) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = checked_mul'0 {[%#schecked_ops0] (0 : int8)} {a}
           (fun (_ret':Option'0.t_Option int8) ->  [ &_5 <- _ret' ] s1)
@@ -5071,7 +5078,7 @@ module M_checked_ops__test_i8_overflowing_mul [#"../checked_ops.rs" 283 0 283 44
   let%span schecked_ops1 = "../checked_ops.rs" 284 4 284 56
   let%span span2 = "../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
   let%span span3 = "" 0 0 0 0
-  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span5 = "" 0 0 0 0
   let%span span6 = "" 0 0 0 0
   let%span span7 = "../../../../creusot-contracts/src/std/num.rs" 129 20 130 89
@@ -5179,7 +5186,7 @@ module M_checked_ops__test_i8_overflowing_mul [#"../checked_ops.rs" 283 0 283 44
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_overflowing_mul (a:int8) (b:int8) (return'  (ret:()))= (! bb0
+  let rec test_i8_overflowing_mul[#"../checked_ops.rs" 283 0 283 44] (a:int8) (b:int8) (return'  (ret:()))= (! bb0
     [ bb0 = s0 [ s0 = overflowing_mul'0 {a} {b} (fun (_ret':(int8, bool)) ->  [ &_6 <- _ret' ] s1) | s1 = bb1 ] 
     | bb1 = s0 [ s0 = wrapping_mul'0 {a} {b} (fun (_ret':int8) ->  [ &_9 <- _ret' ] s1) | s1 = bb2 ] 
     | bb2 = s0
@@ -5275,11 +5282,11 @@ module M_checked_ops__test_i8_div_example [#"../checked_ops.rs" 289 0 289 28]
   let%span span62 = "../../../../creusot-contracts/src/std/num.rs" 75 27 75 36
   let%span span63 = "../../../../creusot-contracts/src/std/num.rs" 77 16 77 85
   let%span span64 = "../../../../creusot-contracts/src/std/num.rs" 79 26 79 89
-  let%span span65 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span65 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span66 = "" 0 0 0 0
   let%span span67 = "" 0 0 0 0
   let%span span68 = "" 0 0 0 0
-  let%span span69 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span69 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span70 = "../../../../creusot-contracts/src/std/num.rs" 67 26 67 97
   let%span span71 = "../../../../creusot-contracts/src/std/num.rs" 69 16 69 85
   
@@ -5367,7 +5374,7 @@ module M_checked_ops__test_i8_div_example [#"../checked_ops.rs" 289 0 289 28]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_div_example (_1:()) (return'  (ret:()))= (! bb0
+  let rec test_i8_div_example[#"../checked_ops.rs" 289 0 289 28] (_1:()) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = checked_div'0 {[%#schecked_ops0] (5 : int8)} {[%#schecked_ops1] (0 : int8)}
           (fun (_ret':Option'0.t_Option int8) ->  [ &_4 <- _ret' ] s1)
@@ -5575,7 +5582,7 @@ module M_checked_ops__test_i8_div_no_overflow [#"../checked_ops.rs" 313 0 313 44
   let%span span18 = "../../../../creusot-contracts/src/std/num.rs" 75 27 75 36
   let%span span19 = "../../../../creusot-contracts/src/std/num.rs" 77 16 77 85
   let%span span20 = "../../../../creusot-contracts/src/std/num.rs" 79 26 79 89
-  let%span span21 = "../../../../creusot-contracts/src/std/option.rs" 30 0 141 1
+  let%span span21 = "../../../../creusot-contracts/src/std/option.rs" 30 0 200 1
   let%span span22 = "" 0 0 0 0
   let%span span23 = "" 0 0 0 0
   let%span span24 = "../../../../creusot-contracts/src/std/num.rs" 67 26 67 97
@@ -5653,7 +5660,8 @@ module M_checked_ops__test_i8_div_no_overflow [#"../checked_ops.rs" 313 0 313 44
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_div_no_overflow (a:int8) (b:int8) (return'  (ret:()))= {[%#schecked_ops9] Int8.to_int b <> 0
+  let rec test_i8_div_no_overflow[#"../checked_ops.rs" 313 0 313 44] (a:int8) (b:int8) (return'  (ret:()))= {[%#schecked_ops9] Int8.to_int b
+    <> 0
     /\ (Int8.to_int a <> - 128 \/ Int8.to_int b <> - 1)}
     (! bb0
     [ bb0 = s0 [ s0 = checked_div'0 {a} {b} (fun (_ret':Option'0.t_Option int8) ->  [ &_7 <- _ret' ] s1) | s1 = bb1 ] 
@@ -5797,7 +5805,7 @@ module M_checked_ops__test_i8_div_zero [#"../checked_ops.rs" 322 0 322 30]
   let%span schecked_ops1 = "../checked_ops.rs" 323 4 323 39
   let%span span2 = "../../../../creusot-contracts/src/invariant.rs" 24 8 24 18
   let%span span3 = "" 0 0 0 0
-  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 39 26 39 51
+  let%span span4 = "../../../../creusot-contracts/src/std/option.rs" 49 26 49 51
   let%span span5 = "" 0 0 0 0
   let%span span6 = "../../../../creusot-contracts/src/std/num.rs" 67 26 67 97
   let%span span7 = "../../../../creusot-contracts/src/std/num.rs" 69 16 69 85
@@ -5840,7 +5848,7 @@ module M_checked_ops__test_i8_div_zero [#"../checked_ops.rs" 322 0 322 30]
   
   meta "compute_max_steps" 1000000
   
-  let rec test_i8_div_zero (a:int8) (return'  (ret:()))= (! bb0
+  let rec test_i8_div_zero[#"../checked_ops.rs" 322 0 322 30] (a:int8) (return'  (ret:()))= (! bb0
     [ bb0 = s0
       [ s0 = checked_div'0 {a} {[%#schecked_ops0] (0 : int8)}
           (fun (_ret':Option'0.t_Option int8) ->  [ &_5 <- _ret' ] s1)
