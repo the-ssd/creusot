@@ -11,11 +11,11 @@
  <goal name="produces_trans_refn" proved="true">
  <proof prover="1"><result status="valid" time="0.010153" steps="4273"/></proof>
  </goal>
- <goal name="produces_refl_refn" proved="true">
- <proof prover="2"><result status="valid" time="0.020698" steps="0"/></proof>
- </goal>
  <goal name="next_refn" proved="true">
  <proof prover="2"><result status="valid" time="0.018252" steps="0"/></proof>
+ </goal>
+ <goal name="produces_refl_refn" proved="true">
+ <proof prover="2"><result status="valid" time="0.020698" steps="0"/></proof>
  </goal>
 </theory>
 <theory name="M_02_iter_mut__qyi4305820612590367313__produces_refl" proved="true">
@@ -25,7 +25,7 @@
 </theory>
 <theory name="M_02_iter_mut__qyi4305820612590367313__produces_trans" proved="true">
  <goal name="vc_produces_trans" proved="true">
- <proof prover="1"><result status="valid" time="0.306309" steps="1336748"/></proof>
+ <proof prover="1"><result status="valid" time="0.526799" steps="1336748"/></proof>
  </goal>
 </theory>
 <theory name="M_02_iter_mut__qyi4305820612590367313__next" proved="true">
@@ -46,10 +46,10 @@
   <goal name="vc_next.4" expl="postcondition" proved="true">
   <transf name="split_vc" proved="true" >
    <goal name="vc_next.4.0" expl="postcondition" proved="true">
-   <proof prover="2"><result status="valid" time="0.031131" steps="238"/></proof>
+   <proof prover="2"><result status="valid" time="0.031131" steps="240"/></proof>
    </goal>
    <goal name="vc_next.4.1" expl="postcondition" proved="true">
-   <proof prover="2" timelimit="5" memlimit="2000"><result status="valid" time="1.059775" steps="21963"/></proof>
+   <proof prover="2" timelimit="5" memlimit="2000"><result status="valid" time="1.281528" steps="22342"/></proof>
    </goal>
   </transf>
   </goal>
@@ -75,14 +75,14 @@
   <goal name="vc_all_zero.1" expl="precondition" proved="true">
   <proof prover="3"><result status="valid" time="0.021625" steps="9784"/></proof>
   </goal>
-  <goal name="vc_all_zero.2" expl="loop invariant" proved="true">
-  <proof prover="3"><result status="valid" time="0.039308" steps="15551"/></proof>
+  <goal name="vc_all_zero.2" expl="loop invariant 0" proved="true">
+  <proof prover="3"><result status="valid" time="0.148990" steps="9785"/></proof>
   </goal>
-  <goal name="vc_all_zero.3" expl="loop invariant" proved="true">
-  <proof prover="3"><result status="valid" time="0.039253" steps="16343"/></proof>
+  <goal name="vc_all_zero.3" expl="loop invariant 1" proved="true">
+  <proof prover="3"><result status="valid" time="0.028971" steps="12293"/></proof>
   </goal>
-  <goal name="vc_all_zero.4" expl="loop invariant" proved="true">
-  <proof prover="3"><result status="valid" time="0.028749" steps="12951"/></proof>
+  <goal name="vc_all_zero.4" expl="loop invariant 2" proved="true">
+  <proof prover="3"><result status="valid" time="0.161435" steps="15689"/></proof>
   </goal>
   <goal name="vc_all_zero.5" proved="true">
   <proof prover="3" timelimit="5"><result status="valid" time="0.063312" steps="13070"/></proof>
@@ -94,19 +94,19 @@
   <proof prover="3"><result status="valid" time="0.028208" steps="13141"/></proof>
   </goal>
   <goal name="vc_all_zero.8" expl="postcondition" proved="true">
-  <proof prover="3"><result status="valid" time="0.404560" steps="91568"/></proof>
+  <proof prover="3"><result status="valid" time="0.662101" steps="96216"/></proof>
   </goal>
   <goal name="vc_all_zero.9" expl="postcondition" proved="true">
   <proof prover="3"><result status="valid" time="0.041646" steps="16798"/></proof>
   </goal>
-  <goal name="vc_all_zero.10" expl="loop invariant" proved="true">
-  <proof prover="3"><result status="valid" time="0.161435" steps="39729"/></proof>
+  <goal name="vc_all_zero.10" expl="loop invariant 0" proved="true">
+  <proof prover="3"><result status="valid" time="0.039253" steps="13208"/></proof>
   </goal>
-  <goal name="vc_all_zero.11" expl="loop invariant" proved="true">
-  <proof prover="3"><result status="valid" time="0.148990" steps="16912"/></proof>
+  <goal name="vc_all_zero.11" expl="loop invariant 1" proved="true">
+  <proof prover="3"><result status="valid" time="0.028749" steps="16844"/></proof>
   </goal>
-  <goal name="vc_all_zero.12" expl="loop invariant" proved="true">
-  <proof prover="3"><result status="valid" time="0.028971" steps="13150"/></proof>
+  <goal name="vc_all_zero.12" expl="loop invariant 2" proved="true">
+  <proof prover="3"><result status="valid" time="0.292488" steps="40117"/></proof>
   </goal>
   <goal name="vc_all_zero.13" proved="true">
   <proof prover="3"><result status="valid" time="0.034372" steps="13535"/></proof>

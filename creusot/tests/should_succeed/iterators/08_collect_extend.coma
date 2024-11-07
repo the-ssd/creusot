@@ -96,8 +96,8 @@ module M_08_collect_extend__extend [#"08_collect_extend.rs" 27 0 27 66]
   let%span s08_collect_extend1 = "08_collect_extend.rs" 32 4 32 7
   let%span s08_collect_extend2 = "08_collect_extend.rs" 32 4 32 7
   let%span s08_collect_extend3 = "08_collect_extend.rs" 32 4 32 7
-  let%span s08_collect_extend4 = "08_collect_extend.rs" 30 16 30 24
-  let%span s08_collect_extend5 = "08_collect_extend.rs" 31 16 31 55
+  let%span s08_collect_extend4 = "08_collect_extend.rs" 31 16 31 55
+  let%span s08_collect_extend5 = "08_collect_extend.rs" 30 16 30 24
   let%span s08_collect_extend6 = "08_collect_extend.rs" 32 4 32 7
   let%span s08_collect_extend7 = "08_collect_extend.rs" 27 40 27 43
   let%span s08_collect_extend8 = "08_collect_extend.rs" 27 58 27 62
@@ -311,8 +311,8 @@ module M_08_collect_extend__extend [#"08_collect_extend.rs" 27 0 27 66]
     | bb7 = s0 [ s0 =  [ &old_8_0 <- Snapshot.new vec ] s1 | s1 = bb8 ] 
     | bb8 = bb8
       [ bb8 = {[@expl:mut invariant] (Snapshot.inner old_8_0).final = vec.final}
-        {[@expl:loop invariant 1] [%#s08_collect_extend5] Seq.(==) (view'0 vec) (Seq.(++) (view'1 old_vec) (Snapshot.inner produced))}
-        {[@expl:loop invariant 0] [%#s08_collect_extend4] inv'2 vec}
+        {[@expl:loop invariant 0] [%#s08_collect_extend5] inv'2 vec}
+        {[@expl:loop invariant 1] [%#s08_collect_extend4] Seq.(==) (view'0 vec) (Seq.(++) (view'1 old_vec) (Snapshot.inner produced))}
         {[@expl:for invariant] [%#s08_collect_extend3] produces'0 (Snapshot.inner iter_old) (Snapshot.inner produced) iter1}
         {[@expl:for invariant] [%#s08_collect_extend3] inv'1 iter1}
         {[@expl:for invariant] [%#s08_collect_extend3] inv'0 (Snapshot.inner produced)}
@@ -405,8 +405,8 @@ module M_08_collect_extend__collect [#"08_collect_extend.rs" 46 0 46 52]
   let%span s08_collect_extend1 = "08_collect_extend.rs" 51 4 51 7
   let%span s08_collect_extend2 = "08_collect_extend.rs" 51 4 51 7
   let%span s08_collect_extend3 = "08_collect_extend.rs" 51 4 51 7
-  let%span s08_collect_extend4 = "08_collect_extend.rs" 49 16 49 24
-  let%span s08_collect_extend5 = "08_collect_extend.rs" 50 16 50 38
+  let%span s08_collect_extend4 = "08_collect_extend.rs" 50 16 50 38
+  let%span s08_collect_extend5 = "08_collect_extend.rs" 49 16 49 24
   let%span s08_collect_extend6 = "08_collect_extend.rs" 51 4 51 7
   let%span s08_collect_extend7 = "08_collect_extend.rs" 46 28 46 32
   let%span s08_collect_extend8 = "08_collect_extend.rs" 42 2 44 49
@@ -615,8 +615,8 @@ module M_08_collect_extend__collect [#"08_collect_extend.rs" 46 0 46 52]
     | bb8 = bb9
     | bb9 = bb10
     | bb10 = bb10
-      [ bb10 = {[@expl:loop invariant 1] [%#s08_collect_extend5] Seq.(==) (view'0 res) (Snapshot.inner produced)}
-        {[@expl:loop invariant 0] [%#s08_collect_extend4] inv'2 res}
+      [ bb10 = {[@expl:loop invariant 0] [%#s08_collect_extend5] inv'2 res}
+        {[@expl:loop invariant 1] [%#s08_collect_extend4] Seq.(==) (view'0 res) (Snapshot.inner produced)}
         {[@expl:for invariant] [%#s08_collect_extend3] produces'0 (Snapshot.inner iter_old) (Snapshot.inner produced) iter1}
         {[@expl:for invariant] [%#s08_collect_extend3] inv'1 iter1}
         {[@expl:for invariant] [%#s08_collect_extend3] inv'0 (Snapshot.inner produced)}

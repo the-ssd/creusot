@@ -18,26 +18,26 @@
   <goal name="vc_knuth_shuffle.2" expl="precondition" proved="true">
   <proof prover="2"><result status="valid" time="0.018299" steps="9"/></proof>
   </goal>
-  <goal name="vc_knuth_shuffle.3" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.020160" steps="15"/></proof>
+  <goal name="vc_knuth_shuffle.3" expl="mut invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.021637" steps="15"/></proof>
   </goal>
-  <goal name="vc_knuth_shuffle.4" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.022067" steps="49"/></proof>
+  <goal name="vc_knuth_shuffle.4" expl="loop invariant 0" proved="true">
+  <proof prover="2"><result status="valid" time="0.020160" steps="49"/></proof>
   </goal>
-  <goal name="vc_knuth_shuffle.5" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.021637" steps="27"/></proof>
+  <goal name="vc_knuth_shuffle.5" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.029608" steps="117285"/></proof>
   </goal>
-  <goal name="vc_knuth_shuffle.6" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.020273" steps="16"/></proof>
+  <goal name="vc_knuth_shuffle.6" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.025816" steps="16"/></proof>
   </goal>
-  <goal name="vc_knuth_shuffle.7" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.021315" steps="26"/></proof>
+  <goal name="vc_knuth_shuffle.7" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.032480" steps="117254"/></proof>
   </goal>
   <goal name="vc_knuth_shuffle.8" expl="precondition" proved="true">
   <proof prover="2"><result status="valid" time="0.021896" steps="33"/></proof>
   </goal>
   <goal name="vc_knuth_shuffle.9" expl="type invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.050987" steps="481"/></proof>
+  <proof prover="2"><result status="valid" time="0.050987" steps="483"/></proof>
   </goal>
   <goal name="vc_knuth_shuffle.10" expl="postcondition" proved="true">
   <proof prover="1"><result status="valid" time="0.029699" steps="140908"/></proof>
@@ -46,13 +46,13 @@
   <proof prover="1"><result status="valid" time="0.050884" steps="251955"/></proof>
   </goal>
   <goal name="vc_knuth_shuffle.12" expl="integer overflow" proved="true">
-  <proof prover="2"><result status="valid" time="0.041524" steps="456"/></proof>
+  <proof prover="2"><result status="valid" time="0.041524" steps="458"/></proof>
   </goal>
   <goal name="vc_knuth_shuffle.13" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.031542" steps="142748"/></proof>
   </goal>
   <goal name="vc_knuth_shuffle.14" proved="true">
-  <proof prover="2" timelimit="5"><result status="valid" time="0.223065" steps="3509"/></proof>
+  <proof prover="2" timelimit="5"><result status="valid" time="0.449260" steps="3502"/></proof>
   </goal>
   <goal name="vc_knuth_shuffle.15" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.057535" steps="143478"/></proof>
@@ -67,7 +67,7 @@
   <proof prover="1"><result status="valid" time="0.031092" steps="144140"/></proof>
   </goal>
   <goal name="vc_knuth_shuffle.19" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.025826" steps="107"/></proof>
+  <proof prover="2"><result status="valid" time="0.025826" steps="122"/></proof>
   </goal>
   <goal name="vc_knuth_shuffle.20" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.028434" steps="141926"/></proof>
@@ -75,20 +75,20 @@
   <goal name="vc_knuth_shuffle.21" expl="type invariant" proved="true">
   <proof prover="1"><result status="valid" time="0.029472" steps="145396"/></proof>
   </goal>
-  <goal name="vc_knuth_shuffle.22" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.021600" steps="58"/></proof>
+  <goal name="vc_knuth_shuffle.22" expl="mut invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.095085" steps="58"/></proof>
   </goal>
-  <goal name="vc_knuth_shuffle.23" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.032480" steps="160850"/></proof>
+  <goal name="vc_knuth_shuffle.23" expl="loop invariant 0" proved="true">
+  <proof prover="2"><result status="valid" time="0.021600" steps="337"/></proof>
   </goal>
-  <goal name="vc_knuth_shuffle.24" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.095085" steps="1146"/></proof>
+  <goal name="vc_knuth_shuffle.24" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.165993" steps="1154"/></proof>
   </goal>
-  <goal name="vc_knuth_shuffle.25" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.025816" steps="109"/></proof>
+  <goal name="vc_knuth_shuffle.25" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.020273" steps="109"/></proof>
   </goal>
-  <goal name="vc_knuth_shuffle.26" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.029608" steps="149257"/></proof>
+  <goal name="vc_knuth_shuffle.26" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.022067" steps="110"/></proof>
   </goal>
   <goal name="vc_knuth_shuffle.27" proved="true">
   <proof prover="2"><result status="valid" time="0.021493" steps="37"/></proof>

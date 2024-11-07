@@ -2061,9 +2061,9 @@ module M_06_knights_tour__knights_tour [#"06_knights_tour.rs" 135 0 135 69]
   let%span s06_knights_tour3 = "06_knights_tour.rs" 144 4 144 7
   let%span s06_knights_tour4 = "06_knights_tour.rs" 144 4 144 7
   let%span s06_knights_tour5 = "06_knights_tour.rs" 144 4 144 7
-  let%span s06_knights_tour6 = "06_knights_tour.rs" 141 16 141 34
+  let%span s06_knights_tour6 = "06_knights_tour.rs" 143 16 143 34
   let%span s06_knights_tour7 = "06_knights_tour.rs" 142 16 142 26
-  let%span s06_knights_tour8 = "06_knights_tour.rs" 143 16 143 34
+  let%span s06_knights_tour8 = "06_knights_tour.rs" 141 16 141 34
   let%span s06_knights_tour9 = "06_knights_tour.rs" 144 4 144 7
   let%span s06_knights_tour10 = "06_knights_tour.rs" 146 50 146 60
   let%span s06_knights_tour11 = "06_knights_tour.rs" 149 17 149 24
@@ -2088,8 +2088,8 @@ module M_06_knights_tour__knights_tour [#"06_knights_tour.rs" 135 0 135 69]
   let%span s06_knights_tour30 = "06_knights_tour.rs" 127 0 127 8
   let%span siter31 = "../../../../creusot-contracts/src/std/iter.rs" 101 0 214 1
   let%span srange32 = "../../../../creusot-contracts/src/std/iter/range.rs" 23 12 27 70
-  let%span s06_knights_tour33 = "06_knights_tour.rs" 32 12 34 93
-  let%span s06_knights_tour34 = "06_knights_tour.rs" 63 12 63 75
+  let%span s06_knights_tour33 = "06_knights_tour.rs" 63 12 63 75
+  let%span s06_knights_tour34 = "06_knights_tour.rs" 32 12 34 93
   let%span siter35 = "../../../../creusot-contracts/src/std/iter.rs" 107 26 110 17
   let%span svec36 = "../../../../creusot-contracts/src/std/vec.rs" 77 26 77 44
   let%span s06_knights_tour37 = "06_knights_tour.rs" 93 10 93 28
@@ -2347,7 +2347,7 @@ module M_06_knights_tour__knights_tour [#"06_knights_tour.rs" 135 0 135 69]
   use T_06_knights_tour__Point as T_06_knights_tour__Point
   
   predicate in_bounds'0 [#"06_knights_tour.rs" 61 4 61 40] (self : Board'0.t_Board) (p : Point'0.t_Point) =
-    [%#s06_knights_tour34] 0 <= IntSize.to_int (T_06_knights_tour__Point.t_Point__x p)
+    [%#s06_knights_tour33] 0 <= IntSize.to_int (T_06_knights_tour__Point.t_Point__x p)
     /\ IntSize.to_int (T_06_knights_tour__Point.t_Point__x p)
     < UIntSize.to_int (T_06_knights_tour__Board.t_Board__size self)
     /\ 0 <= IntSize.to_int (T_06_knights_tour__Point.t_Point__y p)
@@ -2383,7 +2383,7 @@ module M_06_knights_tour__knights_tour [#"06_knights_tour.rs" 135 0 135 69]
   use T_06_knights_tour__Board as T_06_knights_tour__Board
   
   predicate wf'0 [#"06_knights_tour.rs" 30 4 30 23] (self : Board'0.t_Board) =
-    [%#s06_knights_tour33] UIntSize.to_int (T_06_knights_tour__Board.t_Board__size self) <= 1000
+    [%#s06_knights_tour34] UIntSize.to_int (T_06_knights_tour__Board.t_Board__size self) <= 1000
     /\ Seq.length (view'1 (T_06_knights_tour__Board.t_Board__field self))
     = UIntSize.to_int (T_06_knights_tour__Board.t_Board__size self)
     /\ (forall i : int . 0 <= i /\ i < UIntSize.to_int (T_06_knights_tour__Board.t_Board__size self)
@@ -2598,9 +2598,9 @@ module M_06_knights_tour__knights_tour [#"06_knights_tour.rs" 135 0 135 69]
     | bb7 = bb8
     | bb8 = bb9
     | bb9 = bb9
-      [ bb9 = {[@expl:loop invariant 2] [%#s06_knights_tour8] in_bounds'0 board p}
+      [ bb9 = {[@expl:loop invariant 0] [%#s06_knights_tour8] T_06_knights_tour__Board.t_Board__size board = size}
         {[@expl:loop invariant 1] [%#s06_knights_tour7] wf'0 board}
-        {[@expl:loop invariant 0] [%#s06_knights_tour6] T_06_knights_tour__Board.t_Board__size board = size}
+        {[@expl:loop invariant 2] [%#s06_knights_tour6] in_bounds'0 board p}
         {[@expl:for invariant] [%#s06_knights_tour5] produces'0 (Snapshot.inner iter_old) (Snapshot.inner produced) iter}
         {[@expl:for invariant] [%#s06_knights_tour5] inv'1 iter}
         {[@expl:for invariant] [%#s06_knights_tour5] inv'0 (Snapshot.inner produced)}

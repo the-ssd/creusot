@@ -30,11 +30,11 @@ end
 module M_list_index_mut__index_mut [#"list_index_mut.rs" 37 0 37 61]
   let%span slist_index_mut0 = "list_index_mut.rs" 38 16 38 31
   let%span slist_index_mut1 = "list_index_mut.rs" 39 17 39 33
-  let%span slist_index_mut2 = "list_index_mut.rs" 40 16 40 45
-  let%span slist_index_mut3 = "list_index_mut.rs" 41 16 41 52
+  let%span slist_index_mut2 = "list_index_mut.rs" 45 8 47 48
+  let%span slist_index_mut3 = "list_index_mut.rs" 43 16 43 76
   let%span slist_index_mut4 = "list_index_mut.rs" 42 16 42 55
-  let%span slist_index_mut5 = "list_index_mut.rs" 43 16 43 76
-  let%span slist_index_mut6 = "list_index_mut.rs" 45 8 47 48
+  let%span slist_index_mut5 = "list_index_mut.rs" 41 16 41 52
+  let%span slist_index_mut6 = "list_index_mut.rs" 40 16 40 45
   let%span slist_index_mut7 = "list_index_mut.rs" 49 15 49 16
   let%span slist_index_mut8 = "list_index_mut.rs" 52 14 52 15
   let%span slist_index_mut9 = "list_index_mut.rs" 32 11 32 24
@@ -163,17 +163,17 @@ module M_list_index_mut__index_mut [#"list_index_mut.rs" 37 0 37 61]
     | bb1 = s0 [ s0 =  [ &old_ix <- [%#slist_index_mut1] Snapshot.new ix ] s1 | s1 = bb2 ] 
     | bb2 = bb3
     | bb3 = bb3
-      [ bb3 = {[@expl:loop invariant 4] [%#slist_index_mut6] (forall i : int . 0 <= i
+      [ bb3 = {[@expl:loop invariant 0] [%#slist_index_mut6] (0 : usize) <= ix /\ UIntSize.to_int ix < len'0 l.current}
+        {[@expl:loop invariant 1] [%#slist_index_mut5] get'0 l.current (UIntSize.to_int ix)
+        = get'0 (Snapshot.inner old_l).current (view'0 old_ix)}
+        {[@expl:loop invariant 2] [%#slist_index_mut4] get'0 l.final (UIntSize.to_int ix)
+        = get'0 (Snapshot.inner old_l).final (view'0 old_ix)}
+        {[@expl:loop invariant 3] [%#slist_index_mut3] len'0 l.final = len'0 l.current
+         -> len'0 (Snapshot.inner old_l).final = len'0 (Snapshot.inner old_l).current}
+        {[@expl:loop invariant 4] [%#slist_index_mut2] (forall i : int . 0 <= i
         /\ i < len'0 l.current /\ i <> UIntSize.to_int ix  -> get'0 l.final i = get'0 l.current i)
          -> (forall i : int . 0 <= i /\ i < len'0 (Snapshot.inner old_l).current /\ i <> view'0 old_ix
          -> get'0 (Snapshot.inner old_l).final i = get'0 (Snapshot.inner old_l).current i)}
-        {[@expl:loop invariant 3] [%#slist_index_mut5] len'0 l.final = len'0 l.current
-         -> len'0 (Snapshot.inner old_l).final = len'0 (Snapshot.inner old_l).current}
-        {[@expl:loop invariant 2] [%#slist_index_mut4] get'0 l.final (UIntSize.to_int ix)
-        = get'0 (Snapshot.inner old_l).final (view'0 old_ix)}
-        {[@expl:loop invariant 1] [%#slist_index_mut3] get'0 l.current (UIntSize.to_int ix)
-        = get'0 (Snapshot.inner old_l).current (view'0 old_ix)}
-        {[@expl:loop invariant 0] [%#slist_index_mut2] (0 : usize) <= ix /\ UIntSize.to_int ix < len'0 l.current}
         (! s0) [ s0 = bb4 ] 
         [ bb4 = s0
           [ s0 = UIntSize.gt {ix} {[%#slist_index_mut7] (0 : usize)} (fun (_ret':bool) ->  [ &_20 <- _ret' ] s1)

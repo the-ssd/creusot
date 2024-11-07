@@ -456,28 +456,28 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
   let%span sknapsack_full4 = "knapsack_full.rs" 96 4 96 7
   let%span sknapsack_full5 = "knapsack_full.rs" 96 4 96 7
   let%span sknapsack_full6 = "knapsack_full.rs" 96 4 96 7
-  let%span sknapsack_full7 = "knapsack_full.rs" 89 16 89 53
-  let%span sknapsack_full8 = "knapsack_full.rs" 90 16 91 59
-  let%span sknapsack_full9 = "knapsack_full.rs" 92 16 93 61
-  let%span sknapsack_full10 = "knapsack_full.rs" 94 16 95 57
+  let%span sknapsack_full7 = "knapsack_full.rs" 94 16 95 57
+  let%span sknapsack_full8 = "knapsack_full.rs" 92 16 93 61
+  let%span sknapsack_full9 = "knapsack_full.rs" 90 16 91 59
+  let%span sknapsack_full10 = "knapsack_full.rs" 89 16 89 53
   let%span sknapsack_full11 = "knapsack_full.rs" 96 4 96 7
   let%span sknapsack_full12 = "knapsack_full.rs" 111 17 111 18
   let%span sknapsack_full13 = "knapsack_full.rs" 111 8 111 11
   let%span sknapsack_full14 = "knapsack_full.rs" 111 8 111 11
   let%span sknapsack_full15 = "knapsack_full.rs" 111 8 111 11
-  let%span sknapsack_full16 = "knapsack_full.rs" 99 20 99 57
-  let%span sknapsack_full17 = "knapsack_full.rs" 100 20 101 63
+  let%span sknapsack_full16 = "knapsack_full.rs" 107 20 108 57
+  let%span sknapsack_full17 = "knapsack_full.rs" 105 20 106 69
   let%span sknapsack_full18 = "knapsack_full.rs" 102 20 104 65
-  let%span sknapsack_full19 = "knapsack_full.rs" 105 20 106 69
-  let%span sknapsack_full20 = "knapsack_full.rs" 107 20 108 57
+  let%span sknapsack_full19 = "knapsack_full.rs" 100 20 101 63
+  let%span sknapsack_full20 = "knapsack_full.rs" 99 20 99 57
   let%span sknapsack_full21 = "knapsack_full.rs" 111 8 111 11
   let%span sknapsack_full22 = "knapsack_full.rs" 112 27 112 28
-  let%span sknapsack_full23 = "knapsack_full.rs" 124 16 124 27
-  let%span sknapsack_full24 = "knapsack_full.rs" 125 16 125 34
-  let%span sknapsack_full25 = "knapsack_full.rs" 126 16 126 43
-  let%span sknapsack_full26 = "knapsack_full.rs" 127 16 131 52
-  let%span sknapsack_full27 = "knapsack_full.rs" 132 16 136 76
-  let%span sknapsack_full28 = "knapsack_full.rs" 137 16 141 58
+  let%span sknapsack_full23 = "knapsack_full.rs" 141 16 141 43
+  let%span sknapsack_full24 = "knapsack_full.rs" 140 16 140 27
+  let%span sknapsack_full25 = "knapsack_full.rs" 135 16 139 52
+  let%span sknapsack_full26 = "knapsack_full.rs" 134 16 134 34
+  let%span sknapsack_full27 = "knapsack_full.rs" 129 16 133 58
+  let%span sknapsack_full28 = "knapsack_full.rs" 124 16 128 76
   let%span sknapsack_full29 = "knapsack_full.rs" 142 10 142 11
   let%span sknapsack_full30 = "knapsack_full.rs" 143 13 143 14
   let%span sknapsack_full31 = "knapsack_full.rs" 145 26 145 27
@@ -495,8 +495,8 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
   let%span siter43 = "../../../creusot-contracts/src/std/iter.rs" 101 0 214 1
   let%span srange44 = "../../../creusot-contracts/src/std/iter/range.rs" 23 12 27 70
   let%span smodel45 = "../../../creusot-contracts/src/model.rs" 91 8 91 22
-  let%span svec46 = "../../../creusot-contracts/src/std/vec.rs" 19 14 19 41
-  let%span sops47 = "../../../creusot-contracts/src/logic/ops.rs" 20 8 20 31
+  let%span sops46 = "../../../creusot-contracts/src/logic/ops.rs" 20 8 20 31
+  let%span svec47 = "../../../creusot-contracts/src/std/vec.rs" 19 14 19 41
   let%span sknapsack_full48 = "knapsack_full.rs" 61 11 61 37
   let%span sknapsack_full49 = "knapsack_full.rs" 62 11 62 17
   let%span sknapsack_full50 = "knapsack_full.rs" 63 10 63 21
@@ -521,13 +521,13 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
   let%span sknapsack_full69 = "knapsack_full.rs" 27 10 27 21
   let%span sknapsack_full70 = "knapsack_full.rs" 25 10 25 19
   let%span sknapsack_full71 = "knapsack_full.rs" 29 4 32 5
-  let%span sknapsack_full72 = "knapsack_full.rs" 37 11 37 33
-  let%span sknapsack_full73 = "knapsack_full.rs" 36 10 36 19
-  let%span sknapsack_full74 = "knapsack_full.rs" 39 4 42 5
-  let%span sknapsack_full75 = "knapsack_full.rs" 47 11 47 36
-  let%span sknapsack_full76 = "knapsack_full.rs" 48 11 48 36
-  let%span sknapsack_full77 = "knapsack_full.rs" 46 10 46 12
-  let%span sknapsack_full78 = "knapsack_full.rs" 50 4 56 5
+  let%span sknapsack_full72 = "knapsack_full.rs" 47 11 47 36
+  let%span sknapsack_full73 = "knapsack_full.rs" 48 11 48 36
+  let%span sknapsack_full74 = "knapsack_full.rs" 46 10 46 12
+  let%span sknapsack_full75 = "knapsack_full.rs" 50 4 56 5
+  let%span sknapsack_full76 = "knapsack_full.rs" 37 11 37 33
+  let%span sknapsack_full77 = "knapsack_full.rs" 36 10 36 19
+  let%span sknapsack_full78 = "knapsack_full.rs" 39 4 42 5
   let%span svec79 = "../../../creusot-contracts/src/std/vec.rs" 90 26 90 56
   let%span siter80 = "../../../creusot-contracts/src/std/iter.rs" 86 20 86 24
   let%span siter81 = "../../../creusot-contracts/src/std/iter.rs" 92 8 92 19
@@ -618,7 +618,7 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
   
   function view'4 (self : Vec'0.t_Vec (Item'0.t_Item name) (Global'0.t_Global)) : Seq.seq (Item'0.t_Item name)
   
-  axiom view'4_spec : forall self : Vec'0.t_Vec (Item'0.t_Item name) (Global'0.t_Global) . [%#svec46] Seq.length (view'4 self)
+  axiom view'4_spec : forall self : Vec'0.t_Vec (Item'0.t_Item name) (Global'0.t_Global) . [%#svec47] Seq.length (view'4 self)
   <= UIntSize.to_int (v_MAX'0 : usize)
   
   predicate invariant'5 (self : Vec'0.t_Vec (Item'0.t_Item name) (Global'0.t_Global)) =
@@ -732,7 +732,7 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
   
   function view'3 (self : Vec'0.t_Vec (Item'0.t_Item name) (Global'0.t_Global)) : Seq.seq (Item'0.t_Item name)
   
-  axiom view'3_spec : forall self : Vec'0.t_Vec (Item'0.t_Item name) (Global'0.t_Global) . [%#svec46] Seq.length (view'3 self)
+  axiom view'3_spec : forall self : Vec'0.t_Vec (Item'0.t_Item name) (Global'0.t_Global) . [%#svec47] Seq.length (view'3 self)
   <= UIntSize.to_int (v_MAX'0 : usize)
   
   predicate invariant'0 (self : Vec'0.t_Vec (Item'0.t_Item name) (Global'0.t_Global)) =
@@ -841,7 +841,7 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
   function index_logic'2 [@inline:trivial] (self : Vec'0.t_Vec (Item'0.t_Item name) (Global'0.t_Global)) (ix : int) : Item'0.t_Item name
     
    =
-    [%#sops47] Seq.get (view'4 self) ix
+    [%#sops46] Seq.get (view'4 self) ix
   
   use prelude.prelude.Snapshot
   
@@ -864,24 +864,24 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
   
   use seq.Seq
   
+  function sum_values'0 [#"knapsack_full.rs" 38 0 38 55] (s : Seq.seq (Item'0.t_Item name)) (i : int) : int
+  
+  axiom sum_values'0_def : forall s : Seq.seq (Item'0.t_Item name), i : int . sum_values'0 s i
+  = ([%#sknapsack_full78] if i = Seq.length s then
+    0
+  else
+    UIntSize.to_int (T_knapsack_full__Item.t_Item__value (Seq.get s i)) + sum_values'0 s (i + 1)
+  )
+  
   predicate subseq_rev'0 [#"knapsack_full.rs" 49 0 49 67] (s1 : Seq.seq (Item'0.t_Item name)) (i1 : int) (s2 : Seq.seq (Item'0.t_Item name)) (i2 : int)
     
   
   axiom subseq_rev'0_def : forall s1 : Seq.seq (Item'0.t_Item name), i1 : int, s2 : Seq.seq (Item'0.t_Item name), i2 : int . subseq_rev'0 s1 i1 s2 i2
-  = ([%#sknapsack_full78] if i2 = 0 then
+  = ([%#sknapsack_full75] if i2 = 0 then
     i1 = Seq.length s1
   else
     i1 < Seq.length s1 /\ Seq.get s1 i1 = Seq.get s2 (i2 - 1) /\ subseq_rev'0 s1 (i1 + 1) s2 (i2 - 1)
     \/ subseq_rev'0 s1 i1 s2 (i2 - 1)
-  )
-  
-  function sum_values'0 [#"knapsack_full.rs" 38 0 38 55] (s : Seq.seq (Item'0.t_Item name)) (i : int) : int
-  
-  axiom sum_values'0_def : forall s : Seq.seq (Item'0.t_Item name), i : int . sum_values'0 s i
-  = ([%#sknapsack_full74] if i = Seq.length s then
-    0
-  else
-    UIntSize.to_int (T_knapsack_full__Item.t_Item__value (Seq.get s i)) + sum_values'0 s (i + 1)
   )
   
   use T_knapsack_full__Item as T_knapsack_full__Item
@@ -901,7 +901,7 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
   function index_logic'1 [@inline:trivial] (self : Vec'0.t_Vec (Item'0.t_Item name) (Global'0.t_Global)) (ix : int) : Item'0.t_Item name
     
    =
-    [%#sops47] Seq.get (view'3 self) ix
+    [%#sops46] Seq.get (view'3 self) ix
   
   let rec with_capacity'0 (capacity:usize) (return'  (ret:Vec'0.t_Vec (Item'0.t_Item name) (Global'0.t_Global)))= any
     [ return' (result:Vec'0.t_Vec (Item'0.t_Item name) (Global'0.t_Global))-> {inv'3 result}
@@ -925,9 +925,9 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
     [%#sslice106] forall i : int . 0 <= i /\ i <> UIntSize.to_int self /\ i < Seq.length old'
      -> Seq.get old' i = Seq.get fin i
   
-  function view'2 (self : Vec'0.t_Vec usize (Global'0.t_Global)) : Seq.seq usize
+  function view'1 (self : Vec'0.t_Vec usize (Global'0.t_Global)) : Seq.seq usize
   
-  axiom view'2_spec : forall self : Vec'0.t_Vec usize (Global'0.t_Global) . [%#svec46] Seq.length (view'2 self)
+  axiom view'1_spec : forall self : Vec'0.t_Vec usize (Global'0.t_Global) . [%#svec47] Seq.length (view'1 self)
   <= UIntSize.to_int (v_MAX'0 : usize)
   
   predicate has_value'2 [@inline:trivial] (self : usize) (seq : Seq.seq usize) (out : usize) =
@@ -937,16 +937,16 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
     [%#sslice93] UIntSize.to_int self < Seq.length seq
   
   function view'8 (self : borrowed (Vec'0.t_Vec usize (Global'0.t_Global))) : Seq.seq usize =
-    [%#smodel105] view'2 self.current
+    [%#smodel105] view'1 self.current
   
   let rec index_mut'1 (self:borrowed (Vec'0.t_Vec usize (Global'0.t_Global))) (index:usize) (return'  (ret:borrowed usize))= {[@expl:precondition] inv'5 index}
     {[@expl:precondition] inv'16 self}
     {[@expl:precondition] [%#svec62] in_bounds'2 index (view'8 self)}
     any
     [ return' (result:borrowed usize)-> {inv'17 result}
-      {[%#svec66] Seq.length (view'2 self.final) = Seq.length (view'8 self)}
-      {[%#svec65] resolve_elswhere'1 index (view'8 self) (view'2 self.final)}
-      {[%#svec64] has_value'2 index (view'2 self.final) result.final}
+      {[%#svec66] Seq.length (view'1 self.final) = Seq.length (view'8 self)}
+      {[%#svec65] resolve_elswhere'1 index (view'8 self) (view'1 self.final)}
+      {[%#svec64] has_value'2 index (view'1 self.final) result.final}
       {[%#svec63] has_value'2 index (view'8 self) result.current}
       (! return' {result}) ]
     
@@ -963,10 +963,10 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
     [%#sslice106] forall i : int . 0 <= i /\ i <> UIntSize.to_int self /\ i < Seq.length old'
      -> Seq.get old' i = Seq.get fin i
   
-  function view'1 (self : Vec'0.t_Vec (Vec'0.t_Vec usize (Global'0.t_Global)) (Global'0.t_Global)) : Seq.seq (Vec'0.t_Vec usize (Global'0.t_Global))
+  function view'2 (self : Vec'0.t_Vec (Vec'0.t_Vec usize (Global'0.t_Global)) (Global'0.t_Global)) : Seq.seq (Vec'0.t_Vec usize (Global'0.t_Global))
     
   
-  axiom view'1_spec : forall self : Vec'0.t_Vec (Vec'0.t_Vec usize (Global'0.t_Global)) (Global'0.t_Global) . [%#svec46] Seq.length (view'1 self)
+  axiom view'2_spec : forall self : Vec'0.t_Vec (Vec'0.t_Vec usize (Global'0.t_Global)) (Global'0.t_Global) . [%#svec47] Seq.length (view'2 self)
   <= UIntSize.to_int (v_MAX'0 : usize)
   
   predicate has_value'1 [@inline:trivial] (self : usize) (seq : Seq.seq (Vec'0.t_Vec usize (Global'0.t_Global))) (out : Vec'0.t_Vec usize (Global'0.t_Global))
@@ -980,16 +980,16 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
   function view'7 (self : borrowed (Vec'0.t_Vec (Vec'0.t_Vec usize (Global'0.t_Global)) (Global'0.t_Global))) : Seq.seq (Vec'0.t_Vec usize (Global'0.t_Global))
     
    =
-    [%#smodel105] view'1 self.current
+    [%#smodel105] view'2 self.current
   
   let rec index_mut'0 (self:borrowed (Vec'0.t_Vec (Vec'0.t_Vec usize (Global'0.t_Global)) (Global'0.t_Global))) (index:usize) (return'  (ret:borrowed (Vec'0.t_Vec usize (Global'0.t_Global))))= {[@expl:precondition] inv'5 index}
     {[@expl:precondition] inv'15 self}
     {[@expl:precondition] [%#svec62] in_bounds'1 index (view'7 self)}
     any
     [ return' (result:borrowed (Vec'0.t_Vec usize (Global'0.t_Global)))-> {inv'16 result}
-      {[%#svec66] Seq.length (view'1 self.final) = Seq.length (view'7 self)}
-      {[%#svec65] resolve_elswhere'0 index (view'7 self) (view'1 self.final)}
-      {[%#svec64] has_value'1 index (view'1 self.final) result.final}
+      {[%#svec66] Seq.length (view'2 self.final) = Seq.length (view'7 self)}
+      {[%#svec65] resolve_elswhere'0 index (view'7 self) (view'2 self.final)}
+      {[%#svec64] has_value'1 index (view'2 self.final) result.final}
       {[%#svec63] has_value'1 index (view'7 self) result.current}
       (! return' {result}) ]
     
@@ -1003,7 +1003,7 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
     
   
   function view'6 (self : Vec'0.t_Vec usize (Global'0.t_Global)) : Seq.seq usize =
-    [%#smodel45] view'2 self
+    [%#smodel45] view'1 self
   
   let rec index'2 (self:Vec'0.t_Vec usize (Global'0.t_Global)) (index:usize) (return'  (ret:usize))= {[@expl:precondition] inv'5 index}
     {[@expl:precondition] inv'13 self}
@@ -1017,7 +1017,7 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
   function view'5 (self : Vec'0.t_Vec (Vec'0.t_Vec usize (Global'0.t_Global)) (Global'0.t_Global)) : Seq.seq (Vec'0.t_Vec usize (Global'0.t_Global))
     
    =
-    [%#smodel45] view'1 self
+    [%#smodel45] view'2 self
   
   let rec index'1 (self:Vec'0.t_Vec (Vec'0.t_Vec usize (Global'0.t_Global)) (Global'0.t_Global)) (index:usize) (return'  (ret:Vec'0.t_Vec usize (Global'0.t_Global)))= {[@expl:precondition] inv'5 index}
     {[@expl:precondition] inv'12 self}
@@ -1144,7 +1144,7 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
   function index_logic'0 [@inline:trivial] (self : Vec'0.t_Vec (Vec'0.t_Vec usize (Global'0.t_Global)) (Global'0.t_Global)) (ix : int) : Vec'0.t_Vec usize (Global'0.t_Global)
     
    =
-    [%#sops47] Seq.get (view'1 self) ix
+    [%#sops46] Seq.get (view'2 self) ix
   
   use prelude.prelude.Snapshot
   
@@ -1174,7 +1174,7 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
     any
     [ return' (result:Vec'0.t_Vec (Vec'0.t_Vec usize (Global'0.t_Global)) (Global'0.t_Global))-> {inv'7 result}
       {[%#svec41] forall i : int . 0 <= i /\ i < UIntSize.to_int n  -> index_logic'0 result i = elem}
-      {[%#svec40] Seq.length (view'1 result) = UIntSize.to_int n}
+      {[%#svec40] Seq.length (view'2 result) = UIntSize.to_int n}
       (! return' {result}) ]
     
   
@@ -1184,13 +1184,13 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
     
   
   function index_logic'3 [@inline:trivial] (self : Vec'0.t_Vec usize (Global'0.t_Global)) (ix : int) : usize =
-    [%#sops47] Seq.get (view'2 self) ix
+    [%#sops46] Seq.get (view'1 self) ix
   
   let rec from_elem'0 (elem:usize) (n:usize) (return'  (ret:Vec'0.t_Vec usize (Global'0.t_Global)))= {[@expl:precondition] inv'5 elem}
     any
     [ return' (result:Vec'0.t_Vec usize (Global'0.t_Global))-> {inv'6 result}
       {[%#svec41] forall i : int . 0 <= i /\ i < UIntSize.to_int n  -> index_logic'3 result i = elem}
-      {[%#svec40] Seq.length (view'2 result) = UIntSize.to_int n}
+      {[%#svec40] Seq.length (view'1 result) = UIntSize.to_int n}
       (! return' {result}) ]
     
   
@@ -1231,15 +1231,16 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
     | bb10 = bb11
     | bb11 = bb12
     | bb12 = bb12
-      [ bb12 = {[@expl:loop invariant 3] [%#sknapsack_full10] forall ii : int, ww : int . 0 <= ii
-        /\ ii <= Seq.length (view'0 items) /\ 0 <= ww /\ ww <= UIntSize.to_int max_weight
-         -> UIntSize.to_int (Seq.get (view'2 (index_logic'0 best_value ii)) ww) <= 10000000 * ii}
-        {[@expl:loop invariant 2] [%#sknapsack_full9] forall ii : int, ww : int . 0 <= ii
+      [ bb12 = {[@expl:loop invariant 0] [%#sknapsack_full10] Seq.length (view'0 items) + 1
+        = Seq.length (view'2 best_value)}
+        {[@expl:loop invariant 1] [%#sknapsack_full9] forall i : int . 0 <= i /\ i < Seq.length (view'2 best_value)
+         -> UIntSize.to_int max_weight + 1 = Seq.length (view'1 (index_logic'0 best_value i))}
+        {[@expl:loop invariant 2] [%#sknapsack_full8] forall ii : int, ww : int . 0 <= ii
         /\ ii <= Seq.length (Snapshot.inner produced) /\ 0 <= ww /\ ww <= UIntSize.to_int max_weight
-         -> UIntSize.to_int (Seq.get (view'2 (index_logic'0 best_value ii)) ww) = m'0 (view'0 items) ii ww}
-        {[@expl:loop invariant 1] [%#sknapsack_full8] forall i : int . 0 <= i /\ i < Seq.length (view'1 best_value)
-         -> UIntSize.to_int max_weight + 1 = Seq.length (view'2 (index_logic'0 best_value i))}
-        {[@expl:loop invariant 0] [%#sknapsack_full7] Seq.length (view'0 items) + 1 = Seq.length (view'1 best_value)}
+         -> UIntSize.to_int (Seq.get (view'1 (index_logic'0 best_value ii)) ww) = m'0 (view'0 items) ii ww}
+        {[@expl:loop invariant 3] [%#sknapsack_full7] forall ii : int, ww : int . 0 <= ii
+        /\ ii <= Seq.length (view'0 items) /\ 0 <= ww /\ ww <= UIntSize.to_int max_weight
+         -> UIntSize.to_int (Seq.get (view'1 (index_logic'0 best_value ii)) ww) <= 10000000 * ii}
         {[@expl:for invariant] [%#sknapsack_full6] produces'0 (Snapshot.inner iter_old) (Snapshot.inner produced) iter}
         {[@expl:for invariant] [%#sknapsack_full6] inv'1 iter}
         {[@expl:for invariant] [%#sknapsack_full6] inv'0 (Snapshot.inner produced)}
@@ -1297,20 +1298,20 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
         | bb28 = bb29
         | bb29 = bb30
         | bb30 = bb30
-          [ bb30 = {[@expl:loop invariant 4] [%#sknapsack_full20] forall ii : int, ww : int . 0 <= ii
-            /\ ii <= Seq.length (view'0 items) /\ 0 <= ww /\ ww <= UIntSize.to_int max_weight
-             -> UIntSize.to_int (Seq.get (view'2 (index_logic'0 best_value ii)) ww) <= 10000000 * ii}
-            {[@expl:loop invariant 3] [%#sknapsack_full19] forall ww : int . 0 <= ww
-            /\ ww <= Seq.length (Snapshot.inner produced1) - 1
-             -> UIntSize.to_int (Seq.get (view'2 (index_logic'0 best_value (UIntSize.to_int i + 1))) ww)
-            = m'0 (view'0 items) (UIntSize.to_int i + 1) ww}
+          [ bb30 = {[@expl:loop invariant 0] [%#sknapsack_full20] Seq.length (view'0 items) + 1
+            = Seq.length (view'2 best_value)}
+            {[@expl:loop invariant 1] [%#sknapsack_full19] forall i : int . 0 <= i /\ i < Seq.length (view'2 best_value)
+             -> UIntSize.to_int max_weight + 1 = Seq.length (view'1 (index_logic'0 best_value i))}
             {[@expl:loop invariant 2] [%#sknapsack_full18] forall ii : int, ww : int . 0 <= ii
             /\ ii <= UIntSize.to_int i /\ 0 <= ww /\ ww <= UIntSize.to_int max_weight
-             -> UIntSize.to_int (Seq.get (view'2 (index_logic'0 best_value ii)) ww) = m'0 (view'0 items) ii ww}
-            {[@expl:loop invariant 1] [%#sknapsack_full17] forall i : int . 0 <= i /\ i < Seq.length (view'1 best_value)
-             -> UIntSize.to_int max_weight + 1 = Seq.length (view'2 (index_logic'0 best_value i))}
-            {[@expl:loop invariant 0] [%#sknapsack_full16] Seq.length (view'0 items) + 1
-            = Seq.length (view'1 best_value)}
+             -> UIntSize.to_int (Seq.get (view'1 (index_logic'0 best_value ii)) ww) = m'0 (view'0 items) ii ww}
+            {[@expl:loop invariant 3] [%#sknapsack_full17] forall ww : int . 0 <= ww
+            /\ ww <= Seq.length (Snapshot.inner produced1) - 1
+             -> UIntSize.to_int (Seq.get (view'1 (index_logic'0 best_value (UIntSize.to_int i + 1))) ww)
+            = m'0 (view'0 items) (UIntSize.to_int i + 1) ww}
+            {[@expl:loop invariant 4] [%#sknapsack_full16] forall ii : int, ww : int . 0 <= ii
+            /\ ii <= Seq.length (view'0 items) /\ 0 <= ww /\ ww <= UIntSize.to_int max_weight
+             -> UIntSize.to_int (Seq.get (view'1 (index_logic'0 best_value ii)) ww) <= 10000000 * ii}
             {[@expl:for invariant] [%#sknapsack_full15] produces'1 (Snapshot.inner iter_old1) (Snapshot.inner produced1) iter1}
             {[@expl:for invariant] [%#sknapsack_full15] inv'2 iter1}
             {[@expl:for invariant] [%#sknapsack_full15] inv'0 (Snapshot.inner produced1)}
@@ -1435,25 +1436,25 @@ module M_knapsack_full__knapsack01_dyn [#"knapsack_full.rs" 86 0 86 91]
     | bb55 = bb56
     | bb56 = bb57
     | bb57 = bb57
-      [ bb57 = {[@expl:loop invariant 5] [%#sknapsack_full28] forall r : Seq.seq (Item'0.t_Item name) . Seq.length (view'3 result)
-        <= Seq.length r
-        /\ (forall i : int . 0 <= i /\ i < Seq.length (view'3 result)  -> index_logic'1 result i = Seq.get r i)
-        /\ subseq_rev'0 r (Seq.length (view'3 result)) (view'0 items) (UIntSize.to_int j)
-         -> subseq_rev'0 r 0 (view'0 items) (Seq.length (view'0 items))}
-        {[@expl:loop invariant 4] [%#sknapsack_full27] forall r : Seq.seq (Item'0.t_Item name) . Seq.length (view'3 result)
+      [ bb57 = {[@expl:loop invariant 0] [%#sknapsack_full28] forall r : Seq.seq (Item'0.t_Item name) . Seq.length (view'3 result)
         <= Seq.length r
         /\ (forall i : int . 0 <= i /\ i < Seq.length (view'3 result)  -> index_logic'1 result i = Seq.get r i)
         /\ sum_values'0 r (Seq.length (view'3 result))
         = m'0 (view'0 items) (UIntSize.to_int j) (UIntSize.to_int left_weight)
          -> sum_values'0 r 0 = m'0 (view'0 items) (Seq.length (view'0 items)) (UIntSize.to_int max_weight)}
-        {[@expl:loop invariant 3] [%#sknapsack_full26] forall r : Seq.seq (Item'0.t_Item name) . Seq.length (view'3 result)
+        {[@expl:loop invariant 1] [%#sknapsack_full27] forall r : Seq.seq (Item'0.t_Item name) . Seq.length (view'3 result)
+        <= Seq.length r
+        /\ (forall i : int . 0 <= i /\ i < Seq.length (view'3 result)  -> index_logic'1 result i = Seq.get r i)
+        /\ subseq_rev'0 r (Seq.length (view'3 result)) (view'0 items) (UIntSize.to_int j)
+         -> subseq_rev'0 r 0 (view'0 items) (Seq.length (view'0 items))}
+        {[@expl:loop invariant 2] [%#sknapsack_full26] UIntSize.to_int j <= Seq.length (view'0 items)}
+        {[@expl:loop invariant 3] [%#sknapsack_full25] forall r : Seq.seq (Item'0.t_Item name) . Seq.length (view'3 result)
         <= Seq.length r
         /\ (forall i : int . 0 <= i /\ i < Seq.length (view'3 result)  -> index_logic'1 result i = Seq.get r i)
         /\ sum_weights'0 r (Seq.length (view'3 result)) <= UIntSize.to_int left_weight
          -> sum_weights'0 r 0 <= UIntSize.to_int max_weight}
-        {[@expl:loop invariant 2] [%#sknapsack_full25] UIntSize.to_int left_weight <= UIntSize.to_int max_weight}
-        {[@expl:loop invariant 1] [%#sknapsack_full24] UIntSize.to_int j <= Seq.length (view'0 items)}
-        {[@expl:loop invariant 0] [%#sknapsack_full23] inv'3 result}
+        {[@expl:loop invariant 4] [%#sknapsack_full24] inv'3 result}
+        {[@expl:loop invariant 5] [%#sknapsack_full23] UIntSize.to_int left_weight <= UIntSize.to_int max_weight}
         (! s0) [ s0 = bb58 ] 
         [ bb58 = s0
           [ s0 = UIntSize.lt {[%#sknapsack_full29] (0 : usize)} {j} (fun (_ret':bool) ->  [ &_118 <- _ret' ] s1)

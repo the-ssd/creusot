@@ -2,9 +2,10 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "https://www.why3.org/why3session.dtd">
 <why3session shape_version="6">
+<prover id="0" name="CVC4" version="1.8" timelimit="5" steplimit="0" memlimit="1000"/>
 <prover id="1" name="Z3" version="4.12.4" timelimit="0.5" steplimit="0" memlimit="1000"/>
-<prover id="3" name="Alt-Ergo" version="2.6.0" timelimit="3" steplimit="0" memlimit="2000"/>
-<prover id="4" name="CVC5" version="1.0.5" timelimit="3" steplimit="0" memlimit="2000"/>
+<prover id="3" name="Alt-Ergo" version="2.6.0" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="4" name="CVC5" version="1.0.5" timelimit="5" steplimit="0" memlimit="1000"/>
 <file format="coma" proved="true">
 <path name=".."/><path name="list_reversal_lasso.coma"/>
 <theory name="M_list_reversal_lasso__qyi13715866738248475091" proved="true">
@@ -14,7 +15,7 @@
 </theory>
 <theory name="M_list_reversal_lasso__qyi13715866738248475091__index" proved="true">
  <goal name="vc_index" proved="true">
- <proof prover="1"><result status="valid" time="0.023774" steps="54250"/></proof>
+ <proof prover="3"><result status="valid" time="0.030746" steps="36"/></proof>
  </goal>
 </theory>
 <theory name="M_list_reversal_lasso__qyi14823043098042356205" proved="true">
@@ -24,187 +25,75 @@
 </theory>
 <theory name="M_list_reversal_lasso__qyi14823043098042356205__index_mut" proved="true">
  <goal name="vc_index_mut" proved="true">
- <proof prover="1"><result status="valid" time="0.010359" steps="59797"/></proof>
+ <proof prover="3"><result status="valid" time="0.048423" steps="239"/></proof>
  </goal>
 </theory>
 <theory name="M_list_reversal_lasso__qyi2644757663130641572__list_reversal_safe" proved="true">
  <goal name="vc_list_reversal_safe" proved="true">
- <proof prover="1"><result status="valid" time="0.067410" steps="246435"/></proof>
+ <proof prover="3"><result status="valid" time="0.149654" steps="759"/></proof>
  </goal>
 </theory>
 <theory name="M_list_reversal_lasso__qyi2644757663130641572__list_reversal_list" proved="true">
  <goal name="vc_list_reversal_list" proved="true">
- <transf name="split_vc" proved="true" >
-  <goal name="vc_list_reversal_list.0" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.011741" steps="43220"/></proof>
-  </goal>
-  <goal name="vc_list_reversal_list.1" expl="loop invariant" proved="true">
-  <proof prover="3"><result status="valid" time="0.027023" steps="57"/></proof>
-  </goal>
-  <goal name="vc_list_reversal_list.2" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.021202" steps="65259"/></proof>
-  </goal>
-  <goal name="vc_list_reversal_list.3" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.124933" steps="64011"/></proof>
-  </goal>
-  <goal name="vc_list_reversal_list.4" expl="postcondition" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_list.4.0" expl="postcondition" proved="true">
-   <proof prover="3"><result status="valid" time="0.197031" steps="913"/></proof>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="vc_list_reversal_list.5" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.030283" steps="78365"/></proof>
-  </goal>
-  <goal name="vc_list_reversal_list.6" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.032673" steps="74856"/></proof>
-  </goal>
-  <goal name="vc_list_reversal_list.7" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.035621" steps="74993"/></proof>
-  </goal>
-  <goal name="vc_list_reversal_list.8" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.062863" steps="6038"/></proof>
-  </goal>
-  <goal name="vc_list_reversal_list.9" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.032869" steps="75604"/></proof>
-  </goal>
-  <goal name="vc_list_reversal_list.10" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.023627" steps="6092"/></proof>
-  </goal>
-  <goal name="vc_list_reversal_list.11" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_list.11.0" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.780274" steps="4716"/></proof>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="vc_list_reversal_list.12" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_list.12.0" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.214169" steps="1250"/></proof>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="vc_list_reversal_list.13" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.038205" steps="81397"/></proof>
-  </goal>
- </transf>
+ <proof prover="3"><result status="valid" time="1.172006" steps="7387"/></proof>
  </goal>
 </theory>
 <theory name="M_list_reversal_lasso__qyi2644757663130641572__list_reversal_loop" proved="true">
  <goal name="vc_list_reversal_loop" proved="true">
  <transf name="split_vc" proved="true" >
-  <goal name="vc_list_reversal_loop.0" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.050472" steps="60454"/></proof>
+  <goal name="vc_list_reversal_loop.0" expl="mut invariant" proved="true">
+  <proof prover="3"><result status="valid" time="0.030095" steps="6"/></proof>
   </goal>
-  <goal name="vc_list_reversal_loop.1" expl="loop invariant" proved="true">
-  <proof prover="3"><result status="valid" time="0.031592" steps="62"/></proof>
+  <goal name="vc_list_reversal_loop.1" expl="loop invariant 0" proved="true">
+  <proof prover="3" timelimit="3" memlimit="2000"><result status="valid" time="0.031592" steps="17"/></proof>
   </goal>
-  <goal name="vc_list_reversal_loop.2" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.018987" steps="70738"/></proof>
+  <goal name="vc_list_reversal_loop.2" expl="loop invariant 1" proved="true">
+  <proof prover="1"><result status="valid" time="0.018987" steps="69617"/></proof>
   </goal>
-  <goal name="vc_list_reversal_loop.3" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.038930" steps="69873"/></proof>
+  <goal name="vc_list_reversal_loop.3" expl="loop invariant 2" proved="true">
+  <proof prover="1"><result status="valid" time="0.017978" steps="68606"/></proof>
   </goal>
-  <goal name="vc_list_reversal_loop.4" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_loop.4.0" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.034150" steps="67260"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_loop.4.1" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.041290" steps="67358"/></proof>
-   </goal>
-  </transf>
+  <goal name="vc_list_reversal_loop.4" expl="loop invariant 3" proved="true">
+  <proof prover="3"><result status="valid" time="0.029098" steps="83"/></proof>
   </goal>
   <goal name="vc_list_reversal_loop.5" expl="assertion" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_loop.5.0" expl="assertion" proved="true">
-   <proof prover="1"><result status="valid" time="0.036893" steps="80498"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_loop.5.1" expl="assertion" proved="true">
-   <proof prover="3"><result status="valid" time="0.062515" steps="296"/></proof>
-   </goal>
-  </transf>
+  <proof prover="3"><result status="valid" time="0.070510" steps="598"/></proof>
   </goal>
   <goal name="vc_list_reversal_loop.6" expl="postcondition" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_loop.6.0" expl="postcondition" proved="true">
-   <proof prover="3"><result status="valid" time="0.760078" steps="5791"/></proof>
-   </goal>
-  </transf>
+  <proof prover="3"><result status="valid" time="1.135831" steps="13696"/></proof>
   </goal>
   <goal name="vc_list_reversal_loop.7" expl="assertion" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_loop.7.0" expl="assertion" proved="true">
-   <proof prover="3"><result status="valid" time="0.046799" steps="205"/></proof>
-   </goal>
-  </transf>
+  <proof prover="3"><result status="valid" time="0.030559" steps="206"/></proof>
   </goal>
   <goal name="vc_list_reversal_loop.8" expl="precondition" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_loop.8.0" expl="precondition" proved="true">
-   <proof prover="3"><result status="valid" time="0.045497" steps="131"/></proof>
-   </goal>
-  </transf>
+  <proof prover="3"><result status="valid" time="0.038925" steps="131"/></proof>
   </goal>
   <goal name="vc_list_reversal_loop.9" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.035121" steps="78250"/></proof>
+  <proof prover="3"><result status="valid" time="0.028814" steps="35"/></proof>
   </goal>
   <goal name="vc_list_reversal_loop.10" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.027963" steps="78385"/></proof>
+  <proof prover="3"><result status="valid" time="0.026331" steps="43"/></proof>
   </goal>
   <goal name="vc_list_reversal_loop.11" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.016262" steps="6406"/></proof>
+  <proof prover="3"><result status="valid" time="0.031218" steps="31"/></proof>
   </goal>
   <goal name="vc_list_reversal_loop.12" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.037745" steps="78998"/></proof>
+  <proof prover="3"><result status="valid" time="0.032742" steps="48"/></proof>
   </goal>
-  <goal name="vc_list_reversal_loop.13" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.017978" steps="6460"/></proof>
+  <goal name="vc_list_reversal_loop.13" expl="mut invariant" proved="true">
+  <proof prover="3"><result status="valid" time="0.040906" steps="41"/></proof>
   </goal>
-  <goal name="vc_list_reversal_loop.14" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_loop.14.0" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.538814" steps="3031"/></proof>
-   </goal>
-  </transf>
+  <goal name="vc_list_reversal_loop.14" expl="loop invariant 0" proved="true">
+  <proof prover="3"><result status="valid" time="0.037491" steps="78"/></proof>
   </goal>
-  <goal name="vc_list_reversal_loop.15" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_loop.15.0" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.243120" steps="1514"/></proof>
-   </goal>
-  </transf>
+  <goal name="vc_list_reversal_loop.15" expl="loop invariant 1" proved="true">
+  <proof prover="3"><result status="valid" time="0.459738" steps="2901"/></proof>
   </goal>
-  <goal name="vc_list_reversal_loop.16" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_loop.16.0" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.093589" steps="183933"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_loop.16.1" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.048039" steps="95726"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_loop.16.2" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.058793" steps="289"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_loop.16.3" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.066708" steps="444"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_loop.16.4" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.505261" steps="3456"/></proof>
-   </goal>
-  </transf>
+  <goal name="vc_list_reversal_loop.16" expl="loop invariant 2" proved="true">
+  <proof prover="3"><result status="valid" time="0.181428" steps="1113"/></proof>
   </goal>
-  <goal name="vc_list_reversal_loop.17" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_loop.17.0" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.041938" steps="83302"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_loop.17.1" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.039105" steps="83349"/></proof>
-   </goal>
-  </transf>
+  <goal name="vc_list_reversal_loop.17" expl="loop invariant 3" proved="true">
+  <proof prover="3"><result status="valid" time="0.697725" steps="4381"/></proof>
   </goal>
  </transf>
  </goal>
@@ -212,37 +101,20 @@
 <theory name="M_list_reversal_lasso__qyi2644757663130641572__list_reversal_lasso" proved="true">
  <goal name="vc_list_reversal_lasso" proved="true">
  <transf name="split_vc" proved="true" >
-  <goal name="vc_list_reversal_lasso.0" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.031340" steps="45641"/></proof>
+  <goal name="vc_list_reversal_lasso.0" expl="mut invariant" proved="true">
+  <proof prover="3"><result status="valid" time="0.023427" steps="5"/></proof>
   </goal>
-  <goal name="vc_list_reversal_lasso.1" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.040764" steps="75351"/></proof>
+  <goal name="vc_list_reversal_lasso.1" expl="loop invariant 0" proved="true">
+  <proof prover="3"><result status="valid" time="0.017080" steps="31"/></proof>
   </goal>
-  <goal name="vc_list_reversal_lasso.2" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.031359" steps="71856"/></proof>
+  <goal name="vc_list_reversal_lasso.2" expl="loop invariant 1" proved="true">
+  <proof prover="3"><result status="valid" time="0.030995" steps="170"/></proof>
   </goal>
-  <goal name="vc_list_reversal_lasso.3" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_lasso.3.0" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.039209" steps="57"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_lasso.3.1" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.033456" steps="57"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_lasso.3.2" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.042246" steps="125"/></proof>
-   </goal>
-  </transf>
+  <goal name="vc_list_reversal_lasso.3" expl="loop invariant 2" proved="true">
+  <proof prover="3"><result status="valid" time="0.059385" steps="27"/></proof>
   </goal>
-  <goal name="vc_list_reversal_lasso.4" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_lasso.4.0" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.035565" steps="77385"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_lasso.4.1" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.038191" steps="77619"/></proof>
-   </goal>
-  </transf>
+  <goal name="vc_list_reversal_lasso.4" expl="loop invariant 3" proved="true">
+  <proof prover="3"><result status="valid" time="0.038203" steps="37"/></proof>
   </goal>
   <goal name="vc_list_reversal_lasso.5" expl="postcondition" proved="true">
   <transf name="split_vc" proved="true" >
@@ -251,14 +123,10 @@
     <goal name="vc_list_reversal_lasso.5.0.0" expl="postcondition" proved="true">
     <transf name="split_all_full" proved="true" >
      <goal name="vc_list_reversal_lasso.5.0.0.0" expl="postcondition" proved="true">
-     <proof prover="1"><result status="valid" time="0.038827" steps="87512"/></proof>
+     <proof prover="3"><result status="valid" time="0.038432" steps="43"/></proof>
      </goal>
      <goal name="vc_list_reversal_lasso.5.0.0.1" expl="postcondition" proved="true">
-     <transf name="split_vc" proved="true" >
-      <goal name="vc_list_reversal_lasso.5.0.0.1.0" expl="postcondition" proved="true">
-      <proof prover="3"><result status="valid" time="0.114128" steps="392"/></proof>
-      </goal>
-     </transf>
+     <proof prover="3"><result status="valid" time="0.081360" steps="366"/></proof>
      </goal>
      <goal name="vc_list_reversal_lasso.5.0.0.2" expl="postcondition" proved="true">
      <transf name="split_vc" proved="true" >
@@ -267,28 +135,20 @@
        <goal name="vc_list_reversal_lasso.5.0.0.2.0.0" expl="postcondition" proved="true">
        <transf name="split_all_full" proved="true" >
         <goal name="vc_list_reversal_lasso.5.0.0.2.0.0.0" proved="true">
-        <proof prover="3"><result status="valid" time="2.246690" steps="16581"/></proof>
+        <proof prover="0"><result status="valid" time="0.285406" steps="49519"/></proof>
         </goal>
         <goal name="vc_list_reversal_lasso.5.0.0.2.0.0.1" proved="true">
         <transf name="split_vc" proved="true" >
          <goal name="vc_list_reversal_lasso.5.0.0.2.0.0.1.0" proved="true">
-         <proof prover="4"><result status="valid" time="0.954982" steps="151362"/></proof>
+         <proof prover="0"><result status="valid" time="0.554526" steps="87640"/></proof>
          </goal>
         </transf>
         </goal>
         <goal name="vc_list_reversal_lasso.5.0.0.2.0.0.2" proved="true">
-        <transf name="split_vc" proved="true" >
-         <goal name="vc_list_reversal_lasso.5.0.0.2.0.0.2.0" proved="true">
-         <proof prover="4"><result status="valid" time="1.461517" steps="265557"/></proof>
-         </goal>
-        </transf>
+        <proof prover="3"><result status="valid" time="2.020250" steps="14730"/></proof>
         </goal>
         <goal name="vc_list_reversal_lasso.5.0.0.2.0.0.3" proved="true">
-        <transf name="split_vc" proved="true" >
-         <goal name="vc_list_reversal_lasso.5.0.0.2.0.0.3.0" proved="true">
-         <proof prover="3"><result status="valid" time="0.081081" steps="232"/></proof>
-         </goal>
-        </transf>
+        <proof prover="3"><result status="valid" time="0.053100" steps="233"/></proof>
         </goal>
        </transf>
        </goal>
@@ -297,11 +157,7 @@
      </transf>
      </goal>
      <goal name="vc_list_reversal_lasso.5.0.0.3" expl="postcondition" proved="true">
-     <transf name="split_vc" proved="true" >
-      <goal name="vc_list_reversal_lasso.5.0.0.3.0" expl="postcondition" proved="true">
-      <proof prover="3"><result status="valid" time="1.361146" steps="6161"/></proof>
-      </goal>
-     </transf>
+     <proof prover="3"><result status="valid" time="1.190180" steps="4854"/></proof>
      </goal>
     </transf>
     </goal>
@@ -310,106 +166,73 @@
   </transf>
   </goal>
   <goal name="vc_list_reversal_lasso.6" expl="precondition" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_lasso.6.0" expl="precondition" proved="true">
-   <proof prover="3"><result status="valid" time="0.126798" steps="683"/></proof>
-   </goal>
-  </transf>
+  <proof prover="3"><result status="valid" time="0.122255" steps="734"/></proof>
   </goal>
   <goal name="vc_list_reversal_lasso.7" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.037376" steps="83270"/></proof>
+  <proof prover="3"><result status="valid" time="0.045510" steps="42"/></proof>
   </goal>
   <goal name="vc_list_reversal_lasso.8" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.036999" steps="83405"/></proof>
+  <proof prover="3"><result status="valid" time="0.041044" steps="49"/></proof>
   </goal>
   <goal name="vc_list_reversal_lasso.9" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.024879" steps="6646"/></proof>
+  <proof prover="3"><result status="valid" time="0.040003" steps="31"/></proof>
   </goal>
   <goal name="vc_list_reversal_lasso.10" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.027910" steps="84018"/></proof>
+  <proof prover="3"><result status="valid" time="0.039602" steps="56"/></proof>
   </goal>
-  <goal name="vc_list_reversal_lasso.11" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.022349" steps="6700"/></proof>
+  <goal name="vc_list_reversal_lasso.11" expl="mut invariant" proved="true">
+  <proof prover="3"><result status="valid" time="0.034986" steps="41"/></proof>
   </goal>
-  <goal name="vc_list_reversal_lasso.12" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_lasso.12.0" expl="loop invariant" proved="true">
-   <transf name="inline_goal" proved="true" >
-    <goal name="vc_list_reversal_lasso.12.0.0" expl="loop invariant" proved="true">
-    <transf name="split_all_full" proved="true" >
-     <goal name="vc_list_reversal_lasso.12.0.0.0" proved="true">
-     <transf name="split_vc" proved="true" >
-      <goal name="vc_list_reversal_lasso.12.0.0.0.0" proved="true">
-      <proof prover="3"><result status="valid" time="0.946794" steps="5708"/></proof>
-      </goal>
-     </transf>
-     </goal>
-     <goal name="vc_list_reversal_lasso.12.0.0.1" proved="true">
-     <transf name="split_vc" proved="true" >
-      <goal name="vc_list_reversal_lasso.12.0.0.1.0" proved="true">
-      <proof prover="4"><result status="valid" time="0.156753" steps="34147"/></proof>
-      </goal>
-     </transf>
-     </goal>
-     <goal name="vc_list_reversal_lasso.12.0.0.2" proved="true">
-     <transf name="split_vc" proved="true" >
-      <goal name="vc_list_reversal_lasso.12.0.0.2.0" proved="true">
-      <proof prover="3"><result status="valid" time="0.212878" steps="951"/></proof>
-      </goal>
-     </transf>
-     </goal>
-     <goal name="vc_list_reversal_lasso.12.0.0.3" proved="true">
-     <transf name="split_vc" proved="true" >
-      <goal name="vc_list_reversal_lasso.12.0.0.3.0" proved="true">
-      <proof prover="3"><result status="valid" time="0.132747" steps="444"/></proof>
-      </goal>
-     </transf>
-     </goal>
-    </transf>
+  <goal name="vc_list_reversal_lasso.12" expl="loop invariant 0" proved="true">
+  <proof prover="3"><result status="valid" time="0.024975" steps="210"/></proof>
+  </goal>
+  <goal name="vc_list_reversal_lasso.13" expl="loop invariant 1" proved="true">
+  <proof prover="3"><result status="valid" time="0.609275" steps="4138"/></proof>
+  </goal>
+  <goal name="vc_list_reversal_lasso.14" expl="loop invariant 2" proved="true">
+  <proof prover="3"><result status="valid" time="3.315031" steps="20635"/></proof>
+  </goal>
+  <goal name="vc_list_reversal_lasso.15" expl="loop invariant 3" proved="true">
+  <transf name="inline_goal" proved="true" >
+   <goal name="vc_list_reversal_lasso.15.0" expl="loop invariant 3" proved="true">
+   <transf name="split_vc" proved="true" >
+    <goal name="vc_list_reversal_lasso.15.0.0" expl="loop invariant 3" proved="true">
+    <proof prover="3"><result status="valid" time="1.116391" steps="7693"/></proof>
+    </goal>
+    <goal name="vc_list_reversal_lasso.15.0.1" expl="loop invariant 3" proved="true">
+    <proof prover="0"><result status="valid" time="0.413640" steps="59811"/></proof>
+    </goal>
+    <goal name="vc_list_reversal_lasso.15.0.2" expl="loop invariant 3" proved="true">
+    <proof prover="3"><result status="valid" time="0.393380" steps="1227"/></proof>
+    </goal>
+    <goal name="vc_list_reversal_lasso.15.0.3" expl="loop invariant 3" proved="true">
+    <proof prover="3"><result status="valid" time="0.210334" steps="472"/></proof>
+    </goal>
+    <goal name="vc_list_reversal_lasso.15.0.4" expl="loop invariant 3" proved="true">
+    <proof prover="3"><result status="valid" time="0.260916" steps="911"/></proof>
+    </goal>
+    <goal name="vc_list_reversal_lasso.15.0.5" expl="loop invariant 3" proved="true">
+    <proof prover="3"><result status="valid" time="0.968356" steps="4520"/></proof>
+    </goal>
+    <goal name="vc_list_reversal_lasso.15.0.6" expl="loop invariant 3" proved="true">
+    <proof prover="3"><result status="valid" time="0.694400" steps="3222"/></proof>
+    </goal>
+    <goal name="vc_list_reversal_lasso.15.0.7" expl="loop invariant 3" proved="true">
+    <proof prover="3"><result status="valid" time="0.249002" steps="502"/></proof>
+    </goal>
+    <goal name="vc_list_reversal_lasso.15.0.8" expl="loop invariant 3" proved="true">
+    <proof prover="3"><result status="valid" time="0.211005" steps="431"/></proof>
+    </goal>
+    <goal name="vc_list_reversal_lasso.15.0.9" expl="loop invariant 3" proved="true">
+    <proof prover="3"><result status="valid" time="0.560323" steps="3534"/></proof>
+    </goal>
+    <goal name="vc_list_reversal_lasso.15.0.10" expl="loop invariant 3" proved="true">
+    <proof prover="3"><result status="valid" time="0.190116" steps="1366"/></proof>
+    </goal>
+    <goal name="vc_list_reversal_lasso.15.0.11" expl="loop invariant 3" proved="true">
+    <proof prover="3"><result status="valid" time="0.154793" steps="390"/></proof>
     </goal>
    </transf>
-   </goal>
-   <goal name="vc_list_reversal_lasso.12.1" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="1.201904" steps="8316"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_lasso.12.2" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.719765" steps="4621"/></proof>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="vc_list_reversal_lasso.13" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_lasso.13.0" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.770481" steps="5240"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_lasso.13.1" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="1.010280" steps="6870"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_lasso.13.2" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.728932" steps="5746"/></proof>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="vc_list_reversal_lasso.14" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_lasso.14.0" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.321256" steps="1679"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_lasso.14.1" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.277431" steps="1458"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_lasso.14.2" expl="loop invariant" proved="true">
-   <proof prover="3"><result status="valid" time="0.530105" steps="3120"/></proof>
-   </goal>
-  </transf>
-  </goal>
-  <goal name="vc_list_reversal_lasso.15" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_list_reversal_lasso.15.0" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.042949" steps="86713"/></proof>
-   </goal>
-   <goal name="vc_list_reversal_lasso.15.1" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.390562" steps="614297"/></proof>
    </goal>
   </transf>
   </goal>
@@ -418,68 +241,68 @@
 </theory>
 <theory name="M_list_reversal_lasso__qyi2644757663130641572__find_ptr_in_seq" proved="true">
  <goal name="vc_find_ptr_in_seq" proved="true">
- <proof prover="1"><result status="valid" time="0.037528" steps="68201"/></proof>
+ <proof prover="3"><result status="valid" time="0.031521" steps="132"/></proof>
  </goal>
 </theory>
 <theory name="M_list_reversal_lasso__qyi2644757663130641572__pigeon" proved="true">
  <goal name="vc_pigeon" proved="true">
- <proof prover="1"><result status="valid" time="0.264791" steps="875836"/></proof>
+ <proof prover="1" timelimit="5"><result status="valid" time="0.578264" steps="875836"/></proof>
  </goal>
 </theory>
 <theory name="M_list_reversal_lasso__qyi2644757663130641572__find_lasso_aux" proved="true">
  <goal name="vc_find_lasso_aux" proved="true">
  <transf name="split_vc" proved="true" >
   <goal name="vc_find_lasso_aux.0" proved="true">
-  <proof prover="1"><result status="valid" time="0.028587" steps="72283"/></proof>
+  <proof prover="3"><result status="valid" time="0.021398" steps="10"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.1" proved="true">
-  <proof prover="1"><result status="valid" time="0.022066" steps="5924"/></proof>
+  <proof prover="3"><result status="valid" time="0.025903" steps="10"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.2" proved="true">
-  <proof prover="1"><result status="valid" time="0.036792" steps="68884"/></proof>
+  <proof prover="3"><result status="valid" time="0.017694" steps="12"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.3" proved="true">
-  <proof prover="1"><result status="valid" time="0.031259" steps="71998"/></proof>
+  <proof prover="3"><result status="valid" time="0.041960" steps="100"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.4" proved="true">
-  <proof prover="1"><result status="valid" time="0.031077" steps="72848"/></proof>
+  <proof prover="1" timelimit="5"><result status="valid" time="0.031077" steps="72848"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.5" proved="true">
-  <proof prover="1"><result status="valid" time="0.033098" steps="71732"/></proof>
+  <proof prover="3"><result status="valid" time="0.027787" steps="20"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.6" proved="true">
-  <proof prover="3"><result status="valid" time="1.624305" steps="8811"/></proof>
+  <proof prover="3"><result status="valid" time="1.130452" steps="7631"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.7" proved="true">
-  <proof prover="1"><result status="valid" time="0.035189" steps="69951"/></proof>
+  <proof prover="4"><result status="valid" time="0.045920" steps="10751"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.8" proved="true">
-  <proof prover="1"><result status="valid" time="0.016763" steps="6135"/></proof>
+  <proof prover="3"><result status="valid" time="0.034711" steps="22"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.9" proved="true">
-  <proof prover="1"><result status="valid" time="0.026054" steps="32307"/></proof>
+  <proof prover="3"><result status="valid" time="0.024324" steps="20"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.10" proved="true">
-  <proof prover="1"><result status="valid" time="0.038114" steps="70603"/></proof>
+  <proof prover="3"><result status="valid" time="0.037947" steps="31"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.11" proved="true">
-  <proof prover="1"><result status="valid" time="0.039426" steps="71313"/></proof>
+  <proof prover="3"><result status="valid" time="0.029243" steps="30"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.12" proved="true">
-  <proof prover="1"><result status="valid" time="0.036852" steps="71357"/></proof>
+  <proof prover="3"><result status="valid" time="0.032104" steps="120"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.13" proved="true">
-  <proof prover="1"><result status="valid" time="0.020263" steps="6168"/></proof>
+  <proof prover="3"><result status="valid" time="0.030399" steps="20"/></proof>
   </goal>
   <goal name="vc_find_lasso_aux.14" proved="true">
-  <proof prover="1"><result status="valid" time="0.111514" steps="254915"/></proof>
+  <proof prover="1" timelimit="5"><result status="valid" time="0.111514" steps="254915"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
 <theory name="M_list_reversal_lasso__qyi2644757663130641572__find_lasso" proved="true">
  <goal name="vc_find_lasso" proved="true">
- <proof prover="1"><result status="valid" time="0.020698" steps="74714"/></proof>
+ <proof prover="3"><result status="valid" time="0.023747" steps="34"/></proof>
  </goal>
 </theory>
 </file>

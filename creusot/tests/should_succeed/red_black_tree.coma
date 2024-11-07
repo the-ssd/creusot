@@ -11212,9 +11212,9 @@ module M_red_black_tree__qyi1501420612169366910__get [#"red_black_tree.rs" 889 4
   type v
   
   let%span sred_black_tree0 = "red_black_tree.rs" 890 8 890 53
-  let%span sred_black_tree1 = "red_black_tree.rs" 893 20 893 29
+  let%span sred_black_tree1 = "red_black_tree.rs" 895 20 895 116
   let%span sred_black_tree2 = "red_black_tree.rs" 894 20 894 40
-  let%span sred_black_tree3 = "red_black_tree.rs" 895 20 895 116
+  let%span sred_black_tree3 = "red_black_tree.rs" 893 20 893 29
   let%span sred_black_tree4 = "red_black_tree.rs" 889 16 889 20
   let%span sred_black_tree5 = "red_black_tree.rs" 889 22 889 25
   let%span sred_black_tree6 = "red_black_tree.rs" 885 14 888 5
@@ -11222,9 +11222,9 @@ module M_red_black_tree__qyi1501420612169366910__get [#"red_black_tree.rs" 889 4
   let%span sred_black_tree8 = "red_black_tree.rs" 105 15 105 35
   let%span sred_black_tree9 = "red_black_tree.rs" 106 14 106 78
   let%span sred_black_tree10 = "red_black_tree.rs" 112 12 112 61
-  let%span sred_black_tree11 = "red_black_tree.rs" 235 12 241 13
-  let%span smodel12 = "../../../creusot-contracts/src/model.rs" 82 8 82 28
-  let%span sred_black_tree13 = "red_black_tree.rs" 37 12 41 13
+  let%span smodel11 = "../../../creusot-contracts/src/model.rs" 82 8 82 28
+  let%span sred_black_tree12 = "red_black_tree.rs" 37 12 41 13
+  let%span sred_black_tree13 = "red_black_tree.rs" 235 12 241 13
   let%span scmp14 = "../../../creusot-contracts/src/std/cmp.rs" 50 26 50 85
   let%span smodel15 = "../../../creusot-contracts/src/model.rs" 91 8 91 22
   let%span sred_black_tree16 = "red_black_tree.rs" 170 20 170 54
@@ -11356,7 +11356,7 @@ module M_red_black_tree__qyi1501420612169366910__get [#"red_black_tree.rs" 889 4
   use T_red_black_tree__Node as T_red_black_tree__Node
   
   predicate has_mapping'0 [#"red_black_tree.rs" 35 4 35 57] (self : Tree'0.t_Tree k v) (k : t_DeepModelTy'0) (v : v) =
-    [%#sred_black_tree13] match self with
+    [%#sred_black_tree12] match self with
       | Tree'0.C_Tree (Option'0.C_None) -> false
       | Tree'0.C_Tree (Option'0.C_Some (Node'0.C_Node left _ key val' right)) -> has_mapping'0 left k v
       \/ has_mapping'0 right k v \/ k = deep_model'1 key /\ v = val'
@@ -11369,7 +11369,7 @@ module M_red_black_tree__qyi1501420612169366910__get [#"red_black_tree.rs" 889 4
      -> lt_log'0 (deep_model'1 (T_red_black_tree__Node.t_Node__key self)) k)
   
   predicate bst_invariant'0 [#"red_black_tree.rs" 233 4 233 34] (self : Tree'0.t_Tree k v) =
-    [%#sred_black_tree11] match self with
+    [%#sred_black_tree13] match self with
       | Tree'0.C_Tree (Option'0.C_None) -> true
       | Tree'0.C_Tree (Option'0.C_Some node) -> let Node'0.C_Node left _ _ _ right = node in bst_invariant_here'0 node
       /\ bst_invariant'0 left /\ bst_invariant'0 right
@@ -11537,7 +11537,7 @@ module M_red_black_tree__qyi1501420612169366910__get [#"red_black_tree.rs" 889 4
     
   
   function deep_model'0 (self : k) : t_DeepModelTy'0 =
-    [%#smodel12] deep_model'1 self
+    [%#smodel11] deep_model'1 self
   
   use prelude.prelude.Snapshot
   
@@ -11580,10 +11580,10 @@ module M_red_black_tree__qyi1501420612169366910__get [#"red_black_tree.rs" 889 4
     [ bb0 = s0 [ s0 =  [ &_5 <- [%#sred_black_tree0] Snapshot.new () ] s1 | s1 = bb1 ] 
     | bb1 = s0 [ s0 = Map'0.t_Map <k> <v> {self} (fun (r0'0:Tree'0.t_Tree k v) ->  [ &tree <- r0'0 ] s1) | s1 = bb2 ] 
     | bb2 = bb2
-      [ bb2 = {[@expl:loop invariant 2] [%#sred_black_tree3] forall v : v . has_mapping'0 (T_red_black_tree__Map.t_Map__0 self) (deep_model'0 key) v
-        = has_mapping'0 tree (deep_model'0 key) v}
+      [ bb2 = {[@expl:loop invariant 0] [%#sred_black_tree3] inv'0 tree}
         {[@expl:loop invariant 1] [%#sred_black_tree2] bst_invariant'0 tree}
-        {[@expl:loop invariant 0] [%#sred_black_tree1] inv'0 tree}
+        {[@expl:loop invariant 2] [%#sred_black_tree1] forall v : v . has_mapping'0 (T_red_black_tree__Map.t_Map__0 self) (deep_model'0 key) v
+        = has_mapping'0 tree (deep_model'0 key) v}
         (! s0) [ s0 = bb3 ] 
         [ bb3 = s0
           [ s0 = Tree'0.t_Tree <k> <v> {tree}
@@ -11667,16 +11667,16 @@ module M_red_black_tree__qyi1501420612169366910__get_mut [#"red_black_tree.rs" 9
   
   let%span sred_black_tree0 = "red_black_tree.rs" 911 8 911 53
   let%span sred_black_tree1 = "red_black_tree.rs" 914 23 914 41
-  let%span sred_black_tree2 = "red_black_tree.rs" 916 20 916 29
-  let%span sred_black_tree3 = "red_black_tree.rs" 917 20 917 40
-  let%span sred_black_tree4 = "red_black_tree.rs" 918 20 918 43
-  let%span sred_black_tree5 = "red_black_tree.rs" 919 20 919 42
-  let%span sred_black_tree6 = "red_black_tree.rs" 920 20 920 122
-  let%span sred_black_tree7 = "red_black_tree.rs" 921 20 921 122
-  let%span sred_black_tree8 = "red_black_tree.rs" 922 20 923 80
-  let%span sred_black_tree9 = "red_black_tree.rs" 924 20 925 51
-  let%span sred_black_tree10 = "red_black_tree.rs" 926 20 926 90
-  let%span sred_black_tree11 = "red_black_tree.rs" 927 20 928 84
+  let%span sred_black_tree2 = "red_black_tree.rs" 927 20 928 84
+  let%span sred_black_tree3 = "red_black_tree.rs" 926 20 926 90
+  let%span sred_black_tree4 = "red_black_tree.rs" 924 20 925 51
+  let%span sred_black_tree5 = "red_black_tree.rs" 922 20 923 80
+  let%span sred_black_tree6 = "red_black_tree.rs" 921 20 921 122
+  let%span sred_black_tree7 = "red_black_tree.rs" 920 20 920 122
+  let%span sred_black_tree8 = "red_black_tree.rs" 919 20 919 42
+  let%span sred_black_tree9 = "red_black_tree.rs" 918 20 918 43
+  let%span sred_black_tree10 = "red_black_tree.rs" 917 20 917 40
+  let%span sred_black_tree11 = "red_black_tree.rs" 916 20 916 29
   let%span sred_black_tree12 = "red_black_tree.rs" 910 24 910 28
   let%span sred_black_tree13 = "red_black_tree.rs" 910 30 910 33
   let%span sred_black_tree14 = "red_black_tree.rs" 906 14 909 5
@@ -11684,15 +11684,15 @@ module M_red_black_tree__qyi1501420612169366910__get_mut [#"red_black_tree.rs" 9
   let%span sred_black_tree16 = "red_black_tree.rs" 105 15 105 35
   let%span sred_black_tree17 = "red_black_tree.rs" 106 14 106 78
   let%span sred_black_tree18 = "red_black_tree.rs" 112 12 112 61
-  let%span sred_black_tree19 = "red_black_tree.rs" 235 12 241 13
-  let%span sred_black_tree20 = "red_black_tree.rs" 342 12 348 13
-  let%span sred_black_tree21 = "red_black_tree.rs" 297 12 303 13
-  let%span smodel22 = "../../../creusot-contracts/src/model.rs" 82 8 82 28
-  let%span sred_black_tree23 = "red_black_tree.rs" 37 12 41 13
-  let%span sred_black_tree24 = "red_black_tree.rs" 324 14 324 25
-  let%span sred_black_tree25 = "red_black_tree.rs" 327 12 335 13
-  let%span sred_black_tree26 = "red_black_tree.rs" 287 12 290 13
-  let%span sred_black_tree27 = "red_black_tree.rs" 263 12 268 13
+  let%span sred_black_tree19 = "red_black_tree.rs" 37 12 41 13
+  let%span sred_black_tree20 = "red_black_tree.rs" 287 12 290 13
+  let%span sred_black_tree21 = "red_black_tree.rs" 263 12 268 13
+  let%span sred_black_tree22 = "red_black_tree.rs" 324 14 324 25
+  let%span sred_black_tree23 = "red_black_tree.rs" 327 12 335 13
+  let%span sred_black_tree24 = "red_black_tree.rs" 342 12 348 13
+  let%span smodel25 = "../../../creusot-contracts/src/model.rs" 82 8 82 28
+  let%span sred_black_tree26 = "red_black_tree.rs" 235 12 241 13
+  let%span sred_black_tree27 = "red_black_tree.rs" 297 12 303 13
   let%span scmp28 = "../../../creusot-contracts/src/std/cmp.rs" 50 26 50 85
   let%span smodel29 = "../../../creusot-contracts/src/model.rs" 109 8 109 22
   let%span sred_black_tree30 = "red_black_tree.rs" 761 20 761 27
@@ -11702,8 +11702,8 @@ module M_red_black_tree__qyi1501420612169366910__get_mut [#"red_black_tree.rs" 9
   let%span sred_black_tree34 = "red_black_tree.rs" 84 15 84 35
   let%span sred_black_tree35 = "red_black_tree.rs" 85 14 85 92
   let%span sred_black_tree36 = "red_black_tree.rs" 91 12 100 13
-  let%span sred_black_tree37 = "red_black_tree.rs" 215 12 216 104
-  let%span sred_black_tree38 = "red_black_tree.rs" 368 20 368 61
+  let%span sred_black_tree37 = "red_black_tree.rs" 368 20 368 61
+  let%span sred_black_tree38 = "red_black_tree.rs" 215 12 216 104
   let%span sred_black_tree39 = "red_black_tree.rs" 311 20 311 102
   let%span sresolve40 = "../../../creusot-contracts/src/resolve.rs" 41 20 41 34
   let%span sred_black_tree41 = "red_black_tree.rs" 55 12 62 13
@@ -11739,7 +11739,7 @@ module M_red_black_tree__qyi1501420612169366910__get_mut [#"red_black_tree.rs" 9
   use T_core__option__Option as Option'0
   
   function color'0 [#"red_black_tree.rs" 285 4 285 27] (self : Tree'0.t_Tree k v) : Color'0.t_Color =
-    [%#sred_black_tree26] match T_red_black_tree__Tree.t_Tree__node self with
+    [%#sred_black_tree20] match T_red_black_tree__Tree.t_Tree__node self with
       | Option'0.C_Some (Node'0.C_Node _ color _ _ _) -> color
       | _ -> Color'0.C_Black
       end
@@ -11756,7 +11756,7 @@ module M_red_black_tree__qyi1501420612169366910__get_mut [#"red_black_tree.rs" 9
     \/ color'0 (T_red_black_tree__Node.t_Node__left self) = Color'0.C_Black)
   
   predicate color_invariant'0 [#"red_black_tree.rs" 295 4 295 36] (self : Tree'0.t_Tree k v) =
-    [%#sred_black_tree21] match self with
+    [%#sred_black_tree27] match self with
       | Tree'0.C_Tree (Option'0.C_None) -> true
       | Tree'0.C_Tree (Option'0.C_Some node) -> let Node'0.C_Node left _ _ _ right = node in color_invariant_here'0 node
       /\ color_invariant'0 left /\ color_invariant'0 right
@@ -11765,7 +11765,7 @@ module M_red_black_tree__qyi1501420612169366910__get_mut [#"red_black_tree.rs" 9
   use prelude.prelude.Int
   
   function height'0 [#"red_black_tree.rs" 325 4 325 26] (self : Tree'0.t_Tree k v) : int =
-    [%#sred_black_tree25] match self with
+    [%#sred_black_tree23] match self with
       | Tree'0.C_Tree (Option'0.C_None) -> 0
       | Tree'0.C_Tree (Option'0.C_Some (Node'0.C_Node left color _ _ _)) -> match color with
         | Color'0.C_Red -> height'0 left
@@ -11773,14 +11773,14 @@ module M_red_black_tree__qyi1501420612169366910__get_mut [#"red_black_tree.rs" 9
         end
       end
   
-  axiom height'0_spec : forall self : Tree'0.t_Tree k v . [%#sred_black_tree24] height'0 self >= 0
+  axiom height'0_spec : forall self : Tree'0.t_Tree k v . [%#sred_black_tree22] height'0 self >= 0
   
   predicate height_invariant_here'0 [#"red_black_tree.rs" 367 4 367 42] (self : Node'0.t_Node k v) =
-    [%#sred_black_tree38] height'0 (T_red_black_tree__Node.t_Node__left self)
+    [%#sred_black_tree37] height'0 (T_red_black_tree__Node.t_Node__left self)
     = height'0 (T_red_black_tree__Node.t_Node__right self)
   
   predicate height_invariant'0 [#"red_black_tree.rs" 340 4 340 37] (self : Tree'0.t_Tree k v) =
-    [%#sred_black_tree20] match self with
+    [%#sred_black_tree24] match self with
       | Tree'0.C_Tree (Option'0.C_None) -> true
       | Tree'0.C_Tree (Option'0.C_Some node) -> let Node'0.C_Node left _ _ _ right = node in height_invariant_here'0 node
       /\ height_invariant'0 left /\ height_invariant'0 right
@@ -11795,20 +11795,20 @@ module M_red_black_tree__qyi1501420612169366910__get_mut [#"red_black_tree.rs" 9
   use T_red_black_tree__Node as T_red_black_tree__Node
   
   predicate has_mapping'0 [#"red_black_tree.rs" 35 4 35 57] (self : Tree'0.t_Tree k v) (k : t_DeepModelTy'0) (v : v) =
-    [%#sred_black_tree23] match self with
+    [%#sred_black_tree19] match self with
       | Tree'0.C_Tree (Option'0.C_None) -> false
       | Tree'0.C_Tree (Option'0.C_Some (Node'0.C_Node left _ key val' right)) -> has_mapping'0 left k v
       \/ has_mapping'0 right k v \/ k = deep_model'1 key /\ v = val'
       end
   
   predicate bst_invariant_here'0 [#"red_black_tree.rs" 213 4 213 39] (self : Node'0.t_Node k v) =
-    [%#sred_black_tree37] (forall k : t_DeepModelTy'0, v : v . has_mapping'0 (T_red_black_tree__Node.t_Node__left self) k v
+    [%#sred_black_tree38] (forall k : t_DeepModelTy'0, v : v . has_mapping'0 (T_red_black_tree__Node.t_Node__left self) k v
      -> lt_log'0 k (deep_model'1 (T_red_black_tree__Node.t_Node__key self)))
     /\ (forall k : t_DeepModelTy'0, v : v . has_mapping'0 (T_red_black_tree__Node.t_Node__right self) k v
      -> lt_log'0 (deep_model'1 (T_red_black_tree__Node.t_Node__key self)) k)
   
   predicate bst_invariant'0 [#"red_black_tree.rs" 233 4 233 34] (self : Tree'0.t_Tree k v) =
-    [%#sred_black_tree19] match self with
+    [%#sred_black_tree26] match self with
       | Tree'0.C_Tree (Option'0.C_None) -> true
       | Tree'0.C_Tree (Option'0.C_Some node) -> let Node'0.C_Node left _ _ _ right = node in bst_invariant_here'0 node
       /\ bst_invariant'0 left /\ bst_invariant'0 right
@@ -12048,10 +12048,13 @@ module M_red_black_tree__qyi1501420612169366910__get_mut [#"red_black_tree.rs" 9
       (! return' {result}) ]
     
   
+  function deep_model'0 (self : k) : t_DeepModelTy'0 =
+    [%#smodel25] deep_model'1 self
+  
   use T_red_black_tree__CP as CP'0
   
   predicate match_t'0 [#"red_black_tree.rs" 261 4 261 52] (self : CP'0.t_CP) (tree : Tree'0.t_Tree k v) =
-    [%#sred_black_tree27] match self with
+    [%#sred_black_tree21] match self with
       | CP'0.C_CPL color -> color'0 tree = color /\ color_invariant'0 tree
       | CP'0.C_CPN color l r -> exists node : Node'0.t_Node k v . T_red_black_tree__Tree.t_Tree__node tree
       = Option'0.C_Some node
@@ -12061,9 +12064,6 @@ module M_red_black_tree__qyi1501420612169366910__get_mut [#"red_black_tree.rs" 9
       end
   
   use prelude.prelude.Snapshot
-  
-  function deep_model'0 (self : k) : t_DeepModelTy'0 =
-    [%#smodel22] deep_model'1 self
   
   use prelude.prelude.Snapshot
   
@@ -12121,24 +12121,24 @@ module M_red_black_tree__qyi1501420612169366910__get_mut [#"red_black_tree.rs" 9
       
     | bb2 = bb3
     | bb3 = bb3
-      [ bb3 = {[@expl:loop invariant 9] [%#sred_black_tree11] forall k : t_DeepModelTy'0, v : v . has_mapping'0 tree.current k v
-        = has_mapping'0 tree.final k v
-         -> has_mapping'0 (Snapshot.inner old_tree).current k v = has_mapping'0 (Snapshot.inner old_tree).final k v}
-        {[@expl:loop invariant 8] [%#sred_black_tree10] match_t'0 (CP'0.C_CPL (color'0 tree.current)) tree.final
-         -> match_t'0 (CP'0.C_CPL (Color'0.C_Black)) (Snapshot.inner old_tree).final}
-        {[@expl:loop invariant 7] [%#sred_black_tree9] height'0 tree.current = height'0 tree.final
-        /\ height_invariant'0 tree.final  -> height_invariant'0 (Snapshot.inner old_tree).final}
-        {[@expl:loop invariant 6] [%#sred_black_tree8] (forall k : t_DeepModelTy'0, v : v . k = deep_model'0 key
+      [ bb3 = {[@expl:loop invariant 0] [%#sred_black_tree11] inv'1 tree}
+        {[@expl:loop invariant 1] [%#sred_black_tree10] bst_invariant'0 tree.current}
+        {[@expl:loop invariant 2] [%#sred_black_tree9] height_invariant'0 tree.current}
+        {[@expl:loop invariant 3] [%#sred_black_tree8] color_invariant'0 tree.current}
+        {[@expl:loop invariant 4] [%#sred_black_tree7] forall v : v . has_mapping'0 tree.final (deep_model'0 key) v
+        = has_mapping'0 (Snapshot.inner old_tree).final (deep_model'0 key) v}
+        {[@expl:loop invariant 5] [%#sred_black_tree6] forall v : v . has_mapping'0 tree.current (deep_model'0 key) v
+        = has_mapping'0 (Snapshot.inner old_tree).current (deep_model'0 key) v}
+        {[@expl:loop invariant 6] [%#sred_black_tree5] (forall k : t_DeepModelTy'0, v : v . k = deep_model'0 key
         \/ has_mapping'0 tree.current k v = has_mapping'0 tree.final k v)
          -> bst_invariant'0 tree.final  -> bst_invariant'0 (Snapshot.inner old_tree).final}
-        {[@expl:loop invariant 5] [%#sred_black_tree7] forall v : v . has_mapping'0 tree.current (deep_model'0 key) v
-        = has_mapping'0 (Snapshot.inner old_tree).current (deep_model'0 key) v}
-        {[@expl:loop invariant 4] [%#sred_black_tree6] forall v : v . has_mapping'0 tree.final (deep_model'0 key) v
-        = has_mapping'0 (Snapshot.inner old_tree).final (deep_model'0 key) v}
-        {[@expl:loop invariant 3] [%#sred_black_tree5] color_invariant'0 tree.current}
-        {[@expl:loop invariant 2] [%#sred_black_tree4] height_invariant'0 tree.current}
-        {[@expl:loop invariant 1] [%#sred_black_tree3] bst_invariant'0 tree.current}
-        {[@expl:loop invariant 0] [%#sred_black_tree2] inv'1 tree}
+        {[@expl:loop invariant 7] [%#sred_black_tree4] height'0 tree.current = height'0 tree.final
+        /\ height_invariant'0 tree.final  -> height_invariant'0 (Snapshot.inner old_tree).final}
+        {[@expl:loop invariant 8] [%#sred_black_tree3] match_t'0 (CP'0.C_CPL (color'0 tree.current)) tree.final
+         -> match_t'0 (CP'0.C_CPL (Color'0.C_Black)) (Snapshot.inner old_tree).final}
+        {[@expl:loop invariant 9] [%#sred_black_tree2] forall k : t_DeepModelTy'0, v : v . has_mapping'0 tree.current k v
+        = has_mapping'0 tree.final k v
+         -> has_mapping'0 (Snapshot.inner old_tree).current k v = has_mapping'0 (Snapshot.inner old_tree).final k v}
         (! s0) [ s0 = bb4 ] 
         [ bb4 = s0
           [ s0 = Tree'0.t_Tree <k> <v> {tree.current}

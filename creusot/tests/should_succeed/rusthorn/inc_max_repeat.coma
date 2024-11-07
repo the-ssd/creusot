@@ -103,8 +103,8 @@ module M_inc_max_repeat__inc_max_repeat [#"inc_max_repeat.rs" 15 0 15 53]
   let%span sinc_max_repeat1 = "inc_max_repeat.rs" 18 4 18 7
   let%span sinc_max_repeat2 = "inc_max_repeat.rs" 18 4 18 7
   let%span sinc_max_repeat3 = "inc_max_repeat.rs" 18 4 18 7
-  let%span sinc_max_repeat4 = "inc_max_repeat.rs" 16 16 16 84
-  let%span sinc_max_repeat5 = "inc_max_repeat.rs" 17 16 17 70
+  let%span sinc_max_repeat4 = "inc_max_repeat.rs" 17 16 17 70
+  let%span sinc_max_repeat5 = "inc_max_repeat.rs" 16 16 16 84
   let%span sinc_max_repeat6 = "inc_max_repeat.rs" 18 4 18 7
   let%span sinc_max_repeat7 = "inc_max_repeat.rs" 20 15 20 16
   let%span sinc_max_repeat8 = "inc_max_repeat.rs" 22 4 22 37
@@ -282,11 +282,12 @@ module M_inc_max_repeat__inc_max_repeat [#"inc_max_repeat.rs" 15 0 15 53]
     | bb2 = s0 [ s0 =  [ &produced <- [%#sinc_max_repeat2] Snapshot.new (Seq.empty  : Seq.seq uint32) ] s1 | s1 = bb3 ] 
     | bb3 = bb4
     | bb4 = bb4
-      [ bb4 = {[@expl:loop invariant 1] [%#sinc_max_repeat5] UInt32.to_int a
+      [ bb4 = {[@expl:loop invariant 0] [%#sinc_max_repeat5] UInt32.to_int a
+        <= 1000000 + Seq.length (Snapshot.inner produced)
+        /\ UInt32.to_int b <= 1000000 + Seq.length (Snapshot.inner produced)}
+        {[@expl:loop invariant 1] [%#sinc_max_repeat4] UInt32.to_int a
         >= UInt32.to_int b + Seq.length (Snapshot.inner produced)
         \/ UInt32.to_int b >= UInt32.to_int a + Seq.length (Snapshot.inner produced)}
-        {[@expl:loop invariant 0] [%#sinc_max_repeat4] UInt32.to_int a <= 1000000 + Seq.length (Snapshot.inner produced)
-        /\ UInt32.to_int b <= 1000000 + Seq.length (Snapshot.inner produced)}
         {[@expl:for invariant] [%#sinc_max_repeat3] produces'0 (Snapshot.inner iter_old) (Snapshot.inner produced) iter}
         {[@expl:for invariant] [%#sinc_max_repeat3] inv'1 iter}
         {[@expl:for invariant] [%#sinc_max_repeat3] inv'0 (Snapshot.inner produced)}

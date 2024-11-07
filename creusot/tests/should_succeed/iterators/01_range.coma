@@ -242,9 +242,9 @@ module M_01_range__sum_range [#"01_range.rs" 77 0 77 35]
   let%span s01_range1 = "01_range.rs" 79 32 79 33
   let%span s01_range2 = "01_range.rs" 80 19 80 35
   let%span s01_range3 = "01_range.rs" 81 23 81 47
-  let%span s01_range4 = "01_range.rs" 82 16 82 23
+  let%span s01_range4 = "01_range.rs" 84 16 84 46
   let%span s01_range5 = "01_range.rs" 83 16 83 55
-  let%span s01_range6 = "01_range.rs" 84 16 84 46
+  let%span s01_range6 = "01_range.rs" 82 16 82 23
   let%span s01_range7 = "01_range.rs" 88 27 88 75
   let%span s01_range8 = "01_range.rs" 89 21 89 22
   let%span s01_range9 = "01_range.rs" 75 11 75 18
@@ -261,13 +261,17 @@ module M_01_range__sum_range [#"01_range.rs" 77 0 77 35]
   let%span s01_range20 = "01_range.rs" 25 12 25 52
   let%span sresolve21 = "../../../../creusot-contracts/src/resolve.rs" 41 20 41 34
   
+  use T_01_range__Range as Range'0
+  
+  predicate inv'0 (_1 : Range'0.t_Range)
+  
+  axiom inv_axiom'0 [@rewrite] : forall x : Range'0.t_Range [inv'0 x] . inv'0 x = true
+  
   use prelude.prelude.IntSize
   
   use prelude.prelude.Int
   
   use seq.Seq
-  
-  use T_01_range__Range as Range'0
   
   use seq.Seq
   
@@ -306,10 +310,6 @@ module M_01_range__sum_range [#"01_range.rs" 77 0 77 35]
     [%#s01_range15] ()
   
   axiom produces_refl'0_spec : forall self : Range'0.t_Range . [%#s01_range14] produces'0 self (Seq.empty  : Seq.seq isize) self
-  
-  predicate inv'0 (_1 : Range'0.t_Range)
-  
-  axiom inv_axiom'0 [@rewrite] : forall x : Range'0.t_Range [inv'0 x] . inv'0 x = true
   
   use prelude.prelude.Snapshot
   
@@ -366,10 +366,9 @@ module M_01_range__sum_range [#"01_range.rs" 77 0 77 35]
     | bb2 = s0 [ s0 =  [ &produced <- [%#s01_range3] Snapshot.new (Seq.empty  : Seq.seq isize) ] s1 | s1 = bb3 ] 
     | bb3 = bb4
     | bb4 = bb4
-      [ bb4 = {[@expl:loop invariant 2] [%#s01_range6] IntSize.to_int i = Seq.length (Snapshot.inner produced)
-        /\ i <= n}
+      [ bb4 = {[@expl:loop invariant 0] [%#s01_range6] inv'0 it}
         {[@expl:loop invariant 1] [%#s01_range5] produces'0 (Snapshot.inner iter_old) (Snapshot.inner produced) it}
-        {[@expl:loop invariant 0] [%#s01_range4] inv'0 it}
+        {[@expl:loop invariant 2] [%#s01_range4] IntSize.to_int i = Seq.length (Snapshot.inner produced) /\ i <= n}
         (! s0) [ s0 = bb5 ] 
         [ bb5 = s0
           [ s0 = Borrow.borrow_mut <Range'0.t_Range> {it}

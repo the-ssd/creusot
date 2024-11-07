@@ -92,9 +92,9 @@ module M_04_binary_search__binary_search [#"04_binary_search.rs" 26 0 26 71]
   let%span s04_binary_search0 = "04_binary_search.rs" 27 20 27 21
   let%span s04_binary_search1 = "04_binary_search.rs" 28 19 28 20
   let%span s04_binary_search2 = "04_binary_search.rs" 31 19 31 20
-  let%span s04_binary_search3 = "04_binary_search.rs" 33 16 33 56
+  let%span s04_binary_search3 = "04_binary_search.rs" 35 16 35 90
   let%span s04_binary_search4 = "04_binary_search.rs" 34 16 34 62
-  let%span s04_binary_search5 = "04_binary_search.rs" 35 16 35 90
+  let%span s04_binary_search5 = "04_binary_search.rs" 33 16 33 56
   let%span s04_binary_search6 = "04_binary_search.rs" 36 17 36 18
   let%span s04_binary_search7 = "04_binary_search.rs" 37 26 37 27
   let%span s04_binary_search8 = "04_binary_search.rs" 37 19 37 27
@@ -204,14 +204,13 @@ module M_04_binary_search__binary_search [#"04_binary_search.rs" 26 0 26 71]
     | bb3 = s0 [ s0 = len'0 {arr} (fun (_ret':usize) ->  [ &size <- _ret' ] s1) | s1 = bb4 ] 
     | bb4 = s0 [ s0 =  [ &base <- [%#s04_binary_search2] (0 : usize) ] s1 | s1 = bb5 ] 
     | bb5 = bb5
-      [ bb5 = {[@expl:loop invariant 2] [%#s04_binary_search5] forall i : usize . UIntSize.to_int base
-        + UIntSize.to_int size
-        < UIntSize.to_int i
-        /\ UIntSize.to_int i < Seq.length (view'0 arr)  -> elem < index_logic'0 arr (UIntSize.to_int i)}
+      [ bb5 = {[@expl:loop invariant 0] [%#s04_binary_search5] 0 < UIntSize.to_int size
+        /\ UIntSize.to_int size + UIntSize.to_int base <= Seq.length (view'0 arr)}
         {[@expl:loop invariant 1] [%#s04_binary_search4] forall i : usize . i < base
          -> index_logic'0 arr (UIntSize.to_int i) <= elem}
-        {[@expl:loop invariant 0] [%#s04_binary_search3] 0 < UIntSize.to_int size
-        /\ UIntSize.to_int size + UIntSize.to_int base <= Seq.length (view'0 arr)}
+        {[@expl:loop invariant 2] [%#s04_binary_search3] forall i : usize . UIntSize.to_int base + UIntSize.to_int size
+        < UIntSize.to_int i
+        /\ UIntSize.to_int i < Seq.length (view'0 arr)  -> elem < index_logic'0 arr (UIntSize.to_int i)}
         (! s0) [ s0 = bb6 ] 
         [ bb6 = s0
           [ s0 = UIntSize.gt {size} {[%#s04_binary_search6] (1 : usize)} (fun (_ret':bool) ->  [ &_21 <- _ret' ] s1)

@@ -324,10 +324,10 @@ module M_17_filter__qyi17392541228996028033__next [#"17_filter.rs" 93 4 93 41] (
   
   let%span s17_filter0 = "17_filter.rs" 94 23 94 40
   let%span s17_filter1 = "17_filter.rs" 95 27 95 51
-  let%span s17_filter2 = "17_filter.rs" 97 20 97 29
-  let%span s17_filter3 = "17_filter.rs" 98 20 98 46
-  let%span s17_filter4 = "17_filter.rs" 99 20 100 106
-  let%span s17_filter5 = "17_filter.rs" 97 8 97 31
+  let%span s17_filter2 = "17_filter.rs" 101 20 102 106
+  let%span s17_filter3 = "17_filter.rs" 97 8 97 31
+  let%span s17_filter4 = "17_filter.rs" 98 20 98 46
+  let%span s17_filter5 = "17_filter.rs" 97 20 97 29
   let%span s17_filter6 = "17_filter.rs" 104 23 104 58
   let%span s17_filter7 = "17_filter.rs" 105 12 105 71
   let%span s17_filter8 = "17_filter.rs" 88 15 88 24
@@ -434,6 +434,13 @@ module M_17_filter__qyi17392541228996028033__next [#"17_filter.rs" 93 4 93 41] (
     | Option'0.C_Some a_0 -> inv'3 a_0
     end
   
+  predicate invariant'0 (self : borrowed (Filter'0.t_Filter i f)) =
+    [%#sinvariant36] inv'9 self.current /\ inv'9 self.final
+  
+  predicate inv'0 (_1 : borrowed (Filter'0.t_Filter i f))
+  
+  axiom inv_axiom'0 [@rewrite] : forall x : borrowed (Filter'0.t_Filter i f) [inv'0 x] . inv'0 x = invariant'0 x
+  
   predicate resolve'3 (_1 : f)
   
   predicate postcondition_once'0 (self : f) (_2 : t_Item'0) (_3 : bool)
@@ -456,13 +463,6 @@ module M_17_filter__qyi17392541228996028033__next [#"17_filter.rs" 93 4 93 41] (
   
   axiom postcondition_mut_unnest'0_spec : forall self : borrowed f, args : t_Item'0, res : bool . ([%#sops28] postcondition_mut'0 self args res)
    -> ([%#sops29] unnest'0 self.current self.final)
-  
-  predicate invariant'0 (self : borrowed (Filter'0.t_Filter i f)) =
-    [%#sinvariant36] inv'9 self.current /\ inv'9 self.final
-  
-  predicate inv'0 (_1 : borrowed (Filter'0.t_Filter i f))
-  
-  axiom inv_axiom'0 [@rewrite] : forall x : borrowed (Filter'0.t_Filter i f) [inv'0 x] . inv'0 x = invariant'0 x
   
   use seq.Seq
   
@@ -560,10 +560,10 @@ module M_17_filter__qyi17392541228996028033__next [#"17_filter.rs" 93 4 93 41] (
   
   use prelude.prelude.Snapshot
   
+  use prelude.prelude.Snapshot
+  
   function index_logic'0 [@inline:trivial] (self : Snapshot.snap_ty (Seq.seq t_Item'0)) (ix : int) : t_Item'0 =
     [%#sops12] Seq.get (Snapshot.inner self) ix
-  
-  use prelude.prelude.Snapshot
   
   use prelude.prelude.Snapshot
   
@@ -579,16 +579,16 @@ module M_17_filter__qyi17392541228996028033__next [#"17_filter.rs" 93 4 93 41] (
     | bb2 = s0 [ s0 =  [ &old_3_0 <- Snapshot.new self ] s1 | s1 = bb3 ] 
     | bb3 = bb3
       [ bb3 = {[@expl:mut invariant] (Snapshot.inner old_3_0).final = self.final}
-        {[@expl:loop invariant 4] [%#s17_filter5] unnest'0 (T_17_filter__Filter.t_Filter__func (Snapshot.inner old_self).current) (T_17_filter__Filter.t_Filter__func self.current)}
-        {[@expl:loop invariant 3] [%#s17_filter5] produces'0 (T_17_filter__Filter.t_Filter__iter (Snapshot.inner old_self).current) (Snapshot.inner produced) (T_17_filter__Filter.t_Filter__iter self.current)}
-        {[@expl:loop invariant 2] [%#s17_filter4] forall bor_f : borrowed f . bor_f.current
+        {[@expl:loop invariant 0] [%#s17_filter5] inv'0 self}
+        {[@expl:loop invariant 1] [%#s17_filter4] T_17_filter__Filter.t_Filter__func self.current
+        = T_17_filter__Filter.t_Filter__func (Snapshot.inner old_self).current}
+        {[@expl:loop invariant 2] [%#s17_filter3] unnest'0 (T_17_filter__Filter.t_Filter__func (Snapshot.inner old_self).current) (T_17_filter__Filter.t_Filter__func self.current)}
+        {[@expl:loop invariant 3] [%#s17_filter3] produces'0 (T_17_filter__Filter.t_Filter__iter (Snapshot.inner old_self).current) (Snapshot.inner produced) (T_17_filter__Filter.t_Filter__iter self.current)}
+        {[@expl:loop invariant 4] [%#s17_filter2] forall bor_f : borrowed f . bor_f.current
         = T_17_filter__Filter.t_Filter__func self.current
         /\ bor_f.final = T_17_filter__Filter.t_Filter__func self.current
          -> (forall i : int . 0 <= i /\ i < Seq.length (Snapshot.inner produced)
          -> postcondition_mut'0 bor_f (index_logic'0 produced i) false)}
-        {[@expl:loop invariant 1] [%#s17_filter3] T_17_filter__Filter.t_Filter__func self.current
-        = T_17_filter__Filter.t_Filter__func (Snapshot.inner old_self).current}
-        {[@expl:loop invariant 0] [%#s17_filter2] inv'0 self}
         (! s0) [ s0 = bb4 ] 
         [ bb4 = s0
           [ s0 = Filter'0.t_Filter <i> <f> {self.current}

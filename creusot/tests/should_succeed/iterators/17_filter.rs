@@ -96,10 +96,10 @@ impl<I: Iterator, F: FnMut(&I::Item) -> bool> Iterator for Filter<I, F> {
 
         #[invariant(inv(self))]
         #[invariant(self.func == old_self.func)]
+        #[invariant(old_self.func.unnest(self.func))]
+        #[invariant(old_self.iter.produces(*produced, self.iter))]
         #[invariant(forall<bor_f: &mut F>  *bor_f == self.func && ^ bor_f == self.func ==>
             forall<i : _> 0 <= i && i < produced.len() ==> bor_f.postcondition_mut((&produced[i],), false))]
-        #[invariant(old_self.iter.produces(*produced, self.iter))]
-        #[invariant(old_self.func.unnest(self.func))]
         while let Some(n) = self.iter.next() {
             produced = snapshot! { produced.push_back(n) };
             proof_assert!(old_self.iter.produces(*produced, self.iter));
