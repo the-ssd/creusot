@@ -807,7 +807,7 @@ impl<'tcx> Block<'tcx> {
             body = Expr::BlackBox(Box::new(body));
         }
 
-        for i in self.invariants {
+        for i in self.invariants.into_iter().rev() {
             body = Expr::Assert(
                 Box::new(Term::Attr(
                     Attribute::Attr(i.expl),

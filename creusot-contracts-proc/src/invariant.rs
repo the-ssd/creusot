@@ -125,8 +125,7 @@ fn desugar_for(mut invariants: Vec<Invariant>, f: ExprForLoop) -> TokenStream {
     let iter_old = Ident::new("iter_old", for_span);
     let it = Ident::new("iter", for_span);
 
-    invariants.insert(
-        0,
+    invariants.push(
         Invariant {
             span: for_span,
             invariant: parse_quote_spanned! {for_span=> ::creusot_contracts::std::iter::Iterator::produces(#iter_old.inner(), #produced.inner(), #it) },
@@ -134,17 +133,13 @@ fn desugar_for(mut invariants: Vec<Invariant>, f: ExprForLoop) -> TokenStream {
         },
     );
 
-    invariants.insert(
-        0,
-        Invariant {
-            span: for_span,
-            invariant: parse_quote_spanned! {for_span=> ::creusot_contracts::invariant::inv(#it) },
-            expl: "expl:for invariant".to_string(),
-        },
-    );
+    invariants.push(Invariant {
+        span: for_span,
+        invariant: parse_quote_spanned! {for_span=> ::creusot_contracts::invariant::inv(#it) },
+        expl: "expl:for invariant".to_string(),
+    });
 
-    invariants.insert(
-        0,
+    invariants.push(
         Invariant {
             span: for_span,
             invariant: parse_quote_spanned! {for_span=> ::creusot_contracts::invariant::inv(*#produced) },
