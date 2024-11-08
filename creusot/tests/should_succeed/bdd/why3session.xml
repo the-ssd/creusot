@@ -2,9 +2,10 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "https://www.why3.org/why3session.dtd">
 <why3session shape_version="6">
-<prover id="0" name="CVC5" version="1.0.5" timelimit="3" steplimit="0" memlimit="2000"/>
+<prover id="0" name="CVC5" version="1.0.5" timelimit="5" steplimit="0" memlimit="1000"/>
 <prover id="1" name="Alt-Ergo" version="2.6.0" timelimit="3" steplimit="0" memlimit="2000"/>
 <prover id="2" name="Z3" version="4.12.4" timelimit="0.5" steplimit="0" memlimit="1000"/>
+<prover id="3" name="CVC4" version="1.8" timelimit="5" steplimit="0" memlimit="1000"/>
 <file format="coma" proved="true">
 <path name=".."/><path name="bdd.coma"/>
 <theory name="M_bdd__hashmap__qyi11648407051195780326" proved="true">
@@ -77,15 +78,7 @@
   <proof prover="2"><result status="valid" time="0.023976" steps="2784"/></proof>
   </goal>
   <goal name="vc_hash.2" expl="postcondition" proved="true">
-  <transf name="inline_goal" proved="true" >
-   <goal name="vc_hash.2.0" expl="postcondition" proved="true">
-   <transf name="split_all_full" proved="true" >
-    <goal name="vc_hash.2.0.0" expl="postcondition" proved="true">
-    <proof prover="0" timelimit="6" memlimit="4000"><result status="valid" time="2.448764" steps="80210"/></proof>
-    </goal>
-   </transf>
-   </goal>
-  </transf>
+  <proof prover="0"><result status="valid" time="1.390940" steps="47937"/></proof>
   </goal>
   <goal name="vc_hash.3" proved="true">
   <proof prover="1"><result status="valid" time="0.028072" steps="11"/></proof>
@@ -106,7 +99,7 @@
 </theory>
 <theory name="M_bdd__qyi14323183011761258016__hash" proved="true">
  <goal name="vc_hash" proved="true">
- <proof prover="2"><result status="valid" time="0.025500" steps="190"/></proof>
+ <proof prover="0"><result status="valid" time="0.009336" steps="296"/></proof>
  </goal>
 </theory>
 <theory name="M_bdd__qyi2581120635339165136" proved="true">
@@ -316,7 +309,7 @@
  <goal name="vc_bdd_canonical" proved="true">
  <transf name="split_vc" proved="true" >
   <goal name="vc_bdd_canonical.0" proved="true">
-  <proof prover="0"><result status="valid" time="0.165906" steps="16992"/></proof>
+  <proof prover="0" timelimit="3" memlimit="2000"><result status="valid" time="0.165906" steps="16992"/></proof>
   </goal>
  </transf>
  </goal>
@@ -363,10 +356,10 @@
   <goal name="vc_hashcons.9" expl="postcondition" proved="true">
   <proof prover="2"><result status="valid" time="0.046078" steps="43839"/></proof>
   </goal>
-  <goal name="vc_hashcons.10" expl="loop invariant" proved="true">
+  <goal name="vc_hashcons.10" expl="mut invariant" proved="true">
   <proof prover="2"><result status="valid" time="0.040217" steps="41410"/></proof>
   </goal>
-  <goal name="vc_hashcons.11" expl="loop invariant" proved="true">
+  <goal name="vc_hashcons.11" expl="mut invariant" proved="true">
   <proof prover="2"><result status="valid" time="0.024108" steps="3237"/></proof>
   </goal>
   <goal name="vc_hashcons.12" expl="type invariant" proved="true">
@@ -635,13 +628,13 @@
   <goal name="vc_not&#39;.27" expl="type invariant" proved="true">
   <transf name="split_vc" proved="true" >
    <goal name="vc_not&#39;.27.0" expl="type invariant" proved="true">
-   <proof prover="0"><result status="valid" time="1.612462" steps="82370"/></proof>
+   <proof prover="0"><result status="valid" time="3.316289" steps="82370"/></proof>
    </goal>
    <goal name="vc_not&#39;.27.1" expl="type invariant" proved="true">
-   <proof prover="0"><result status="valid" time="1.226922" steps="68031"/></proof>
+   <proof prover="0"><result status="valid" time="2.339578" steps="68015"/></proof>
    </goal>
    <goal name="vc_not&#39;.27.2" expl="type invariant" proved="true">
-   <proof prover="0" timelimit="5"><result status="valid" time="2.726098" steps="169707"/></proof>
+   <proof prover="0"><result status="valid" time="6.161554" steps="169707"/></proof>
    </goal>
   </transf>
   </goal>
@@ -649,13 +642,13 @@
   <proof prover="2"><result status="valid" time="0.221586" steps="315873"/></proof>
   </goal>
   <goal name="vc_not&#39;.29" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.708052" steps="875431"/></proof>
+  <proof prover="0"><result status="valid" time="0.410371" steps="31212"/></proof>
   </goal>
   <goal name="vc_not&#39;.30" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.089822" steps="114336"/></proof>
+  <proof prover="0"><result status="valid" time="0.157110" steps="16947"/></proof>
   </goal>
   <goal name="vc_not&#39;.31" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.469518" steps="598554"/></proof>
+  <proof prover="2" timelimit="5"><result status="valid" time="0.469518" steps="598554"/></proof>
   </goal>
  </transf>
  </goal>
@@ -784,7 +777,7 @@
   <proof prover="2"><result status="valid" time="0.046070" steps="55306"/></proof>
   </goal>
   <goal name="vc_and.40" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.401696" steps="626603"/></proof>
+  <proof prover="0"><result status="valid" time="0.601996" steps="38914"/></proof>
   </goal>
   <goal name="vc_and.41" expl="precondition" proved="true">
   <proof prover="2"><result status="valid" time="0.024113" steps="4255"/></proof>
@@ -858,15 +851,15 @@
   <goal name="vc_and.64" expl="type invariant" proved="true">
   <transf name="split_vc" proved="true" >
    <goal name="vc_and.64.0" expl="type invariant" proved="true">
-   <proof prover="0"><result status="valid" time="1.451820" steps="76514"/></proof>
+   <proof prover="0" timelimit="3" memlimit="2000"><result status="valid" time="1.451820" steps="76514"/></proof>
    </goal>
    <goal name="vc_and.64.1" expl="type invariant" proved="true">
    <transf name="split_vc" proved="true" >
     <goal name="vc_and.64.1.0" expl="type invariant" proved="true">
-    <proof prover="0"><result status="valid" time="0.782018" steps="48921"/></proof>
+    <proof prover="0" timelimit="3" memlimit="2000"><result status="valid" time="0.782018" steps="48921"/></proof>
     </goal>
     <goal name="vc_and.64.1.1" expl="type invariant" proved="true">
-    <proof prover="0"><result status="valid" time="0.870505" steps="53563"/></proof>
+    <proof prover="0" timelimit="3" memlimit="2000"><result status="valid" time="0.870505" steps="53563"/></proof>
     </goal>
    </transf>
    </goal>
@@ -909,7 +902,7 @@
        <proof prover="1" timelimit="1" memlimit="1000"><result status="valid" time="0.053490" steps="153"/></proof>
        </goal>
        <goal name="vc_and.64.3.0.1.0.1" expl="type invariant" proved="true">
-       <proof prover="0" timelimit="5"><result status="valid" time="3.151127" steps="146696"/></proof>
+       <proof prover="0" memlimit="2000"><result status="valid" time="3.151127" steps="146696"/></proof>
        </goal>
       </transf>
       </goal>
@@ -1001,53 +994,10 @@
   </transf>
   </goal>
   <goal name="vc_and.65" expl="postcondition" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_and.65.0" expl="postcondition" proved="true">
-   <proof prover="2"><result status="valid" time="0.033259" steps="12374"/></proof>
-   </goal>
-   <goal name="vc_and.65.1" expl="postcondition" proved="true">
-   <proof prover="2"><result status="valid" time="0.037538" steps="12917"/></proof>
-   </goal>
-   <goal name="vc_and.65.2" expl="postcondition" proved="true">
-   <proof prover="2"><result status="valid" time="0.052229" steps="60696"/></proof>
-   </goal>
-   <goal name="vc_and.65.3" expl="postcondition" proved="true">
-   <proof prover="2"><result status="valid" time="0.384812" steps="432956"/></proof>
-   </goal>
-  </transf>
+  <proof prover="0"><result status="valid" time="0.261890" steps="38145"/></proof>
   </goal>
   <goal name="vc_and.66" expl="postcondition" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_and.66.0" expl="postcondition" proved="true">
-   <proof prover="2"><result status="valid" time="0.382435" steps="459060"/></proof>
-   </goal>
-   <goal name="vc_and.66.1" expl="postcondition" proved="true">
-   <proof prover="2"><result status="valid" time="0.623088" steps="755000"/></proof>
-   </goal>
-   <goal name="vc_and.66.2" expl="postcondition" proved="true">
-   <transf name="split_vc" proved="true" >
-    <goal name="vc_and.66.2.0" expl="postcondition" proved="true">
-    <proof prover="2"><result status="valid" time="0.028615" steps="12249"/></proof>
-    </goal>
-    <goal name="vc_and.66.2.1" expl="postcondition" proved="true">
-    <proof prover="2"><result status="valid" time="0.031219" steps="12807"/></proof>
-    </goal>
-    <goal name="vc_and.66.2.2" expl="postcondition" proved="true">
-    <proof prover="2"><result status="valid" time="0.100501" steps="134614"/></proof>
-    </goal>
-    <goal name="vc_and.66.2.3" expl="postcondition" proved="true">
-    <transf name="split_vc" proved="true" >
-     <goal name="vc_and.66.2.3.0" expl="postcondition" proved="true">
-     <proof prover="2"><result status="valid" time="0.093405" steps="140378"/></proof>
-     </goal>
-     <goal name="vc_and.66.2.3.1" expl="postcondition" proved="true">
-     <proof prover="2"><result status="valid" time="0.870554" steps="1076596"/></proof>
-     </goal>
-    </transf>
-    </goal>
-   </transf>
-   </goal>
-  </transf>
+  <proof prover="3"><result status="valid" time="0.463576" steps="55972"/></proof>
   </goal>
   <goal name="vc_and.67" expl="postcondition" proved="true">
   <proof prover="2"><result status="valid" time="0.118978" steps="149764"/></proof>

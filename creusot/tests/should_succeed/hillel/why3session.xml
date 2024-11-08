@@ -5,16 +5,17 @@
 <prover id="0" name="CVC5" version="1.0.5" timelimit="1" steplimit="0" memlimit="1000"/>
 <prover id="1" name="Z3" version="4.12.4" timelimit="1" steplimit="0" memlimit="1000"/>
 <prover id="2" name="Alt-Ergo" version="2.6.0" timelimit="1" steplimit="0" memlimit="1000"/>
+<prover id="3" name="CVC4" version="1.8" timelimit="5" steplimit="0" memlimit="1000"/>
 <file format="coma" proved="true">
 <path name=".."/><path name="hillel.coma"/>
 <theory name="M_hillel__right_pad" proved="true">
  <goal name="vc_right_pad" proved="true">
- <proof prover="1"><result status="valid" time="0.050956" steps="270691"/></proof>
+ <proof prover="1"><result status="valid" time="0.050956" steps="228189"/></proof>
  </goal>
 </theory>
 <theory name="M_hillel__left_pad" proved="true">
  <goal name="vc_left_pad" proved="true">
- <proof prover="1"><result status="valid" time="0.160967" steps="416485"/></proof>
+ <proof prover="1"><result status="valid" time="0.160967" steps="281767"/></proof>
  </goal>
 </theory>
 <theory name="M_hillel__subset_push" proved="true">
@@ -40,59 +41,59 @@
   <goal name="vc_insert_unique.4" expl="precondition" proved="true">
   <proof prover="2"><result status="valid" time="0.016827" steps="16"/></proof>
   </goal>
-  <goal name="vc_insert_unique.5" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.018734" steps="24"/></proof>
+  <goal name="vc_insert_unique.5" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.020108" steps="77"/></proof>
   </goal>
-  <goal name="vc_insert_unique.6" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.019998" steps="65"/></proof>
+  <goal name="vc_insert_unique.6" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.024856" steps="20"/></proof>
   </goal>
-  <goal name="vc_insert_unique.7" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.010954" steps="7578"/></proof>
+  <goal name="vc_insert_unique.7" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.088562" steps="67"/></proof>
   </goal>
-  <goal name="vc_insert_unique.8" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.022036" steps="96"/></proof>
+  <goal name="vc_insert_unique.8" expl="loop invariant 0" proved="true">
+  <proof prover="2"><result status="valid" time="0.030891" steps="28"/></proof>
   </goal>
   <goal name="vc_insert_unique.9" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.045913" steps="509"/></proof>
+  <proof prover="2"><result status="valid" time="0.045913" steps="519"/></proof>
   </goal>
   <goal name="vc_insert_unique.10" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.025807" steps="104241"/></proof>
   </goal>
   <goal name="vc_insert_unique.11" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.023575" steps="133"/></proof>
+  <proof prover="2"><result status="valid" time="0.023575" steps="132"/></proof>
   </goal>
-  <goal name="vc_insert_unique.12" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.030891" steps="255"/></proof>
+  <goal name="vc_insert_unique.12" expl="for invariant" proved="true">
+  <proof prover="2" timelimit="5"><result status="valid" time="0.319575" steps="1265"/></proof>
   </goal>
-  <goal name="vc_insert_unique.13" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.024856" steps="146"/></proof>
+  <goal name="vc_insert_unique.13" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.019998" steps="43"/></proof>
   </goal>
-  <goal name="vc_insert_unique.14" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.020108" steps="43"/></proof>
+  <goal name="vc_insert_unique.14" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.022036" steps="150"/></proof>
   </goal>
-  <goal name="vc_insert_unique.15" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.088562" steps="1380"/></proof>
+  <goal name="vc_insert_unique.15" expl="loop invariant 0" proved="true">
+  <proof prover="2"><result status="valid" time="0.018734" steps="315"/></proof>
   </goal>
   <goal name="vc_insert_unique.16" expl="type invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.011168" steps="7658"/></proof>
+  <proof prover="1"><result status="valid" time="0.011168" steps="7660"/></proof>
   </goal>
   <goal name="vc_insert_unique.17" expl="type invariant" proved="true">
   <proof prover="2"><result status="valid" time="0.018341" steps="40"/></proof>
   </goal>
   <goal name="vc_insert_unique.18" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.041088" steps="477"/></proof>
+  <proof prover="2"><result status="valid" time="0.041088" steps="472"/></proof>
   </goal>
   <goal name="vc_insert_unique.19" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.021109" steps="48"/></proof>
+  <proof prover="2"><result status="valid" time="0.032519" steps="48"/></proof>
   </goal>
   <goal name="vc_insert_unique.20" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.021141" steps="49"/></proof>
+  <proof prover="2"><result status="valid" time="0.050170" steps="49"/></proof>
   </goal>
   <goal name="vc_insert_unique.21" expl="postcondition" proved="true">
-  <proof prover="2" timelimit="5"><result status="valid" time="0.037793" steps="373"/></proof>
+  <proof prover="1" timelimit="5"><result status="valid" time="0.076855" steps="132674"/></proof>
   </goal>
   <goal name="vc_insert_unique.22" expl="postcondition" proved="true">
-  <proof prover="2" timelimit="5"><result status="valid" time="0.020912" steps="53"/></proof>
+  <proof prover="2"><result status="valid" time="0.152644" steps="53"/></proof>
   </goal>
   <goal name="vc_insert_unique.23" proved="true">
   <proof prover="2"><result status="valid" time="0.019103" steps="31"/></proof>
@@ -101,7 +102,7 @@
   <proof prover="2"><result status="valid" time="0.019944" steps="46"/></proof>
   </goal>
   <goal name="vc_insert_unique.25" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.063493" steps="644"/></proof>
+  <proof prover="2"><result status="valid" time="0.063493" steps="642"/></proof>
   </goal>
   <goal name="vc_insert_unique.26" proved="true">
   <proof prover="2" timelimit="5"><result status="valid" time="0.023265" steps="102"/></proof>
@@ -113,19 +114,19 @@
   <proof prover="2"><result status="valid" time="0.022031" steps="54"/></proof>
   </goal>
   <goal name="vc_insert_unique.29" expl="type invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.026880" steps="166"/></proof>
+  <proof prover="2"><result status="valid" time="0.026880" steps="167"/></proof>
   </goal>
   <goal name="vc_insert_unique.30" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.032519" steps="308"/></proof>
+  <proof prover="2"><result status="valid" time="0.021109" steps="307"/></proof>
   </goal>
   <goal name="vc_insert_unique.31" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.050170" steps="623"/></proof>
+  <proof prover="2"><result status="valid" time="0.150979" steps="624"/></proof>
   </goal>
   <goal name="vc_insert_unique.32" expl="postcondition" proved="true">
-  <proof prover="1" timelimit="5"><result status="valid" time="1.234673" steps="3753705"/></proof>
+  <proof prover="2" timelimit="5"><result status="valid" time="3.183517" steps="25673"/></proof>
   </goal>
   <goal name="vc_insert_unique.33" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.152644" steps="2076"/></proof>
+  <proof prover="2" timelimit="5"><result status="valid" time="0.494768" steps="2081"/></proof>
   </goal>
  </transf>
  </goal>
@@ -142,49 +143,44 @@
   <goal name="vc_unique.2" expl="precondition" proved="true">
   <proof prover="2"><result status="valid" time="0.016473" steps="12"/></proof>
   </goal>
-  <goal name="vc_unique.3" expl="loop invariant" proved="true">
-  <proof prover="2" timelimit="5"><result status="valid" time="0.018542" steps="60"/></proof>
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_unique.3.0" expl="loop invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.079061" steps="344804"/></proof>
-   </goal>
-  </transf>
+  <goal name="vc_unique.3" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.024337" steps="22"/></proof>
   </goal>
-  <goal name="vc_unique.4" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.018566" steps="58"/></proof>
+  <goal name="vc_unique.4" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.077666" steps="16"/></proof>
   </goal>
-  <goal name="vc_unique.5" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.034473" steps="115215"/></proof>
+  <goal name="vc_unique.5" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.046283" steps="28"/></proof>
   </goal>
-  <goal name="vc_unique.6" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.017427" steps="20"/></proof>
+  <goal name="vc_unique.6" expl="loop invariant 0" proved="true">
+  <proof prover="1" timelimit="5"><result status="valid" time="0.049655" steps="7098"/></proof>
   </goal>
-  <goal name="vc_unique.7" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.018958" steps="32"/></proof>
+  <goal name="vc_unique.7" expl="loop invariant 1" proved="true">
+  <proof prover="1"><result status="valid" time="0.014182" steps="87978"/></proof>
   </goal>
-  <goal name="vc_unique.8" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.017477" steps="22"/></proof>
+  <goal name="vc_unique.8" expl="loop invariant 2" proved="true">
+  <proof prover="2"><result status="valid" time="0.023256" steps="72"/></proof>
   </goal>
-  <goal name="vc_unique.9" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.031226" steps="115010"/></proof>
+  <goal name="vc_unique.9" expl="loop invariant 3" proved="true">
+  <proof prover="2"><result status="valid" time="0.023071" steps="85"/></proof>
   </goal>
   <goal name="vc_unique.10" expl="precondition" proved="true">
   <proof prover="2"><result status="valid" time="0.019214" steps="40"/></proof>
   </goal>
   <goal name="vc_unique.11" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.029745" steps="238"/></proof>
+  <proof prover="2"><result status="valid" time="0.029745" steps="232"/></proof>
   </goal>
   <goal name="vc_unique.12" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.039624" steps="507"/></proof>
+  <proof prover="2"><result status="valid" time="0.039624" steps="494"/></proof>
   </goal>
   <goal name="vc_unique.13" expl="postcondition" proved="true">
   <proof prover="2"><result status="valid" time="0.018156" steps="40"/></proof>
   </goal>
   <goal name="vc_unique.14" expl="postcondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.095507" steps="16587"/></proof>
+  <proof prover="1"><result status="valid" time="0.012812" steps="131576"/></proof>
   </goal>
   <goal name="vc_unique.15" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.012812" steps="9902"/></proof>
+  <proof prover="0"><result status="valid" time="0.095507" steps="14953"/></proof>
   </goal>
   <goal name="vc_unique.16" expl="postcondition" proved="true">
   <proof prover="1"><result status="valid" time="0.015080" steps="9907"/></proof>
@@ -193,13 +189,13 @@
   <proof prover="2"><result status="valid" time="0.032219" steps="304"/></proof>
   </goal>
   <goal name="vc_unique.18" proved="true">
-  <proof prover="2"><result status="valid" time="0.021457" steps="80"/></proof>
+  <proof prover="2"><result status="valid" time="0.021457" steps="78"/></proof>
   </goal>
   <goal name="vc_unique.19" proved="true">
-  <proof prover="2" timelimit="5"><result status="valid" time="0.018477" steps="42"/></proof>
+  <proof prover="2" timelimit="5"><result status="valid" time="0.018977" steps="42"/></proof>
   </goal>
   <goal name="vc_unique.20" proved="true">
-  <proof prover="2" timelimit="5"><result status="valid" time="0.018977" steps="44"/></proof>
+  <proof prover="2" timelimit="5"><result status="valid" time="0.018477" steps="44"/></proof>
   </goal>
   <goal name="vc_unique.21" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.040283" steps="161951"/></proof>
@@ -213,26 +209,31 @@
   <goal name="vc_unique.24" expl="type invariant" proved="true">
   <proof prover="2"><result status="valid" time="0.022220" steps="81"/></proof>
   </goal>
-  <goal name="vc_unique.25" expl="loop invariant" proved="true">
-  <proof prover="1" timelimit="5"><result status="valid" time="0.455394" steps="1347489"/></proof>
+  <goal name="vc_unique.25" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.034473" steps="138127"/></proof>
   </goal>
-  <goal name="vc_unique.26" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.208528" steps="3309"/></proof>
+  <goal name="vc_unique.26" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.018958" steps="86"/></proof>
   </goal>
-  <goal name="vc_unique.27" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.024337" steps="100"/></proof>
+  <goal name="vc_unique.27" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.018566" steps="290"/></proof>
   </goal>
-  <goal name="vc_unique.28" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.014182" steps="10135"/></proof>
+  <goal name="vc_unique.28" expl="loop invariant 0" proved="true">
+  <proof prover="2" timelimit="5"><result status="valid" time="0.018542" steps="64"/></proof>
+  <transf name="split_vc" proved="true" >
+   <goal name="vc_unique.28.0" expl="loop invariant 0" proved="true">
+   <proof prover="1"><result status="valid" time="0.079061" steps="10133"/></proof>
+   </goal>
+  </transf>
   </goal>
-  <goal name="vc_unique.29" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.077666" steps="1102"/></proof>
+  <goal name="vc_unique.29" expl="loop invariant 1" proved="true">
+  <proof prover="2"><result status="valid" time="0.017427" steps="102"/></proof>
   </goal>
-  <goal name="vc_unique.30" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.023256" steps="95"/></proof>
+  <goal name="vc_unique.30" expl="loop invariant 2" proved="true">
+  <proof prover="2"><result status="valid" time="0.915571" steps="4797"/></proof>
   </goal>
-  <goal name="vc_unique.31" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.023071" steps="95"/></proof>
+  <goal name="vc_unique.31" expl="loop invariant 3" proved="true">
+  <proof prover="1" timelimit="5"><result status="valid" time="1.826499" steps="1453392"/></proof>
   </goal>
   <goal name="vc_unique.32" proved="true">
   <proof prover="2"><result status="valid" time="0.019471" steps="44"/></proof>
@@ -264,133 +265,133 @@
   <goal name="vc_fulcrum.1" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.014178" steps="6603"/></proof>
   </goal>
-  <goal name="vc_fulcrum.2" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.017638" steps="15"/></proof>
+  <goal name="vc_fulcrum.2" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.026406" steps="72324"/></proof>
   </goal>
-  <goal name="vc_fulcrum.3" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.019850" steps="79"/></proof>
+  <goal name="vc_fulcrum.3" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.022690" steps="18"/></proof>
   </goal>
-  <goal name="vc_fulcrum.4" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.024047" steps="167"/></proof>
+  <goal name="vc_fulcrum.4" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.021616" steps="97"/></proof>
   </goal>
-  <goal name="vc_fulcrum.5" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.021145" steps="73288"/></proof>
+  <goal name="vc_fulcrum.5" expl="loop invariant 0" proved="true">
+  <proof prover="1"><result status="valid" time="0.063105" steps="77048"/></proof>
   </goal>
-  <goal name="vc_fulcrum.6" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.067493" steps="10605"/></proof>
+  <goal name="vc_fulcrum.6" expl="loop invariant 1" proved="true">
+  <proof prover="2"><result status="valid" time="0.021119" steps="32"/></proof>
   </goal>
   <goal name="vc_fulcrum.7" expl="integer overflow" proved="true">
   <transf name="split_vc" proved="true" >
    <goal name="vc_fulcrum.7.0" expl="integer overflow" proved="true">
-   <proof prover="0"><result status="valid" time="0.319899" steps="65732"/></proof>
+   <proof prover="0"><result status="valid" time="1.073639" steps="61905"/></proof>
    </goal>
   </transf>
   </goal>
-  <goal name="vc_fulcrum.8" expl="loop invariant" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_fulcrum.8.0" expl="loop invariant" proved="true">
-   <proof prover="0"><result status="valid" time="0.319855" steps="65473"/></proof>
-   </goal>
-  </transf>
+  <goal name="vc_fulcrum.8" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.024047" steps="54"/></proof>
   </goal>
-  <goal name="vc_fulcrum.9" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.391385" steps="1173308"/></proof>
+  <goal name="vc_fulcrum.9" expl="for invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.206604" steps="11095"/></proof>
   </goal>
-  <goal name="vc_fulcrum.10" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.026406" steps="103176"/></proof>
+  <goal name="vc_fulcrum.10" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.021145" steps="101849"/></proof>
   </goal>
-  <goal name="vc_fulcrum.11" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.021616" steps="71"/></proof>
+  <goal name="vc_fulcrum.11" expl="loop invariant 0" proved="true">
+  <proof prover="3"><result status="valid" time="0.945935" steps="94833"/></proof>
   </goal>
-  <goal name="vc_fulcrum.12" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.069936" steps="11139"/></proof>
+  <goal name="vc_fulcrum.12" expl="loop invariant 1" proved="true">
+  <proof prover="1"><result status="valid" time="0.977321" steps="861321"/></proof>
   </goal>
   <goal name="vc_fulcrum.13" proved="true">
   <proof prover="2"><result status="valid" time="0.019807" steps="43"/></proof>
   </goal>
   <goal name="vc_fulcrum.14" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.040794" steps="433"/></proof>
+  <proof prover="2"><result status="valid" time="0.155655" steps="428"/></proof>
   </goal>
   <goal name="vc_fulcrum.15" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.020187" steps="55"/></proof>
+  <proof prover="2"><result status="valid" time="0.020187" steps="54"/></proof>
   </goal>
   <goal name="vc_fulcrum.16" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.032600" steps="87736"/></proof>
   </goal>
   <goal name="vc_fulcrum.17" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.017855" steps="41"/></proof>
+  <proof prover="2"><result status="valid" time="0.017855" steps="40"/></proof>
   </goal>
-  <goal name="vc_fulcrum.18" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.022037" steps="87"/></proof>
+  <goal name="vc_fulcrum.18" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.031784" steps="68"/></proof>
   </goal>
-  <goal name="vc_fulcrum.19" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.020931" steps="71"/></proof>
+  <goal name="vc_fulcrum.19" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.030970" steps="44"/></proof>
   </goal>
-  <goal name="vc_fulcrum.20" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.021119" steps="73"/></proof>
+  <goal name="vc_fulcrum.20" expl="for invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.067493" steps="12304"/></proof>
   </goal>
-  <goal name="vc_fulcrum.21" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.021187" steps="75"/></proof>
+  <goal name="vc_fulcrum.21" expl="loop invariant 0" proved="true">
+  <proof prover="2"><result status="valid" time="0.020931" steps="165"/></proof>
   </goal>
-  <goal name="vc_fulcrum.22" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.025559" steps="188"/></proof>
+  <goal name="vc_fulcrum.22" expl="loop invariant 1" proved="true">
+  <proof prover="0"><result status="valid" time="0.134776" steps="16688"/></proof>
   </goal>
-  <goal name="vc_fulcrum.23" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.022690" steps="105"/></proof>
+  <goal name="vc_fulcrum.23" expl="loop invariant 2" proved="true">
+  <proof prover="2"><result status="valid" time="0.017638" steps="87"/></proof>
   </goal>
-  <goal name="vc_fulcrum.24" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.018700" steps="55"/></proof>
+  <goal name="vc_fulcrum.24" expl="loop invariant 3" proved="true">
+  <transf name="split_vc" proved="true" >
+   <goal name="vc_fulcrum.24.0" expl="loop invariant 3" proved="true">
+   <proof prover="0"><result status="valid" time="0.162607" steps="16879"/></proof>
+   </goal>
+  </transf>
   </goal>
-  <goal name="vc_fulcrum.25" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.099427" steps="14619"/></proof>
+  <goal name="vc_fulcrum.25" expl="loop invariant 4" proved="true">
+  <proof prover="1"><result status="valid" time="0.077472" steps="117023"/></proof>
   </goal>
   <goal name="vc_fulcrum.26" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.023684" steps="108"/></proof>
+  <proof prover="2"><result status="valid" time="0.023684" steps="107"/></proof>
   </goal>
   <goal name="vc_fulcrum.27" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.056368" steps="591"/></proof>
+  <proof prover="2"><result status="valid" time="0.056368" steps="586"/></proof>
   </goal>
   <goal name="vc_fulcrum.28" expl="postcondition" proved="true">
   <proof prover="2"><result status="valid" time="0.024137" steps="116"/></proof>
   </goal>
   <goal name="vc_fulcrum.29" expl="integer overflow" proved="true">
-  <proof prover="2"><result status="valid" time="0.024343" steps="151"/></proof>
+  <proof prover="2"><result status="valid" time="0.024343" steps="142"/></proof>
   </goal>
   <goal name="vc_fulcrum.30" proved="true">
-  <proof prover="2"><result status="valid" time="0.023483" steps="112"/></proof>
+  <proof prover="2"><result status="valid" time="0.023483" steps="111"/></proof>
   </goal>
   <goal name="vc_fulcrum.31" expl="index in bounds" proved="true">
-  <proof prover="2"><result status="valid" time="0.097608" steps="1306"/></proof>
+  <proof prover="2"><result status="valid" time="0.249677" steps="1312"/></proof>
   </goal>
   <goal name="vc_fulcrum.32" proved="true">
-  <proof prover="2"><result status="valid" time="0.028453" steps="203"/></proof>
+  <proof prover="2"><result status="valid" time="0.028453" steps="197"/></proof>
   </goal>
   <goal name="vc_fulcrum.33" expl="integer overflow" proved="true">
-  <proof prover="1"><result status="valid" time="0.043173" steps="182050"/></proof>
+  <proof prover="1"><result status="valid" time="0.043173" steps="182073"/></proof>
   </goal>
-  <goal name="vc_fulcrum.34" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.326498" steps="1857700"/></proof>
+  <goal name="vc_fulcrum.34" expl="for invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.099427" steps="16049"/></proof>
   </goal>
-  <goal name="vc_fulcrum.35" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.292451" steps="1433454"/></proof>
+  <goal name="vc_fulcrum.35" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.018700" steps="178"/></proof>
   </goal>
-  <goal name="vc_fulcrum.36" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.134776" steps="29448"/></proof>
+  <goal name="vc_fulcrum.36" expl="for invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.069936" steps="17102"/></proof>
   </goal>
-  <goal name="vc_fulcrum.37" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.254869" steps="43365"/></proof>
+  <goal name="vc_fulcrum.37" expl="loop invariant 0" proved="true">
+  <proof prover="3"><result status="valid" time="0.570489" steps="65304"/></proof>
   </goal>
-  <goal name="vc_fulcrum.38" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.257903" steps="979489"/></proof>
+  <goal name="vc_fulcrum.38" expl="loop invariant 1" proved="true">
+  <proof prover="1"><result status="valid" time="0.875433" steps="848872"/></proof>
   </goal>
-  <goal name="vc_fulcrum.39" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.206604" steps="23850"/></proof>
+  <goal name="vc_fulcrum.39" expl="loop invariant 2" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.440873" steps="29708"/></proof>
   </goal>
-  <goal name="vc_fulcrum.40" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.030970" steps="222"/></proof>
+  <goal name="vc_fulcrum.40" expl="loop invariant 3" proved="true">
+  <proof prover="0"><result status="valid" time="0.571357" steps="30938"/></proof>
   </goal>
-  <goal name="vc_fulcrum.41" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.031784" steps="223"/></proof>
+  <goal name="vc_fulcrum.41" expl="loop invariant 4" proved="true">
+  <proof prover="3"><result status="valid" time="0.433610" steps="46836"/></proof>
   </goal>
  </transf>
  </goal>

@@ -3,7 +3,6 @@
 "https://www.why3.org/why3session.dtd">
 <why3session shape_version="6">
 <prover id="0" name="Z3" version="4.12.4" timelimit="5" steplimit="0" memlimit="1000"/>
-<prover id="1" name="CVC4" version="1.8" timelimit="10" steplimit="0" memlimit="4000"/>
 <prover id="2" name="CVC5" version="1.0.5" timelimit="1" steplimit="0" memlimit="1000"/>
 <prover id="4" name="Alt-Ergo" version="2.6.0" timelimit="5" steplimit="0" memlimit="1000"/>
 <file format="coma" proved="true">
@@ -15,7 +14,7 @@
   <proof prover="4"><result status="valid" time="0.053907" steps="10"/></proof>
   </goal>
   <goal name="vc_selection_sort.1" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.039895" steps="16"/></proof>
+  <proof prover="4"><result status="valid" time="0.041559" steps="16"/></proof>
   </goal>
   <goal name="vc_selection_sort.2" expl="precondition" proved="true">
   <proof prover="4"><result status="valid" time="0.030410" steps="9"/></proof>
@@ -23,23 +22,23 @@
   <goal name="vc_selection_sort.3" expl="mut invariant" proved="true">
   <proof prover="4"><result status="valid" time="0.028954" steps="17"/></proof>
   </goal>
-  <goal name="vc_selection_sort.4" expl="loop invariant 0" proved="true">
-  <proof prover="4"><result status="valid" time="0.055015" steps="53"/></proof>
+  <goal name="vc_selection_sort.4" expl="for invariant" proved="true">
+  <proof prover="4"><result status="valid" time="0.021837" steps="22"/></proof>
   </goal>
-  <goal name="vc_selection_sort.5" expl="loop invariant 1" proved="true">
-  <proof prover="4"><result status="valid" time="0.039593" steps="58"/></proof>
+  <goal name="vc_selection_sort.5" expl="for invariant" proved="true">
+  <proof prover="4"><result status="valid" time="0.039424" steps="14"/></proof>
   </goal>
-  <goal name="vc_selection_sort.6" expl="loop invariant 2" proved="true">
-  <proof prover="4"><result status="valid" time="0.051886" steps="62"/></proof>
+  <goal name="vc_selection_sort.6" expl="for invariant" proved="true">
+  <proof prover="4"><result status="valid" time="0.052874" steps="28"/></proof>
   </goal>
-  <goal name="vc_selection_sort.7" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.052874" steps="32"/></proof>
+  <goal name="vc_selection_sort.7" expl="loop invariant 0" proved="true">
+  <proof prover="4"><result status="valid" time="0.055015" steps="79"/></proof>
   </goal>
-  <goal name="vc_selection_sort.8" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.033013" steps="20"/></proof>
+  <goal name="vc_selection_sort.8" expl="loop invariant 1" proved="true">
+  <proof prover="4"><result status="valid" time="0.039593" steps="74"/></proof>
   </goal>
-  <goal name="vc_selection_sort.9" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.036586" steps="30"/></proof>
+  <goal name="vc_selection_sort.9" expl="loop invariant 2" proved="true">
+  <proof prover="4"><result status="valid" time="0.051886" steps="78"/></proof>
   </goal>
   <goal name="vc_selection_sort.10" expl="precondition" proved="true">
   <proof prover="4"><result status="valid" time="0.052509" steps="37"/></proof>
@@ -51,52 +50,52 @@
   <proof prover="4"><result status="valid" time="0.036178" steps="52"/></proof>
   </goal>
   <goal name="vc_selection_sort.13" expl="postcondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.054619" steps="262"/></proof>
+  <proof prover="4"><result status="valid" time="0.054619" steps="277"/></proof>
   </goal>
   <goal name="vc_selection_sort.14" expl="integer overflow" proved="true">
-  <proof prover="4"><result status="valid" time="0.050369" steps="299"/></proof>
+  <proof prover="4"><result status="valid" time="0.050369" steps="300"/></proof>
   </goal>
   <goal name="vc_selection_sort.15" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.139918" steps="384587"/></proof>
+  <proof prover="0"><result status="valid" time="0.139918" steps="384585"/></proof>
   </goal>
   <goal name="vc_selection_sort.16" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.041559" steps="61"/></proof>
+  <proof prover="4"><result status="valid" time="0.039895" steps="61"/></proof>
   </goal>
   <goal name="vc_selection_sort.17" expl="precondition" proved="true">
   <proof prover="4"><result status="valid" time="0.031087" steps="38"/></proof>
   </goal>
-  <goal name="vc_selection_sort.18" expl="loop invariant 0" proved="true">
-  <proof prover="4"><result status="valid" time="0.067719" steps="226"/></proof>
+  <goal name="vc_selection_sort.18" expl="for invariant" proved="true">
+  <proof prover="4"><result status="valid" time="0.033013" steps="64"/></proof>
   </goal>
-  <goal name="vc_selection_sort.19" expl="loop invariant 1" proved="true">
-  <proof prover="4"><result status="valid" time="0.031798" steps="64"/></proof>
+  <goal name="vc_selection_sort.19" expl="for invariant" proved="true">
+  <proof prover="4"><result status="valid" time="0.036586" steps="42"/></proof>
   </goal>
   <goal name="vc_selection_sort.20" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.040072" steps="75"/></proof>
+  <proof prover="4"><result status="valid" time="0.040072" steps="74"/></proof>
   </goal>
-  <goal name="vc_selection_sort.21" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.021837" steps="45"/></proof>
+  <goal name="vc_selection_sort.21" expl="loop invariant 0" proved="true">
+  <proof prover="4"><result status="valid" time="0.067719" steps="254"/></proof>
   </goal>
-  <goal name="vc_selection_sort.22" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.039424" steps="70"/></proof>
+  <goal name="vc_selection_sort.22" expl="loop invariant 1" proved="true">
+  <proof prover="4"><result status="valid" time="0.031798" steps="70"/></proof>
   </goal>
   <goal name="vc_selection_sort.23" expl="precondition" proved="true">
   <proof prover="4"><result status="valid" time="0.046063" steps="82"/></proof>
   </goal>
   <goal name="vc_selection_sort.24" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.033261" steps="90"/></proof>
+  <proof prover="4"><result status="valid" time="0.033261" steps="89"/></proof>
   </goal>
   <goal name="vc_selection_sort.25" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.290489" steps="403052"/></proof>
+  <proof prover="0"><result status="valid" time="0.175802" steps="403050"/></proof>
   </goal>
   <goal name="vc_selection_sort.26" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.141761" steps="708"/></proof>
+  <proof prover="4"><result status="valid" time="0.141761" steps="707"/></proof>
   </goal>
   <goal name="vc_selection_sort.27" expl="precondition" proved="true">
   <proof prover="4"><result status="valid" time="0.043465" steps="96"/></proof>
   </goal>
   <goal name="vc_selection_sort.28" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.345280" steps="553401"/></proof>
+  <proof prover="0"><result status="valid" time="0.290489" steps="553399"/></proof>
   </goal>
   <goal name="vc_selection_sort.29" expl="precondition" proved="true">
   <proof prover="4"><result status="valid" time="0.111986" steps="522"/></proof>
@@ -107,35 +106,35 @@
   <goal name="vc_selection_sort.31" expl="precondition" proved="true">
   <proof prover="4"><result status="valid" time="0.043017" steps="66"/></proof>
   </goal>
-  <goal name="vc_selection_sort.32" expl="loop invariant 0" proved="true">
-  <proof prover="4"><result status="valid" time="0.545328" steps="2776"/></proof>
+  <goal name="vc_selection_sort.32" expl="for invariant" proved="true">
+  <proof prover="4"><result status="valid" time="0.046792" steps="106"/></proof>
   </goal>
-  <goal name="vc_selection_sort.33" expl="loop invariant 1" proved="true">
-  <proof prover="4"><result status="valid" time="0.080996" steps="143"/></proof>
+  <goal name="vc_selection_sort.33" expl="for invariant" proved="true">
+  <proof prover="4"><result status="valid" time="0.048353" steps="107"/></proof>
   </goal>
   <goal name="vc_selection_sort.34" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.471179" steps="2185"/></proof>
+  <proof prover="4"><result status="valid" time="0.125151" steps="391"/></proof>
   </goal>
-  <goal name="vc_selection_sort.35" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.054386" steps="111"/></proof>
+  <goal name="vc_selection_sort.35" expl="loop invariant 0" proved="true">
+  <proof prover="4"><result status="valid" time="0.545328" steps="3144"/></proof>
   </goal>
-  <goal name="vc_selection_sort.36" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.035377" steps="111"/></proof>
+  <goal name="vc_selection_sort.36" expl="loop invariant 1" proved="true">
+  <proof prover="4"><result status="valid" time="0.080996" steps="157"/></proof>
   </goal>
-  <goal name="vc_selection_sort.37" expl="loop invariant 0" proved="true">
-  <proof prover="2" timelimit="5"><result status="valid" time="0.615486" steps="58092"/></proof>
+  <goal name="vc_selection_sort.37" expl="for invariant" proved="true">
+  <proof prover="4"><result status="valid" time="0.054386" steps="106"/></proof>
   </goal>
-  <goal name="vc_selection_sort.38" expl="loop invariant 1" proved="true">
-  <proof prover="0"><result status="valid" time="0.189895" steps="404633"/></proof>
+  <goal name="vc_selection_sort.38" expl="for invariant" proved="true">
+  <proof prover="4"><result status="valid" time="0.035377" steps="107"/></proof>
   </goal>
   <goal name="vc_selection_sort.39" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.346553" steps="1673"/></proof>
+  <proof prover="4"><result status="valid" time="0.094026" steps="357"/></proof>
   </goal>
-  <goal name="vc_selection_sort.40" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.046792" steps="112"/></proof>
+  <goal name="vc_selection_sort.40" expl="loop invariant 0" proved="true">
+  <proof prover="2" timelimit="5"><result status="valid" time="0.615486" steps="57218"/></proof>
   </goal>
-  <goal name="vc_selection_sort.41" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.048353" steps="112"/></proof>
+  <goal name="vc_selection_sort.41" expl="loop invariant 1" proved="true">
+  <proof prover="0"><result status="valid" time="0.189895" steps="313431"/></proof>
   </goal>
   <goal name="vc_selection_sort.42" proved="true">
   <proof prover="4"><result status="valid" time="0.030780" steps="86"/></proof>
@@ -147,18 +146,18 @@
   <proof prover="0"><result status="valid" time="0.179759" steps="287965"/></proof>
   </goal>
   <goal name="vc_selection_sort.45" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.044959" steps="118"/></proof>
+  <proof prover="4"><result status="valid" time="0.044959" steps="117"/></proof>
   </goal>
   <goal name="vc_selection_sort.46" proved="true">
   <proof prover="4"><result status="valid" time="0.059826" steps="385"/></proof>
   </goal>
   <goal name="vc_selection_sort.47" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.047551" steps="129"/></proof>
+  <proof prover="4"><result status="valid" time="0.047551" steps="128"/></proof>
   </goal>
   <goal name="vc_selection_sort.48" expl="precondition" proved="true">
   <transf name="split_vc" proved="true" >
    <goal name="vc_selection_sort.48.0" expl="precondition" proved="true">
-   <proof prover="0"><result status="valid" time="0.077119" steps="262048"/></proof>
+   <proof prover="0"><result status="valid" time="0.077119" steps="262046"/></proof>
    </goal>
   </transf>
   </goal>
@@ -166,39 +165,39 @@
   <proof prover="4"><result status="valid" time="0.040126" steps="98"/></proof>
   </goal>
   <goal name="vc_selection_sort.50" expl="type invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.049412" steps="471"/></proof>
+  <proof prover="4"><result status="valid" time="0.049412" steps="467"/></proof>
   </goal>
   <goal name="vc_selection_sort.51" expl="assertion" proved="true">
   <transf name="split_vc" proved="true" >
    <goal name="vc_selection_sort.51.0" expl="assertion" proved="true">
-   <proof prover="4"><result status="valid" time="6.999263" steps="49425"/></proof>
+   <proof prover="4"><result status="valid" time="9.176092" steps="45468"/></proof>
    </goal>
   </transf>
   </goal>
   <goal name="vc_selection_sort.52" expl="mut invariant" proved="true">
   <transf name="split_vc" proved="true" >
    <goal name="vc_selection_sort.52.0" expl="mut invariant" proved="true">
-   <proof prover="1"><result status="valid" time="0.190948" steps="45311"/></proof>
+   <proof prover="4"><result status="valid" time="0.049459" steps="103"/></proof>
    </goal>
   </transf>
   </goal>
-  <goal name="vc_selection_sort.53" expl="loop invariant 0" proved="true">
-  <proof prover="2"><result status="valid" time="0.626796" steps="43488"/></proof>
+  <goal name="vc_selection_sort.53" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.215609" steps="29749"/></proof>
   </goal>
-  <goal name="vc_selection_sort.54" expl="loop invariant 1" proved="true">
-  <proof prover="4"><result status="valid" time="2.815380" steps="17302"/></proof>
+  <goal name="vc_selection_sort.54" expl="for invariant" proved="true">
+  <proof prover="2"><result status="valid" time="0.294669" steps="29757"/></proof>
   </goal>
-  <goal name="vc_selection_sort.55" expl="loop invariant 2" proved="true">
-  <proof prover="2"><result status="valid" time="0.484300" steps="35568"/></proof>
+  <goal name="vc_selection_sort.55" expl="for invariant" proved="true">
+  <proof prover="4"><result status="valid" time="0.106267" steps="498"/></proof>
   </goal>
-  <goal name="vc_selection_sort.56" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.308460" steps="1637"/></proof>
+  <goal name="vc_selection_sort.56" expl="loop invariant 0" proved="true">
+  <proof prover="2"><result status="valid" time="0.626796" steps="43839"/></proof>
   </goal>
-  <goal name="vc_selection_sort.57" expl="for invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.215609" steps="29821"/></proof>
+  <goal name="vc_selection_sort.57" expl="loop invariant 1" proved="true">
+  <proof prover="4"><result status="valid" time="2.421193" steps="18326"/></proof>
   </goal>
-  <goal name="vc_selection_sort.58" expl="for invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.294669" steps="29829"/></proof>
+  <goal name="vc_selection_sort.58" expl="loop invariant 2" proved="true">
+  <proof prover="2"><result status="valid" time="0.484300" steps="35859"/></proof>
   </goal>
  </transf>
  </goal>

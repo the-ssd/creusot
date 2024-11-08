@@ -2,409 +2,986 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "https://www.why3.org/why3session.dtd">
 <why3session shape_version="6">
-<prover id="0" name="CVC5" version="1.0.5" timelimit="5" steplimit="0" memlimit="1000"/>
-<prover id="1" name="Z3" version="4.12.4" timelimit="5" steplimit="0" memlimit="1000"/>
-<prover id="4" name="Alt-Ergo" version="2.6.0" timelimit="5" steplimit="0" memlimit="1000"/>
-<file format="coma" proved="true">
+<prover id="0" name="Z3" version="4.12.4" timelimit="2.5" memlimit="1000"/>
+<prover id="1" name="CVC4" version="1.8" timelimit="2.5" memlimit="1000"/>
+<prover id="2" name="CVC5" version="1.0.5" timelimit="2.5" memlimit="1000"/>
+<prover id="3" name="Alt-Ergo" version="2.6.0" timelimit="2.5" memlimit="1000"/>
+<file format="coma">
 <path name=".."/><path name="knapsack_full.coma"/>
-<theory name="M_knapsack_full__max" proved="true">
- <goal name="vc_max" proved="true">
- <proof prover="1" timelimit="1"><result status="valid" time="0.009128" steps="1666"/></proof>
- </goal>
-</theory>
-<theory name="M_knapsack_full__sum_weights" proved="true">
- <goal name="vc_sum_weights" proved="true">
- <proof prover="0" timelimit="1"><result status="valid" time="0.056185" steps="7665"/></proof>
- </goal>
-</theory>
-<theory name="M_knapsack_full__sum_values" proved="true">
- <goal name="vc_sum_values" proved="true">
- <proof prover="4" timelimit="1"><result status="valid" time="0.014155" steps="7"/></proof>
- </goal>
-</theory>
-<theory name="M_knapsack_full__subseq_rev" proved="true">
- <goal name="vc_subseq_rev" proved="true">
- <proof prover="1" timelimit="1"><result status="valid" time="0.017889" steps="43885"/></proof>
- </goal>
-</theory>
-<theory name="M_knapsack_full__m" proved="true">
- <goal name="vc_m" proved="true">
- <proof prover="1" timelimit="1"><result status="valid" time="0.022711" steps="76961"/></proof>
- </goal>
-</theory>
-<theory name="M_knapsack_full__knapsack01_dyn" proved="true">
- <goal name="vc_knapsack01_dyn" proved="true">
+<theory name="T_knapsack_full__Item">
+ <goal name="vc_t_Item">
  <transf name="split_vc" proved="true" >
-  <goal name="vc_knapsack01_dyn.0" expl="integer overflow" proved="true">
-  <proof prover="4" timelimit="1"><result status="valid" time="0.020202" steps="10"/></proof>
+ </transf>
+ </goal>
+</theory>
+<theory name="M_knapsack_full__max">
+ <goal name="vc_max">
+ <proof prover="0" timelimit="0.51"><result status="valid" time="0.010000" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="M_knapsack_full__sum_weights">
+ <goal name="vc_sum_weights">
+ <proof prover="0" timelimit="0.5177"><result status="valid" time="0.017700" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="M_knapsack_full__sum_values">
+ <goal name="vc_sum_values">
+ <proof prover="0" timelimit="0.5255"><result status="valid" time="0.025500" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="M_knapsack_full__subseq_rev">
+ <goal name="vc_subseq_rev">
+ <proof prover="0" timelimit="0.525"><result status="valid" time="0.025000" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="M_knapsack_full__m">
+ <goal name="vc_m">
+ <proof prover="0" timelimit="0.5216"><result status="valid" time="0.021600" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="M_knapsack_full__knapsack01_dyn">
+ <goal name="vc_push&#39;0">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_with_capacity&#39;0">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_index_mut&#39;1">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_index_mut&#39;0">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_max&#39;0">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_index&#39;2">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_index&#39;1">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_next&#39;1">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_into_iter&#39;1">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_new&#39;0">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_index&#39;0">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_next&#39;0">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_into_iter&#39;0">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_from_elem&#39;1">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_len&#39;0">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_from_elem&#39;0">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_knapsack01_dyn">
+ <transf name="split_vc" >
+  <goal name="vc_knapsack01_dyn.0" expl="integer overflow">
+  <proof prover="0" timelimit="0.5395"><result status="valid" time="0.039500" steps="0"/></proof>
+  </goal>
+  <goal name="vc_knapsack01_dyn.1" expl="precondition">
+  <proof prover="0" timelimit="0.5423"><result status="valid" time="0.042300" steps="0"/></proof>
+  </goal>
+  <goal name="vc_knapsack01_dyn.2" expl="precondition">
+  <proof prover="0" timelimit="0.5211"><result status="valid" time="0.021100" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.1" expl="precondition" proved="true">
-  <proof prover="4" timelimit="1"><result status="valid" time="0.021084" steps="16"/></proof>
+  <goal name="vc_knapsack01_dyn.3" expl="integer overflow">
+  <proof prover="0" timelimit="0.5402"><result status="valid" time="0.040200" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.2" expl="precondition" proved="true">
-  <proof prover="4" timelimit="1"><result status="valid" time="0.022270" steps="14"/></proof>
+  <goal name="vc_knapsack01_dyn.4" expl="precondition">
+  <proof prover="0" timelimit="0.5378"><result status="valid" time="0.037800" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.3" expl="integer overflow" proved="true">
-  <proof prover="4" timelimit="1"><result status="valid" time="0.022062" steps="34"/></proof>
+  <goal name="vc_knapsack01_dyn.5" expl="precondition">
+  <proof prover="0" timelimit="0.5153"><result status="valid" time="0.015300" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.4" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.037850" steps="19"/></proof>
+  <goal name="vc_knapsack01_dyn.6" expl="precondition">
+  <proof prover="0" timelimit="0.5529"><result status="valid" time="0.052900" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.5" expl="precondition" proved="true">
-  <proof prover="4" timelimit="1"><result status="valid" time="0.019898" steps="23"/></proof>
+  <goal name="vc_knapsack01_dyn.7" expl="precondition">
+  <proof prover="0" timelimit="0.5223"><result status="valid" time="0.022300" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.6" expl="precondition" proved="true">
-  <proof prover="4" timelimit="1"><result status="valid" time="0.022358" steps="46"/></proof>
+  <goal name="vc_knapsack01_dyn.8" expl="for invariant">
+  <proof prover="0" timelimit="0.5647"><result status="valid" time="0.064700" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.7" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.029312" steps="28"/></proof>
+  <goal name="vc_knapsack01_dyn.9" expl="for invariant">
+  <proof prover="0" timelimit="0.5256"><result status="valid" time="0.025600" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.8" expl="loop invariant 0" proved="true">
-  <proof prover="0"><result status="valid" time="0.109197" steps="20645"/></proof>
+  <goal name="vc_knapsack01_dyn.10" expl="for invariant">
+  <proof prover="0" timelimit="0.562"><result status="valid" time="0.062000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.9" expl="loop invariant 1" proved="true">
-  <proof prover="4"><result status="valid" time="0.101527" steps="53"/></proof>
+  <goal name="vc_knapsack01_dyn.11" expl="loop invariant 0">
+  <proof prover="0" timelimit="0.5499"><result status="valid" time="0.049900" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.10" expl="loop invariant 2" proved="true">
-  <proof prover="4"><result status="valid" time="0.055356" steps="219"/></proof>
+  <goal name="vc_knapsack01_dyn.12" expl="loop invariant 1">
+  <proof prover="0" timelimit="0.579"><result status="valid" time="0.079000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.11" expl="loop invariant 3" proved="true">
-  <proof prover="4"><result status="valid" time="0.043379" steps="116"/></proof>
+  <goal name="vc_knapsack01_dyn.13" expl="loop invariant 2">
+  <proof prover="0" timelimit="0.619"><result status="valid" time="0.119000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.12" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.025753" steps="54"/></proof>
+  <goal name="vc_knapsack01_dyn.14" expl="loop invariant 3">
+  <proof prover="0" timelimit="0.654"><result status="valid" time="0.154000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.13" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.022860" steps="31"/></proof>
+  <goal name="vc_knapsack01_dyn.15" expl="precondition">
+  <proof prover="0" timelimit="0.5759"><result status="valid" time="0.075900" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.14" expl="for invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.105725" steps="21243"/></proof>
+  <goal name="vc_knapsack01_dyn.16" expl="precondition">
+  <proof prover="0" timelimit="0.5561"><result status="valid" time="0.056100" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.15" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.024053" steps="64"/></proof>
+  <goal name="vc_knapsack01_dyn.17" expl="precondition">
+  <proof prover="0" timelimit="0.5198"><result status="valid" time="0.019800" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.16" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.024061" steps="72"/></proof>
+  <goal name="vc_knapsack01_dyn.18" expl="precondition">
+  <proof prover="0" timelimit="0.5864"><result status="valid" time="0.086400" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.17" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.082853" steps="20315"/></proof>
+  <goal name="vc_knapsack01_dyn.19" expl="precondition">
+  <proof prover="0" timelimit="0.5687"><result status="valid" time="0.068700" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.18" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.058003" steps="324"/></proof>
+  <goal name="vc_knapsack01_dyn.20" expl="precondition">
+  <proof prover="0" timelimit="0.5672"><result status="valid" time="0.067200" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.19" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.025196" steps="78"/></proof>
+  <goal name="vc_knapsack01_dyn.21" expl="precondition">
+  <proof prover="0" timelimit="0.5306"><result status="valid" time="0.030600" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.20" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.025608" steps="79"/></proof>
+  <goal name="vc_knapsack01_dyn.22" expl="precondition">
+  <proof prover="0" timelimit="0.5388"><result status="valid" time="0.038800" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.21" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.022990" steps="54"/></proof>
+  <goal name="vc_knapsack01_dyn.23" expl="for invariant">
+  <proof prover="0" timelimit="0.5688"><result status="valid" time="0.068800" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.22" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.060983" steps="54"/></proof>
+  <goal name="vc_knapsack01_dyn.24" expl="for invariant">
+  <proof prover="0" timelimit="0.5279"><result status="valid" time="0.027900" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.23" expl="loop invariant 0" proved="true">
-  <proof prover="4"><result status="valid" time="0.047053" steps="58"/></proof>
+  <goal name="vc_knapsack01_dyn.25" expl="for invariant">
+  <proof prover="0" timelimit="0.5761"><result status="valid" time="0.076100" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.24" expl="loop invariant 1" proved="true">
-  <proof prover="4"><result status="valid" time="0.037082" steps="94"/></proof>
+  <goal name="vc_knapsack01_dyn.26" expl="loop invariant 0">
+  <proof prover="0" timelimit="0.5478"><result status="valid" time="0.047800" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.25" expl="loop invariant 2" proved="true">
-  <proof prover="4"><result status="valid" time="0.027099" steps="440"/></proof>
+  <goal name="vc_knapsack01_dyn.27" expl="loop invariant 1">
+  <proof prover="0" timelimit="0.617"><result status="valid" time="0.117000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.26" expl="loop invariant 3" proved="true">
-  <proof prover="4"><result status="valid" time="0.038594" steps="130"/></proof>
+  <goal name="vc_knapsack01_dyn.28" expl="loop invariant 2">
+  <proof prover="0" timelimit="0.63"><result status="valid" time="0.130000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.27" expl="loop invariant 4" proved="true">
-  <proof prover="4"><result status="valid" time="0.024727" steps="101"/></proof>
+  <goal name="vc_knapsack01_dyn.29" expl="loop invariant 3">
+  <proof prover="0" timelimit="0.626"><result status="valid" time="0.126000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.28" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.022796" steps="320"/></proof>
+  <goal name="vc_knapsack01_dyn.30" expl="loop invariant 4">
+  <proof prover="0" timelimit="0.5692"><result status="valid" time="0.069200" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.29" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.025362" steps="60"/></proof>
+  <goal name="vc_knapsack01_dyn.31" expl="precondition">
+  <proof prover="0" timelimit="0.5802"><result status="valid" time="0.080200" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.30" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.112956" steps="95"/></proof>
+  <goal name="vc_knapsack01_dyn.32" expl="for invariant">
+  <proof prover="0" timelimit="0.5864"><result status="valid" time="0.086400" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.31" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.025870" steps="106"/></proof>
+  <goal name="vc_knapsack01_dyn.33" expl="for invariant">
+  <proof prover="0" timelimit="0.5971"><result status="valid" time="0.097100" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.32" expl="loop invariant 0" proved="true">
-  <proof prover="4"><result status="valid" time="0.027402" steps="74"/></proof>
+  <goal name="vc_knapsack01_dyn.34" expl="for invariant">
+  <proof prover="0" timelimit="0.5862"><result status="valid" time="0.086200" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.33" expl="loop invariant 1" proved="true">
-  <proof prover="4"><result status="valid" time="0.027610" steps="117"/></proof>
+  <goal name="vc_knapsack01_dyn.35" expl="loop invariant 0">
+  <proof prover="0" timelimit="0.525"><result status="valid" time="0.025000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.34" expl="loop invariant 2" proved="true">
-  <proof prover="4"><result status="valid" time="0.217915" steps="1305"/></proof>
+  <goal name="vc_knapsack01_dyn.36" expl="loop invariant 1">
+  <proof prover="0" timelimit="0.5958"><result status="valid" time="0.095800" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.35" expl="loop invariant 3" proved="true">
-  <proof prover="4"><result status="valid" time="0.025532" steps="124"/></proof>
+  <goal name="vc_knapsack01_dyn.37" expl="loop invariant 2">
+  <proof prover="3" timelimit="0.748"><result status="valid" time="0.248000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.36" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.150930" steps="801"/></proof>
+  <goal name="vc_knapsack01_dyn.38" expl="loop invariant 3">
+  <proof prover="0" timelimit="0.612"><result status="valid" time="0.112000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.37" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.036698" steps="120"/></proof>
+  <goal name="vc_knapsack01_dyn.39" expl="precondition">
+  <proof prover="0" timelimit="0.5949"><result status="valid" time="0.094900" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.38" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.022411" steps="121"/></proof>
+  <goal name="vc_knapsack01_dyn.40" expl="precondition">
+  <proof prover="0" timelimit="0.612"><result status="valid" time="0.112000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.39" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.029115" steps="131"/></proof>
+  <goal name="vc_knapsack01_dyn.41" expl="precondition">
+  <proof prover="0" timelimit="0.63"><result status="valid" time="0.130000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.40" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.030944" steps="132"/></proof>
+  <goal name="vc_knapsack01_dyn.42" expl="precondition">
+  <proof prover="0" timelimit="0.609"><result status="valid" time="0.109000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.41" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.086176" steps="842"/></proof>
+  <goal name="vc_knapsack01_dyn.43" expl="precondition">
+  <proof prover="0" timelimit="0.5437"><result status="valid" time="0.043700" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.42" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.030476" steps="133"/></proof>
+  <goal name="vc_knapsack01_dyn.44" expl="precondition">
+  <proof prover="2" timelimit="0.94"><result status="valid" time="0.440000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.43" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.025377" steps="86"/></proof>
+  <goal name="vc_knapsack01_dyn.45" expl="precondition">
+  <proof prover="0" timelimit="0.62"><result status="valid" time="0.120000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.44" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.344699" steps="2227"/></proof>
+  <goal name="vc_knapsack01_dyn.46" expl="precondition">
+  <proof prover="0" timelimit="0.631"><result status="valid" time="0.131000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.45" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.027758" steps="144"/></proof>
+  <goal name="vc_knapsack01_dyn.47" expl="precondition">
+  <proof prover="0" timelimit="0.666"><result status="valid" time="0.166000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.46" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.027977" steps="145"/></proof>
+  <goal name="vc_knapsack01_dyn.48" expl="integer overflow">
+  <proof prover="2" timelimit="0.904"><result status="valid" time="0.404000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.47" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.106296" steps="866"/></proof>
+  <goal name="vc_knapsack01_dyn.49" expl="precondition">
+  <proof prover="0" timelimit="0.688"><result status="valid" time="0.188000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.48" expl="integer overflow" proved="true">
-  <proof prover="4"><result status="valid" time="0.031173" steps="202"/></proof>
+  <goal name="vc_knapsack01_dyn.50" expl="precondition">
+  <proof prover="0" timelimit="0.5581"><result status="valid" time="0.058100" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.49" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.030976" steps="175"/></proof>
+  <goal name="vc_knapsack01_dyn.51" expl="precondition">
+  <proof prover="1" timelimit="1.149"><result status="valid" time="0.649000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.50" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.025775" steps="99"/></proof>
+  <goal name="vc_knapsack01_dyn.52" expl="integer overflow">
+  <proof prover="2" timelimit="1.068"><result status="valid" time="0.568000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.51" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.326559" steps="38171"/></proof>
+  <goal name="vc_knapsack01_dyn.53" expl="precondition">
+  <proof prover="0" timelimit="0.612"><result status="valid" time="0.112000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.52" expl="integer overflow" proved="true">
-  <proof prover="0"><result status="valid" time="0.392766" steps="49458"/></proof>
+  <goal name="vc_knapsack01_dyn.54" expl="precondition">
+  <proof prover="0" timelimit="0.613"><result status="valid" time="0.113000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.53" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.029332" steps="131"/></proof>
+  <goal name="vc_knapsack01_dyn.55" expl="precondition">
+  <proof prover="0" timelimit="0.674"><result status="valid" time="0.174000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.54" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.053623" steps="131"/></proof>
+  <goal name="vc_knapsack01_dyn.56" expl="precondition">
+  <proof prover="0" timelimit="0.637"><result status="valid" time="0.137000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.55" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.164788" steps="839"/></proof>
+  <goal name="vc_knapsack01_dyn.57" expl="precondition">
+  <proof prover="0" timelimit="0.5353"><result status="valid" time="0.035300" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.56" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.028101" steps="133"/></proof>
+  <goal name="vc_knapsack01_dyn.58" expl="precondition">
+  <proof prover="1" timelimit="1.178"><result status="valid" time="0.678000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.57" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.024071" steps="86"/></proof>
+  <goal name="vc_knapsack01_dyn.59">
+  <proof prover="0" timelimit="0.693"><result status="valid" time="0.193000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.58" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.296360" steps="2135"/></proof>
+  <goal name="vc_knapsack01_dyn.60" expl="integer overflow">
+  <proof prover="0" timelimit="0.681"><result status="valid" time="0.181000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.59" proved="true">
-  <proof prover="4"><result status="valid" time="0.061420" steps="109"/></proof>
+  <goal name="vc_knapsack01_dyn.61" expl="precondition">
+  <proof prover="0" timelimit="0.656"><result status="valid" time="0.156000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.60" expl="integer overflow" proved="true">
-  <proof prover="4"><result status="valid" time="0.086645" steps="1088"/></proof>
+  <goal name="vc_knapsack01_dyn.62" expl="precondition">
+  <proof prover="0" timelimit="0.614"><result status="valid" time="0.114000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.61" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.056107" steps="162"/></proof>
+  <goal name="vc_knapsack01_dyn.63" expl="precondition">
+  <proof prover="0" timelimit="0.634"><result status="valid" time="0.134000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.62" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.032172" steps="167"/></proof>
+  <goal name="vc_knapsack01_dyn.64" expl="precondition">
+  <proof prover="0" timelimit="0.635"><result status="valid" time="0.135000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.63" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.089437" steps="1040"/></proof>
+  <goal name="vc_knapsack01_dyn.65" expl="precondition">
+  <proof prover="0" timelimit="0.624"><result status="valid" time="0.124000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.64" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.033641" steps="177"/></proof>
+  <goal name="vc_knapsack01_dyn.66" expl="precondition">
+  <proof prover="0" timelimit="1.55"><result status="valid" time="1.050000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.65" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.033215" steps="183"/></proof>
+  <goal name="vc_knapsack01_dyn.67" expl="for invariant">
+  <proof prover="0" timelimit="0.643"><result status="valid" time="0.143000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.66" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.327241" steps="41320"/></proof>
+  <goal name="vc_knapsack01_dyn.68" expl="for invariant">
+  <proof prover="0" timelimit="0.661"><result status="valid" time="0.161000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.67" expl="loop invariant 0" proved="true">
-  <proof prover="4"><result status="valid" time="0.035855" steps="218"/></proof>
+  <goal name="vc_knapsack01_dyn.69" expl="for invariant">
+  <proof prover="0" timelimit="0.745"><result status="valid" time="0.245000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.68" expl="loop invariant 1" proved="true">
-  <proof prover="4"><result status="valid" time="0.211100" steps="926"/></proof>
+  <goal name="vc_knapsack01_dyn.70" expl="loop invariant 0">
+  <proof prover="0" timelimit="0.694"><result status="valid" time="0.194000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.69" expl="loop invariant 2" proved="true">
-  <proof prover="4"><result status="valid" time="0.413067" steps="2560"/></proof>
+  <goal name="vc_knapsack01_dyn.71" expl="loop invariant 1">
+  <proof prover="3" timelimit="0.837"><result status="valid" time="0.337000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.70" expl="loop invariant 3" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_knapsack01_dyn.70.0" expl="loop invariant 3" proved="true">
-   <proof prover="1"><result status="valid" time="1.411376" steps="1700990"/></proof>
+  <goal name="vc_knapsack01_dyn.72" expl="loop invariant 2">
+  <proof prover="1" timelimit="1.66"><result status="valid" time="1.160000" steps="0"/></proof>
+  </goal>
+  <goal name="vc_knapsack01_dyn.73" expl="loop invariant 3">
+  <transf name="split_vc" >
+   <goal name="vc_knapsack01_dyn.73.0" expl="loop invariant 3">
+   <proof prover="0" timelimit="2.05"><result status="valid" time="1.550000" steps="0"/></proof>
    </goal>
-   <goal name="vc_knapsack01_dyn.70.1" expl="loop invariant 3" proved="true">
-   <proof prover="1"><result status="valid" time="0.608175" steps="1205161"/></proof>
+   <goal name="vc_knapsack01_dyn.73.1" expl="loop invariant 3">
+   <proof prover="0" timelimit="2.58"><result status="valid" time="2.080000" steps="0"/></proof>
    </goal>
   </transf>
   </goal>
-  <goal name="vc_knapsack01_dyn.71" expl="loop invariant 4" proved="true">
-  <proof prover="1"><result status="valid" time="1.020424" steps="1744202"/></proof>
+  <goal name="vc_knapsack01_dyn.74" expl="loop invariant 4">
+  <transf name="split_vc" >
+   <goal name="vc_knapsack01_dyn.74.0" expl="loop invariant 4">
+   <transf name="inline_goal" >
+    <goal name="vc_knapsack01_dyn.74.0.0" expl="loop invariant 4">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_goal" >
+     <goal name="vc_knapsack01_dyn.74.0.0.0" expl="loop invariant 4">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_trivial" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     <transf name="remove_unused" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="inline_trivial" >
+     <goal name="vc_knapsack01_dyn.74.0.0.0" expl="loop invariant 4">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     <transf name="split_vc" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="remove_unused" >
+     <goal name="vc_knapsack01_dyn.74.0.0.0" expl="loop invariant 4">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_goal" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     <transf name="inline_trivial" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="inline_trivial" >
+    <goal name="vc_knapsack01_dyn.74.0.0" expl="loop invariant 4">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_goal" >
+     <goal name="vc_knapsack01_dyn.74.0.0.0" expl="loop invariant 4">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     <transf name="split_vc" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="remove_unused" >
+     <goal name="vc_knapsack01_dyn.74.0.0.0" expl="loop invariant 4">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_goal" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     <transf name="split_vc" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="split_vc" >
+     <goal name="vc_knapsack01_dyn.74.0.0.0" expl="loop invariant 4">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_goal" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     <transf name="remove_unused" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="remove_unused" >
+    <goal name="vc_knapsack01_dyn.74.0.0" expl="loop invariant 4">
+    <transf name="inline_goal" >
+     <goal name="vc_knapsack01_dyn.74.0.0.0" expl="loop invariant 4">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_goal" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     <transf name="inline_trivial" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="inline_trivial" >
+     <goal name="vc_knapsack01_dyn.74.0.0.0" expl="loop invariant 4">
+     <transf name="split_vc" >
+      <goal name="vc_knapsack01_dyn.74.0.0.0.0" expl="loop invariant 4">
+      <proof prover="0" timelimit="3.43"><result status="valid" time="2.930000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="vc_knapsack01_dyn.74.1" expl="loop invariant 4">
+   <proof prover="3" timelimit="2.64"><result status="valid" time="2.140000" steps="0"/></proof>
+   </goal>
+  </transf>
   </goal>
-  <goal name="vc_knapsack01_dyn.72" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.268019" steps="2314"/></proof>
+  <goal name="vc_knapsack01_dyn.75">
+  <proof prover="0" timelimit="0.636"><result status="valid" time="0.136000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.73" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.108445" steps="214"/></proof>
+  <goal name="vc_knapsack01_dyn.76" expl="precondition">
+  <proof prover="0" timelimit="0.5351"><result status="valid" time="0.035100" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.74" expl="for invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.115976" steps="214"/></proof>
+  <goal name="vc_knapsack01_dyn.77" expl="precondition">
+  <proof prover="0" timelimit="0.5517"><result status="valid" time="0.051700" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.75" proved="true">
-  <proof prover="4"><result status="valid" time="0.023487" steps="68"/></proof>
+  <goal name="vc_knapsack01_dyn.78" expl="loop invariant 0">
+  <proof prover="0" timelimit="0.577"><result status="valid" time="0.077000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.76" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.023714" steps="54"/></proof>
+  <goal name="vc_knapsack01_dyn.79" expl="loop invariant 1">
+  <proof prover="0" timelimit="0.5727"><result status="valid" time="0.072700" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.77" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.037855" steps="62"/></proof>
+  <goal name="vc_knapsack01_dyn.80" expl="loop invariant 2">
+  <proof prover="0" timelimit="0.607"><result status="valid" time="0.107000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.78" expl="loop invariant 0" proved="true">
-  <proof prover="4"><result status="valid" time="0.040442" steps="71"/></proof>
+  <goal name="vc_knapsack01_dyn.81" expl="loop invariant 3">
+  <proof prover="0" timelimit="0.5609"><result status="valid" time="0.060900" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.79" expl="loop invariant 1" proved="true">
-  <proof prover="4"><result status="valid" time="0.040373" steps="67"/></proof>
+  <goal name="vc_knapsack01_dyn.82" expl="loop invariant 4">
+  <proof prover="0" timelimit="0.5602"><result status="valid" time="0.060200" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.80" expl="loop invariant 2" proved="true">
-  <proof prover="4"><result status="valid" time="0.046425" steps="64"/></proof>
+  <goal name="vc_knapsack01_dyn.83" expl="loop invariant 5">
+  <proof prover="0" timelimit="0.5366"><result status="valid" time="0.036600" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.81" expl="loop invariant 3" proved="true">
-  <proof prover="4"><result status="valid" time="0.061134" steps="69"/></proof>
+  <goal name="vc_knapsack01_dyn.84" expl="postcondition">
+  <proof prover="0" timelimit="0.5663"><result status="valid" time="0.066300" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.82" expl="loop invariant 4" proved="true">
-  <proof prover="4"><result status="valid" time="0.068441" steps="64"/></proof>
+  <goal name="vc_knapsack01_dyn.85" expl="postcondition">
+  <proof prover="0" timelimit="0.654"><result status="valid" time="0.154000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.83" expl="loop invariant 5" proved="true">
-  <proof prover="4"><result status="valid" time="0.087835" steps="65"/></proof>
+  <goal name="vc_knapsack01_dyn.86" expl="postcondition">
+  <proof prover="0" timelimit="0.655"><result status="valid" time="0.155000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.84" expl="postcondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.042212" steps="72"/></proof>
+  <goal name="vc_knapsack01_dyn.87" expl="postcondition">
+  <proof prover="0" timelimit="0.663"><result status="valid" time="0.163000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.85" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.096893" steps="179933"/></proof>
+  <goal name="vc_knapsack01_dyn.88" expl="integer overflow">
+  <proof prover="0" timelimit="0.627"><result status="valid" time="0.127000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.86" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.066057" steps="181204"/></proof>
+  <goal name="vc_knapsack01_dyn.89" expl="precondition">
+  <proof prover="0" timelimit="0.638"><result status="valid" time="0.138000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.87" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.076462" steps="180303"/></proof>
+  <goal name="vc_knapsack01_dyn.90" expl="precondition">
+  <proof prover="0" timelimit="0.5689"><result status="valid" time="0.068900" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.88" expl="integer overflow" proved="true">
-  <proof prover="4"><result status="valid" time="0.061218" steps="113"/></proof>
+  <goal name="vc_knapsack01_dyn.91" expl="precondition">
+  <proof prover="0" timelimit="0.605"><result status="valid" time="0.105000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.89" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.026727" steps="123"/></proof>
+  <goal name="vc_knapsack01_dyn.92" expl="integer overflow">
+  <proof prover="0" timelimit="0.5947"><result status="valid" time="0.094700" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.90" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.021782" steps="76"/></proof>
+  <goal name="vc_knapsack01_dyn.93" expl="precondition">
+  <proof prover="0" timelimit="0.602"><result status="valid" time="0.102000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.91" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.023849" steps="76"/></proof>
+  <goal name="vc_knapsack01_dyn.94" expl="precondition">
+  <proof prover="0" timelimit="0.619"><result status="valid" time="0.119000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.92" expl="integer overflow" proved="true">
-  <proof prover="4"><result status="valid" time="0.027367" steps="127"/></proof>
+  <goal name="vc_knapsack01_dyn.95" expl="precondition">
+  <proof prover="0" timelimit="0.605"><result status="valid" time="0.105000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.93" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.056008" steps="138"/></proof>
+  <goal name="vc_knapsack01_dyn.96" expl="precondition">
+  <proof prover="0" timelimit="0.5758"><result status="valid" time="0.075800" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.94" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.027808" steps="139"/></proof>
+  <goal name="vc_knapsack01_dyn.97" expl="precondition">
+  <proof prover="0" timelimit="0.535"><result status="valid" time="0.035000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.95" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.024425" steps="84"/></proof>
+  <goal name="vc_knapsack01_dyn.98" expl="precondition">
+  <proof prover="0" timelimit="0.875"><result status="valid" time="0.375000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.96" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.032308" steps="141"/></proof>
+  <goal name="vc_knapsack01_dyn.99" expl="precondition">
+  <proof prover="0" timelimit="0.625"><result status="valid" time="0.125000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.97" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.025064" steps="86"/></proof>
+  <goal name="vc_knapsack01_dyn.100" expl="precondition">
+  <proof prover="0" timelimit="0.5958"><result status="valid" time="0.095800" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.98" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.029962" steps="173"/></proof>
+  <goal name="vc_knapsack01_dyn.101" expl="precondition">
+  <proof prover="0" timelimit="0.5887"><result status="valid" time="0.088700" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.99" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.030413" steps="154"/></proof>
+  <goal name="vc_knapsack01_dyn.102" expl="precondition">
+  <proof prover="0" timelimit="0.5865"><result status="valid" time="0.086500" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.100" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.031265" steps="154"/></proof>
+  <goal name="vc_knapsack01_dyn.103" expl="precondition">
+  <proof prover="0" timelimit="0.53"><result status="valid" time="0.030000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.101" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.027705" steps="92"/></proof>
+  <goal name="vc_knapsack01_dyn.104" expl="precondition">
+  <proof prover="0" timelimit="0.864"><result status="valid" time="0.364000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.102" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.032041" steps="155"/></proof>
+  <goal name="vc_knapsack01_dyn.105" expl="loop invariant 0">
+  <proof prover="3" timelimit="0.885"><result status="valid" time="0.385000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.103" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.026627" steps="94"/></proof>
+  <goal name="vc_knapsack01_dyn.106" expl="loop invariant 1">
+  <proof prover="3" timelimit="0.941"><result status="valid" time="0.441000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.104" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.031459" steps="188"/></proof>
+  <goal name="vc_knapsack01_dyn.107" expl="loop invariant 2">
+  <proof prover="0" timelimit="0.5896"><result status="valid" time="0.089600" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.105" expl="loop invariant 0" proved="true">
-  <proof prover="4"><result status="valid" time="0.140858" steps="882"/></proof>
+  <goal name="vc_knapsack01_dyn.108" expl="loop invariant 3">
+  <proof prover="0" timelimit="0.5999"><result status="valid" time="0.099900" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.106" expl="loop invariant 1" proved="true">
-  <proof prover="4"><result status="valid" time="0.210048" steps="1009"/></proof>
+  <goal name="vc_knapsack01_dyn.109" expl="loop invariant 4">
+  <proof prover="0" timelimit="0.5542"><result status="valid" time="0.054200" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.107" expl="loop invariant 2" proved="true">
-  <proof prover="4"><result status="valid" time="0.029358" steps="102"/></proof>
+  <goal name="vc_knapsack01_dyn.110" expl="loop invariant 5">
+  <proof prover="0" timelimit="0.5255"><result status="valid" time="0.025500" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.108" expl="loop invariant 3" proved="true">
-  <proof prover="4"><result status="valid" time="0.022801" steps="462"/></proof>
+  <goal name="vc_knapsack01_dyn.111">
+  <proof prover="0" timelimit="0.5294"><result status="valid" time="0.029400" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.109" expl="loop invariant 4" proved="true">
-  <proof prover="4"><result status="valid" time="0.038558" steps="103"/></proof>
+  <goal name="vc_knapsack01_dyn.112" expl="precondition">
+  <proof prover="0" timelimit="0.5316"><result status="valid" time="0.031600" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.110" expl="loop invariant 5" proved="true">
-  <proof prover="4"><result status="valid" time="0.045817" steps="103"/></proof>
+  <goal name="vc_knapsack01_dyn.113" expl="precondition">
+  <proof prover="0" timelimit="0.604"><result status="valid" time="0.104000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.111" proved="true">
-  <proof prover="4"><result status="valid" time="0.044940" steps="100"/></proof>
+  <goal name="vc_knapsack01_dyn.114" expl="integer overflow">
+  <proof prover="1" timelimit="0.9"><result status="valid" time="0.400000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.112" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.024990" steps="102"/></proof>
+  <goal name="vc_knapsack01_dyn.115" expl="loop invariant 0">
+  <transf name="inline_trivial" >
+   <goal name="vc_knapsack01_dyn.115.0" expl="loop invariant 0">
+   <proof prover="3" timelimit="1.91"><result status="valid" time="1.410000" steps="0"/></proof>
+   </goal>
+  </transf>
   </goal>
-  <goal name="vc_knapsack01_dyn.113" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.030310" steps="175"/></proof>
+  <goal name="vc_knapsack01_dyn.116" expl="loop invariant 1">
+  <proof prover="3" timelimit="0.96"><result status="valid" time="0.460000" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.114" expl="integer overflow" proved="true">
-  <proof prover="4"><result status="valid" time="0.407480" steps="1983"/></proof>
+  <goal name="vc_knapsack01_dyn.117" expl="loop invariant 2">
+  <proof prover="0" timelimit="0.5775"><result status="valid" time="0.077500" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.115" expl="loop invariant 0" proved="true">
-  <proof prover="4"><result status="valid" time="1.089896" steps="4202"/></proof>
+  <goal name="vc_knapsack01_dyn.118" expl="loop invariant 3">
+  <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+  <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+  <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+  <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+  <transf name="inline_goal" >
+   <goal name="vc_knapsack01_dyn.118.0" expl="loop invariant 3">
+   <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <transf name="inline_goal" >
+    <goal name="vc_knapsack01_dyn.118.0.0" expl="loop invariant 3">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_trivial" >
+     <goal name="vc_knapsack01_dyn.118.0.0.0" expl="loop invariant 3">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_knapsack01_dyn.118.0.0.0.0" expl="loop invariant 3">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="remove_unused" >
+     <goal name="vc_knapsack01_dyn.118.0.0.0" expl="loop invariant 3">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_trivial" >
+      <goal name="vc_knapsack01_dyn.118.0.0.0.0" expl="loop invariant 3">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="inline_trivial" >
+    <goal name="vc_knapsack01_dyn.118.0.0" expl="loop invariant 3">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="remove_unused" >
+     <goal name="vc_knapsack01_dyn.118.0.0.0" expl="loop invariant 3">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="remove_unused" >
+    <goal name="vc_knapsack01_dyn.118.0.0" expl="loop invariant 3">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_goal" >
+     <goal name="vc_knapsack01_dyn.118.0.0.0" expl="loop invariant 3">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_trivial" >
+      <goal name="vc_knapsack01_dyn.118.0.0.0.0" expl="loop invariant 3">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="inline_trivial" >
+     <goal name="vc_knapsack01_dyn.118.0.0.0" expl="loop invariant 3">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_knapsack01_dyn.118.0.0.0.0" expl="loop invariant 3">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  <transf name="inline_trivial" >
+   <goal name="vc_knapsack01_dyn.118.0" expl="loop invariant 3">
+   <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <transf name="inline_goal" >
+    <goal name="vc_knapsack01_dyn.118.0.0" expl="loop invariant 3">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="remove_unused" >
+     <goal name="vc_knapsack01_dyn.118.0.0.0" expl="loop invariant 3">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="remove_unused" >
+    <goal name="vc_knapsack01_dyn.118.0.0" expl="loop invariant 3">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_goal" >
+     <goal name="vc_knapsack01_dyn.118.0.0.0" expl="loop invariant 3">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  <transf name="remove_unused" >
+   <goal name="vc_knapsack01_dyn.118.0" expl="loop invariant 3">
+   <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <transf name="inline_goal" >
+    <goal name="vc_knapsack01_dyn.118.0.0" expl="loop invariant 3">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_goal" >
+     <goal name="vc_knapsack01_dyn.118.0.0.0" expl="loop invariant 3">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_trivial" >
+      <goal name="vc_knapsack01_dyn.118.0.0.0.0" expl="loop invariant 3">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="inline_trivial" >
+     <goal name="vc_knapsack01_dyn.118.0.0.0" expl="loop invariant 3">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_knapsack01_dyn.118.0.0.0.0" expl="loop invariant 3">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="inline_trivial" >
+    <goal name="vc_knapsack01_dyn.118.0.0" expl="loop invariant 3">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_goal" >
+     <goal name="vc_knapsack01_dyn.118.0.0.0" expl="loop invariant 3">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_knapsack01_dyn.118.0.0.0.0" expl="loop invariant 3">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="remove_unused" >
+     <goal name="vc_knapsack01_dyn.118.0.0.0" expl="loop invariant 3">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_goal" >
+      <goal name="vc_knapsack01_dyn.118.0.0.0.0" expl="loop invariant 3">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
   </goal>
-  <goal name="vc_knapsack01_dyn.116" expl="loop invariant 1" proved="true">
-  <proof prover="4"><result status="valid" time="0.432040" steps="1378"/></proof>
+  <goal name="vc_knapsack01_dyn.119" expl="loop invariant 4">
+  <proof prover="0" timelimit="0.5213"><result status="valid" time="0.021300" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.117" expl="loop invariant 2" proved="true">
-  <proof prover="4"><result status="valid" time="0.022914" steps="108"/></proof>
+  <goal name="vc_knapsack01_dyn.120" expl="loop invariant 5">
+  <proof prover="0" timelimit="0.5687"><result status="valid" time="0.068700" steps="0"/></proof>
   </goal>
-  <goal name="vc_knapsack01_dyn.118" expl="loop invariant 3" proved="true">
-  <proof prover="1"><result status="valid" time="3.506008" steps="3945554"/></proof>
-  </goal>
-  <goal name="vc_knapsack01_dyn.119" expl="loop invariant 4" proved="true">
-  <proof prover="4"><result status="valid" time="0.077654" steps="109"/></proof>
-  </goal>
-  <goal name="vc_knapsack01_dyn.120" expl="loop invariant 5" proved="true">
-  <proof prover="4"><result status="valid" time="0.060935" steps="204"/></proof>
-  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="T_core__ptr__non_null__NonNull">
+ <goal name="vc_t_NonNull">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+</theory>
+<theory name="T_core__marker__PhantomData">
+ <goal name="vc_t_PhantomData">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+</theory>
+<theory name="T_core__ptr__unique__Unique">
+ <goal name="vc_t_Unique">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+</theory>
+<theory name="T_alloc__raw_vec__Cap">
+ <goal name="vc_t_Cap">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+</theory>
+<theory name="T_alloc__raw_vec__RawVec">
+ <goal name="vc_t_RawVec">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+</theory>
+<theory name="T_alloc__vec__Vec">
+ <goal name="vc_t_Vec">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+</theory>
+<theory name="T_alloc__alloc__Global">
+ <goal name="vc_t_Global">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+</theory>
+<theory name="T_core__ops__range__Range">
+ <goal name="vc_t_Range">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+</theory>
+<theory name="T_core__option__Option">
+ <goal name="vc_v_None">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+ <goal name="vc_v_Some">
+ <transf name="split_vc" proved="true" >
+ </transf>
+ </goal>
+</theory>
+<theory name="T_core__ops__range__RangeInclusive">
+ <goal name="vc_t_RangeInclusive">
+ <transf name="split_vc" proved="true" >
  </transf>
  </goal>
 </theory>

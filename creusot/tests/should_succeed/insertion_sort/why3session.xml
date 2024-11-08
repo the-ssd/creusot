@@ -20,23 +20,23 @@
   <goal name="vc_insertion_sort.3" expl="mut invariant" proved="true">
   <proof prover="1"><result status="valid" time="0.077757" steps="14"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.4" expl="loop invariant 0" proved="true">
-  <proof prover="1"><result status="valid" time="0.019681" steps="46"/></proof>
+  <goal name="vc_insertion_sort.4" expl="for invariant" proved="true">
+  <proof prover="1" timelimit="5"><result status="valid" time="0.036907" steps="19"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.5" expl="loop invariant 1" proved="true">
-  <proof prover="1"><result status="valid" time="0.024206" steps="24"/></proof>
+  <goal name="vc_insertion_sort.5" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.021217" steps="13"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.6" expl="loop invariant 2" proved="true">
-  <proof prover="1"><result status="valid" time="0.018587" steps="67"/></proof>
+  <goal name="vc_insertion_sort.6" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.022590" steps="25"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.7" expl="for invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.022590" steps="30"/></proof>
+  <goal name="vc_insertion_sort.7" expl="loop invariant 0" proved="true">
+  <proof prover="1"><result status="valid" time="0.019681" steps="62"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.8" expl="for invariant" proved="true">
-  <proof prover="1" timelimit="5"><result status="valid" time="0.036907" steps="18"/></proof>
+  <goal name="vc_insertion_sort.8" expl="loop invariant 1" proved="true">
+  <proof prover="1"><result status="valid" time="0.024206" steps="30"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.9" expl="for invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.021217" steps="28"/></proof>
+  <goal name="vc_insertion_sort.9" expl="loop invariant 2" proved="true">
+  <proof prover="1"><result status="valid" time="0.018587" steps="86"/></proof>
   </goal>
   <goal name="vc_insertion_sort.10" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.020354" steps="35"/></proof>
@@ -69,25 +69,25 @@
   <proof prover="1"><result status="valid" time="0.027715" steps="35"/></proof>
   </goal>
   <goal name="vc_insertion_sort.20" expl="mut invariant" proved="true">
-  <proof prover="1" timelimit="5"><result status="valid" time="0.046260" steps="57"/></proof>
+  <proof prover="1"><result status="valid" time="0.020047" steps="57"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.21" expl="loop invariant 0" proved="true">
-  <proof prover="1" timelimit="5"><result status="valid" time="0.143608" steps="1023"/></proof>
+  <goal name="vc_insertion_sort.21" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.019283" steps="63"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.22" expl="loop invariant 1" proved="true">
-  <proof prover="1" timelimit="5"><result status="valid" time="0.019928" steps="46"/></proof>
+  <goal name="vc_insertion_sort.22" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.061961" steps="65"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.23" expl="loop invariant 2" proved="true">
-  <proof prover="1"><result status="valid" time="0.021177" steps="46"/></proof>
+  <goal name="vc_insertion_sort.23" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.136170" steps="221"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.24" expl="for invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.122240" steps="616"/></proof>
+  <goal name="vc_insertion_sort.24" expl="loop invariant 0" proved="true">
+  <proof prover="1" timelimit="5"><result status="valid" time="0.153724" steps="1047"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.25" expl="for invariant" proved="true">
-  <proof prover="1" timelimit="5"><result status="valid" time="0.039760" steps="70"/></proof>
+  <goal name="vc_insertion_sort.25" expl="loop invariant 1" proved="true">
+  <proof prover="1"><result status="valid" time="0.020241" steps="52"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.26" expl="for invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.053221" steps="70"/></proof>
+  <goal name="vc_insertion_sort.26" expl="loop invariant 2" proved="true">
+  <proof prover="1"><result status="valid" time="0.122231" steps="52"/></proof>
   </goal>
   <goal name="vc_insertion_sort.27" expl="integer overflow" proved="true">
   <proof prover="1"><result status="valid" time="0.022921" steps="88"/></proof>
@@ -96,7 +96,7 @@
   <proof prover="1" timelimit="5"><result status="valid" time="0.071908" steps="500"/></proof>
   </goal>
   <goal name="vc_insertion_sort.29" expl="index in bounds" proved="true">
-  <proof prover="1"><result status="valid" time="0.044438" steps="474"/></proof>
+  <proof prover="1"><result status="valid" time="0.044438" steps="477"/></proof>
   </goal>
   <goal name="vc_insertion_sort.30" proved="true">
   <proof prover="1"><result status="valid" time="0.023776" steps="90"/></proof>
@@ -105,25 +105,25 @@
   <proof prover="1" timelimit="5"><result status="valid" time="0.036614" steps="100"/></proof>
   </goal>
   <goal name="vc_insertion_sort.32" expl="mut invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.020047" steps="81"/></proof>
+  <proof prover="1" timelimit="5"><result status="valid" time="0.046260" steps="81"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.33" expl="loop invariant 0" proved="true">
-  <proof prover="1" timelimit="5"><result status="valid" time="0.153724" steps="996"/></proof>
+  <goal name="vc_insertion_sort.33" expl="for invariant" proved="true">
+  <proof prover="1" timelimit="5"><result status="valid" time="0.039760" steps="87"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.34" expl="loop invariant 1" proved="true">
-  <proof prover="1"><result status="valid" time="0.020241" steps="64"/></proof>
+  <goal name="vc_insertion_sort.34" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.053221" steps="89"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.35" expl="loop invariant 2" proved="true">
-  <proof prover="1"><result status="valid" time="0.122231" steps="64"/></proof>
+  <goal name="vc_insertion_sort.35" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.122240" steps="301"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.36" expl="for invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.136170" steps="822"/></proof>
+  <goal name="vc_insertion_sort.36" expl="loop invariant 0" proved="true">
+  <proof prover="1" timelimit="5"><result status="valid" time="0.271739" steps="1050"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.37" expl="for invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.019283" steps="93"/></proof>
+  <goal name="vc_insertion_sort.37" expl="loop invariant 1" proved="true">
+  <proof prover="1" timelimit="5"><result status="valid" time="0.019928" steps="70"/></proof>
   </goal>
-  <goal name="vc_insertion_sort.38" expl="for invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.061961" steps="94"/></proof>
+  <goal name="vc_insertion_sort.38" expl="loop invariant 2" proved="true">
+  <proof prover="1"><result status="valid" time="0.021177" steps="70"/></proof>
   </goal>
   <goal name="vc_insertion_sort.39" expl="integer overflow" proved="true">
   <proof prover="1"><result status="valid" time="0.023747" steps="83"/></proof>
@@ -150,13 +150,13 @@
   <proof prover="1"><result status="valid" time="0.022778" steps="122"/></proof>
   </goal>
   <goal name="vc_insertion_sort.47" expl="loop invariant 2" proved="true">
-  <proof prover="1"><result status="valid" time="0.019738" steps="647"/></proof>
+  <proof prover="1"><result status="valid" time="0.141294" steps="645"/></proof>
   </goal>
   <goal name="vc_insertion_sort.48" expl="loop invariant 3" proved="true">
-  <proof prover="1" timelimit="5"><result status="valid" time="0.227138" steps="2035"/></proof>
+  <proof prover="1" timelimit="5"><result status="valid" time="0.350864" steps="2021"/></proof>
   </goal>
   <goal name="vc_insertion_sort.49" expl="loop invariant 4" proved="true">
-  <proof prover="1"><result status="valid" time="0.047228" steps="507"/></proof>
+  <proof prover="1"><result status="valid" time="0.047228" steps="499"/></proof>
   </goal>
   <goal name="vc_insertion_sort.50" proved="true">
   <proof prover="1" timelimit="5"><result status="valid" time="0.026366" steps="39"/></proof>

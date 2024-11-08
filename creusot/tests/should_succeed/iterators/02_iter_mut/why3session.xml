@@ -94,7 +94,7 @@
   <proof prover="3"><result status="valid" time="0.028208" steps="13141"/></proof>
   </goal>
   <goal name="vc_all_zero.8" expl="postcondition" proved="true">
-  <proof prover="3"><result status="valid" time="0.662101" steps="96216"/></proof>
+  <proof prover="1" timelimit="5"><result status="valid" time="0.130728" steps="284080"/></proof>
   </goal>
   <goal name="vc_all_zero.9" expl="postcondition" proved="true">
   <proof prover="3"><result status="valid" time="0.041646" steps="16798"/></proof>

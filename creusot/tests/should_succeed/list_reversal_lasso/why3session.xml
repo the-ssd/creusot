@@ -135,17 +135,17 @@
        <goal name="vc_list_reversal_lasso.5.0.0.2.0.0" expl="postcondition" proved="true">
        <transf name="split_all_full" proved="true" >
         <goal name="vc_list_reversal_lasso.5.0.0.2.0.0.0" proved="true">
-        <proof prover="0"><result status="valid" time="0.285406" steps="49519"/></proof>
+        <proof prover="0"><result status="valid" time="0.777133" steps="49519"/></proof>
         </goal>
         <goal name="vc_list_reversal_lasso.5.0.0.2.0.0.1" proved="true">
         <transf name="split_vc" proved="true" >
          <goal name="vc_list_reversal_lasso.5.0.0.2.0.0.1.0" proved="true">
-         <proof prover="0"><result status="valid" time="0.554526" steps="87640"/></proof>
+         <proof prover="0"><result status="valid" time="1.643458" steps="87640"/></proof>
          </goal>
         </transf>
         </goal>
         <goal name="vc_list_reversal_lasso.5.0.0.2.0.0.2" proved="true">
-        <proof prover="3"><result status="valid" time="2.020250" steps="14730"/></proof>
+        <proof prover="3"><result status="valid" time="3.974530" steps="14730"/></proof>
         </goal>
         <goal name="vc_list_reversal_lasso.5.0.0.2.0.0.3" proved="true">
         <proof prover="3"><result status="valid" time="0.053100" steps="233"/></proof>

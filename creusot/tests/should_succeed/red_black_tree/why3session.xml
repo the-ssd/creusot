@@ -1216,6 +1216,10 @@
 </theory>
 <theory name="M_red_black_tree__qyi2476155906044564626__delete_rec" proved="true">
  <goal name="vc_delete_rec" proved="true">
+ <proof prover="0"><result status="timeout" time="5.000000" steps="342767"/></proof>
+ <proof prover="2"><result status="timeout" time="5.000000" steps="199267"/></proof>
+ <proof prover="3"><result status="timeout" time="5.000000" steps="26672"/></proof>
+ <proof prover="6" timelimit="5"><result status="timeout" time="5.000000" steps="6179414"/></proof>
  <transf name="split_vc" proved="true" >
   <goal name="vc_delete_rec.0" proved="true">
   <proof prover="6"><result status="valid" time="0.050156" steps="70399"/></proof>
@@ -1529,26 +1533,19 @@
   <proof prover="6"><result status="valid" time="0.443249" steps="773783"/></proof>
   </goal>
   <goal name="vc_delete_rec.100" proved="true">
-  <proof prover="6"><result status="valid" time="0.419791" steps="746162"/></proof>
+  <proof prover="2"><result status="valid" time="0.134993" steps="18520"/></proof>
   </goal>
   <goal name="vc_delete_rec.101" expl="precondition" proved="true">
-  <proof prover="6"><result status="valid" time="0.047052" steps="96274"/></proof>
+  <proof prover="3"><result status="valid" time="0.054501" steps="130"/></proof>
   </goal>
   <goal name="vc_delete_rec.102" expl="precondition" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_delete_rec.102.0" expl="precondition" proved="true">
-   <proof prover="6"><result status="valid" time="0.268456" steps="467888"/></proof>
-   </goal>
-   <goal name="vc_delete_rec.102.1" expl="precondition" proved="true">
-   <proof prover="6"><result status="valid" time="0.301411" steps="497869"/></proof>
-   </goal>
-  </transf>
+  <proof prover="0"><result status="valid" time="0.676670" steps="55270"/></proof>
   </goal>
   <goal name="vc_delete_rec.103" expl="precondition" proved="true">
-  <proof prover="6"><result status="valid" time="0.445282" steps="773781"/></proof>
+  <proof prover="0"><result status="valid" time="0.225268" steps="31921"/></proof>
   </goal>
   <goal name="vc_delete_rec.104" proved="true">
-  <proof prover="6"><result status="valid" time="0.413242" steps="741404"/></proof>
+  <proof prover="2"><result status="valid" time="0.084718" steps="19195"/></proof>
   </goal>
   <goal name="vc_delete_rec.105" proved="true">
   <proof prover="6"><result status="valid" time="0.031617" steps="7288"/></proof>
@@ -1917,17 +1914,16 @@
    <proof prover="6"><result status="valid" time="0.165342" steps="350143"/></proof>
    </goal>
    <goal name="vc_delete_rec.134.2" expl="postcondition" proved="true">
-   <proof prover="0"><result status="valid" time="0.548690" steps="59835"/></proof>
+   <proof prover="0"><result status="valid" time="0.819569" steps="59835"/></proof>
    </goal>
   </transf>
   </goal>
   <goal name="vc_delete_rec.135" expl="postcondition" proved="true">
   <transf name="split_vc" proved="true" >
    <goal name="vc_delete_rec.135.0" expl="postcondition" proved="true">
-   <proof prover="2"><result status="valid" time="0.951594" steps="81682"/></proof>
    <transf name="split_vc" proved="true" >
     <goal name="vc_delete_rec.135.0.0" expl="postcondition" proved="true">
-    <proof prover="2"><result status="valid" time="0.656973" steps="66244"/></proof>
+    <proof prover="2"><result status="valid" time="1.141076" steps="66244"/></proof>
     </goal>
     <goal name="vc_delete_rec.135.0.1" expl="postcondition" proved="true">
     <proof prover="6"><result status="valid" time="0.140710" steps="308840"/></proof>
@@ -2058,7 +2054,7 @@
      <proof prover="6" timelimit="5"><result status="valid" time="0.711247" steps="1334880"/></proof>
      </goal>
      <goal name="vc_delete_rec.137.0.0.1" expl="postcondition" proved="true">
-     <proof prover="2"><result status="valid" time="0.211734" steps="29556"/></proof>
+     <proof prover="2"><result status="valid" time="0.442984" steps="29556"/></proof>
      </goal>
     </transf>
     </goal>
@@ -2084,13 +2080,13 @@
     <goal name="vc_delete_rec.137.2.2" expl="postcondition" proved="true">
     <transf name="split_vc" proved="true" >
      <goal name="vc_delete_rec.137.2.2.0" expl="postcondition" proved="true">
-     <proof prover="6"><result status="valid" time="0.447138" steps="690555"/></proof>
+     <proof prover="3"><result status="valid" time="0.259217" steps="1729"/></proof>
      </goal>
      <goal name="vc_delete_rec.137.2.2.1" expl="postcondition" proved="true">
-     <proof prover="6"><result status="valid" time="0.487681" steps="818262"/></proof>
+     <proof prover="0"><result status="valid" time="0.619954" steps="58003"/></proof>
      </goal>
      <goal name="vc_delete_rec.137.2.2.2" expl="postcondition" proved="true">
-     <proof prover="6"><result status="valid" time="0.424501" steps="738753"/></proof>
+     <proof prover="0"><result status="valid" time="0.439028" steps="52363"/></proof>
      </goal>
     </transf>
     </goal>
@@ -2227,13 +2223,13 @@
   <goal name="vc_delete_max.20" expl="postcondition" proved="true">
   <transf name="split_vc" proved="true" >
    <goal name="vc_delete_max.20.0" expl="postcondition" proved="true">
-   <proof prover="6"><result status="valid" time="0.076721" steps="125768"/></proof>
+   <proof prover="6" timelimit="5"><result status="valid" time="0.076721" steps="125768"/></proof>
    </goal>
    <goal name="vc_delete_max.20.1" expl="postcondition" proved="true">
-   <proof prover="6"><result status="valid" time="0.792853" steps="1226403"/></proof>
+   <proof prover="0"><result status="valid" time="0.464056" steps="36967"/></proof>
    </goal>
    <goal name="vc_delete_max.20.2" expl="postcondition" proved="true">
-   <proof prover="6"><result status="valid" time="0.412218" steps="730877"/></proof>
+   <proof prover="6" timelimit="5"><result status="valid" time="0.715400" steps="730877"/></proof>
    </goal>
   </transf>
   </goal>
@@ -2253,7 +2249,7 @@
   <proof prover="6"><result status="valid" time="0.073628" steps="131659"/></proof>
   </goal>
   <goal name="vc_delete_max.26" expl="type invariant" proved="true">
-  <proof prover="6"><result status="valid" time="0.766126" steps="1135947"/></proof>
+  <proof prover="2"><result status="valid" time="0.983737" steps="42683"/></proof>
   </goal>
   <goal name="vc_delete_max.27" expl="postcondition" proved="true">
   <proof prover="6"><result status="valid" time="0.097204" steps="82444"/></proof>

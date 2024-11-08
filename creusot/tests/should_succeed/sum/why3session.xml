@@ -2,56 +2,502 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "https://www.why3.org/why3session.dtd">
 <why3session shape_version="6">
-<prover id="0" name="Z3" version="4.12.4" timelimit="1" steplimit="0" memlimit="1000"/>
-<prover id="1" name="CVC5" version="1.0.5" timelimit="5" steplimit="0" memlimit="1000"/>
-<prover id="2" name="CVC4" version="1.8" timelimit="5" steplimit="0" memlimit="1000"/>
-<prover id="4" name="Alt-Ergo" version="2.6.0" timelimit="1" steplimit="0" memlimit="1000"/>
-<file format="coma" proved="true">
+<prover id="0" name="Z3" version="4.12.4" timelimit="2.5" memlimit="1000"/>
+<prover id="1" name="CVC4" version="1.8" timelimit="2.5" memlimit="1000"/>
+<prover id="2" name="CVC5" version="1.0.5" timelimit="2.5" memlimit="1000"/>
+<prover id="3" name="Alt-Ergo" version="2.6.0" timelimit="2.5" memlimit="1000"/>
+<file format="coma">
 <path name=".."/><path name="sum.coma"/>
-<theory name="M_sum__sum_first_n" proved="true">
- <goal name="vc_sum_first_n" proved="true">
- <transf name="split_vc" proved="true" >
-  <goal name="vc_sum_first_n.0" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.015510" steps="4"/></proof>
+<theory name="T_core__ops__range__RangeInclusive">
+ <goal name="vc_t_RangeInclusive">
+ <proof prover="0" timelimit="0.5246"><result status="valid" time="0.024600" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="T_core__option__Option">
+ <goal name="vc_v_None">
+ <proof prover="0" timelimit="0.5221"><result status="valid" time="0.022100" steps="0"/></proof>
+ </goal>
+ <goal name="vc_v_Some">
+ <proof prover="0" timelimit="0.5221"><result status="valid" time="0.022100" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="M_sum__sum_first_n">
+ <goal name="vc_next&#39;0">
+ <proof prover="0" timelimit="0.5371"><result status="valid" time="0.037100" steps="0"/></proof>
+ </goal>
+ <goal name="vc_into_iter&#39;0">
+ <proof prover="0" timelimit="0.5259"><result status="valid" time="0.025900" steps="0"/></proof>
+ </goal>
+ <goal name="vc_new&#39;0">
+ <proof prover="0" timelimit="0.5259"><result status="valid" time="0.025900" steps="0"/></proof>
+ </goal>
+ <goal name="vc_sum_first_n">
+ <transf name="split_vc" >
+  <goal name="vc_sum_first_n.0" expl="precondition">
+  <proof prover="0" timelimit="0.5674"><result status="valid" time="0.067400" steps="0"/></proof>
   </goal>
-  <goal name="vc_sum_first_n.1" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.015236" steps="34576"/></proof>
+  <goal name="vc_sum_first_n.1" expl="precondition">
+  <proof prover="0" timelimit="0.5659"><result status="valid" time="0.065900" steps="0"/></proof>
   </goal>
-  <goal name="vc_sum_first_n.2" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.014648" steps="10"/></proof>
+  <goal name="vc_sum_first_n.2" expl="precondition">
+  <proof prover="0" timelimit="0.5606"><result status="valid" time="0.060600" steps="0"/></proof>
   </goal>
-  <goal name="vc_sum_first_n.3" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.014919" steps="10"/></proof>
+  <goal name="vc_sum_first_n.3" expl="precondition">
+  <proof prover="0" timelimit="0.5596"><result status="valid" time="0.059600" steps="0"/></proof>
   </goal>
-  <goal name="vc_sum_first_n.4" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.009981" steps="64755"/></proof>
+  <goal name="vc_sum_first_n.4" expl="for invariant">
+  <proof prover="0" timelimit="0.5708"><result status="valid" time="0.070800" steps="0"/></proof>
   </goal>
-  <goal name="vc_sum_first_n.5" expl="loop invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.020376" steps="102"/></proof>
+  <goal name="vc_sum_first_n.5" expl="for invariant">
+  <proof prover="0" timelimit="0.5517"><result status="valid" time="0.051700" steps="0"/></proof>
   </goal>
-  <goal name="vc_sum_first_n.6" expl="loop invariant" proved="true">
-  <proof prover="4" timelimit="5"><result status="valid" time="0.016449" steps="18"/></proof>
+  <goal name="vc_sum_first_n.6" expl="for invariant">
+  <proof prover="0" timelimit="0.5628"><result status="valid" time="0.062800" steps="0"/></proof>
   </goal>
-  <goal name="vc_sum_first_n.7" expl="loop invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.017944" steps="34"/></proof>
+  <goal name="vc_sum_first_n.7" expl="loop invariant 0">
+  <proof prover="0" timelimit="0.5691"><result status="valid" time="0.069100" steps="0"/></proof>
   </goal>
-  <goal name="vc_sum_first_n.8" expl="precondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.018671" steps="43"/></proof>
+  <goal name="vc_sum_first_n.8" expl="precondition">
+  <proof prover="0" timelimit="0.5593"><result status="valid" time="0.059300" steps="0"/></proof>
   </goal>
-  <goal name="vc_sum_first_n.9" expl="postcondition" proved="true">
-  <proof prover="4"><result status="valid" time="0.048060" steps="892"/></proof>
+  <goal name="vc_sum_first_n.9" expl="postcondition">
+  <proof prover="3" timelimit="0.724"><result status="valid" time="0.224000" steps="0"/></proof>
   </goal>
-  <goal name="vc_sum_first_n.10" expl="integer overflow" proved="true">
-  <transf name="split_vc" proved="true" >
-   <goal name="vc_sum_first_n.10.0" expl="integer overflow" proved="true">
-   <transf name="inline_goal" proved="true" >
-    <goal name="vc_sum_first_n.10.0.0" expl="integer overflow" proved="true">
-    <transf name="split_vc" proved="true" >
-     <goal name="vc_sum_first_n.10.0.0.0" expl="integer overflow" proved="true">
-     <proof prover="1" timelimit="1"><result status="valid" time="0.041703" steps="11580"/></proof>
+  <goal name="vc_sum_first_n.10" expl="integer overflow">
+  <transf name="split_vc" >
+   <goal name="vc_sum_first_n.10.0" expl="integer overflow">
+   <transf name="inline_goal" >
+    <goal name="vc_sum_first_n.10.0.0" expl="integer overflow">
+    <proof prover="3" timelimit="1.229"><result status="valid" time="0.729000" steps="0"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="vc_sum_first_n.11" expl="for invariant">
+  <proof prover="0" timelimit="0.5831"><result status="valid" time="0.083100" steps="0"/></proof>
+  </goal>
+  <goal name="vc_sum_first_n.12" expl="for invariant">
+  <proof prover="0" timelimit="0.5709"><result status="valid" time="0.070900" steps="0"/></proof>
+  </goal>
+  <goal name="vc_sum_first_n.13" expl="for invariant">
+  <proof prover="0" timelimit="0.5856"><result status="valid" time="0.085600" steps="0"/></proof>
+  </goal>
+  <goal name="vc_sum_first_n.14" expl="loop invariant 0">
+  <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+  <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+  <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+  <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+  <transf name="inline_goal" >
+   <goal name="vc_sum_first_n.14.0" expl="loop invariant 0">
+   <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <transf name="inline_trivial" >
+    <goal name="vc_sum_first_n.14.0.0" expl="loop invariant 0">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="remove_unused" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="split_vc" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
      </goal>
-     <goal name="vc_sum_first_n.10.0.0.1" expl="integer overflow" proved="true">
-     <proof prover="0" timelimit="30"><result status="valid" time="4.693776" steps="5946958"/></proof>
+    </transf>
+    <transf name="split_vc" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="remove_unused" >
+    <goal name="vc_sum_first_n.14.0.0" expl="loop invariant 0">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_trivial" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     <transf name="split_vc" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="split_vc" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_trivial" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="split_vc" >
+    <goal name="vc_sum_first_n.14.0.0" expl="loop invariant 0">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_trivial" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="remove_unused" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_trivial" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  <transf name="inline_trivial" >
+   <goal name="vc_sum_first_n.14.0" expl="loop invariant 0">
+   <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <transf name="remove_unused" >
+    <goal name="vc_sum_first_n.14.0.0" expl="loop invariant 0">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="split_vc" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="split_vc" >
+    <goal name="vc_sum_first_n.14.0.0" expl="loop invariant 0">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="remove_unused" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  <transf name="remove_unused" >
+   <goal name="vc_sum_first_n.14.0" expl="loop invariant 0">
+   <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <transf name="inline_goal" >
+    <goal name="vc_sum_first_n.14.0.0" expl="loop invariant 0">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_trivial" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     <transf name="split_vc" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="split_vc" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_trivial" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="inline_trivial" >
+    <goal name="vc_sum_first_n.14.0.0" expl="loop invariant 0">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="remove_unused" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="split_vc" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="split_vc" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="split_vc" >
+    <goal name="vc_sum_first_n.14.0.0" expl="loop invariant 0">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_goal" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_trivial" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="inline_trivial" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  <transf name="split_vc" >
+   <goal name="vc_sum_first_n.14.0" expl="loop invariant 0">
+   <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+   <transf name="inline_goal" >
+    <goal name="vc_sum_first_n.14.0.0" expl="loop invariant 0">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_trivial" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="remove_unused" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_trivial" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="inline_trivial" >
+    <goal name="vc_sum_first_n.14.0.0" expl="loop invariant 0">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="remove_unused" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     </goal>
+    </transf>
+    </goal>
+   </transf>
+   <transf name="remove_unused" >
+    <goal name="vc_sum_first_n.14.0.0" expl="loop invariant 0">
+    <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+    <transf name="inline_goal" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="inline_trivial" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
+     </goal>
+    </transf>
+    <transf name="inline_trivial" >
+     <goal name="vc_sum_first_n.14.0.0.0" expl="loop invariant 0">
+     <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+     <transf name="remove_unused" >
+      <goal name="vc_sum_first_n.14.0.0.0.0" expl="loop invariant 0">
+      <proof prover="0"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="1"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="2"><result status="timeout" time="2.000000" steps="0"/></proof>
+      <proof prover="3"><result status="timeout" time="2.000000" steps="0"/></proof>
+      </goal>
+     </transf>
      </goal>
     </transf>
     </goal>
@@ -59,20 +505,8 @@
    </goal>
   </transf>
   </goal>
-  <goal name="vc_sum_first_n.11" expl="loop invariant" proved="true">
-  <proof prover="4"><result status="valid" time="0.113924" steps="1913"/></proof>
-  </goal>
-  <goal name="vc_sum_first_n.12" expl="loop invariant" proved="true">
-  <proof prover="2"><result status="valid" time="0.064832" steps="18932"/></proof>
-  </goal>
-  <goal name="vc_sum_first_n.13" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.069900" steps="10151"/></proof>
-  </goal>
-  <goal name="vc_sum_first_n.14" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.085982" steps="10156"/></proof>
-  </goal>
-  <goal name="vc_sum_first_n.15" proved="true">
-  <proof prover="1" timelimit="1"><result status="valid" time="0.037474" steps="9996"/></proof>
+  <goal name="vc_sum_first_n.15">
+  <proof prover="0" timelimit="0.5886"><result status="valid" time="0.088600" steps="0"/></proof>
   </goal>
  </transf>
  </goal>

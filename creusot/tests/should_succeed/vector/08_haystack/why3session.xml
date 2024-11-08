@@ -17,7 +17,7 @@
   <proof prover="1"><result status="valid" time="0.016739" steps="10"/></proof>
   </goal>
   <goal name="vc_search.2" expl="integer overflow" proved="true">
-  <proof prover="1"><result status="valid" time="0.018292" steps="20"/></proof>
+  <proof prover="1"><result status="valid" time="0.018292" steps="19"/></proof>
   </goal>
   <goal name="vc_search.3" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" time="0.020395" steps="75486"/></proof>
@@ -31,17 +31,17 @@
   <goal name="vc_search.6" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.017153" steps="20"/></proof>
   </goal>
-  <goal name="vc_search.7" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.019366" steps="43"/></proof>
+  <goal name="vc_search.7" expl="for invariant" proved="true">
+  <proof prover="3"><result status="valid" time="0.104293" steps="10698"/></proof>
   </goal>
-  <goal name="vc_search.8" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.021995" steps="99"/></proof>
+  <goal name="vc_search.8" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.109570" steps="26"/></proof>
   </goal>
-  <goal name="vc_search.9" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.017484" steps="26"/></proof>
+  <goal name="vc_search.9" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.023444" steps="100"/></proof>
   </goal>
-  <goal name="vc_search.10" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.019172" steps="38"/></proof>
+  <goal name="vc_search.10" expl="loop invariant 0" proved="true">
+  <proof prover="0"><result status="valid" time="0.032172" steps="106344"/></proof>
   </goal>
   <goal name="vc_search.11" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.019548" steps="45"/></proof>
@@ -50,34 +50,34 @@
   <proof prover="1"><result status="valid" time="0.020048" steps="51"/></proof>
   </goal>
   <goal name="vc_search.13" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.025015" steps="119314"/></proof>
+  <proof prover="0"><result status="valid" time="0.025015" steps="119316"/></proof>
   </goal>
   <goal name="vc_search.14" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.019615" steps="42"/></proof>
   </goal>
-  <goal name="vc_search.15" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.065020" steps="658"/></proof>
+  <goal name="vc_search.15" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.065020" steps="64"/></proof>
   </goal>
-  <goal name="vc_search.16" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.026167" steps="119336"/></proof>
+  <goal name="vc_search.16" expl="for invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.030681" steps="8788"/></proof>
   </goal>
-  <goal name="vc_search.17" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.018713" steps="48"/></proof>
+  <goal name="vc_search.17" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.019172" steps="70"/></proof>
   </goal>
-  <goal name="vc_search.18" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.024050" steps="119239"/></proof>
+  <goal name="vc_search.18" expl="loop invariant 0" proved="true">
+  <proof prover="1"><result status="valid" time="0.177215" steps="996"/></proof>
   </goal>
   <goal name="vc_search.19" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.023255" steps="80"/></proof>
   </goal>
   <goal name="vc_search.20" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.032347" steps="292"/></proof>
+  <proof prover="1"><result status="valid" time="0.027374" steps="268"/></proof>
   </goal>
   <goal name="vc_search.21" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.129266" steps="1529"/></proof>
+  <proof prover="1"><result status="valid" time="0.315141" steps="1509"/></proof>
   </goal>
   <goal name="vc_search.22" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.029680" steps="175"/></proof>
+  <proof prover="1"><result status="valid" time="0.029680" steps="180"/></proof>
   </goal>
   <goal name="vc_search.23" expl="precondition" proved="true">
   <proof prover="1"><result status="valid" time="0.023256" steps="86"/></proof>
@@ -86,43 +86,43 @@
   <proof prover="1"><result status="valid" time="0.024085" steps="88"/></proof>
   </goal>
   <goal name="vc_search.25" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.035030" steps="165921"/></proof>
+  <proof prover="0"><result status="valid" time="0.035030" steps="165927"/></proof>
   </goal>
   <goal name="vc_search.26" expl="integer overflow" proved="true">
-  <proof prover="1"><result status="valid" time="0.134237" steps="1437"/></proof>
+  <proof prover="1"><result status="valid" time="0.330335" steps="1467"/></proof>
   </goal>
   <goal name="vc_search.27" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.024324" steps="102"/></proof>
+  <proof prover="1" timelimit="5"><result status="valid" time="0.024324" steps="101"/></proof>
   </goal>
   <goal name="vc_search.28" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.024466" steps="103"/></proof>
+  <proof prover="0"><result status="valid" time="0.027626" steps="127276"/></proof>
   </goal>
   <goal name="vc_search.29" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.282094" steps="3080"/></proof>
+  <proof prover="1"><result status="valid" time="0.838970" steps="3088"/></proof>
   </goal>
-  <goal name="vc_search.30" expl="loop invariant" proved="true">
-  <proof prover="3"><result status="valid" time="0.262664" steps="33576"/></proof>
+  <goal name="vc_search.30" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.021995" steps="115"/></proof>
   </goal>
-  <goal name="vc_search.31" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.109570" steps="1303"/></proof>
+  <goal name="vc_search.31" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.018713" steps="116"/></proof>
   </goal>
-  <goal name="vc_search.32" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.030681" steps="130967"/></proof>
+  <goal name="vc_search.32" expl="for invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.024050" steps="142292"/></proof>
   </goal>
-  <goal name="vc_search.33" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.024424" steps="122"/></proof>
+  <goal name="vc_search.33" expl="loop invariant 0" proved="true">
+  <proof prover="3"><result status="valid" time="0.481121" steps="33499"/></proof>
   </goal>
-  <goal name="vc_search.34" expl="loop invariant" proved="true">
-  <proof prover="3"><result status="valid" time="0.311155" steps="69436"/></proof>
+  <goal name="vc_search.34" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.037844" steps="112"/></proof>
   </goal>
-  <goal name="vc_search.35" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.037844" steps="328"/></proof>
+  <goal name="vc_search.35" expl="for invariant" proved="true">
+  <proof prover="0"><result status="valid" time="0.026167" steps="130296"/></proof>
   </goal>
-  <goal name="vc_search.36" expl="loop invariant" proved="true">
-  <proof prover="1"><result status="valid" time="0.023444" steps="113"/></proof>
+  <goal name="vc_search.36" expl="for invariant" proved="true">
+  <proof prover="1"><result status="valid" time="0.121986" steps="329"/></proof>
   </goal>
-  <goal name="vc_search.37" expl="loop invariant" proved="true">
-  <proof prover="0"><result status="valid" time="0.032172" steps="131373"/></proof>
+  <goal name="vc_search.37" expl="loop invariant 0" proved="true">
+  <proof prover="3" timelimit="5"><result status="valid" time="1.568729" steps="88737"/></proof>
   </goal>
   <goal name="vc_search.38" proved="true">
   <proof prover="1"><result status="valid" time="0.022536" steps="84"/></proof>
@@ -131,10 +131,10 @@
   <proof prover="1"><result status="valid" time="0.020635" steps="49"/></proof>
   </goal>
   <goal name="vc_search.40" expl="precondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.027626" steps="108872"/></proof>
+  <proof prover="1"><result status="valid" time="0.024466" steps="56"/></proof>
   </goal>
   <goal name="vc_search.41" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.027374" steps="169"/></proof>
+  <proof prover="1"><result status="valid" time="0.032347" steps="167"/></proof>
   </goal>
   <goal name="vc_search.42" expl="postcondition" proved="true">
   <proof prover="1"><result status="valid" time="0.019197" steps="50"/></proof>

@@ -35,10 +35,10 @@ module M_insertion_sort__insertion_sort [#"insertion_sort.rs" 21 0 21 40]
   let%span sinsertion_sort1 = "insertion_sort.rs" 27 13 27 14
   let%span sinsertion_sort2 = "insertion_sort.rs" 27 4 27 7
   let%span sinsertion_sort3 = "insertion_sort.rs" 27 4 27 7
-  let%span sinsertion_sort4 = "insertion_sort.rs" 27 4 27 7
-  let%span sinsertion_sort5 = "insertion_sort.rs" 26 16 26 48
-  let%span sinsertion_sort6 = "insertion_sort.rs" 25 16 25 34
-  let%span sinsertion_sort7 = "insertion_sort.rs" 24 16 24 59
+  let%span sinsertion_sort4 = "insertion_sort.rs" 26 16 26 48
+  let%span sinsertion_sort5 = "insertion_sort.rs" 25 16 25 34
+  let%span sinsertion_sort6 = "insertion_sort.rs" 24 16 24 59
+  let%span sinsertion_sort7 = "insertion_sort.rs" 27 4 27 7
   let%span sinsertion_sort8 = "insertion_sort.rs" 27 4 27 7
   let%span sinsertion_sort9 = "insertion_sort.rs" 33 20 33 81
   let%span sinsertion_sort10 = "insertion_sort.rs" 32 20 32 122
@@ -56,11 +56,11 @@ module M_insertion_sort__insertion_sort [#"insertion_sort.rs" 21 0 21 40]
   let%span sinsertion_sort22 = "insertion_sort.rs" 20 10 20 27
   let%span sslice23 = "../../../creusot-contracts/src/std/slice.rs" 249 0 358 1
   let%span siter24 = "../../../creusot-contracts/src/std/iter.rs" 101 0 214 1
-  let%span srange25 = "../../../creusot-contracts/src/std/iter/range.rs" 23 12 27 70
-  let%span ssnapshot26 = "../../../creusot-contracts/src/snapshot.rs" 27 20 27 39
-  let%span smodel27 = "../../../creusot-contracts/src/model.rs" 109 8 109 22
-  let%span sseq28 = "../../../creusot-contracts/src/logic/seq.rs" 181 8 181 37
-  let%span sinsertion_sort29 = "insertion_sort.rs" 8 8 8 72
+  let%span ssnapshot25 = "../../../creusot-contracts/src/snapshot.rs" 27 20 27 39
+  let%span smodel26 = "../../../creusot-contracts/src/model.rs" 109 8 109 22
+  let%span sseq27 = "../../../creusot-contracts/src/logic/seq.rs" 181 8 181 37
+  let%span sinsertion_sort28 = "insertion_sort.rs" 8 8 8 72
+  let%span srange29 = "../../../creusot-contracts/src/std/iter/range.rs" 23 12 27 70
   let%span siter30 = "../../../creusot-contracts/src/std/iter.rs" 107 26 110 17
   let%span sops31 = "../../../creusot-contracts/src/logic/ops.rs" 53 8 53 32
   let%span sops32 = "../../../creusot-contracts/src/logic/ops.rs" 42 8 42 31
@@ -117,6 +117,14 @@ module M_insertion_sort__insertion_sort [#"insertion_sort.rs" 21 0 21 40]
   
   use seq.Seq
   
+  predicate inv'1 (_1 : Seq.seq usize)
+  
+  axiom inv_axiom'1 [@rewrite] : forall x : Seq.seq usize [inv'1 x] . inv'1 x = true
+  
+  predicate inv'0 (_1 : Range'0.t_Range usize)
+  
+  axiom inv_axiom'0 [@rewrite] : forall x : Range'0.t_Range usize [inv'0 x] . inv'0 x = true
+  
   use seq.Seq
   
   use seq.Seq
@@ -133,7 +141,7 @@ module M_insertion_sort__insertion_sort [#"insertion_sort.rs" 21 0 21 40]
   use T_core__ops__range__Range as T_core__ops__range__Range
   
   predicate produces'0 (self : Range'0.t_Range usize) (visited : Seq.seq usize) (o : Range'0.t_Range usize) =
-    [%#srange25] T_core__ops__range__Range.t_Range__end self = T_core__ops__range__Range.t_Range__end o
+    [%#srange29] T_core__ops__range__Range.t_Range__end self = T_core__ops__range__Range.t_Range__end o
     /\ deep_model'0 (T_core__ops__range__Range.t_Range__start self)
     <= deep_model'0 (T_core__ops__range__Range.t_Range__start o)
     /\ (Seq.length visited > 0
@@ -145,14 +153,12 @@ module M_insertion_sort__insertion_sort [#"insertion_sort.rs" 21 0 21 40]
     /\ (forall i : int . 0 <= i /\ i < Seq.length visited
      -> deep_model'0 (Seq.get visited i) = deep_model'0 (T_core__ops__range__Range.t_Range__start self) + i)
   
-  predicate inv'1 (_1 : Range'0.t_Range usize)
-  
   function produces_trans'0 (a : Range'0.t_Range usize) (ab : Seq.seq usize) (b : Range'0.t_Range usize) (bc : Seq.seq usize) (c : Range'0.t_Range usize) : ()
     
   
-  axiom produces_trans'0_spec : forall a : Range'0.t_Range usize, ab : Seq.seq usize, b : Range'0.t_Range usize, bc : Seq.seq usize, c : Range'0.t_Range usize . ([%#srange44] inv'1 a)
-   -> ([%#srange45] inv'1 b)
-   -> ([%#srange46] inv'1 c)
+  axiom produces_trans'0_spec : forall a : Range'0.t_Range usize, ab : Seq.seq usize, b : Range'0.t_Range usize, bc : Seq.seq usize, c : Range'0.t_Range usize . ([%#srange44] inv'0 a)
+   -> ([%#srange45] inv'0 b)
+   -> ([%#srange46] inv'0 c)
    -> ([%#srange47] produces'0 a ab b)
    -> ([%#srange48] produces'0 b bc c)  -> ([%#srange49] produces'0 a (Seq.(++) ab bc) c)
   
@@ -160,21 +166,15 @@ module M_insertion_sort__insertion_sort [#"insertion_sort.rs" 21 0 21 40]
   
   function produces_refl'0 (self : Range'0.t_Range usize) : ()
   
-  axiom produces_refl'0_spec : forall self : Range'0.t_Range usize . ([%#srange42] inv'1 self)
+  axiom produces_refl'0_spec : forall self : Range'0.t_Range usize . ([%#srange42] inv'0 self)
    -> ([%#srange43] produces'0 self (Seq.empty  : Seq.seq usize) self)
-  
-  axiom inv_axiom'1 [@rewrite] : forall x : Range'0.t_Range usize [inv'1 x] . inv'1 x = true
-  
-  predicate inv'0 (_1 : Seq.seq usize)
-  
-  axiom inv_axiom'0 [@rewrite] : forall x : Seq.seq usize [inv'0 x] . inv'0 x = true
   
   use seq.Seq
   
   use seq.Seq
   
   predicate sorted_range'0 [#"insertion_sort.rs" 6 0 6 63] (s : Seq.seq int32) (l : int) (u : int) =
-    [%#sinsertion_sort29] forall i : int, j : int . l <= i /\ i < j /\ j < u  -> Seq.get s i <= Seq.get s j
+    [%#sinsertion_sort28] forall i : int, j : int . l <= i /\ i < j /\ j < u  -> Seq.get s i <= Seq.get s j
   
   use seq.Seq
   
@@ -207,7 +207,7 @@ module M_insertion_sort__insertion_sort [#"insertion_sort.rs" 21 0 21 40]
   use seq.Permut
   
   function view'1 (self : borrowed (slice int32)) : Seq.seq int32 =
-    [%#smodel27] view'2 self.current
+    [%#smodel26] view'2 self.current
   
   let rec swap'0 (self:borrowed (slice int32)) (a:usize) (b:usize) (return'  (ret:()))= {[@expl:precondition] inv'5 self}
     {[@expl:precondition] [%#sslice34] UIntSize.to_int b < Seq.length (view'1 self)}
@@ -248,22 +248,22 @@ module M_insertion_sort__insertion_sort [#"insertion_sort.rs" 21 0 21 40]
   
   use prelude.prelude.Snapshot
   
+  use prelude.prelude.Snapshot
+  
+  use prelude.prelude.Snapshot
+  
+  use prelude.prelude.Snapshot
+  
   use seq.Permut
   
   predicate permutation_of'0 (self : Seq.seq int32) (o : Seq.seq int32) =
-    [%#sseq28] Permut.permut self o 0 (Seq.length self)
+    [%#sseq27] Permut.permut self o 0 (Seq.length self)
   
   function view'4 (self : borrowed (slice int32)) : Seq.seq int32 =
     [%#smodel39] view'1 self
   
   function view'0 (self : Snapshot.snap_ty (borrowed (slice int32))) : Seq.seq int32 =
-    [%#ssnapshot26] view'4 (Snapshot.inner self)
-  
-  use prelude.prelude.Snapshot
-  
-  use prelude.prelude.Snapshot
-  
-  use prelude.prelude.Snapshot
+    [%#ssnapshot25] view'4 (Snapshot.inner self)
   
   use prelude.prelude.Snapshot
   
@@ -275,10 +275,10 @@ module M_insertion_sort__insertion_sort [#"insertion_sort.rs" 21 0 21 40]
   predicate into_iter_pre'0 (self : Range'0.t_Range usize) =
     [%#siter40] true
   
-  let rec into_iter'0 (self:Range'0.t_Range usize) (return'  (ret:Range'0.t_Range usize))= {[@expl:precondition] inv'1 self}
+  let rec into_iter'0 (self:Range'0.t_Range usize) (return'  (ret:Range'0.t_Range usize))= {[@expl:precondition] inv'0 self}
     {[@expl:precondition] [%#siter24] into_iter_pre'0 self}
     any
-    [ return' (result:Range'0.t_Range usize)-> {inv'1 result}
+    [ return' (result:Range'0.t_Range usize)-> {inv'0 result}
       {[%#siter24] into_iter_post'0 self result}
       (! return' {result}) ]
     
@@ -308,13 +308,13 @@ module M_insertion_sort__insertion_sort [#"insertion_sort.rs" 21 0 21 40]
     | bb5 = s0 [ s0 =  [ &old_6_0 <- Snapshot.new array ] s1 | s1 = bb6 ] 
     | bb6 = bb6
       [ bb6 = {[@expl:mut invariant] (Snapshot.inner old_6_0).final = array.final}
-        {[@expl:loop invariant 0] [%#sinsertion_sort7] sorted_range'0 (view'1 array) 0 (Seq.length (Snapshot.inner produced)
+        {[@expl:for invariant] [%#sinsertion_sort7] inv'1 (Snapshot.inner produced)}
+        {[@expl:for invariant] [%#sinsertion_sort7] inv'0 iter}
+        {[@expl:for invariant] [%#sinsertion_sort7] produces'0 (Snapshot.inner iter_old) (Snapshot.inner produced) iter}
+        {[@expl:loop invariant 0] [%#sinsertion_sort6] sorted_range'0 (view'1 array) 0 (Seq.length (Snapshot.inner produced)
         + 1)}
-        {[@expl:loop invariant 1] [%#sinsertion_sort6] Seq.length (view'1 array) = UIntSize.to_int n}
-        {[@expl:loop invariant 2] [%#sinsertion_sort5] permutation_of'0 (view'0 original) (view'1 array)}
-        {[@expl:for invariant] [%#sinsertion_sort4] produces'0 (Snapshot.inner iter_old) (Snapshot.inner produced) iter}
-        {[@expl:for invariant] [%#sinsertion_sort4] inv'1 iter}
-        {[@expl:for invariant] [%#sinsertion_sort4] inv'0 (Snapshot.inner produced)}
+        {[@expl:loop invariant 1] [%#sinsertion_sort5] Seq.length (view'1 array) = UIntSize.to_int n}
+        {[@expl:loop invariant 2] [%#sinsertion_sort4] permutation_of'0 (view'0 original) (view'1 array)}
         (! s0) [ s0 = bb7 ] 
         [ bb7 = s0
           [ s0 = Borrow.borrow_mut <Range'0.t_Range usize> {iter}

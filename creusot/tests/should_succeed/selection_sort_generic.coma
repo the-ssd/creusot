@@ -130,17 +130,17 @@ module M_selection_sort_generic__selection_sort [#"selection_sort_generic.rs" 30
   let%span sselection_sort_generic1 = "selection_sort_generic.rs" 39 13 39 14
   let%span sselection_sort_generic2 = "selection_sort_generic.rs" 39 4 39 7
   let%span sselection_sort_generic3 = "selection_sort_generic.rs" 39 4 39 7
-  let%span sselection_sort_generic4 = "selection_sort_generic.rs" 39 4 39 7
-  let%span sselection_sort_generic5 = "selection_sort_generic.rs" 38 16 38 57
-  let%span sselection_sort_generic6 = "selection_sort_generic.rs" 37 16 37 63
-  let%span sselection_sort_generic7 = "selection_sort_generic.rs" 36 16 36 41
+  let%span sselection_sort_generic4 = "selection_sort_generic.rs" 38 16 38 57
+  let%span sselection_sort_generic5 = "selection_sort_generic.rs" 37 16 37 63
+  let%span sselection_sort_generic6 = "selection_sort_generic.rs" 36 16 36 41
+  let%span sselection_sort_generic7 = "selection_sort_generic.rs" 39 4 39 7
   let%span sselection_sort_generic8 = "selection_sort_generic.rs" 39 4 39 7
   let%span sselection_sort_generic9 = "selection_sort_generic.rs" 44 22 44 23
   let%span sselection_sort_generic10 = "selection_sort_generic.rs" 44 8 44 11
   let%span sselection_sort_generic11 = "selection_sort_generic.rs" 44 8 44 11
-  let%span sselection_sort_generic12 = "selection_sort_generic.rs" 44 8 44 11
-  let%span sselection_sort_generic13 = "selection_sort_generic.rs" 43 20 43 64
-  let%span sselection_sort_generic14 = "selection_sort_generic.rs" 42 20 42 119
+  let%span sselection_sort_generic12 = "selection_sort_generic.rs" 43 20 43 64
+  let%span sselection_sort_generic13 = "selection_sort_generic.rs" 42 20 42 119
+  let%span sselection_sort_generic14 = "selection_sort_generic.rs" 44 8 44 11
   let%span sselection_sort_generic15 = "selection_sort_generic.rs" 44 8 44 11
   let%span sselection_sort_generic16 = "selection_sort_generic.rs" 50 8 51 63
   let%span sselection_sort_generic17 = "selection_sort_generic.rs" 30 42 30 43
@@ -148,13 +148,13 @@ module M_selection_sort_generic__selection_sort [#"selection_sort_generic.rs" 30
   let%span sselection_sort_generic19 = "selection_sort_generic.rs" 29 10 29 34
   let%span svec20 = "../../../creusot-contracts/src/std/vec.rs" 86 26 86 48
   let%span siter21 = "../../../creusot-contracts/src/std/iter.rs" 101 0 214 1
-  let%span srange22 = "../../../creusot-contracts/src/std/iter/range.rs" 23 12 27 70
-  let%span smodel23 = "../../../creusot-contracts/src/model.rs" 100 8 100 28
-  let%span sselection_sort_generic24 = "selection_sort_generic.rs" 25 16 25 105
-  let%span sselection_sort_generic25 = "selection_sort_generic.rs" 12 8 12 72
-  let%span smodel26 = "../../../creusot-contracts/src/model.rs" 109 8 109 22
-  let%span ssnapshot27 = "../../../creusot-contracts/src/snapshot.rs" 27 20 27 39
-  let%span sseq28 = "../../../creusot-contracts/src/logic/seq.rs" 181 8 181 37
+  let%span smodel22 = "../../../creusot-contracts/src/model.rs" 100 8 100 28
+  let%span sselection_sort_generic23 = "selection_sort_generic.rs" 25 16 25 105
+  let%span sselection_sort_generic24 = "selection_sort_generic.rs" 12 8 12 72
+  let%span smodel25 = "../../../creusot-contracts/src/model.rs" 109 8 109 22
+  let%span ssnapshot26 = "../../../creusot-contracts/src/snapshot.rs" 27 20 27 39
+  let%span sseq27 = "../../../creusot-contracts/src/logic/seq.rs" 181 8 181 37
+  let%span srange28 = "../../../creusot-contracts/src/std/iter/range.rs" 23 12 27 70
   let%span siter29 = "../../../creusot-contracts/src/std/iter.rs" 107 26 110 17
   let%span svec30 = "../../../creusot-contracts/src/std/vec.rs" 165 27 165 46
   let%span svec31 = "../../../creusot-contracts/src/std/vec.rs" 166 26 166 54
@@ -377,6 +377,14 @@ module M_selection_sort_generic__selection_sort [#"selection_sort_generic.rs" 30
   
   use seq.Seq
   
+  predicate inv'1 (_1 : Seq.seq usize)
+  
+  axiom inv_axiom'1 [@rewrite] : forall x : Seq.seq usize [inv'1 x] . inv'1 x = true
+  
+  predicate inv'0 (_1 : Range'0.t_Range usize)
+  
+  axiom inv_axiom'0 [@rewrite] : forall x : Range'0.t_Range usize [inv'0 x] . inv'0 x = true
+  
   use seq.Seq
   
   use seq.Seq
@@ -391,7 +399,7 @@ module M_selection_sort_generic__selection_sort [#"selection_sort_generic.rs" 30
   use T_core__ops__range__Range as T_core__ops__range__Range
   
   predicate produces'0 (self : Range'0.t_Range usize) (visited : Seq.seq usize) (o : Range'0.t_Range usize) =
-    [%#srange22] T_core__ops__range__Range.t_Range__end self = T_core__ops__range__Range.t_Range__end o
+    [%#srange28] T_core__ops__range__Range.t_Range__end self = T_core__ops__range__Range.t_Range__end o
     /\ deep_model'2 (T_core__ops__range__Range.t_Range__start self)
     <= deep_model'2 (T_core__ops__range__Range.t_Range__start o)
     /\ (Seq.length visited > 0
@@ -403,14 +411,12 @@ module M_selection_sort_generic__selection_sort [#"selection_sort_generic.rs" 30
     /\ (forall i : int . 0 <= i /\ i < Seq.length visited
      -> deep_model'2 (Seq.get visited i) = deep_model'2 (T_core__ops__range__Range.t_Range__start self) + i)
   
-  predicate inv'1 (_1 : Range'0.t_Range usize)
-  
   function produces_trans'0 (a : Range'0.t_Range usize) (ab : Seq.seq usize) (b : Range'0.t_Range usize) (bc : Seq.seq usize) (c : Range'0.t_Range usize) : ()
     
   
-  axiom produces_trans'0_spec : forall a : Range'0.t_Range usize, ab : Seq.seq usize, b : Range'0.t_Range usize, bc : Seq.seq usize, c : Range'0.t_Range usize . ([%#srange47] inv'1 a)
-   -> ([%#srange48] inv'1 b)
-   -> ([%#srange49] inv'1 c)
+  axiom produces_trans'0_spec : forall a : Range'0.t_Range usize, ab : Seq.seq usize, b : Range'0.t_Range usize, bc : Seq.seq usize, c : Range'0.t_Range usize . ([%#srange47] inv'0 a)
+   -> ([%#srange48] inv'0 b)
+   -> ([%#srange49] inv'0 c)
    -> ([%#srange50] produces'0 a ab b)
    -> ([%#srange51] produces'0 b bc c)  -> ([%#srange52] produces'0 a (Seq.(++) ab bc) c)
   
@@ -418,21 +424,15 @@ module M_selection_sort_generic__selection_sort [#"selection_sort_generic.rs" 30
   
   function produces_refl'0 (self : Range'0.t_Range usize) : ()
   
-  axiom produces_refl'0_spec : forall self : Range'0.t_Range usize . ([%#srange45] inv'1 self)
+  axiom produces_refl'0_spec : forall self : Range'0.t_Range usize . ([%#srange45] inv'0 self)
    -> ([%#srange46] produces'0 self (Seq.empty  : Seq.seq usize) self)
-  
-  axiom inv_axiom'1 [@rewrite] : forall x : Range'0.t_Range usize [inv'1 x] . inv'1 x = true
-  
-  predicate inv'0 (_1 : Seq.seq usize)
-  
-  axiom inv_axiom'0 [@rewrite] : forall x : Seq.seq usize [inv'0 x] . inv'0 x = true
   
   use seq.Seq
   
   use seq.Seq
   
   predicate sorted_range'0 [#"selection_sort_generic.rs" 10 0 10 63] (s : Seq.seq t_DeepModelTy'0) (l : int) (u : int) =
-    [%#sselection_sort_generic25] forall i : int, j : int . l <= i /\ i < j /\ j < u
+    [%#sselection_sort_generic24] forall i : int, j : int . l <= i /\ i < j /\ j < u
      -> le_log'0 (Seq.get s i) (Seq.get s j)
   
   use seq.Seq
@@ -476,7 +476,7 @@ module M_selection_sort_generic__selection_sort [#"selection_sort_generic.rs" 30
   use seq.Permut
   
   function view'5 (self : borrowed (slice t)) : Seq.seq t =
-    [%#smodel26] view'6 self.current
+    [%#smodel25] view'6 self.current
   
   let rec swap'0 (self:borrowed (slice t)) (a:usize) (b:usize) (return'  (ret:()))= {[@expl:precondition] inv'4 self}
     {[@expl:precondition] [%#sslice36] UIntSize.to_int b < Seq.length (view'5 self)}
@@ -487,7 +487,7 @@ module M_selection_sort_generic__selection_sort [#"selection_sort_generic.rs" 30
     
   
   function view'0 (self : borrowed (Vec'0.t_Vec t (Global'0.t_Global))) : Seq.seq t =
-    [%#smodel26] view'2 self.current
+    [%#smodel25] view'2 self.current
   
   let rec deref_mut'0 (self:borrowed (Vec'0.t_Vec t (Global'0.t_Global))) (return'  (ret:borrowed (slice t)))= {[@expl:precondition] inv'5 self}
     any
@@ -548,29 +548,29 @@ module M_selection_sort_generic__selection_sort [#"selection_sort_generic.rs" 30
   
   use prelude.prelude.Snapshot
   
+  use prelude.prelude.Snapshot
+  
+  use prelude.prelude.Snapshot
+  
   use seq.Permut
   
   predicate permutation_of'0 (self : Seq.seq t) (o : Seq.seq t) =
-    [%#sseq28] Permut.permut self o 0 (Seq.length self)
+    [%#sseq27] Permut.permut self o 0 (Seq.length self)
   
   function view'4 (self : borrowed (Vec'0.t_Vec t (Global'0.t_Global))) : Seq.seq t =
     [%#smodel42] view'0 self
   
   function view'1 (self : Snapshot.snap_ty (borrowed (Vec'0.t_Vec t (Global'0.t_Global)))) : Seq.seq t =
-    [%#ssnapshot27] view'4 (Snapshot.inner self)
+    [%#ssnapshot26] view'4 (Snapshot.inner self)
   
   predicate partition'0 [#"selection_sort_generic.rs" 24 0 24 52] (v : Seq.seq t_DeepModelTy'0) (i : int) =
-    [%#sselection_sort_generic24] forall k1 : int, k2 : int . 0 <= k1 /\ k1 < i /\ i <= k2 /\ k2 < Seq.length v
+    [%#sselection_sort_generic23] forall k1 : int, k2 : int . 0 <= k1 /\ k1 < i /\ i <= k2 /\ k2 < Seq.length v
      -> le_log'0 (Seq.get v k1) (Seq.get v k2)
   
+  use prelude.prelude.Snapshot
+  
   function deep_model'0 (self : borrowed (Vec'0.t_Vec t (Global'0.t_Global))) : Seq.seq t_DeepModelTy'0 =
-    [%#smodel23] deep_model'1 self.current
-  
-  use prelude.prelude.Snapshot
-  
-  use prelude.prelude.Snapshot
-  
-  use prelude.prelude.Snapshot
+    [%#smodel22] deep_model'1 self.current
   
   use prelude.prelude.Snapshot
   
@@ -582,10 +582,10 @@ module M_selection_sort_generic__selection_sort [#"selection_sort_generic.rs" 30
   predicate into_iter_pre'0 (self : Range'0.t_Range usize) =
     [%#siter43] true
   
-  let rec into_iter'0 (self:Range'0.t_Range usize) (return'  (ret:Range'0.t_Range usize))= {[@expl:precondition] inv'1 self}
+  let rec into_iter'0 (self:Range'0.t_Range usize) (return'  (ret:Range'0.t_Range usize))= {[@expl:precondition] inv'0 self}
     {[@expl:precondition] [%#siter21] into_iter_pre'0 self}
     any
-    [ return' (result:Range'0.t_Range usize)-> {inv'1 result}
+    [ return' (result:Range'0.t_Range usize)-> {inv'0 result}
       {[%#siter21] into_iter_post'0 self result}
       (! return' {result}) ]
     
@@ -615,12 +615,12 @@ module M_selection_sort_generic__selection_sort [#"selection_sort_generic.rs" 30
     | bb5 = s0 [ s0 =  [ &old_6_0 <- Snapshot.new v ] s1 | s1 = bb6 ] 
     | bb6 = bb6
       [ bb6 = {[@expl:mut invariant] (Snapshot.inner old_6_0).final = v.final}
-        {[@expl:loop invariant 0] [%#sselection_sort_generic7] permutation_of'0 (view'0 v) (view'1 old_v)}
-        {[@expl:loop invariant 1] [%#sselection_sort_generic6] sorted_range'0 (deep_model'0 v) 0 (Seq.length (Snapshot.inner produced))}
-        {[@expl:loop invariant 2] [%#sselection_sort_generic5] partition'0 (deep_model'0 v) (Seq.length (Snapshot.inner produced))}
-        {[@expl:for invariant] [%#sselection_sort_generic4] produces'0 (Snapshot.inner iter_old) (Snapshot.inner produced) iter}
-        {[@expl:for invariant] [%#sselection_sort_generic4] inv'1 iter}
-        {[@expl:for invariant] [%#sselection_sort_generic4] inv'0 (Snapshot.inner produced)}
+        {[@expl:for invariant] [%#sselection_sort_generic7] inv'1 (Snapshot.inner produced)}
+        {[@expl:for invariant] [%#sselection_sort_generic7] inv'0 iter}
+        {[@expl:for invariant] [%#sselection_sort_generic7] produces'0 (Snapshot.inner iter_old) (Snapshot.inner produced) iter}
+        {[@expl:loop invariant 0] [%#sselection_sort_generic6] permutation_of'0 (view'0 v) (view'1 old_v)}
+        {[@expl:loop invariant 1] [%#sselection_sort_generic5] sorted_range'0 (deep_model'0 v) 0 (Seq.length (Snapshot.inner produced))}
+        {[@expl:loop invariant 2] [%#sselection_sort_generic4] partition'0 (deep_model'0 v) (Seq.length (Snapshot.inner produced))}
         (! s0) [ s0 = bb7 ] 
         [ bb7 = s0
           [ s0 = Borrow.borrow_mut <Range'0.t_Range usize> {iter}
@@ -669,14 +669,14 @@ module M_selection_sort_generic__selection_sort [#"selection_sort_generic.rs" 30
           
         | bb17 = bb18
         | bb18 = bb18
-          [ bb18 = {[@expl:loop invariant 0] [%#sselection_sort_generic14] forall k : int . UIntSize.to_int i <= k
+          [ bb18 = {[@expl:for invariant] [%#sselection_sort_generic14] inv'1 (Snapshot.inner produced1)}
+            {[@expl:for invariant] [%#sselection_sort_generic14] inv'0 iter1}
+            {[@expl:for invariant] [%#sselection_sort_generic14] produces'0 (Snapshot.inner iter_old1) (Snapshot.inner produced1) iter1}
+            {[@expl:loop invariant 0] [%#sselection_sort_generic13] forall k : int . UIntSize.to_int i <= k
             /\ k < Seq.length (Snapshot.inner produced1) + UIntSize.to_int i + 1
              -> le_log'0 (Seq.get (deep_model'0 v) (UIntSize.to_int min)) (Seq.get (deep_model'0 v) k)}
-            {[@expl:loop invariant 1] [%#sselection_sort_generic13] UIntSize.to_int i <= UIntSize.to_int min
+            {[@expl:loop invariant 1] [%#sselection_sort_generic12] UIntSize.to_int i <= UIntSize.to_int min
             /\ UIntSize.to_int min < Seq.length (Snapshot.inner produced1) + UIntSize.to_int i + 1}
-            {[@expl:for invariant] [%#sselection_sort_generic12] produces'0 (Snapshot.inner iter_old1) (Snapshot.inner produced1) iter1}
-            {[@expl:for invariant] [%#sselection_sort_generic12] inv'1 iter1}
-            {[@expl:for invariant] [%#sselection_sort_generic12] inv'0 (Snapshot.inner produced1)}
             (! s0) [ s0 = bb19 ] 
             [ bb19 = s0
               [ s0 = Borrow.borrow_mut <Range'0.t_Range usize> {iter1}
